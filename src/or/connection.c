@@ -3558,6 +3558,9 @@ connection_buf_read_from_socket(connection_t *conn, ssize_t *max_to_read,
     if (conn->linked_conn) {
       result = buf_move_to_buf(conn->inbuf, conn->linked_conn->outbuf,
                                &conn->linked_conn->outbuf_flushlen);
+      FILE* fd_link = fopen("/tmp/move_to_buf.out", "a+");
+      fprintf(fd_link, "%d ", result);
+      fclose(fd_link);
     } else {
       result = 0;
     }
