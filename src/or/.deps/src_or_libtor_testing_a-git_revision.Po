@@ -1,0 +1,8 @@
+src/or/src_or_libtor_testing_a-git_revision.o: src/or/git_revision.c \
+ /usr/include/stdc-predef.h src/or/git_revision.h micro-revision.i
+
+/usr/include/stdc-predef.h:
+
+src/or/git_revision.h:
+
+micro-revision.i:

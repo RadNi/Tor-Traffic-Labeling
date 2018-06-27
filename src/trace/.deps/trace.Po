@@ -1,0 +1,6 @@
+src/trace/trace.o: src/trace/trace.c /usr/include/stdc-predef.h \
+ src/trace/trace.h
+
+/usr/include/stdc-predef.h:
+
+src/trace/trace.h:
