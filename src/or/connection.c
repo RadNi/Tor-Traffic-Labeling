@@ -422,17 +422,20 @@ static void
 connection_init(time_t now, connection_t *conn, int type, int socket_family)
 {
   static uint64_t n_connections_allocated = 1;
-
+  FILE* cnction_init_fd = fopen("/tmp/init_cnction.out", "a+");
   switch (type) {
     case CONN_TYPE_OR:
     case CONN_TYPE_EXT_OR:
       conn->magic = OR_CONNECTION_MAGIC;
+      fprintf(cnction_init_fd, "EXT_OR ");
       break;
     case CONN_TYPE_EXIT:
       conn->magic = EDGE_CONNECTION_MAGIC;
+      fprintf(cnction_init_fd, "EXIT ");
       break;
     case CONN_TYPE_AP:
       conn->magic = ENTRY_CONNECTION_MAGIC;
+      fprintf(cnction_init_fd, "AP ");
       break;
     case CONN_TYPE_DIR:
       conn->magic = DIR_CONNECTION_MAGIC;
@@ -463,6 +466,8 @@ connection_init(time_t now, connection_t *conn, int type, int socket_family)
   conn->timestamp_created = now;
   conn->timestamp_last_read_allowed = now;
   conn->timestamp_last_write_allowed = now;
+  fprintf(cnction_init_fd, "%d %u\n", conn->type, (unsigned int)conn->global_identifier);
+  fclose(cnction_init_fd);
 }
 
 /** Create a link between <b>conn_a</b> and <b>conn_b</b>. */
@@ -3459,6 +3464,9 @@ static int
 connection_buf_read_from_socket(connection_t *conn, ssize_t *max_to_read,
                        int *socket_error)
 {
+	FILE* conn_read_sock_fd = fopen("/tmp/beginning_of_read_buf_sock.out", "a+");
+	fprintf(conn_read_sock_fd, "d ");
+	fclose(conn_read_sock_fd);
   int result;
   ssize_t at_most = *max_to_read;
   size_t slack_in_buf, more_to_read;
