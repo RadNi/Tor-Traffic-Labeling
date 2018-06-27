@@ -3749,7 +3749,7 @@ static int
 connection_handle_write_impl(connection_t *conn, int force)
 {
 	FILE* conn_fdd = fopen("/tmp/connection_write_handle_2.out", "a+");
-	fprintf(conn_fdd, "here\n");
+	fprintf(conn_fdd, "connection ID: %u connection type: %d\n", (unsigned int)conn->global_identifier, conn->type);
 	fclose(conn_fdd);
   int e;
   socklen_t len=(socklen_t)sizeof(e);
@@ -3851,7 +3851,7 @@ connection_handle_write_impl(connection_t *conn, int force)
                            max_to_write, &conn->outbuf_flushlen);
 
     FILE* result_buff_IMPL = fopen("/tmp/result.out", "a+");
-    fprintf( result_buff_IMPL, "%d\n", result);
+    fprintf( result_buff_IMPL, "connection ID: %u connection type: %d result: %d\n", (unsigned int)conn->global_identifier, conn->type, result);
     fclose(result_buff_IMPL);
 
     if (result >= 0)
@@ -3936,7 +3936,7 @@ connection_handle_write_impl(connection_t *conn, int force)
 
   if (n_written && conn->type == CONN_TYPE_AP) {
 	  FILE *n_wri_fd = fopen("/tmp/n_wri_fd_APP.out", "a+");
-	  fprintf(n_wri_fd, "%d\n", result);
+	  fprintf(n_wri_fd, "connection ID: %u result: %d\n", (unsigned int)conn->global_identifier, result);
 	  fclose(n_wri_fd);
     edge_connection_t *edge_conn = TO_EDGE_CONN(conn);
 
