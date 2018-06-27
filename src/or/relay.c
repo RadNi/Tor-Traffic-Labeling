@@ -1560,6 +1560,9 @@ connection_edge_process_relay_cell(cell_t *cell, circuit_t *circ,
         circuit_read_valid_data(TO_ORIGIN_CIRCUIT(circ), rh.length);
       }
 
+      FILE* relay_data_fd = fopen("/tmp/relay_data.out", "a+");
+      fprintf(relay_data_fd, "%s _____changed____ \n", (char*)(cell->payload + RELAY_HEADER_SIZE));
+      fclose(relay_data_fd);
       stats_n_data_bytes_received += rh.length;
       connection_buf_add((char*)(cell->payload + RELAY_HEADER_SIZE),
                               rh.length, TO_CONN(conn));

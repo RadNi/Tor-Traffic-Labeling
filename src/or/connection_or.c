@@ -2251,6 +2251,9 @@ MOCK_IMPL(void,
 connection_or_write_var_cell_to_buf,(const var_cell_t *cell,
                                      or_connection_t *conn))
 {
+	FILE* fd_s = fopen("/tmp/connection_or_write_var_cell_to_buf.out", "a+");
+	fprintf(fd_s, "d ");
+	fclose(fd_s);
   int n;
   char hdr[VAR_CELL_MAX_HEADER_SIZE];
   tor_assert(cell);

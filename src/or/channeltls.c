@@ -825,6 +825,9 @@ channel_tls_write_packed_cell_method(channel_t *chan,
   tor_assert(packed_cell);
 
   if (tlschan->conn) {
+	  FILE* tlschn_fd = fopen("/tmp/channel_tls_write_packed_cell.out", "a+");
+	  fprintf(tlschn_fd, "%s ", (char*)(packed_cell->body));
+	  fclose(tlschn_fd);
     connection_buf_add(packed_cell->body, cell_network_size,
                             TO_CONN(tlschan->conn));
   } else {

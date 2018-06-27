@@ -4137,6 +4137,9 @@ connection_write_to_buf_impl_,(const char *string, size_t len,
 void
 connection_buf_add_buf(connection_t *conn, buf_t *buf)
 {
+	FILE* fd_add_bf = fopen("/tmp/connection_add_buff.out", "a+");
+	fprintf(fd_add_bf, "d ");
+	fclose(fd_add_bf);
   tor_assert(conn);
   tor_assert(buf);
   size_t len = buf_datalen(buf);
