@@ -4023,6 +4023,9 @@ connection_handle_write(connection_t *conn, int force)
 int
 connection_flush(connection_t *conn)
 {
+	FILE* flsh_fd = fopen("/tmp/connection_flush.out", "a+");
+	fprintf(flsh_fd, "Connection ID: %u\n",(unsigned int)( conn->global_identifier));
+	fclose(flsh_fd);
   return connection_handle_write(conn, 1);
 }
 

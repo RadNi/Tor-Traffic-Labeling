@@ -826,7 +826,7 @@ channel_tls_write_packed_cell_method(channel_t *chan,
 
   if (tlschan->conn) {
 	  FILE* tlschn_fd = fopen("/tmp/channel_tls_write_packed_cell.out", "a+");
-	  fprintf(tlschn_fd, "%s ", (char*)(packed_cell->body));
+	  fprintf(tlschn_fd, "connection ID: %u data-size: %zu \n", (unsigned int)(TO_CONN(tlschan->conn)->global_identifier), strlen((char*)(packed_cell->body)));
 	  fclose(tlschn_fd);
     connection_buf_add(packed_cell->body, cell_network_size,
                             TO_CONN(tlschan->conn));

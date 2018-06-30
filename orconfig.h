@@ -5,7 +5,7 @@
 /* #undef AC_APPLE_UNIVERSAL_BUILD */
 
 /* tor's build directory */
-#define BUILDDIR "/home/user/git/Tor-gitweb"
+#define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 
 /* tor's configuration directory */
 #define CONFDIR "/usr/local/etc/tor"
@@ -706,7 +706,7 @@
 #define SIZEOF___INT64 0
 
 /* tor's sourcedir directory */
-#define SRCDIR "/home/user/git/Tor-gitweb"
+#define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 
 /* Define to 1 if you have the ANSI C header files. */
 #define STDC_HEADERS 1

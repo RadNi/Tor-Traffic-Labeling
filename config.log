@@ -645,8 +645,8 @@ configure:8138: $? = 0
 configure:8155: result: none required
 configure:8163: checking for library containing dlopen
 configure:8194: gcc -o conftest -g -O2  -I${top_srcdir}/src/common  conftest.c  >&5
-/tmp/ccld33Sg.o: In function `main':
-/home/user/git/Tor-gitweb/conftest.c:42: undefined reference to `dlopen'
+/tmp/ccrEbjM6.o: In function `main':
+/home/user/disk2/git/Tor-gitweb/Tor-gitweb/conftest.c:42: undefined reference to `dlopen'
 collect2: error: ld returned 1 exit status
 configure:8194: $? = 1
 configure: failed program was:
@@ -712,8 +712,8 @@ configure:8363: $? = 0
 configure:8380: result: none required
 configure:8393: checking for library containing pthread_create
 configure:8424: gcc -o conftest -g -O2  -I${top_srcdir}/src/common  conftest.c -ldl  >&5
-/tmp/ccRyWqTC.o: In function `main':
-/home/user/git/Tor-gitweb/conftest.c:42: undefined reference to `pthread_create'
+/tmp/ccbN1xeo.o: In function `main':
+/home/user/disk2/git/Tor-gitweb/Tor-gitweb/conftest.c:42: undefined reference to `pthread_create'
 collect2: error: ld returned 1 exit status
 configure:8424: $? = 1
 configure: failed program was:
@@ -771,8 +771,8 @@ configure:8480: $? = 0
 configure:8497: result: none required
 configure:8577: checking for _NSGetEnviron
 configure:8577: gcc -o conftest -g -O2  -I${top_srcdir}/src/common  conftest.c -lpthread -ldl  >&5
-/tmp/cc034yAO.o: In function `main':
-/home/user/git/Tor-gitweb/conftest.c:65: undefined reference to `_NSGetEnviron'
+/tmp/cc4m0Jeq.o: In function `main':
+/home/user/disk2/git/Tor-gitweb/Tor-gitweb/conftest.c:65: undefined reference to `_NSGetEnviron'
 collect2: error: ld returned 1 exit status
 configure:8577: $? = 1
 configure: failed program was:
@@ -847,8 +847,8 @@ configure: failed program was:
 configure:8577: result: no
 configure:8577: checking for RtlSecureZeroMemory
 configure:8577: gcc -o conftest -g -O2  -I${top_srcdir}/src/common  conftest.c -lpthread -ldl  >&5
-/tmp/ccvRVJBT.o: In function `main':
-/home/user/git/Tor-gitweb/conftest.c:65: undefined reference to `RtlSecureZeroMemory'
+/tmp/ccfBfcus.o: In function `main':
+/home/user/disk2/git/Tor-gitweb/Tor-gitweb/conftest.c:65: undefined reference to `RtlSecureZeroMemory'
 collect2: error: ld returned 1 exit status
 configure:8577: $? = 1
 configure: failed program was:
@@ -923,8 +923,8 @@ configure: failed program was:
 configure:8577: result: no
 configure:8577: checking for SecureZeroMemory
 configure:8577: gcc -o conftest -g -O2  -I${top_srcdir}/src/common  conftest.c -lpthread -ldl  >&5
-/tmp/ccZErvKY.o: In function `main':
-/home/user/git/Tor-gitweb/conftest.c:65: undefined reference to `SecureZeroMemory'
+/tmp/ccGOm0qy.o: In function `main':
+/home/user/disk2/git/Tor-gitweb/Tor-gitweb/conftest.c:65: undefined reference to `SecureZeroMemory'
 collect2: error: ld returned 1 exit status
 configure:8577: $? = 1
 configure: failed program was:
@@ -1015,8 +1015,8 @@ configure:8577: $? = 0
 configure:8577: result: yes
 configure:8577: checking for explicit_bzero
 configure:8577: gcc -o conftest -g -O2  -I${top_srcdir}/src/common  conftest.c -lpthread -ldl  >&5
-/tmp/cc67fhda.o: In function `main':
-/home/user/git/Tor-gitweb/conftest.c:69: undefined reference to `explicit_bzero'
+/tmp/ccg2pIMO.o: In function `main':
+/home/user/disk2/git/Tor-gitweb/Tor-gitweb/conftest.c:69: undefined reference to `explicit_bzero'
 collect2: error: ld returned 1 exit status
 configure:8577: $? = 1
 configure: failed program was:
@@ -1095,8 +1095,8 @@ configure: failed program was:
 configure:8577: result: no
 configure:8577: checking for timingsafe_memcmp
 configure:8577: gcc -o conftest -g -O2  -I${top_srcdir}/src/common  conftest.c -lpthread -ldl  >&5
-/tmp/ccTje9Bi.o: In function `main':
-/home/user/git/Tor-gitweb/conftest.c:69: undefined reference to `timingsafe_memcmp'
+/tmp/ccECiTzT.o: In function `main':
+/home/user/disk2/git/Tor-gitweb/Tor-gitweb/conftest.c:69: undefined reference to `timingsafe_memcmp'
 collect2: error: ld returned 1 exit status
 configure:8577: $? = 1
 configure: failed program was:
@@ -1215,8 +1215,8 @@ configure:8577: $? = 0
 configure:8577: result: yes
 configure:8577: checking for htonll
 configure:8577: gcc -o conftest -g -O2  -I${top_srcdir}/src/common  conftest.c -lpthread -ldl  >&5
-/tmp/ccBthtp9.o: In function `main':
-/home/user/git/Tor-gitweb/conftest.c:79: undefined reference to `htonll'
+/tmp/ccB99rNB.o: In function `main':
+/home/user/disk2/git/Tor-gitweb/Tor-gitweb/conftest.c:79: undefined reference to `htonll'
 collect2: error: ld returned 1 exit status
 configure:8577: $? = 1
 configure: failed program was:
@@ -1313,8 +1313,8 @@ configure:8577: $? = 0
 configure:8577: result: yes
 configure:8577: checking for issetugid
 configure:8577: gcc -o conftest -g -O2  -I${top_srcdir}/src/common  conftest.c -lpthread -ldl  >&5
-/tmp/ccvJWrul.o: In function `main':
-/home/user/git/Tor-gitweb/conftest.c:81: undefined reference to `issetugid'
+/tmp/ccSEvGzC.o: In function `main':
+/home/user/disk2/git/Tor-gitweb/Tor-gitweb/conftest.c:81: undefined reference to `issetugid'
 collect2: error: ld returned 1 exit status
 configure:8577: $? = 1
 configure: failed program was:
@@ -1408,8 +1408,8 @@ configure:8577: gcc -o conftest -g -O2  -I${top_srcdir}/src/common  conftest.c -
 conftest.c:70:6: warning: conflicting types for built-in function 'llround'
  char llround ();
       ^~~~~~~
-/tmp/ccnbZ9Ej.o: In function `main':
-/home/user/git/Tor-gitweb/conftest.c:81: undefined reference to `llround'
+/tmp/ccTX7fiH.o: In function `main':
+/home/user/disk2/git/Tor-gitweb/Tor-gitweb/conftest.c:81: undefined reference to `llround'
 collect2: error: ld returned 1 exit status
 configure:8577: $? = 1
 configure: failed program was:
@@ -1507,8 +1507,8 @@ configure:8577: gcc -o conftest -g -O2  -I${top_srcdir}/src/common  conftest.c -
 conftest.c:71:6: warning: conflicting types for built-in function 'lround'
  char lround ();
       ^~~~~~
-/tmp/cckdqj6p.o: In function `main':
-/home/user/git/Tor-gitweb/conftest.c:82: undefined reference to `lround'
+/tmp/cckTsusP.o: In function `main':
+/home/user/disk2/git/Tor-gitweb/Tor-gitweb/conftest.c:82: undefined reference to `lround'
 collect2: error: ld returned 1 exit status
 configure:8577: $? = 1
 configure: failed program was:
@@ -1600,8 +1600,8 @@ configure: failed program was:
 configure:8577: result: no
 configure:8577: checking for mach_approximate_time
 configure:8577: gcc -o conftest -g -O2  -I${top_srcdir}/src/common  conftest.c -lpthread -ldl  >&5
-/tmp/ccvDGWJu.o: In function `main':
-/home/user/git/Tor-gitweb/conftest.c:82: undefined reference to `mach_approximate_time'
+/tmp/ccnJysrV.o: In function `main':
+/home/user/disk2/git/Tor-gitweb/Tor-gitweb/conftest.c:82: undefined reference to `mach_approximate_time'
 collect2: error: ld returned 1 exit status
 configure:8577: $? = 1
 configure: failed program was:
@@ -1697,8 +1697,8 @@ configure:8577: $? = 0
 configure:8577: result: yes
 configure:8577: checking for memset_s
 configure:8577: gcc -o conftest -g -O2  -I${top_srcdir}/src/common  conftest.c -lpthread -ldl  >&5
-/tmp/cc3u5TBE.o: In function `main':
-/home/user/git/Tor-gitweb/conftest.c:83: undefined reference to `memset_s'
+/tmp/cc30hzk1.o: In function `main':
+/home/user/disk2/git/Tor-gitweb/Tor-gitweb/conftest.c:83: undefined reference to `memset_s'
 collect2: error: ld returned 1 exit status
 configure:8577: $? = 1
 configure: failed program was:
@@ -1807,8 +1807,8 @@ configure:8577: $? = 0
 configure:8577: result: yes
 configure:8577: checking for readpassphrase
 configure:8577: gcc -o conftest -g -O2  -I${top_srcdir}/src/common  conftest.c -lpthread -ldl  >&5
-/tmp/ccU59Lx4.o: In function `main':
-/home/user/git/Tor-gitweb/conftest.c:87: undefined reference to `readpassphrase'
+/tmp/ccrv4Mpm.o: In function `main':
+/home/user/disk2/git/Tor-gitweb/Tor-gitweb/conftest.c:87: undefined reference to `readpassphrase'
 collect2: error: ld returned 1 exit status
 configure:8577: $? = 1
 configure: failed program was:
@@ -1908,8 +1908,8 @@ configure:8577: gcc -o conftest -g -O2  -I${top_srcdir}/src/common  conftest.c -
 conftest.c:76:6: warning: conflicting types for built-in function 'rint'
  char rint ();
       ^~~~
-/tmp/ccaNYD39.o: In function `main':
-/home/user/git/Tor-gitweb/conftest.c:87: undefined reference to `rint'
+/tmp/ccL6aORn.o: In function `main':
+/home/user/disk2/git/Tor-gitweb/Tor-gitweb/conftest.c:87: undefined reference to `rint'
 collect2: error: ld returned 1 exit status
 configure:8577: $? = 1
 configure: failed program was:
@@ -2018,8 +2018,8 @@ configure:8577: $? = 0
 configure:8577: result: yes
 configure:8577: checking for strlcat
 configure:8577: gcc -o conftest -g -O2  -I${top_srcdir}/src/common  conftest.c -lpthread -ldl  >&5
-/tmp/ccDaHjcs.o: In function `main':
-/home/user/git/Tor-gitweb/conftest.c:90: undefined reference to `strlcat'
+/tmp/ccYklGMD.o: In function `main':
+/home/user/disk2/git/Tor-gitweb/Tor-gitweb/conftest.c:90: undefined reference to `strlcat'
 collect2: error: ld returned 1 exit status
 configure:8577: $? = 1
 configure: failed program was:
@@ -2119,8 +2119,8 @@ configure: failed program was:
 configure:8577: result: no
 configure:8577: checking for strlcpy
 configure:8577: gcc -o conftest -g -O2  -I${top_srcdir}/src/common  conftest.c -lpthread -ldl  >&5
-/tmp/ccVv8Vml.o: In function `main':
-/home/user/git/Tor-gitweb/conftest.c:90: undefined reference to `strlcpy'
+/tmp/cceWT2QJ.o: In function `main':
+/home/user/disk2/git/Tor-gitweb/Tor-gitweb/conftest.c:90: undefined reference to `strlcpy'
 collect2: error: ld returned 1 exit status
 configure:8577: $? = 1
 configure: failed program was:
@@ -2260,8 +2260,8 @@ configure:8577: $? = 0
 configure:8577: result: yes
 configure:8577: checking for _vscprintf
 configure:8577: gcc -o conftest -g -O2  -I${top_srcdir}/src/common  conftest.c -lpthread -ldl  >&5
-/tmp/ccJtChhd.o: In function `main':
-/home/user/git/Tor-gitweb/conftest.c:100: undefined reference to `_vscprintf'
+/tmp/ccsfcx5g.o: In function `main':
+/home/user/disk2/git/Tor-gitweb/Tor-gitweb/conftest.c:100: undefined reference to `_vscprintf'
 collect2: error: ld returned 1 exit status
 configure:8577: $? = 1
 configure: failed program was:
@@ -2379,8 +2379,8 @@ configure:8631: $? = 0
 configure:8631: result: yes
 configure:8631: checking for getentropy
 configure:8631: gcc -o conftest -g -O2  -I${top_srcdir}/src/common  conftest.c -lpthread -ldl  >&5
-/tmp/ccngZntm.o: In function `main':
-/home/user/git/Tor-gitweb/conftest.c:101: undefined reference to `getentropy'
+/tmp/cclnVqEs.o: In function `main':
+/home/user/disk2/git/Tor-gitweb/Tor-gitweb/conftest.c:101: undefined reference to `getentropy'
 collect2: error: ld returned 1 exit status
 configure:8631: $? = 1
 configure: failed program was:
@@ -2557,8 +2557,8 @@ configure:9148: checking for event2/bufferevent_ssl.h
 configure:9148: result: yes
 configure:9167: checking for library containing event_new
 configure:9198: gcc -o conftest -g -O2   -I${top_srcdir}/src/common   conftest.c   -lpthread -ldl  >&5
-/tmp/ccjwmo95.o: In function `main':
-/home/user/git/Tor-gitweb/conftest.c:84: undefined reference to `event_new'
+/tmp/ccnPxu3Z.o: In function `main':
+/home/user/disk2/git/Tor-gitweb/Tor-gitweb/conftest.c:84: undefined reference to `event_new'
 collect2: error: ld returned 1 exit status
 configure:9198: $? = 1
 configure: failed program was:
@@ -2658,8 +2658,8 @@ configure:9256: $? = 0
 configure:9273: result: none required
 configure:9300: checking for evutil_secure_rng_set_urandom_device_file
 configure:9300: gcc -o conftest -g -O2   -I${top_srcdir}/src/common   conftest.c -levent   -lpthread -ldl  >&5
-/tmp/ccyD752e.o: In function `main':
-/home/user/git/Tor-gitweb/conftest.c:107: undefined reference to `evutil_secure_rng_set_urandom_device_file'
+/tmp/ccfic6Cd.o: In function `main':
+/home/user/disk2/git/Tor-gitweb/Tor-gitweb/conftest.c:107: undefined reference to `evutil_secure_rng_set_urandom_device_file'
 collect2: error: ld returned 1 exit status
 configure:9300: $? = 1
 configure: failed program was:
@@ -2787,8 +2787,8 @@ configure:9379: gcc -o conftest -g -O2  -I${top_srcdir}/src/common  conftest.c -
 conftest.c:81:6: warning: conflicting types for built-in function 'pow'
  char pow ();
       ^~~
-/tmp/ccHYdl5u.o: In function `main':
-/home/user/git/Tor-gitweb/conftest.c:85: undefined reference to `pow'
+/tmp/ccRUOq1n.o: In function `main':
+/home/user/disk2/git/Tor-gitweb/Tor-gitweb/conftest.c:85: undefined reference to `pow'
 collect2: error: ld returned 1 exit status
 configure:9379: $? = 1
 configure: failed program was:
@@ -3551,8 +3551,8 @@ configure:11724: checking for seccomp.h
 configure:11724: result: yes
 configure:11734: checking for library containing seccomp_init
 configure:11765: gcc -o conftest -g -O2 -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2 -fstack-protector-all -Wstack-protector --param ssp-buffer-size=1 -fPIE -fasynchronous-unwind-tables  -I${top_srcdir}/src/common  -pie -z relro -z now -rdynamic conftest.c -lcap -lpthread -ldl  >&5
-/tmp/ccFJdEBn.o: In function `main':
-/home/user/git/Tor-gitweb/conftest.c:99: undefined reference to `seccomp_init'
+/tmp/ccLqLhHW.o: In function `main':
+/home/user/disk2/git/Tor-gitweb/Tor-gitweb/conftest.c:99: undefined reference to `seccomp_init'
 collect2: error: ld returned 1 exit status
 configure:11765: $? = 1
 configure: failed program was:
@@ -3892,8 +3892,8 @@ configure:11796: checking for libscrypt.h
 configure:11796: result: no
 configure:11806: checking for library containing libscrypt_scrypt
 configure:11837: gcc -o conftest -g -O2 -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2 -fstack-protector-all -Wstack-protector --param ssp-buffer-size=1 -fPIE -fasynchronous-unwind-tables  -I${top_srcdir}/src/common  -pie -z relro -z now -rdynamic conftest.c -lseccomp -lcap -lpthread -ldl  >&5
-/tmp/ccLKuxTD.o: In function `main':
-/home/user/git/Tor-gitweb/conftest.c:99: undefined reference to `libscrypt_scrypt'
+/tmp/cc6qLzoa.o: In function `main':
+/home/user/disk2/git/Tor-gitweb/Tor-gitweb/conftest.c:99: undefined reference to `libscrypt_scrypt'
 collect2: error: ld returned 1 exit status
 configure:11837: $? = 1
 configure: failed program was:
@@ -4109,8 +4109,8 @@ configure: failed program was:
 configure:11854: result: no
 configure:11864: checking for libscrypt_scrypt
 configure:11864: gcc -o conftest -g -O2 -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2 -fstack-protector-all -Wstack-protector --param ssp-buffer-size=1 -fPIE -fasynchronous-unwind-tables  -I${top_srcdir}/src/common  -pie -z relro -z now -rdynamic conftest.c -lseccomp -lcap -lpthread -ldl  >&5
-/tmp/ccrp1M8H.o: In function `main':
-/home/user/git/Tor-gitweb/conftest.c:122: undefined reference to `libscrypt_scrypt'
+/tmp/ccSbBAke.o: In function `main':
+/home/user/disk2/git/Tor-gitweb/Tor-gitweb/conftest.c:122: undefined reference to `libscrypt_scrypt'
 collect2: error: ld returned 1 exit status
 configure:11864: $? = 1
 configure: failed program was:
@@ -12744,8 +12744,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -12950,8 +12950,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -13156,8 +13156,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -13362,8 +13362,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -13568,8 +13568,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -13774,8 +13774,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -13980,8 +13980,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -14186,8 +14186,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -14392,8 +14392,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -14598,8 +14598,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -14808,8 +14808,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -15014,8 +15014,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -15220,8 +15220,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -15426,8 +15426,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -15632,8 +15632,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -15838,8 +15838,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -16044,8 +16044,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -16250,8 +16250,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -16456,8 +16456,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -16662,8 +16662,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -16868,8 +16868,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -17074,8 +17074,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -17280,8 +17280,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -17486,8 +17486,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -17692,8 +17692,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -17898,8 +17898,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -18104,8 +18104,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -18310,8 +18310,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -18516,8 +18516,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -18722,8 +18722,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -18928,8 +18928,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -19134,8 +19134,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -19340,8 +19340,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -19546,8 +19546,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -19752,8 +19752,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -19958,8 +19958,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -20164,8 +20164,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -20374,8 +20374,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -20580,8 +20580,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -20786,8 +20786,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -20992,8 +20992,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -21198,8 +21198,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -21404,8 +21404,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -21610,8 +21610,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -21816,8 +21816,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -22026,8 +22026,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -22232,8 +22232,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -22438,8 +22438,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -22644,8 +22644,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -22854,8 +22854,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -23060,8 +23060,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -23266,8 +23266,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -23472,8 +23472,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -23678,8 +23678,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -23884,8 +23884,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -24090,8 +24090,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -24300,8 +24300,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -24506,8 +24506,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -24712,8 +24712,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -24922,8 +24922,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -25128,8 +25128,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -25334,8 +25334,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -25540,8 +25540,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -25746,8 +25746,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -25952,8 +25952,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -26158,8 +26158,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -26364,8 +26364,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -26570,8 +26570,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -26776,8 +26776,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -26986,8 +26986,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -27192,8 +27192,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -27398,8 +27398,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -27604,8 +27604,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -27810,8 +27810,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -28016,8 +28016,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -28222,8 +28222,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -28428,8 +28428,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -28634,8 +28634,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -28840,8 +28840,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -29046,8 +29046,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -29252,8 +29252,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -29462,8 +29462,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -29668,8 +29668,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -29874,8 +29874,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -30080,8 +30080,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -30286,8 +30286,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -30492,8 +30492,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -30698,8 +30698,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -30904,8 +30904,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -31110,8 +31110,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -31316,8 +31316,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -31522,8 +31522,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -31728,8 +31728,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -31934,8 +31934,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -32140,8 +32140,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -32350,8 +32350,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -32556,8 +32556,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -32762,8 +32762,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -32968,8 +32968,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -33174,8 +33174,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -33380,8 +33380,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -33586,8 +33586,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -33792,8 +33792,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -34010,8 +34010,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -34216,8 +34216,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -34422,8 +34422,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -34628,8 +34628,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -34834,8 +34834,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -35040,8 +35040,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -35246,8 +35246,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -35452,8 +35452,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -35658,8 +35658,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -35868,8 +35868,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -36074,8 +36074,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -36280,8 +36280,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -36490,8 +36490,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -36696,8 +36696,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -36910,8 +36910,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -37116,8 +37116,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -37322,8 +37322,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -37528,8 +37528,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -37734,8 +37734,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -37940,8 +37940,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -38146,8 +38146,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -38352,8 +38352,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -38558,8 +38558,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -38764,8 +38764,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -38970,8 +38970,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -39176,8 +39176,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -39382,8 +39382,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -39588,8 +39588,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -39794,8 +39794,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -40000,8 +40000,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -40206,8 +40206,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -40432,8 +40432,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -40638,8 +40638,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -40848,8 +40848,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -41054,8 +41054,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -41260,8 +41260,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -41466,8 +41466,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -41676,8 +41676,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -41882,8 +41882,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -42088,8 +42088,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -42294,8 +42294,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -42508,8 +42508,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -42722,8 +42722,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -42928,8 +42928,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -43138,8 +43138,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -43344,8 +43344,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -43550,8 +43550,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -43756,8 +43756,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -43962,8 +43962,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -44168,8 +44168,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -44374,8 +44374,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -44580,8 +44580,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -44786,8 +44786,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -44992,8 +44992,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -45198,8 +45198,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -45404,8 +45404,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -45610,8 +45610,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -45824,8 +45824,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -46034,8 +46034,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -46244,8 +46244,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -46450,8 +46450,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -46656,8 +46656,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -46862,8 +46862,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -47072,8 +47072,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -47278,8 +47278,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -47484,8 +47484,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -47690,8 +47690,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -47896,8 +47896,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -48102,8 +48102,8 @@ configure: failed program was:
 | #define HAVE_MACRO__func__ 1
 | #define HAVE_MACRO__FUNCTION__ 1
 | #define HAVE_EXTERN_ENVIRON_DECLARED 1
-| #define BUILDDIR "/home/user/git/Tor-gitweb"
-| #define SRCDIR "/home/user/git/Tor-gitweb"
+| #define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+| #define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 | #define CONFDIR "/usr/local/etc/tor"
 | /* end confdefs.h.  */
 | 
@@ -48653,7 +48653,7 @@ tor_cv_uint8_uchar=yes
 ## ----------------- ##
 
 A2X='/usr/bin/a2x'
-ACLOCAL='${SHELL} /home/user/git/Tor-gitweb/missing aclocal-1.15'
+ACLOCAL='${SHELL} /home/user/disk2/git/Tor-gitweb/Tor-gitweb/missing aclocal-1.15'
 ADD_MULODI4_FALSE=''
 ADD_MULODI4_TRUE='#'
 AMDEPBACKSLASH='\'
@@ -48666,12 +48666,12 @@ AM_DEFAULT_VERBOSITY='0'
 AM_V='$(V)'
 AR='ar'
 ASCIIDOC='/usr/bin/asciidoc'
-AUTOCONF='${SHELL} /home/user/git/Tor-gitweb/missing autoconf'
-AUTOHEADER='${SHELL} /home/user/git/Tor-gitweb/missing autoheader'
-AUTOMAKE='${SHELL} /home/user/git/Tor-gitweb/missing automake-1.15'
+AUTOCONF='${SHELL} /home/user/disk2/git/Tor-gitweb/Tor-gitweb/missing autoconf'
+AUTOHEADER='${SHELL} /home/user/disk2/git/Tor-gitweb/Tor-gitweb/missing autoheader'
+AUTOMAKE='${SHELL} /home/user/disk2/git/Tor-gitweb/Tor-gitweb/missing automake-1.15'
 AWK='mawk'
 BINDIR='/usr/local/bin'
-BUILDDIR='/home/user/git/Tor-gitweb'
+BUILDDIR='/home/user/disk2/git/Tor-gitweb/Tor-gitweb'
 BUILD_CURVE25519_DONNA_C64_FALSE='#'
 BUILD_CURVE25519_DONNA_C64_TRUE=''
 BUILD_CURVE25519_DONNA_FALSE=''
@@ -48725,7 +48725,7 @@ LOGFACILITY=''
 LTLIBOBJS=''
 LZMA_CFLAGS=''
 LZMA_LIBS=''
-MAKEINFO='${SHELL} /home/user/git/Tor-gitweb/missing makeinfo'
+MAKEINFO='${SHELL} /home/user/disk2/git/Tor-gitweb/Tor-gitweb/missing makeinfo'
 MKDIR_P='/bin/mkdir -p'
 OBJEXT='o'
 OSS_FUZZ_ENABLED_FALSE=''
@@ -48833,7 +48833,7 @@ host_vendor='pc'
 htmldir='${docdir}'
 includedir='${prefix}/include'
 infodir='${datarootdir}/info'
-install_sh='${SHELL} /home/user/git/Tor-gitweb/install-sh'
+install_sh='${SHELL} /home/user/disk2/git/Tor-gitweb/Tor-gitweb/install-sh'
 libdir='${exec_prefix}/lib'
 libexecdir='${exec_prefix}/libexec'
 localedir='${datarootdir}/locale'
@@ -49044,8 +49044,8 @@ target_alias=''
 #define HAVE_MACRO__func__ 1
 #define HAVE_MACRO__FUNCTION__ 1
 #define HAVE_EXTERN_ENVIRON_DECLARED 1
-#define BUILDDIR "/home/user/git/Tor-gitweb"
-#define SRCDIR "/home/user/git/Tor-gitweb"
+#define BUILDDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
+#define SRCDIR "/home/user/disk2/git/Tor-gitweb/Tor-gitweb"
 #define CONFDIR "/usr/local/etc/tor"
 #define HAVE_CFLAG_WNULL_DEREFERENCE 1
 #define HAVE_CFLAG_WOVERLENGTH_STRINGS 1
@@ -49100,3 +49100,20 @@ on debian
 
 config.status:1154: creating orconfig.h
 config.status:1335: orconfig.h is unchanged
+
+## ---------------------- ##
+## Running config.status. ##
+## ---------------------- ##
+
+This file was extended by tor config.status 0.3.5.0-alpha-dev, which was
+generated by GNU Autoconf 2.69.  Invocation command line was
+
+  CONFIG_FILES    = 
+  CONFIG_HEADERS  = 
+  CONFIG_LINKS    = 
+  CONFIG_COMMANDS = 
+  $ ./config.status -q --file=doc/tor.html
+
+on debian
+
+config.status:1154: creating doc/tor.html
