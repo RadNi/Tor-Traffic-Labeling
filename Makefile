@@ -2189,7 +2189,7 @@ LOCALSTATEDIR = /usr/local/var
 LOGFACILITY = 
 LTLIBOBJS = 
 LZMA_CFLAGS = 
-LZMA_LIBS = 
+LZMA_LIBS = -llzma
 MAKEINFO = ${SHELL} /home/user/disk2/git/Tor-gitweb/Tor-gitweb/missing makeinfo
 MKDIR_P = /bin/mkdir -p
 OBJEXT = o
@@ -2230,7 +2230,7 @@ TOR_LIB_MATH = -lm
 TOR_LIB_USERENV = 
 TOR_LIB_WS32 = 
 TOR_LZMA_CFLAGS = 
-TOR_LZMA_LIBS = 
+TOR_LZMA_LIBS = -llzma
 TOR_MODULES_ALL_ENABLED =  -DHAVE_MODULE_DIRAUTH=1
 TOR_OPENSSL_LIBS = -lssl -lcrypto
 TOR_RUST_DEPENDENCIES = 
@@ -2813,7 +2813,7 @@ src_or_tor_LDADD = src/or/libtor.a src/common/libor.a src/common/libor-ctime.a \
 	-lz -lm -levent -lssl -lcrypto \
 	   \
 	 -lsystemd \
-	 
+	-llzma 
 
 #src_or_tor_cov_SOURCES = src/or/tor_main.c
 #src_or_tor_cov_CPPFLAGS = $(AM_CPPFLAGS) $(TEST_CPPFLAGS)
@@ -2825,7 +2825,7 @@ src_or_tor_LDADD = src/or/libtor.a src/common/libor.a src/common/libor-ctime.a \
 #	src/common/libor-event-testing.a src/trunnel/libor-trunnel-testing.a \
 #	-lz -lm -levent -lssl -lcrypto \
 #	   -lsystemd \
-#	 
+#	-llzma 
 
 
 # We add the headers of the modules even though they are disabled so we can
@@ -2949,7 +2949,7 @@ src_test_test_switch_id_LDADD = \
 	$(rust_ldadd) \
 	-lz -lm \
 	  \
-	 
+	-llzma 
 
 src_test_test_LDFLAGS =   \
         
@@ -2967,7 +2967,7 @@ src_test_test_LDADD = src/or/libtor-testing.a \
 	-lz -lm -levent \
 	-lssl -lcrypto    \
 	 \
-	-lsystemd  
+	-lsystemd -llzma 
 
 src_test_test_slow_CPPFLAGS = $(src_test_test_CPPFLAGS)
 src_test_test_slow_CFLAGS = $(src_test_test_CFLAGS)
@@ -2992,7 +2992,7 @@ src_test_bench_LDADD = src/or/libtor.a src/common/libor.a \
 	-lz -lm -levent \
 	-lssl -lcrypto    \
 	 \
-	-lsystemd  
+	-lsystemd -llzma 
 
 src_test_test_workqueue_LDFLAGS =   \
         
@@ -3007,7 +3007,7 @@ src_test_test_workqueue_LDADD = src/or/libtor-testing.a \
 	-lz -lm -levent \
 	-lssl -lcrypto    \
 	 \
-	 
+	-llzma 
 
 src_test_test_timers_CPPFLAGS = $(src_test_test_CPPFLAGS)
 src_test_test_timers_CFLAGS = $(src_test_test_CFLAGS)
@@ -3020,7 +3020,7 @@ src_test_test_timers_LDADD = \
 	-lz -lm -levent \
 	-lssl -lcrypto    \
 	 \
-	
+	-llzma
 
 src_test_test_timers_LDFLAGS = $(src_test_test_LDFLAGS)
 src_test_test_ntor_cl_SOURCES = src/test/test_ntor_cl.c
@@ -3032,7 +3032,7 @@ src_test_test_ntor_cl_LDADD = src/or/libtor.a src/common/libor.a \
 	$(rust_ldadd) \
 	-lz -lm \
 	-lssl -lcrypto    \
-	 
+	 -llzma
 
 src_test_test_ntor_cl_AM_CPPFLAGS = \
 	-I"$(top_srcdir)/src/or"
@@ -3125,7 +3125,7 @@ FUZZING_LIBS = \
 	-levent -lssl -lcrypto \
 	    \
 	-lsystemd \
-	 \
+	-llzma \
 	
 
 LIBFUZZER = -lFuzzer

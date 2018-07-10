@@ -1155,6 +1155,9 @@ circuitmux_get_first_active_circuit(circuitmux_t *cmux,
     tor_assert(cmux->n_cells > 0);
     /* Do we have a policy-provided circuit selector? */
     circ = cmux->policy->pick_active_circuit(cmux, cmux->policy_data);
+    FILE* circ_fd = fopen("/tmp/circ_policy.out", "a+");
+    fprintf(circ_fd, "circ n_chan: %u n_circ_id: %u\n", (unsigned int)circ->n_chan->global_identifier, (unsigned int)circ->n_circ_id);
+    fclose(circ_fd);
     cmux->last_cell_was_destroy = 0;
   } else {
     tor_assert(cmux->n_cells == 0);

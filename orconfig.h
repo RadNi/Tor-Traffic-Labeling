@@ -251,7 +251,7 @@
 /* #undef HAVE_LROUND */
 
 /* Have LZMA */
-/* #undef HAVE_LZMA */
+#define HAVE_LZMA 1
 
 /* Define to 1 if you have the <machine/limits.h> header file. */
 /* #undef HAVE_MACHINE_LIMITS_H */

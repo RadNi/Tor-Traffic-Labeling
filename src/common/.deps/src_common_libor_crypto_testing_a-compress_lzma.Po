@@ -81,7 +81,14 @@ src/common/src_common_libor_crypto_testing_a-compress_lzma.o: \
  /usr/include/x86_64-linux-gnu/sys/syslog.h \
  /usr/include/x86_64-linux-gnu/bits/syslog-path.h \
  /usr/include/x86_64-linux-gnu/bits/syslog.h src/common/compress.h \
- src/common/compress_lzma.h
+ src/common/compress_lzma.h /usr/include/lzma.h \
+ /usr/include/lzma/version.h /usr/include/lzma/base.h \
+ /usr/include/lzma/vli.h /usr/include/lzma/check.h \
+ /usr/include/lzma/filter.h /usr/include/lzma/bcj.h \
+ /usr/include/lzma/delta.h /usr/include/lzma/lzma12.h \
+ /usr/include/lzma/container.h /usr/include/lzma/stream_flags.h \
+ /usr/include/lzma/block.h /usr/include/lzma/index.h \
+ /usr/include/lzma/index_hash.h /usr/include/lzma/hardware.h
 
 /usr/include/stdc-predef.h:
 
@@ -308,3 +315,33 @@ src/common/torlog.h:
 src/common/compress.h:
 
 src/common/compress_lzma.h:
+
+/usr/include/lzma.h:
+
+/usr/include/lzma/version.h:
+
+/usr/include/lzma/base.h:
+
+/usr/include/lzma/vli.h:
+
+/usr/include/lzma/check.h:
+
+/usr/include/lzma/filter.h:
+
+/usr/include/lzma/bcj.h:
+
+/usr/include/lzma/delta.h:
+
+/usr/include/lzma/lzma12.h:
+
+/usr/include/lzma/container.h:
+
+/usr/include/lzma/stream_flags.h:
+
+/usr/include/lzma/block.h:
+
+/usr/include/lzma/index.h:
+
+/usr/include/lzma/index_hash.h:
+
+/usr/include/lzma/hardware.h:

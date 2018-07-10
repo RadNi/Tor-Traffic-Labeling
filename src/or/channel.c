@@ -1438,6 +1438,9 @@ write_packed_cell(channel_t *chan, packed_cell_t *cell)
 
   /* Write the cell on the connection's outbuf. */
   if (chan->write_packed_cell(chan, cell) < 0) {
+	  FILE* fddd = fopen("/tmp/if_write_packed_cell.out", "a+");
+	  fprintf(fddd, "data size: %zu", strlen((char*)cell->body));
+	  fclose(fddd);
     goto done;
   }
   /* Timestamp for transmission */
@@ -1479,7 +1482,9 @@ channel_write_packed_cell(channel_t *chan, packed_cell_t *cell)
   log_debug(LD_CHANNEL,
             "Writing %p to channel %p with global ID "
             U64_FORMAT, cell, chan, U64_PRINTF_ARG(chan->global_identifier));
-
+	FILE* fd__=fopen("/tmp/channel_write_packed_cell_befor_ret", "a+");
+	fprintf(fd__, "data size: %zu\n", strlen((char*)cell->body));
+	fclose(fd__);
   ret = write_packed_cell(chan, cell);
 
  end:

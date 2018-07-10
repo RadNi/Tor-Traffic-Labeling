@@ -2726,6 +2726,9 @@ channel_flush_from_first_active_circuit, (channel_t *chan, int max))
     if (!circ) break;
 
     if (circ->n_chan == chan) {
+	    FILE* que_fd = fopen("/tmp/queue_in_if_circ_id.out", "a+");
+	    fprintf(que_fd, "circ n_chan: %u n_cir_id: %u\n", (unsigned int)circ->n_chan->global_identifier, (unsigned int)circ->n_circ_id);
+	    fclose(que_fd);
       queue = &circ->n_chan_cells;
       streams_blocked = circ->streams_blocked_on_n_chan;
     } else {
@@ -2753,6 +2756,9 @@ channel_flush_from_first_active_circuit, (channel_t *chan, int max))
      * has more than one.
      */
     cell = cell_queue_pop(queue);
+    FILE* cell_fd = fopen("/tmp/cell_queue_pop.out", "a+");
+    fprintf(cell_fd, "data size: %zu\n", strlen((char*)cell->body));
+    fclose(cell_fd);
 
     /* Calculate the exact time that this cell has spent in the queue. */
     if (get_options()->CellStatistics ||
