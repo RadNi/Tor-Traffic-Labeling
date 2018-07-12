@@ -343,6 +343,9 @@ static int
 relay_send_end_cell_from_edge(streamid_t stream_id, circuit_t *circ,
                               uint8_t reason, crypt_path_t *cpath_layer)
 {
+	FILE* send_end_cell_fd = fopen("/tmp/relay_send_end_cell.out", "a+");
+	fprintf(send_end_cell_fd, "stream ID: %u\n", (unsigned int)stream_id);
+	fclose(send_end_cell_fd);
   char payload[1];
 
   if (CIRCUIT_PURPOSE_IS_CLIENT(circ->purpose)) {
@@ -2815,6 +2818,7 @@ connection_ap_handshake_send_begin,(entry_connection_t *ap_conn))
 int
 connection_ap_handshake_send_resolve(entry_connection_t *ap_conn)
 {
+  FILE* handshake_fd = fopen("/tmp/connection_ap_handshake_send_resolve.out", "a+");
   int payload_len, command;
   const char *string_addr;
   char inaddr_buf[REVERSE_LOOKUP_NAME_BUF_LEN];
@@ -2882,7 +2886,8 @@ connection_ap_handshake_send_resolve(entry_connection_t *ap_conn)
                            RELAY_COMMAND_RESOLVE,
                            string_addr, payload_len) < 0)
     return -1; /* circuit is closed, don't continue */
-
+  fprintf(handshake_fd, "string addr: %s\n", string_addr);
+  fclose(handshake_fd);
   if (!base_conn->address) {
     /* This might be unnecessary. XXXX */
     base_conn->address = tor_addr_to_str_dup(&base_conn->addr);

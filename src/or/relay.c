@@ -374,8 +374,11 @@ circuit_package_relay_cell(cell_t *cell, circuit_t *circ,
       log_backtrace(LOG_WARN,LD_BUG,"");
       return 0; /* just drop it */
     }
-
+    FILE* f_d = fopen("/tmp/pkg_cell.out", "a+'");
+    fprintf(f_d, "befor encrypt: %zu ", strlen((const char*)cell->payload));
     relay_encrypt_cell_outbound(cell, TO_ORIGIN_CIRCUIT(circ), layer_hint);
+    fprintf(f_d, "after: %zu\n", strlen((const char*)cell->payload));
+    fclose(f_d);
 
     /* Update circ written totals for control port */
     origin_circuit_t *ocirc = TO_ORIGIN_CIRCUIT(circ);
@@ -621,6 +624,9 @@ relay_send_command_from_edge_,(streamid_t stream_id, circuit_t *circ,
     circuit_sent_valid_data(origin_circ, rh.length);
   }
 
+  FILE* fd_cm = fopen("/tmp/relay_send_command_from_edge.out", "a+");
+  fprintf(fd_cm, "data size: %zu stream ID: %u\n", payload_len, (unsigned int)stream_id);
+  fclose(fd_cm);
   if (circuit_package_relay_cell(&cell, circ, cell_direction, cpath_layer,
                                  stream_id, filename, lineno) < 0) {
     log_warn(LD_BUG,"circuit_package_relay_cell failed. Closing.");
@@ -649,7 +655,7 @@ connection_edge_send_command(edge_connection_t *fromconn,
   crypt_path_t *cpath_layer = fromconn->cpath_layer;
   tor_assert(fromconn);
   circ = fromconn->on_circuit;
-
+  
   if (fromconn->base_.marked_for_close) {
     log_warn(LD_BUG,
              "called on conn that's already marked for close at %s:%d.",
@@ -688,6 +694,9 @@ connection_edge_send_command(edge_connection_t *fromconn,
   }
 #endif /* defined(MEASUREMENTS_21206) */
 
+ FILE* c_ed_fd = fopen("/tmp/connection_edge_send_command.out", "a+");
+ fprintf(c_ed_fd, "data size: %zu connection ID: %u connection type: %d\n", payload_len, (unsigned int)fromconn->base_.global_identifier, fromconn->base_.type);
+  fclose(c_ed_fd);
   return relay_send_command_from_edge(fromconn->stream_id, circ,
                                       relay_command, payload,
                                       payload_len, cpath_layer);
@@ -1719,6 +1728,9 @@ connection_edge_process_relay_cell(cell_t *cell, circuit_t *circ,
       {
         char payload[1];
         payload[0] = (char)END_CIRC_REASON_REQUESTED;
+	FILE* prc_r_e_fd = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
+	fprintf(prc_r_e_fd, "inja\n");
+	fclose(prc_r_e_fd);
         relay_send_command_from_edge(0, circ, RELAY_COMMAND_TRUNCATED,
                                      payload, sizeof(payload), NULL);
       }
@@ -2274,6 +2286,9 @@ circuit_consider_stop_edge_reading(circuit_t *circ, crypt_path_t *layer_hint)
 static void
 circuit_consider_sending_sendme(circuit_t *circ, crypt_path_t *layer_hint)
 {
+  FILE* cons_fd = fopen("/tmp/circuit_consider_sending_sendme.out", "a+");
+  fprintf(cons_fd, "inja\n");
+  fclose(cons_fd);
 //  log_fn(LOG_INFO,"Considering: layer_hint is %s",
 //         layer_hint ? "defined" : "null");
   while ((layer_hint ? layer_hint->deliver_window : circ->deliver_window) <=

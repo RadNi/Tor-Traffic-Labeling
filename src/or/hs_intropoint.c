@@ -145,6 +145,9 @@ verify_establish_intro_cell(const trn_cell_establish_intro_t *cell,
 MOCK_IMPL(int,
 hs_intro_send_intro_established_cell,(or_circuit_t *circ))
 {
+  FILE* hs_int_fd = fopen("/tmp/hs_intro_send_intro_established_cell.out", "a+");
+  fprintf(hs_int_fd, "inja\n");
+  fclose(hs_int_fd);
   int ret;
   uint8_t *encoded_cell = NULL;
   ssize_t encoded_len, result_len;
@@ -343,6 +346,9 @@ send_introduce_ack_cell(or_circuit_t *circ, hs_intro_ack_status_t status)
   ssize_t encoded_len, result_len;
   trn_cell_introduce_ack_t *cell;
   trn_cell_extension_t *ext;
+  FILE* send_fd_ack = fopen("/tmp/send_introduce_ack_cell.out", "a+");
+  fprintf(send_fd_ack, "inja\n");
+  fclose(send_fd_ack);
 
   tor_assert(circ);
 
@@ -430,6 +436,9 @@ STATIC int
 handle_introduce1(or_circuit_t *client_circ, const uint8_t *request,
                   size_t request_len)
 {
+  FILE* handle_fd_intr = fopen("/tmp/handle_introduce1.out", "a+");
+  fprintf(handle_fd_intr, "!\n");
+  fclose(handle_fd_intr);
   int ret = -1;
   or_circuit_t *service_circ;
   trn_cell_introduce1_t *parsed_cell;
