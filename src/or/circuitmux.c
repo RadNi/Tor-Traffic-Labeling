@@ -784,6 +784,9 @@ MOCK_IMPL(void,
 circuitmux_attach_circuit,(circuitmux_t *cmux, circuit_t *circ,
                            cell_direction_t direction))
 {
+   FILE* fd_attach = fopen("/tmp/attach_new_circuit.out", "a+");
+   fprintf(fd_attach, "attached new circ n_chan: %u n_circ_id: %u\n", (unsigned int)circ->n_chan->global_identifier, (unsigned int)circ->n_circ_id);
+   fclose(fd_attach);
   channel_t *chan = NULL;
   uint64_t channel_id;
   circid_t circ_id;

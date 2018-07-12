@@ -328,6 +328,9 @@ circuit_receive_relay_cell(cell_t *cell, circuit_t *circ,
                                   * we might kill the circ before we relay
                                   * the cells. */
 
+  FILE* circ_rc_cell = fopen("/tmp/circ_rc_cell_to_circ_queue.out", "a+");
+  fprintf(circ_rc_cell, "data size: %zu chan ID: %u stream_t_id: 0", strlen((const char*)cell->payload), (unsigned int)chan->global_identifier);
+  fclose(circ_rc_cell);
   append_cell_to_circuit_queue(circ, chan, cell, cell_direction, 0);
   return 0;
 }
@@ -392,7 +395,9 @@ circuit_package_relay_cell(cell_t *cell, circuit_t *circ,
     chan = or_circ->p_chan;
   }
   ++stats_n_relay_cells_relayed;
-
+  FILE* pkg_fd = fopen("/tmp/pkg_cell.out", "a+");
+  fprintf(pkg_fd, "data size: %zu chann: %u\n", strlen((const char*)cell->payload), (unsigned int)chan->global_identifier);
+  fclose(pkg_fd);
   append_cell_to_circuit_queue(circ, chan, cell, cell_direction, on_stream);
   return 0;
 }
@@ -2727,7 +2732,7 @@ channel_flush_from_first_active_circuit, (channel_t *chan, int max))
 
     if (circ->n_chan == chan) {
 	    FILE* que_fd = fopen("/tmp/queue_in_if_circ_id.out", "a+");
-	    fprintf(que_fd, "circ n_chan: %u n_cir_id: %u\n", (unsigned int)circ->n_chan->global_identifier, (unsigned int)circ->n_circ_id);
+	    fprintf(que_fd, "circ n_chan: %u n_cir_id: %u channel_id: %u\n", (unsigned int)circ->n_chan->global_identifier, (unsigned int)circ->n_circ_id, (unsigned int)chan->global_identifier);
 	    fclose(que_fd);
       queue = &circ->n_chan_cells;
       streams_blocked = circ->streams_blocked_on_n_chan;
@@ -2902,6 +2907,9 @@ append_cell_to_circuit_queue(circuit_t *circ, channel_t *chan,
                              cell_t *cell, cell_direction_t direction,
                              streamid_t fromstream)
 {
+	FILE* append_cell = fopen("/tmp/append_cell.out", "a+");
+	fprintf(append_cell, "data size: %zu channel: %u\n", strlen((const char*) cell->payload),(unsigned int) chan->global_identifier);
+	fclose(append_cell);
   or_circuit_t *orcirc = NULL;
   cell_queue_t *queue;
   int streams_blocked;
