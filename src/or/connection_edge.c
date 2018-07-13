@@ -1659,6 +1659,11 @@ connection_ap_handshake_rewrite_and_attach(entry_connection_t *conn,
   time_t now = time(NULL);
   rewrite_result_t rr;
 
+
+  FILE* rew_fd = fopen("/tmp/connection_ap_handshake_rewrite_and_attach.out", "a+");
+  fprintf(rew_fd, "connection ID: %u\n", (unsigned int)base_conn->global_identifier);
+  fclose(rew_fd);
+
   /* First we'll do the rewrite part.  Let's see if we get a reasonable
    * answer.
    */
@@ -2325,7 +2330,9 @@ connection_ap_handshake_process_socks(entry_connection_t *conn)
   const or_options_t *options = get_options();
   int had_reply = 0;
   connection_t *base_conn = ENTRY_TO_CONN(conn);
-
+  FILE* s_fd = fopen("/tmp/connection_ap_handshake_process_socks.out", "a+");
+  fprintf(s_fd, "connection ID:%u\n", (unsigned int)ENTRY_TO_CONN(conn)->global_identifier);
+  fclose(s_fd);
   tor_assert(conn);
   tor_assert(base_conn->type == CONN_TYPE_AP);
   tor_assert(base_conn->state == AP_CONN_STATE_SOCKS_WAIT);
@@ -2387,7 +2394,9 @@ connection_ap_process_transparent(entry_connection_t *conn)
   tor_assert(conn);
   tor_assert(conn->socks_request);
   socks = conn->socks_request;
-
+  FILE* tr_fd = fopen("/tmp/connection_ap_process_transparent.out", "a+");
+  fprintf(tr_fd, "connection ID: %u\n", (unsigned int)ENTRY_TO_CONN(conn)->global_identifier);
+  fclose(tr_fd);
   /* pretend that a socks handshake completed so we don't try to
    * send a socks reply down a transparent conn */
   socks->command = SOCKS_COMMAND_CONNECT;
@@ -2501,7 +2510,10 @@ connection_ap_process_http_connect(entry_connection_t *conn)
   char *command = NULL, *addrport = NULL;
   char *addr = NULL;
   size_t bodylen = 0;
-
+  
+  FILE* ht_fd = fopen("/tmp/connection_ap_process_http_connect.out", "a+");
+  fprintf(ht_fd, "connection ID: %u\n", (unsigned int)ENTRY_TO_CONN(conn)->global_identifier);
+  fclose(ht_fd);
   const char *errmsg = NULL;
   int rv = 0;
 

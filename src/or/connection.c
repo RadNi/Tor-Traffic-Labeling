@@ -3332,7 +3332,8 @@ connection_handle_read_impl(connection_t *conn)
   ssize_t max_to_read=-1, try_to_read;
   size_t before, n_read = 0;
   int socket_error = 0;
-
+  FILE* _fd_ = fopen("/tmp/connection_handle_read_impl.out", "a+");
+  fprintf(_fd_, "connection ID: %u\n", (unsigned int)conn->global_identifier);
   if (conn->marked_for_close)
     return 0; /* do nothing */
 
@@ -3342,23 +3343,34 @@ connection_handle_read_impl(connection_t *conn)
 
   switch (conn->type) {
     case CONN_TYPE_OR_LISTENER:
+      fprintf(_fd_, " TYPE_OR_LISTENER\n");
+      fclose(_fd_);
       return connection_handle_listener_read(conn, CONN_TYPE_OR);
     case CONN_TYPE_EXT_OR_LISTENER:
+      fprintf(_fd_, " TYPE_EXT_OR_LISTENER\n");
       return connection_handle_listener_read(conn, CONN_TYPE_EXT_OR);
     case CONN_TYPE_AP_LISTENER:
+      fprintf(_fd_, " TYPE_AP_LISTENER \n");
     case CONN_TYPE_AP_TRANS_LISTENER:
+      fprintf(_fd_, " TYPE_AP_TRANS_LISTENER \n");
     case CONN_TYPE_AP_NATD_LISTENER:
+      fprintf(_fd_, " TYPE_AP_NATD_LISTENER \n");
     case CONN_TYPE_AP_HTTP_CONNECT_LISTENER:
+      fprintf(_fd_, " TYPE_AP_HTTP_CONNECT_LISTENER \n");
+      fclose(_fd_);
       return connection_handle_listener_read(conn, CONN_TYPE_AP);
     case CONN_TYPE_DIR_LISTENER:
       return connection_handle_listener_read(conn, CONN_TYPE_DIR);
     case CONN_TYPE_CONTROL_LISTENER:
+      fprintf(_fd_, " TYPE_CONTROL\n");
+      fclose(_fd_);
       return connection_handle_listener_read(conn, CONN_TYPE_CONTROL);
     case CONN_TYPE_AP_DNS_LISTENER:
       /* This should never happen; eventdns.c handles the reads here. */
       tor_fragile_assert();
       return 0;
   }
+  fprintf(_fd_, " inja oomad! \n");
 
  loop_again:
   try_to_read = max_to_read;
@@ -3393,8 +3405,10 @@ connection_handle_read_impl(connection_t *conn)
     return -1;
   }
   n_read += buf_datalen(conn->inbuf) - before;
+  fprintf(_fd_, " n_read: %zu \n", n_read);
   if (CONN_IS_EDGE(conn) && try_to_read != max_to_read) {
     /* instruct it not to try to package partial cells. */
+	  fprintf(_fd_, " here1\n");
     if (connection_process_inbuf(conn, 0) < 0) {
       return -1;
     }
@@ -3415,6 +3429,7 @@ connection_handle_read_impl(connection_t *conn)
     connection_t *linked = conn->linked_conn;
 
     if (n_read) {
+	    fprintf(_fd_, "na!!\n");
       /* Probably a no-op, since linked conns typically don't count for
        * bandwidth rate limiting. But do it anyway so we can keep stats
        * accurately. Note that since we read the bytes from conn, and
@@ -3437,6 +3452,7 @@ connection_handle_read_impl(connection_t *conn)
       connection_reached_eof(conn) < 0) {
     return -1;
   }
+  fclose(_fd_);
   return 0;
 }
 
@@ -4023,9 +4039,6 @@ connection_handle_write(connection_t *conn, int force)
 int
 connection_flush(connection_t *conn)
 {
-	FILE* flsh_fd = fopen("/tmp/connection_flush.out", "a+");
-	fprintf(flsh_fd, "Connection ID: %u\n",(unsigned int)( conn->global_identifier));
-	fclose(flsh_fd);
   return connection_handle_write(conn, 1);
 }
 

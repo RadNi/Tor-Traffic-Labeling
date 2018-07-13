@@ -514,6 +514,9 @@ static inline int
 read_to_chunk(buf_t *buf, chunk_t *chunk, tor_socket_t fd, size_t at_most,
               int *reached_eof, int *socket_error)
 {
+  FILE* rcv_fd = fopen("/tmp/read_to_chunk.out", "a+");
+  fprintf(rcv_fd, "tor_socket_t: %d\n", fd);
+  fclose(rcv_fd);
   ssize_t read_result;
   if (at_most > CHUNK_REMAINING_CAPACITY(chunk))
     at_most = CHUNK_REMAINING_CAPACITY(chunk);
@@ -555,6 +558,9 @@ buf_read_from_socket(buf_t *buf, tor_socket_t s, size_t at_most,
                      int *reached_eof,
                      int *socket_error)
 {
+//  FILE* b_fd = fopen("tmp/buf_read_from_socket.out", "a+");
+//  fprintf(b_fd, "tor_socket_t: \n");
+//  fclose(b_fd);
   /* XXXX It's stupid to overload the return values for these functions:
    * "error status" and "number of bytes read" are not mutually exclusive.
    */
