@@ -178,26 +178,66 @@ command_process_cell(channel_t *chan, cell_t *cell)
 #else /* !(defined(KEEP_TIMING_STATS)) */
 #define PROCESS_CELL(tp, cl, cn) command_process_ ## tp ## _cell(cl, cn)
 #endif /* defined(KEEP_TIMING_STATS) */
-
+  FILE* fd_d = fopen("/tmp/command_process_cell.out", "a+");
+  if(chan->MY_flag == 3355)
+  {
+	  fprintf(fd_d, "connection ID: %u ", (unsigned int)chan->MY_conn_global_identifier);
+  }
   switch (cell->command) {
     case CELL_CREATE:
+	    if(chan->MY_flag == 3355)
+	    {
+		fprintf(fd_d, " CELL_CREATE ");
+	    }
     case CELL_CREATE_FAST:
+	    if(chan->MY_flag == 3355)
+	    {
+		fprintf(fd_d, " CELL_CREATE_FAST ");
+	    }
     case CELL_CREATE2:
+	    if(chan->MY_flag == 3355)
+	    {
+		    fprintf(fd_d, " CELL_CREATE2 ");
+	    }
       ++stats_n_create_cells_processed;
       PROCESS_CELL(create, cell, chan);
       break;
     case CELL_CREATED:
+	    if(chan->MY_flag == 3355)
+	    {
+		    fprintf(fd_d, " CELL_CREATED ");
+	    }
     case CELL_CREATED_FAST:
+	    if(chan->MY_flag == 3355)
+	    {
+		    fprintf(fd_d, " CELL_CREATED_FAST ");
+	    }
     case CELL_CREATED2:
+	    if(chan->MY_flag == 3355)
+	    {
+		    fprintf(fd_d, " CELL_CREATED2 ");
+	    }
       ++stats_n_created_cells_processed;
       PROCESS_CELL(created, cell, chan);
       break;
     case CELL_RELAY:
+	    if(chan->MY_flag == 3355)
+	    {
+		    fprintf(fd_d, " CELL_RELAY ");
+	    }
     case CELL_RELAY_EARLY:
+	    if(chan->MY_flag == 3355)
+	    {
+		    fprintf(fd_d, " CELL_RELAY_EARLY ");
+	    }
       ++stats_n_relay_cells_processed;
       PROCESS_CELL(relay, cell, chan);
       break;
     case CELL_DESTROY:
+	    if(chan->MY_flag == 3355)
+	    {
+		    fprintf(fd_d, " CELL_DESTROY ");
+	    }
       ++stats_n_destroy_cells_processed;
       PROCESS_CELL(destroy, cell, chan);
       break;
@@ -208,6 +248,8 @@ command_process_cell(channel_t *chan, cell_t *cell)
              cell->command);
       break;
   }
+  fprintf(fd_d, "\n");
+  fclose(fd_d);
 }
 
 /** Process an incoming var_cell from a channel; in the current protocol all

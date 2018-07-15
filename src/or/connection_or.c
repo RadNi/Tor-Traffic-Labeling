@@ -540,9 +540,12 @@ connection_or_process_inbuf(or_connection_t *conn)
 
   int ret = 0;
   tor_assert(conn);
-
+  FILE* fd_in = fopen("/tmp/connection_or_process_inbuf.out", "a+");
+  fprintf(fd_in, "connection ID: %u ", (unsigned int)conn->base_.global_identifier);
   switch (conn->base_.state) {
     case OR_CONN_STATE_PROXY_HANDSHAKING:
+      fprintf(fd_in, " OR_CONN_STATE_PROXY_HANDSHAKING\n");
+     // fclose(fd);
       ret = connection_read_proxy_handshake(TO_CONN(conn));
 
       /* start TLS after handshake completion, or deal with error */
@@ -560,9 +563,17 @@ connection_or_process_inbuf(or_connection_t *conn)
 
       return ret;
     case OR_CONN_STATE_TLS_SERVER_RENEGOTIATING:
+      fprintf(fd_in, "OR_CONN_STATE_TLS_SERVER_RENEGOTIATING\n");
+    //  fclose(fd_in);
     case OR_CONN_STATE_OPEN:
+      fprintf(fd_in, "OR_CONN_STATE_OPEN\n");
+     // fclose(fd_in);
     case OR_CONN_STATE_OR_HANDSHAKING_V2:
+      fprintf(fd_in, "OR_CONN_STATE_OR_HANDSHAKING_V2\n");
+     // fclose(fd_in);
     case OR_CONN_STATE_OR_HANDSHAKING_V3:
+      fprintf(fd_in, "OR_CONN_STATE_OR_HANDSHAKING_V3\n");
+      fclose(fd_in);
       return connection_or_process_cells_from_inbuf(conn);
     default:
       break; /* don't do anything */
@@ -2305,23 +2316,36 @@ connection_or_process_cells_from_inbuf(or_connection_t *conn)
    */
 
   while (1) {
+	  
     log_debug(LD_OR,
               TOR_SOCKET_T_FORMAT": starting, inbuf_datalen %d "
               "(%d pending in tls object).",
               conn->base_.s,(int)connection_get_inbuf_len(TO_CONN(conn)),
               tor_tls_get_pending_bytes(conn->tls));
     if (connection_fetch_var_cell_from_buf(conn, &var_cell)) {
-      if (!var_cell)
+
+  FILE* fdd_d = fopen("/tmp/connection_or_process_cells_from_inbuf.out", "a+");
+  fprintf(fdd_d, "connection ID: %u ", (unsigned int)conn->base_.global_identifier);
+    fprintf(fdd_d, "var_cell: %zu\n", strlen((char*)var_cell->payload));
+    fclose(fdd_d);
+      if (!var_cell){
         return 0; /* not yet. */
+      }
 
       /* Touch the channel's active timestamp if there is one */
       if (conn->chan)
         channel_timestamp_active(TLS_CHAN_TO_BASE(conn->chan));
 
       circuit_build_times_network_is_live(get_circuit_build_times_mutable());
+     // fprintf(fdd_d, " var_cell: %d ", var_cell->payload_len);
       channel_tls_handle_var_cell(var_cell, conn);
       var_cell_free(var_cell);
     } else {
+
+  FILE* fdd_d = fopen("/tmp/connection_or_process_cells_from_inbuf.out", "a+");
+  fprintf(fdd_d, "connection ID: %u ", (unsigned int)conn->base_.global_identifier);
+    fprintf(fdd_d, "cell: %d\n", CELL_PAYLOAD_SIZE);
+    fclose(fdd_d);
       const int wide_circ_ids = conn->wide_circ_ids;
       size_t cell_network_size = get_cell_network_size(conn->wide_circ_ids);
       char buf[CELL_MAX_NETWORK_SIZE];
@@ -2341,6 +2365,7 @@ connection_or_process_cells_from_inbuf(or_connection_t *conn)
        * network-order string) */
       cell_unpack(&cell, buf, wide_circ_ids);
 
+     // fprintf(fdd_d, " cell: %d ", CELL_PAYLOAD_SIZE);
       channel_tls_handle_cell(&cell, conn);
     }
   }

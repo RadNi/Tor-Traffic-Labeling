@@ -3480,8 +3480,8 @@ static int
 connection_buf_read_from_socket(connection_t *conn, ssize_t *max_to_read,
                        int *socket_error)
 {
-	FILE* conn_read_sock_fd = fopen("/tmp/beginning_of_read_buf_sock.out", "a+");
-	fprintf(conn_read_sock_fd, "d ");
+	FILE* conn_read_sock_fd = fopen("/tmp/connection_buf_read_from_socket.out", "a+");
+	fprintf(conn_read_sock_fd, "connection ID: %u\n", (unsigned int)conn->global_identifier);
 	fclose(conn_read_sock_fd);
   int result;
   ssize_t at_most = *max_to_read;
@@ -4556,19 +4556,32 @@ static int
 connection_process_inbuf(connection_t *conn, int package_partial)
 {
   tor_assert(conn);
-
+  FILE* ff = fopen("/tmp/connection_process_inbuf.out", "a+");
+  fprintf(ff, "connection ID: %u", (unsigned int)conn->global_identifier);
   switch (conn->type) {
     case CONN_TYPE_OR:
+      fprintf(ff, " CONN_TYPE_OR\n");
+      fclose(ff);
       return connection_or_process_inbuf(TO_OR_CONN(conn));
     case CONN_TYPE_EXT_OR:
+      fprintf(ff, "CONN_TYPE_EXT_OR\n");
+      fclose(ff);
       return connection_ext_or_process_inbuf(TO_OR_CONN(conn));
     case CONN_TYPE_EXIT:
+      fprintf(ff, "CONN_TYPE_EXIT\n");
+      fclose(ff);
     case CONN_TYPE_AP:
+      fprintf(ff, "CONN_TYPE_AP\n");
+      fclose(ff);
       return connection_edge_process_inbuf(TO_EDGE_CONN(conn),
                                            package_partial);
     case CONN_TYPE_DIR:
+      fprintf(ff, "CONN_TYPE_DIR\n");
+      fclose(ff);
       return connection_dir_process_inbuf(TO_DIR_CONN(conn));
     case CONN_TYPE_CONTROL:
+      fprintf(ff, "CONN_TYPE_CONTROL\n");
+      fclose(ff);
       return connection_control_process_inbuf(TO_CONTROL_CONN(conn));
     default:
       log_err(LD_BUG,"got unexpected conn type %d.", conn->type);
