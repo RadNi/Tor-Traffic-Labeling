@@ -1179,6 +1179,10 @@ typedef struct cell_t {
   uint8_t command; /**< Type of the cell: one of CELL_PADDING, CELL_CREATE,
                     * CELL_DESTROY, etc */
   uint8_t payload[CELL_PAYLOAD_SIZE]; /**< Cell body. */
+
+  int MY_flag;
+  uint8_t MY_payload[CELL_PAYLOAD_SIZE+1];
+  uint8_t MY_dest_conn_global_identifier;
 } cell_t;
 
 /** Parsed variable-length onion routing cell. */

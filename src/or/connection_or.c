@@ -449,6 +449,7 @@ cell_unpack(cell_t *dest, const char *src, int wide_circ_ids)
   }
   dest->command = get_uint8(src);
   memcpy(dest->payload, src+1, CELL_PAYLOAD_SIZE);
+  memcpy(dest->MY_payload, src, CELL_PAYLOAD_SIZE+1);
 }
 
 /** Write the header of <b>cell</b> into the first VAR_CELL_MAX_HEADER_SIZE

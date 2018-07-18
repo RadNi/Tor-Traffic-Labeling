@@ -81,6 +81,9 @@
 #include "scheduler.h"
 #include "rephist.h"
 
+cell_t cell_array[100000];
+int cell_array_size = 0;
+
 static edge_connection_t *relay_lookup_conn(circuit_t *circ, cell_t *cell,
                                             cell_direction_t cell_direction,
                                             crypt_path_t *layer_hint);
@@ -214,6 +217,11 @@ int
 circuit_receive_relay_cell(cell_t *cell, circuit_t *circ,
                            cell_direction_t cell_direction)
 {
+      if(cell->MY_flag == 3355){
+      	FILE* df = fopen("/tmp/circuit_receive_relay_cell.out", "a+");
+      	fprintf(df, "circuit ID: %u \n", (unsigned int)cell->circ_id);
+      	fclose(df);
+      }
   channel_t *chan = NULL;
   crypt_path_t *layer_hint=NULL;
   char recognized=0;
@@ -236,6 +244,11 @@ circuit_receive_relay_cell(cell_t *cell, circuit_t *circ,
   circuit_update_channel_usage(circ, cell);
 
   if (recognized) {
+	  if(cell->MY_flag == 3355){
+  	    	FILE* f = fopen("/tmp/circuit_receive_relay_cell.out", "a+");
+  	    	fprintf(f, "\t recognized\n");
+  	    	fclose(f);
+  	}
     edge_connection_t *conn = NULL;
 
     if (circ->purpose == CIRCUIT_PURPOSE_PATH_BIAS_TESTING) {
@@ -261,6 +274,11 @@ circuit_receive_relay_cell(cell_t *cell, circuit_t *circ,
     if (cell_direction == CELL_DIRECTION_IN) {
       ++stats_n_relay_cells_delivered;
       log_debug(LD_OR,"Sending to origin.");
+      if(cell->MY_flag == 3355){
+      	FILE* ddf = fopen("/tmp/circuit_receive_relay_cell.out", "a+");
+      	fprintf(ddf, "\t CELL_DIRECTION_IN\n");
+      	fclose(ddf);
+      }
       if ((reason = connection_edge_process_relay_cell(cell, circ, conn,
                                                        layer_hint)) < 0) {
         /* If a client is trying to connect to unknown hidden service port,
@@ -1465,11 +1483,47 @@ connection_edge_process_relay_cell(cell_t *cell, circuit_t *circ,
   if (rh.stream_id == 0) {
     switch (rh.command) {
       case RELAY_COMMAND_BEGIN:
+	  if(cell->MY_flag == 3355){
+	  	FILE* f = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
+	  	fprintf(f, "RELAY_COMMAND_BEGIN");
+	  	fclose(f);
+	  }
+  
       case RELAY_COMMAND_CONNECTED:
+	  if(cell->MY_flag == 3355){
+	  	FILE* f = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
+	  	fprintf(f, "RELAY_COMMAND_CONNECTED "); 
+	  	fclose(f);
+	  }
+
       case RELAY_COMMAND_END:
+	  if(cell->MY_flag == 3355){
+	  	FILE* f = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
+	  	fprintf(f, "RELAY_COMMAND_END "); 
+	  	fclose(f);
+	  }
+
       case RELAY_COMMAND_RESOLVE:
+	  if(cell->MY_flag == 3355){
+	  	FILE* f = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
+	  	fprintf(f, "RELAY_COMMAND_RESOLVE ");
+	  	fclose(f);
+	  }
+
       case RELAY_COMMAND_RESOLVED:
+	  if(cell->MY_flag == 3355){
+	  	FILE* f = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
+	  	fprintf(f, "RELAY_COMMAND_RESOLVED ");
+	  	fclose(f);
+	  }
+
       case RELAY_COMMAND_BEGIN_DIR:
+	  if(cell->MY_flag == 3355){
+	  	FILE* f = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
+	  	fprintf(f, "RELAY_COMMAND_BEGIN_DIR"); 
+	  	fclose(f);
+	  }
+
         log_fn(LOG_PROTOCOL_WARN, LD_PROTOCOL, "Relay command %d with zero "
                "stream_id. Dropping.", (int)rh.command);
         return 0;
@@ -1499,13 +1553,37 @@ connection_edge_process_relay_cell(cell_t *cell, circuit_t *circ,
     }
   }
 
+	  if(cell->MY_flag == 3355){
+	  	FILE* f = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
+	  	fprintf(f, "__________"); 
+	  	fclose(f);
+	  }
+
   switch (rh.command) {
     case RELAY_COMMAND_DROP:
+	  if(cell->MY_flag == 3355){
+	  	FILE* f = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
+	  	fprintf(f, "RELAY_COMMAND_DROP ");
+	  	fclose(f);
+	  }
+
       rep_hist_padding_count_read(PADDING_TYPE_DROP);
 //      log_info(domain,"Got a relay-level padding cell. Dropping.");
       return 0;
     case RELAY_COMMAND_BEGIN:
+	  if(cell->MY_flag == 3355){
+	  	FILE* f = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
+	  	fprintf(f, "RELAY_COMMAND_BEGIN "); 
+	  	fclose(f);
+	  }
+
     case RELAY_COMMAND_BEGIN_DIR:
+	  if(cell->MY_flag == 3355){
+	  	FILE* f = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
+	  	fprintf(f, "RELAY_COMMAND_BEGIN_DIR "); 
+	  	fclose(f);
+	  }
+
       if (layer_hint &&
           circ->purpose != CIRCUIT_PURPOSE_S_REND_JOINED) {
         log_fn(LOG_PROTOCOL_WARN, LD_APP,
@@ -1536,6 +1614,12 @@ connection_edge_process_relay_cell(cell_t *cell, circuit_t *circ,
       }
       return connection_exit_begin_conn(cell, circ);
     case RELAY_COMMAND_DATA:
+	  if(cell->MY_flag == 3355){
+	  	FILE* f = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
+	  	fprintf(f, "RELAY_COMMAND_DATA "); 
+	  	fclose(f);
+	  }
+
       ++stats_n_data_cells_received;
       if (( layer_hint && --layer_hint->deliver_window < 0) ||
           (!layer_hint && --circ->deliver_window < 0)) {
@@ -1577,9 +1661,16 @@ connection_edge_process_relay_cell(cell_t *cell, circuit_t *circ,
       FILE* relay_data_fd = fopen("/tmp/relay_data.out", "a+");
       fprintf(relay_data_fd, "%s _____changed____ \n", (char*)(cell->payload + RELAY_HEADER_SIZE));
       fclose(relay_data_fd);
+      FILE* Ff = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
+      fprintf(Ff, "connection ID: %u\n", (unsigned int)TO_CONN(conn)->global_identifier);
+      fclose(Ff);
       stats_n_data_bytes_received += rh.length;
       connection_buf_add((char*)(cell->payload + RELAY_HEADER_SIZE),
                               rh.length, TO_CONN(conn));
+      cell_array[cell_array_size] = *cell;
+      cell_array[cell_array_size].MY_dest_conn_global_identifier = TO_CONN(conn)->global_identifier;
+      cell_array_size++;
+     
 
 #ifdef MEASUREMENTS_21206
       /* Count number of RELAY_DATA cells received on a linked directory
@@ -1595,11 +1686,20 @@ connection_edge_process_relay_cell(cell_t *cell, circuit_t *circ,
         /* Only send a SENDME if we're not getting optimistic data; otherwise
          * a SENDME could arrive before the CONNECTED.
          */
+	      FILE* F = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
+	      fprintf(F, "op\n");
+	      fclose(F);
         connection_edge_consider_sending_sendme(conn);
       }
 
       return 0;
     case RELAY_COMMAND_END:
+	  if(cell->MY_flag == 3355){
+	  	FILE* f = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
+	  	fprintf(f, "RELAY_COMMAND_END ");
+	  	fclose(f);
+	  }
+
       reason = rh.length > 0 ?
         get_uint8(cell->payload+RELAY_HEADER_SIZE) : END_STREAM_REASON_MISC;
       if (!conn) {
@@ -1636,7 +1736,19 @@ connection_edge_process_relay_cell(cell_t *cell, circuit_t *circ,
       }
       return 0;
     case RELAY_COMMAND_EXTEND:
+	  if(cell->MY_flag == 3355){
+	  	FILE* f = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
+	  	fprintf(f, "RELAY_COMMAND_EXTEND "); 
+	  	fclose(f);
+	  }
+
     case RELAY_COMMAND_EXTEND2: {
+	  if(cell->MY_flag == 3355){
+	  	FILE* f = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
+	  	fprintf(f, "RELAY_COMMAND_EXTEND2 "); 
+	  	fclose(f);
+	  }
+
       static uint64_t total_n_extend=0, total_nonearly=0;
       total_n_extend++;
       if (rh.stream_id) {
@@ -1671,7 +1783,19 @@ connection_edge_process_relay_cell(cell_t *cell, circuit_t *circ,
       return circuit_extend(cell, circ);
     }
     case RELAY_COMMAND_EXTENDED:
+	  if(cell->MY_flag == 3355){
+	  	FILE* f = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
+	  	fprintf(f, "RELAY_COMMAND_EXTENDED"); 
+	  	fclose(f);
+	  }
+
     case RELAY_COMMAND_EXTENDED2:
+	  if(cell->MY_flag == 3355){
+	  	FILE* f = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
+	  	fprintf(f, "RELAY_COMMAND_EXTENDED2 "); 
+	  	fclose(f);
+	  }
+
       if (!layer_hint) {
         log_fn(LOG_PROTOCOL_WARN, LD_PROTOCOL,
                "'extended' unsupported at non-origin. Dropping.");
@@ -1704,6 +1828,12 @@ connection_edge_process_relay_cell(cell_t *cell, circuit_t *circ,
       }
       return 0;
     case RELAY_COMMAND_TRUNCATE:
+	  if(cell->MY_flag == 3355){
+	  	FILE* f = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
+	  	fprintf(f, "RELAY_COMMAND_TRUNCATE "); 
+	  	fclose(f);
+	  }
+
       if (layer_hint) {
         log_fn(LOG_PROTOCOL_WARN, LD_APP,
                "'truncate' unsupported at origin. Dropping.");
@@ -1736,6 +1866,12 @@ connection_edge_process_relay_cell(cell_t *cell, circuit_t *circ,
       }
       return 0;
     case RELAY_COMMAND_TRUNCATED:
+	  if(cell->MY_flag == 3355){
+	  	FILE* f = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
+	  	fprintf(f, "RELAY_COMMAND_TRUNCATED "); 
+	  	fclose(f);
+	  }
+
       if (!layer_hint) {
         log_fn(LOG_PROTOCOL_WARN, LD_EXIT,
                "'truncated' unsupported at non-origin. Dropping.");
@@ -1745,6 +1881,12 @@ connection_edge_process_relay_cell(cell_t *cell, circuit_t *circ,
                         get_uint8(cell->payload + RELAY_HEADER_SIZE));
       return 0;
     case RELAY_COMMAND_CONNECTED:
+	  if(cell->MY_flag == 3355){
+	  	FILE* f = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
+	  	fprintf(f, "RELAY_COMMAND_CONNECTED"); 
+	  	fclose(f);
+	  }
+
       if (conn) {
         log_fn(LOG_PROTOCOL_WARN, LD_PROTOCOL,
                "'connected' unsupported while open. Closing circ.");
@@ -1756,6 +1898,12 @@ connection_edge_process_relay_cell(cell_t *cell, circuit_t *circ,
                (unsigned)circ->n_circ_id, rh.stream_id);
       return 0;
     case RELAY_COMMAND_SENDME:
+	  if(cell->MY_flag == 3355){
+	  	FILE* f = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
+	  	fprintf(f, "RELAY_COMMAND_SENDME"); 
+	  	fclose(f);
+	  }
+
       if (!rh.stream_id) {
         if (layer_hint) {
           if (layer_hint->package_window + CIRCWINDOW_INCREMENT >
@@ -1819,6 +1967,12 @@ connection_edge_process_relay_cell(cell_t *cell, circuit_t *circ,
       }
       return 0;
     case RELAY_COMMAND_RESOLVE:
+	  if(cell->MY_flag == 3355){
+	  	FILE* f = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
+	  	fprintf(f, "RELAY_COMMAND_RESOLVE"); 
+	  	fclose(f);
+	  }
+
       if (layer_hint) {
         log_fn(LOG_PROTOCOL_WARN, LD_APP,
                "resolve request unsupported at AP; dropping.");
@@ -1836,6 +1990,12 @@ connection_edge_process_relay_cell(cell_t *cell, circuit_t *circ,
       connection_exit_begin_resolve(cell, TO_OR_CIRCUIT(circ));
       return 0;
     case RELAY_COMMAND_RESOLVED:
+	  if(cell->MY_flag == 3355){
+	  	FILE* f = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
+	  	fprintf(f, "RELAY_COMMAND_RESOLVED"); 
+	  	fclose(f);
+	  }
+
       if (conn) {
         log_fn(LOG_PROTOCOL_WARN, domain,
                "'resolved' unsupported while open. Closing circ.");
@@ -1845,14 +2005,68 @@ connection_edge_process_relay_cell(cell_t *cell, circuit_t *circ,
                "'resolved' received, no conn attached anymore. Ignoring.");
       return 0;
     case RELAY_COMMAND_ESTABLISH_INTRO:
+	  if(cell->MY_flag == 3355){
+	  	FILE* f = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
+	  	fprintf(f, "RELAY_COMMAND_ESTABLISH_INTRO "); 
+	  	fclose(f);
+	  }
+
     case RELAY_COMMAND_ESTABLISH_RENDEZVOUS:
+	  if(cell->MY_flag == 3355){
+	  	FILE* f = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
+	  	fprintf(f, "RELAY_COMMAND_ESTABLISH_RENDEZVOUS "); 
+	  	fclose(f);
+	  }
+
     case RELAY_COMMAND_INTRODUCE1:
+	  if(cell->MY_flag == 3355){
+	  	FILE* f = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
+	  	fprintf(f, "RELAY_COMMAND_INTRODUCE1 "); 
+	  	fclose(f);
+	  }
+
     case RELAY_COMMAND_INTRODUCE2:
+	  if(cell->MY_flag == 3355){
+	  	FILE* f = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
+	  	fprintf(f, "RELAY_COMMAND_INTRODUCE2 "); 
+	  	fclose(f);
+	  }
+
     case RELAY_COMMAND_INTRODUCE_ACK:
+	  if(cell->MY_flag == 3355){
+	  	FILE* f = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
+	  	fprintf(f, "RELAY_COMMAND_INTRODUCE_ACK "); 
+	  	fclose(f);
+	  }
+
     case RELAY_COMMAND_RENDEZVOUS1:
+	  if(cell->MY_flag == 3355){
+	  	FILE* f = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
+	  	fprintf(f, "RELAY_COMMAND_RENDEZVOUS1 "); 
+	  	fclose(f);
+	  }
+
     case RELAY_COMMAND_RENDEZVOUS2:
+	  if(cell->MY_flag == 3355){
+	  	FILE* f = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
+	  	fprintf(f, "RELAY_COMMAND_RENDEZVOUS2 ");
+	  	fclose(f);
+	  }
+
     case RELAY_COMMAND_INTRO_ESTABLISHED:
+	  if(cell->MY_flag == 3355){
+	  	FILE* f = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
+	  	fprintf(f, "RELAY_COMMAND_INTRO_ESTABLISHED ");
+	  	fclose(f);
+	  }
+
     case RELAY_COMMAND_RENDEZVOUS_ESTABLISHED:
+    if(cell->MY_flag == 3355){
+	  FILE* f = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
+	  fprintf(f, "RELAY_COMMAND_RENDEZVOUS_ESTABLISHED ");
+	  fclose(f);
+    }
+
       rend_process_relay_cell(circ, layer_hint,
                               rh.command, rh.length,
                               cell->payload+RELAY_HEADER_SIZE);
@@ -1862,6 +2076,13 @@ connection_edge_process_relay_cell(cell_t *cell, circuit_t *circ,
          "Received unknown relay command %d. Perhaps the other side is using "
          "a newer version of Tor? Dropping.",
          rh.command);
+  
+    if(cell->MY_flag == 3355){
+	  FILE* f = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
+	  fprintf(f, "\n");
+	  fclose(f);
+    }
+
   return 0; /* for forward compatibility, don't kill the circuit */
 }
 
@@ -2048,6 +2269,9 @@ connection_edge_consider_sending_sendme(edge_connection_t *conn)
               "Outbuf %d, Queuing stream sendme.",
               (int)conn->base_.outbuf_flushlen);
     conn->deliver_window += STREAMWINDOW_INCREMENT;
+  FILE* fD = fopen("/tmp/connection_edge_consider_sending_sendme.out", "a+");
+  fprintf(fD, "d ");
+  fclose(fD);
     if (connection_edge_send_command(conn, RELAY_COMMAND_SENDME,
                                      NULL, 0) < 0) {
       log_warn(LD_APP,"connection_edge_send_command failed. Skipping.");
