@@ -514,11 +514,14 @@ command_process_created_cell(cell_t *cell, channel_t *chan)
 static void
 command_process_relay_cell(cell_t *cell, channel_t *chan)
 {
+  FILE* df = fopen("/tmp/command_process_relay_cell.out", "a+");
   const or_options_t *options = get_options();
   circuit_t *circ;
   int reason, direction;
 
   circ = circuit_get_by_circid_channel(cell->circ_id, chan);
+  if(chan->MY_flag == 3355)
+	  fprintf(df, "connection ID: %u circ_id: %u ", (unsigned int)chan->MY_conn_global_identifier,(unsigned int)cell->circ_id);
 
   if (!circ) {
     log_debug(LD_OR,
@@ -553,11 +556,14 @@ command_process_relay_cell(cell_t *cell, channel_t *chan)
 
   if (!CIRCUIT_IS_ORIGIN(circ) &&
       chan == TO_OR_CIRCUIT(circ)->p_chan &&
-      cell->circ_id == TO_OR_CIRCUIT(circ)->p_circ_id)
+      cell->circ_id == TO_OR_CIRCUIT(circ)->p_circ_id){
     direction = CELL_DIRECTION_OUT;
-  else
+    fprintf(df, "CELL_DIRECTION_OUT");
+  }
+  else{
     direction = CELL_DIRECTION_IN;
-
+    fprintf(df, "CELL_DIRECTION_IN");
+  }
   /* If we have a relay_early cell, make sure that it's outbound, and we've
    * gotten no more than MAX_RELAY_EARLY_CELLS_PER_CIRCUIT of them. */
   if (cell->command == CELL_RELAY_EARLY) {
@@ -592,14 +598,16 @@ command_process_relay_cell(cell_t *cell, channel_t *chan)
       --or_circ->remaining_relay_early_cells;
     }
   }
+  fprintf(df, "\n");
+  fclose(df);
 
+  cell->MY_flag = 3355;
   if ((reason = circuit_receive_relay_cell(cell, circ, direction)) < 0) {
     log_fn(LOG_PROTOCOL_WARN,LD_PROTOCOL,"circuit_receive_relay_cell "
            "(%s) failed. Closing.",
            direction==CELL_DIRECTION_OUT?"forward":"backward");
     circuit_mark_for_close(circ, -reason);
   }
-
   /* If this is a cell in an RP circuit, count it as part of the
      hidden service stats */
   if (options->HiddenServiceStatistics &&
