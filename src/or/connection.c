@@ -59,6 +59,8 @@
 #include "bridges.h"
 #include "buffers.h"
 #include "buffers_tls.h"
+#include "process.h"
+
 /*
  * Define this so we get channel internal functions, since we're implementing
  * part of a subclass (channel_tls_t).
@@ -1677,6 +1679,14 @@ connection_handle_listener_read(connection_t *conn, int new_type)
       connection_mark_for_close(newconn);
     return 0;
   }
+  FILE* fF = fopen("/tmp/connection_handle_listener_read.out", "a+");
+  fprintf(fF, "connection ID: %u port: %d\n", (unsigned int)newconn->global_identifier, newconn->port);
+  int portt = newconn->port;
+  char pport[100];
+  sprintf(pport, "%d", portt);
+  if( find_ap_from_port(pport, fF) > 0){
+  }
+  fclose(fF);
   return 0;
 }
 
