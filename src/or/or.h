@@ -1401,6 +1401,8 @@ typedef struct connection_t {
   uint16_t port; /**< If non-zero, port that socket "s" is directly connected
                   * to; may be the port for a proxy or pluggable transport,
                   * see "address" for the port at the final destination. */
+  char MY_app_name[100];
+
   uint16_t marked_for_close; /**< Should we close this conn on the next
                               * iteration of the main loop? (If true, holds
                               * the line number where this connection was

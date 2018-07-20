@@ -1,9 +1,9 @@
 
 #define die(e) do { fprintf(stderr, "%s\n", e); exit(EXIT_FAILURE); } while (0);
 
-int find_ap_from_port(char* port, FILE* fd_out);
+int find_ap_from_port(char* port, char* app_name);
 
-int find_ap_from_port(char* port, FILE* fd_out) {
+int find_ap_from_port(char* port, char* app_name) {
 	int link[2];
 	pid_t pid;
 	char foo[4096];
@@ -49,11 +49,36 @@ int find_ap_from_port(char* port, FILE* fd_out) {
 		else{
 			int nbytes = read( link[0], foo, sizeof(foo));
 			if( nbytes ){
-				fprintf(fd_out, "Output: (%.*s)\n", nbytes, foo);
+				int flag = 0;
+				int app_ind = 0;
+				unsigned int i;
+				for ( i=0; i < strlen(foo);i++)
+				{
+					if (flag == 1)
+					{
+						if(foo[i] == '\n' || foo[i] == ' ')
+						{
+							app_name[app_ind] = '\0';
+							if(strcmp(app_name, "tor") == 0)
+							{
+								app_ind = 0;
+							}
+							else{
+								break;
+							}
+							flag = 0;
+						}
+						else{
+							app_name[app_ind] = foo[i];
+							app_ind ++;
+						}
+					}
+					if(foo[i] == '/')
+						flag = 1;
+				}
 				return 1;
 			}
-		
-		}	
+		}
 	    }  
 	return 1;
 }

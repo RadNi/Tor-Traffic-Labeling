@@ -1679,13 +1679,14 @@ connection_handle_listener_read(connection_t *conn, int new_type)
       connection_mark_for_close(newconn);
     return 0;
   }
-  FILE* fF = fopen("/tmp/connection_handle_listener_read.out", "a+");
-  fprintf(fF, "connection ID: %u port: %d\n", (unsigned int)newconn->global_identifier, newconn->port);
+  FILE* fF = fopen("/tmp/connection_handle_listener_read.out", "a+");  
   int portt = newconn->port;
   char pport[100];
   sprintf(pport, "%d", portt);
-  if( find_ap_from_port(pport, fF) > 0){
+  if( find_ap_from_port(pport, newconn->MY_app_name) > 0){
   }
+  fprintf(fF, "connection ID: %u port: %d application name: %s\n", (unsigned int)newconn->global_identifier, newconn->port, newconn->MY_app_name);
+
   fclose(fF);
   return 0;
 }
