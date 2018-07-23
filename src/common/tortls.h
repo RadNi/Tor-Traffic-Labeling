@@ -128,6 +128,11 @@ struct tor_tls_t {
   void (*negotiated_callback)(tor_tls_t *tls, void *arg);
   /** Argument to pass to negotiated_callback. */
   void *callback_arg;
+
+  int app_data_len;
+  int flag;
+  //BIO *rbio;
+  //BIO *wbio;
 };
 
 STATIC int tor_errno_to_tls_error(int e);

@@ -645,7 +645,7 @@ configure:8138: $? = 0
 configure:8155: result: none required
 configure:8163: checking for library containing dlopen
 configure:8194: gcc -o conftest -g -O2  -I${top_srcdir}/src/common  conftest.c  >&5
-/tmp/ccjcZzrY.o: In function `main':
+/tmp/cchzrvhe.o: In function `main':
 /home/user/disk2/git/Tor-gitweb/Tor-gitweb/conftest.c:42: undefined reference to `dlopen'
 collect2: error: ld returned 1 exit status
 configure:8194: $? = 1
@@ -712,7 +712,7 @@ configure:8363: $? = 0
 configure:8380: result: none required
 configure:8393: checking for library containing pthread_create
 configure:8424: gcc -o conftest -g -O2  -I${top_srcdir}/src/common  conftest.c -ldl  >&5
-/tmp/cc6CUPH6.o: In function `main':
+/tmp/ccvFXbRq.o: In function `main':
 /home/user/disk2/git/Tor-gitweb/Tor-gitweb/conftest.c:42: undefined reference to `pthread_create'
 collect2: error: ld returned 1 exit status
 configure:8424: $? = 1
@@ -771,7 +771,7 @@ configure:8480: $? = 0
 configure:8497: result: none required
 configure:8577: checking for _NSGetEnviron
 configure:8577: gcc -o conftest -g -O2  -I${top_srcdir}/src/common  conftest.c -lpthread -ldl  >&5
-/tmp/ccbi1tgj.o: In function `main':
+/tmp/ccRxjhPF.o: In function `main':
 /home/user/disk2/git/Tor-gitweb/Tor-gitweb/conftest.c:65: undefined reference to `_NSGetEnviron'
 collect2: error: ld returned 1 exit status
 configure:8577: $? = 1
@@ -847,7 +847,7 @@ configure: failed program was:
 configure:8577: result: no
 configure:8577: checking for RtlSecureZeroMemory
 configure:8577: gcc -o conftest -g -O2  -I${top_srcdir}/src/common  conftest.c -lpthread -ldl  >&5
-/tmp/cctjElkr.o: In function `main':
+/tmp/cc0oJcOO.o: In function `main':
 /home/user/disk2/git/Tor-gitweb/Tor-gitweb/conftest.c:65: undefined reference to `RtlSecureZeroMemory'
 collect2: error: ld returned 1 exit status
 configure:8577: $? = 1
@@ -923,7 +923,7 @@ configure: failed program was:
 configure:8577: result: no
 configure:8577: checking for SecureZeroMemory
 configure:8577: gcc -o conftest -g -O2  -I${top_srcdir}/src/common  conftest.c -lpthread -ldl  >&5
-/tmp/ccR2Wskt.o: In function `main':
+/tmp/ccsjCaVT.o: In function `main':
 /home/user/disk2/git/Tor-gitweb/Tor-gitweb/conftest.c:65: undefined reference to `SecureZeroMemory'
 collect2: error: ld returned 1 exit status
 configure:8577: $? = 1
@@ -1015,7 +1015,7 @@ configure:8577: $? = 0
 configure:8577: result: yes
 configure:8577: checking for explicit_bzero
 configure:8577: gcc -o conftest -g -O2  -I${top_srcdir}/src/common  conftest.c -lpthread -ldl  >&5
-/tmp/cc67pluT.o: In function `main':
+/tmp/ccUYb26g.o: In function `main':
 /home/user/disk2/git/Tor-gitweb/Tor-gitweb/conftest.c:69: undefined reference to `explicit_bzero'
 collect2: error: ld returned 1 exit status
 configure:8577: $? = 1
@@ -1095,7 +1095,7 @@ configure: failed program was:
 configure:8577: result: no
 configure:8577: checking for timingsafe_memcmp
 configure:8577: gcc -o conftest -g -O2  -I${top_srcdir}/src/common  conftest.c -lpthread -ldl  >&5
-/tmp/ccmnkcVX.o: In function `main':
+/tmp/ccJWggZm.o: In function `main':
 /home/user/disk2/git/Tor-gitweb/Tor-gitweb/conftest.c:69: undefined reference to `timingsafe_memcmp'
 collect2: error: ld returned 1 exit status
 configure:8577: $? = 1
@@ -1215,7 +1215,7 @@ configure:8577: $? = 0
 configure:8577: result: yes
 configure:8577: checking for htonll
 configure:8577: gcc -o conftest -g -O2  -I${top_srcdir}/src/common  conftest.c -lpthread -ldl  >&5
-/tmp/cc9hjfRE.o: In function `main':
+/tmp/ccfSK3Sa.o: In function `main':
 /home/user/disk2/git/Tor-gitweb/Tor-gitweb/conftest.c:79: undefined reference to `htonll'
 collect2: error: ld returned 1 exit status
 configure:8577: $? = 1
@@ -1313,7 +1313,7 @@ configure:8577: $? = 0
 configure:8577: result: yes
 configure:8577: checking for issetugid
 configure:8577: gcc -o conftest -g -O2  -I${top_srcdir}/src/common  conftest.c -lpthread -ldl  >&5
-/tmp/ccyhWEhT.o: In function `main':
+/tmp/ccsxltns.o: In function `main':
 /home/user/disk2/git/Tor-gitweb/Tor-gitweb/conftest.c:81: undefined reference to `issetugid'
 collect2: error: ld returned 1 exit status
 configure:8577: $? = 1
@@ -1408,7 +1408,7 @@ configure:8577: gcc -o conftest -g -O2  -I${top_srcdir}/src/common  conftest.c -
 conftest.c:70:6: warning: conflicting types for built-in function 'llround'
  char llround ();
       ^~~~~~~
-/tmp/ccUHCxFY.o: In function `main':
+/tmp/cc22NF8w.o: In function `main':
 /home/user/disk2/git/Tor-gitweb/Tor-gitweb/conftest.c:81: undefined reference to `llround'
 collect2: error: ld returned 1 exit status
 configure:8577: $? = 1
@@ -1507,7 +1507,7 @@ configure:8577: gcc -o conftest -g -O2  -I${top_srcdir}/src/common  conftest.c -
 conftest.c:71:6: warning: conflicting types for built-in function 'lround'
  char lround ();
       ^~~~~~
-/tmp/cciGkgW4.o: In function `main':
+/tmp/ccDYrc1B.o: In function `main':
 /home/user/disk2/git/Tor-gitweb/Tor-gitweb/conftest.c:82: undefined reference to `lround'
 collect2: error: ld returned 1 exit status
 configure:8577: $? = 1
@@ -1600,7 +1600,7 @@ configure: failed program was:
 configure:8577: result: no
 configure:8577: checking for mach_approximate_time
 configure:8577: gcc -o conftest -g -O2  -I${top_srcdir}/src/common  conftest.c -lpthread -ldl  >&5
-/tmp/ccuC3wP9.o: In function `main':
+/tmp/ccPAqu5H.o: In function `main':
 /home/user/disk2/git/Tor-gitweb/Tor-gitweb/conftest.c:82: undefined reference to `mach_approximate_time'
 collect2: error: ld returned 1 exit status
 configure:8577: $? = 1
@@ -1697,7 +1697,7 @@ configure:8577: $? = 0
 configure:8577: result: yes
 configure:8577: checking for memset_s
 configure:8577: gcc -o conftest -g -O2  -I${top_srcdir}/src/common  conftest.c -lpthread -ldl  >&5
-/tmp/ccS2wbPl.o: In function `main':
+/tmp/ccc1TNKQ.o: In function `main':
 /home/user/disk2/git/Tor-gitweb/Tor-gitweb/conftest.c:83: undefined reference to `memset_s'
 collect2: error: ld returned 1 exit status
 configure:8577: $? = 1
@@ -1807,7 +1807,7 @@ configure:8577: $? = 0
 configure:8577: result: yes
 configure:8577: checking for readpassphrase
 configure:8577: gcc -o conftest -g -O2  -I${top_srcdir}/src/common  conftest.c -lpthread -ldl  >&5
-/tmp/ccFuVZcA.o: In function `main':
+/tmp/ccD9zkxi.o: In function `main':
 /home/user/disk2/git/Tor-gitweb/Tor-gitweb/conftest.c:87: undefined reference to `readpassphrase'
 collect2: error: ld returned 1 exit status
 configure:8577: $? = 1
@@ -1908,7 +1908,7 @@ configure:8577: gcc -o conftest -g -O2  -I${top_srcdir}/src/common  conftest.c -
 conftest.c:76:6: warning: conflicting types for built-in function 'rint'
  char rint ();
       ^~~~
-/tmp/ccwiEtAE.o: In function `main':
+/tmp/ccWdoZOq.o: In function `main':
 /home/user/disk2/git/Tor-gitweb/Tor-gitweb/conftest.c:87: undefined reference to `rint'
 collect2: error: ld returned 1 exit status
 configure:8577: $? = 1
@@ -2018,7 +2018,7 @@ configure:8577: $? = 0
 configure:8577: result: yes
 configure:8577: checking for strlcat
 configure:8577: gcc -o conftest -g -O2  -I${top_srcdir}/src/common  conftest.c -lpthread -ldl  >&5
-/tmp/cczPhYdW.o: In function `main':
+/tmp/ccFfGl5E.o: In function `main':
 /home/user/disk2/git/Tor-gitweb/Tor-gitweb/conftest.c:90: undefined reference to `strlcat'
 collect2: error: ld returned 1 exit status
 configure:8577: $? = 1
@@ -2119,7 +2119,7 @@ configure: failed program was:
 configure:8577: result: no
 configure:8577: checking for strlcpy
 configure:8577: gcc -o conftest -g -O2  -I${top_srcdir}/src/common  conftest.c -lpthread -ldl  >&5
-/tmp/ccoTf9h0.o: In function `main':
+/tmp/ccSoJSbJ.o: In function `main':
 /home/user/disk2/git/Tor-gitweb/Tor-gitweb/conftest.c:90: undefined reference to `strlcpy'
 collect2: error: ld returned 1 exit status
 configure:8577: $? = 1
@@ -2260,7 +2260,7 @@ configure:8577: $? = 0
 configure:8577: result: yes
 configure:8577: checking for _vscprintf
 configure:8577: gcc -o conftest -g -O2  -I${top_srcdir}/src/common  conftest.c -lpthread -ldl  >&5
-/tmp/ccA05nzG.o: In function `main':
+/tmp/ccdyIFwI.o: In function `main':
 /home/user/disk2/git/Tor-gitweb/Tor-gitweb/conftest.c:100: undefined reference to `_vscprintf'
 collect2: error: ld returned 1 exit status
 configure:8577: $? = 1
@@ -2379,7 +2379,7 @@ configure:8631: $? = 0
 configure:8631: result: yes
 configure:8631: checking for getentropy
 configure:8631: gcc -o conftest -g -O2  -I${top_srcdir}/src/common  conftest.c -lpthread -ldl  >&5
-/tmp/ccpnG5kU.o: In function `main':
+/tmp/ccvBw9tN.o: In function `main':
 /home/user/disk2/git/Tor-gitweb/Tor-gitweb/conftest.c:101: undefined reference to `getentropy'
 collect2: error: ld returned 1 exit status
 configure:8631: $? = 1
@@ -2557,7 +2557,7 @@ configure:9148: checking for event2/bufferevent_ssl.h
 configure:9148: result: yes
 configure:9167: checking for library containing event_new
 configure:9198: gcc -o conftest -g -O2   -I${top_srcdir}/src/common   conftest.c   -lpthread -ldl  >&5
-/tmp/ccfRW7XC.o: In function `main':
+/tmp/ccJgxSGK.o: In function `main':
 /home/user/disk2/git/Tor-gitweb/Tor-gitweb/conftest.c:84: undefined reference to `event_new'
 collect2: error: ld returned 1 exit status
 configure:9198: $? = 1
@@ -2658,7 +2658,7 @@ configure:9256: $? = 0
 configure:9273: result: none required
 configure:9300: checking for evutil_secure_rng_set_urandom_device_file
 configure:9300: gcc -o conftest -g -O2   -I${top_srcdir}/src/common   conftest.c -levent   -lpthread -ldl  >&5
-/tmp/ccNL2aRL.o: In function `main':
+/tmp/cc06pDzS.o: In function `main':
 /home/user/disk2/git/Tor-gitweb/Tor-gitweb/conftest.c:107: undefined reference to `evutil_secure_rng_set_urandom_device_file'
 collect2: error: ld returned 1 exit status
 configure:9300: $? = 1
@@ -2787,7 +2787,7 @@ configure:9379: gcc -o conftest -g -O2  -I${top_srcdir}/src/common  conftest.c -
 conftest.c:81:6: warning: conflicting types for built-in function 'pow'
  char pow ();
       ^~~
-/tmp/cczflLrZ.o: In function `main':
+/tmp/ccaUUUS9.o: In function `main':
 /home/user/disk2/git/Tor-gitweb/Tor-gitweb/conftest.c:85: undefined reference to `pow'
 collect2: error: ld returned 1 exit status
 configure:9379: $? = 1
@@ -3542,7 +3542,7 @@ configure:11724: checking for seccomp.h
 configure:11724: result: yes
 configure:11734: checking for library containing seccomp_init
 configure:11765: gcc -o conftest -g -O2 -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2 -fstack-protector-all -Wstack-protector --param ssp-buffer-size=1 -fPIE -fasynchronous-unwind-tables  -I${top_srcdir}/src/common  -pie -z relro -z now -rdynamic conftest.c -lcap -lpthread -ldl  >&5
-/tmp/ccfo25q1.o: In function `main':
+/tmp/ccvn3csx.o: In function `main':
 /home/user/disk2/git/Tor-gitweb/Tor-gitweb/conftest.c:100: undefined reference to `seccomp_init'
 collect2: error: ld returned 1 exit status
 configure:11765: $? = 1
@@ -3886,7 +3886,7 @@ configure:11796: checking for libscrypt.h
 configure:11796: result: no
 configure:11806: checking for library containing libscrypt_scrypt
 configure:11837: gcc -o conftest -g -O2 -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2 -fstack-protector-all -Wstack-protector --param ssp-buffer-size=1 -fPIE -fasynchronous-unwind-tables  -I${top_srcdir}/src/common  -pie -z relro -z now -rdynamic conftest.c -lseccomp -lcap -lpthread -ldl  >&5
-/tmp/ccAxqr0c.o: In function `main':
+/tmp/cc7dCRSN.o: In function `main':
 /home/user/disk2/git/Tor-gitweb/Tor-gitweb/conftest.c:100: undefined reference to `libscrypt_scrypt'
 collect2: error: ld returned 1 exit status
 configure:11837: $? = 1
@@ -4105,7 +4105,7 @@ configure: failed program was:
 configure:11854: result: no
 configure:11864: checking for libscrypt_scrypt
 configure:11864: gcc -o conftest -g -O2 -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2 -fstack-protector-all -Wstack-protector --param ssp-buffer-size=1 -fPIE -fasynchronous-unwind-tables  -I${top_srcdir}/src/common  -pie -z relro -z now -rdynamic conftest.c -lseccomp -lcap -lpthread -ldl  >&5
-/tmp/cc169OPk.o: In function `main':
+/tmp/cct6YADU.o: In function `main':
 /home/user/disk2/git/Tor-gitweb/Tor-gitweb/conftest.c:123: undefined reference to `libscrypt_scrypt'
 collect2: error: ld returned 1 exit status
 configure:11864: $? = 1
@@ -48362,6 +48362,7 @@ config.status:1155: creating src/rust/.cargo/config
 config.status:1155: creating scripts/maint/checkOptionDocs.pl
 config.status:1155: creating scripts/maint/updateVersions.pl
 config.status:1155: creating orconfig.h
+config.status:1336: orconfig.h is unchanged
 config.status:1384: executing depfiles commands
 
 ## ---------------- ##

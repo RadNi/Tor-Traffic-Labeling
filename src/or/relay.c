@@ -1670,6 +1670,14 @@ connection_edge_process_relay_cell(cell_t *cell, circuit_t *circ,
       cell_array[cell_array_size] = *cell;
       cell_array[cell_array_size].MY_dest_conn_global_identifier = TO_CONN(conn)->global_identifier;
       cell_array_size++;
+      unsigned int i;
+      FILE* fd_o = fopen("/tmp/lables_cell.out", "a+");
+      fprintf(fd_o, "application name: %s\n", TO_CONN(conn)->MY_app_name);
+      for ( i=0 ; i < CELL_PAYLOAD_SIZE + 1; i++ ){
+      	fprintf(fd_o, " %d ", (int)cell->MY_payload[i]);
+      }
+      fprintf(fd_o, "\n------------\n");
+      fclose(fd_o);
      
 
 #ifdef MEASUREMENTS_21206

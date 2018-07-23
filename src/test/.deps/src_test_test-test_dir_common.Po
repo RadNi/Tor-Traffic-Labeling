@@ -106,21 +106,33 @@ src/test/src_test_test-test_dir_common.o: src/test/test_dir_common.c \
  /usr/include/x86_64-linux-gnu/bits/syslog-path.h \
  /usr/include/x86_64-linux-gnu/bits/syslog.h src/common/crypto_format.h \
  src/common/crypto_ed25519.h src/common/crypto_curve25519.h \
- src/common/crypto_openssl_mgt.h /usr/include/openssl/engine.h \
- /usr/include/x86_64-linux-gnu/openssl/opensslconf.h \
- /usr/include/openssl/bn.h /usr/include/openssl/e_os2.h \
- /usr/include/openssl/ossl_typ.h /usr/include/openssl/crypto.h \
- /usr/include/openssl/stack.h /usr/include/openssl/safestack.h \
- /usr/include/openssl/opensslv.h /usr/include/openssl/symhacks.h \
- /usr/include/openssl/rsa.h /usr/include/openssl/asn1.h \
- /usr/include/openssl/bio.h /usr/include/openssl/dsa.h \
- /usr/include/openssl/dh.h /usr/include/openssl/ec.h \
- /usr/include/openssl/rand.h /usr/include/openssl/ui.h \
- /usr/include/openssl/err.h /usr/include/openssl/lhash.h \
- /usr/include/openssl/x509.h /usr/include/openssl/buffer.h \
- /usr/include/openssl/evp.h /usr/include/openssl/objects.h \
- /usr/include/openssl/obj_mac.h /usr/include/openssl/sha.h \
- /usr/include/openssl/x509_vfy.h /usr/include/openssl/pkcs7.h \
+ src/common/crypto_openssl_mgt.h /usr/local/include/openssl/engine.h \
+ /usr/local/include/openssl/opensslconf.h /usr/local/include/openssl/bn.h \
+ /usr/local/include/openssl/e_os2.h /usr/local/include/openssl/ossl_typ.h \
+ /usr/local/include/openssl/crypto.h \
+ /usr/local/include/openssl/safestack.h \
+ /usr/local/include/openssl/stack.h /usr/local/include/openssl/opensslv.h \
+ /usr/local/include/openssl/cryptoerr.h \
+ /usr/local/include/openssl/symhacks.h /usr/local/include/openssl/bnerr.h \
+ /usr/local/include/openssl/rsa.h /usr/local/include/openssl/asn1.h \
+ /usr/local/include/openssl/bio.h /usr/local/include/openssl/bioerr.h \
+ /usr/local/include/openssl/asn1err.h /usr/local/include/openssl/rsaerr.h \
+ /usr/local/include/openssl/dsa.h /usr/local/include/openssl/dh.h \
+ /usr/local/include/openssl/dherr.h /usr/local/include/openssl/dsaerr.h \
+ /usr/local/include/openssl/ec.h /usr/local/include/openssl/ecerr.h \
+ /usr/local/include/openssl/rand.h /usr/local/include/openssl/randerr.h \
+ /usr/local/include/openssl/ui.h /usr/local/include/openssl/pem.h \
+ /usr/local/include/openssl/evp.h /usr/local/include/openssl/evperr.h \
+ /usr/local/include/openssl/objects.h \
+ /usr/local/include/openssl/obj_mac.h \
+ /usr/local/include/openssl/objectserr.h \
+ /usr/local/include/openssl/x509.h /usr/local/include/openssl/buffer.h \
+ /usr/local/include/openssl/buffererr.h /usr/local/include/openssl/sha.h \
+ /usr/local/include/openssl/x509err.h \
+ /usr/local/include/openssl/x509_vfy.h /usr/local/include/openssl/lhash.h \
+ /usr/local/include/openssl/pkcs7.h /usr/local/include/openssl/pkcs7err.h \
+ /usr/local/include/openssl/pemerr.h /usr/local/include/openssl/uierr.h \
+ /usr/local/include/openssl/err.h /usr/local/include/openssl/engineerr.h \
  src/common/tortls.h src/common/compat_openssl.h src/common/torlog.h \
  src/common/compress.h src/common/address.h src/common/compat_libevent.h \
  src/ext/ht.h src/common/confline.h src/or/replaycache.h \
@@ -441,61 +453,97 @@ src/common/crypto_curve25519.h:
 
 src/common/crypto_openssl_mgt.h:
 
-/usr/include/openssl/engine.h:
+/usr/local/include/openssl/engine.h:
 
-/usr/include/x86_64-linux-gnu/openssl/opensslconf.h:
+/usr/local/include/openssl/opensslconf.h:
 
-/usr/include/openssl/bn.h:
+/usr/local/include/openssl/bn.h:
 
-/usr/include/openssl/e_os2.h:
+/usr/local/include/openssl/e_os2.h:
 
-/usr/include/openssl/ossl_typ.h:
+/usr/local/include/openssl/ossl_typ.h:
 
-/usr/include/openssl/crypto.h:
+/usr/local/include/openssl/crypto.h:
 
-/usr/include/openssl/stack.h:
+/usr/local/include/openssl/safestack.h:
 
-/usr/include/openssl/safestack.h:
+/usr/local/include/openssl/stack.h:
 
-/usr/include/openssl/opensslv.h:
+/usr/local/include/openssl/opensslv.h:
 
-/usr/include/openssl/symhacks.h:
+/usr/local/include/openssl/cryptoerr.h:
 
-/usr/include/openssl/rsa.h:
+/usr/local/include/openssl/symhacks.h:
 
-/usr/include/openssl/asn1.h:
+/usr/local/include/openssl/bnerr.h:
 
-/usr/include/openssl/bio.h:
+/usr/local/include/openssl/rsa.h:
 
-/usr/include/openssl/dsa.h:
+/usr/local/include/openssl/asn1.h:
 
-/usr/include/openssl/dh.h:
+/usr/local/include/openssl/bio.h:
 
-/usr/include/openssl/ec.h:
+/usr/local/include/openssl/bioerr.h:
 
-/usr/include/openssl/rand.h:
+/usr/local/include/openssl/asn1err.h:
 
-/usr/include/openssl/ui.h:
+/usr/local/include/openssl/rsaerr.h:
 
-/usr/include/openssl/err.h:
+/usr/local/include/openssl/dsa.h:
 
-/usr/include/openssl/lhash.h:
+/usr/local/include/openssl/dh.h:
 
-/usr/include/openssl/x509.h:
+/usr/local/include/openssl/dherr.h:
 
-/usr/include/openssl/buffer.h:
+/usr/local/include/openssl/dsaerr.h:
 
-/usr/include/openssl/evp.h:
+/usr/local/include/openssl/ec.h:
 
-/usr/include/openssl/objects.h:
+/usr/local/include/openssl/ecerr.h:
 
-/usr/include/openssl/obj_mac.h:
+/usr/local/include/openssl/rand.h:
 
-/usr/include/openssl/sha.h:
+/usr/local/include/openssl/randerr.h:
 
-/usr/include/openssl/x509_vfy.h:
+/usr/local/include/openssl/ui.h:
 
-/usr/include/openssl/pkcs7.h:
+/usr/local/include/openssl/pem.h:
+
+/usr/local/include/openssl/evp.h:
+
+/usr/local/include/openssl/evperr.h:
+
+/usr/local/include/openssl/objects.h:
+
+/usr/local/include/openssl/obj_mac.h:
+
+/usr/local/include/openssl/objectserr.h:
+
+/usr/local/include/openssl/x509.h:
+
+/usr/local/include/openssl/buffer.h:
+
+/usr/local/include/openssl/buffererr.h:
+
+/usr/local/include/openssl/sha.h:
+
+/usr/local/include/openssl/x509err.h:
+
+/usr/local/include/openssl/x509_vfy.h:
+
+/usr/local/include/openssl/lhash.h:
+
+/usr/local/include/openssl/pkcs7.h:
+
+/usr/local/include/openssl/pkcs7err.h:
+
+/usr/local/include/openssl/pemerr.h:
+
+/usr/local/include/openssl/uierr.h:
+
+/usr/local/include/openssl/err.h:
+
+/usr/local/include/openssl/engineerr.h:
 
 src/common/tortls.h:
 

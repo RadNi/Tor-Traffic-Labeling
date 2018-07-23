@@ -84,14 +84,20 @@ src/common/crypto_s2k.o: src/common/crypto_s2k.c \
  /usr/include/x86_64-linux-gnu/bits/syslog-path.h \
  /usr/include/x86_64-linux-gnu/bits/syslog.h src/common/crypto_rand.h \
  src/common/crypto_s2k.h src/common/crypto_util.h \
- /usr/include/openssl/evp.h \
- /usr/include/x86_64-linux-gnu/openssl/opensslconf.h \
- /usr/include/openssl/ossl_typ.h /usr/include/openssl/e_os2.h \
- /usr/include/openssl/symhacks.h /usr/include/openssl/bio.h \
- /usr/include/openssl/crypto.h /usr/include/openssl/stack.h \
- /usr/include/openssl/safestack.h /usr/include/openssl/opensslv.h \
- /usr/include/openssl/objects.h /usr/include/openssl/obj_mac.h \
- /usr/include/openssl/asn1.h /usr/include/openssl/bn.h
+ /usr/local/include/openssl/evp.h \
+ /usr/local/include/openssl/opensslconf.h \
+ /usr/local/include/openssl/ossl_typ.h /usr/local/include/openssl/e_os2.h \
+ /usr/local/include/openssl/symhacks.h /usr/local/include/openssl/bio.h \
+ /usr/local/include/openssl/crypto.h \
+ /usr/local/include/openssl/safestack.h \
+ /usr/local/include/openssl/stack.h /usr/local/include/openssl/opensslv.h \
+ /usr/local/include/openssl/cryptoerr.h \
+ /usr/local/include/openssl/bioerr.h /usr/local/include/openssl/evperr.h \
+ /usr/local/include/openssl/objects.h \
+ /usr/local/include/openssl/obj_mac.h /usr/local/include/openssl/asn1.h \
+ /usr/local/include/openssl/asn1err.h /usr/local/include/openssl/bn.h \
+ /usr/local/include/openssl/bnerr.h \
+ /usr/local/include/openssl/objectserr.h
 
 /usr/include/stdc-predef.h:
 
@@ -331,30 +337,42 @@ src/common/crypto_s2k.h:
 
 src/common/crypto_util.h:
 
-/usr/include/openssl/evp.h:
+/usr/local/include/openssl/evp.h:
 
-/usr/include/x86_64-linux-gnu/openssl/opensslconf.h:
+/usr/local/include/openssl/opensslconf.h:
 
-/usr/include/openssl/ossl_typ.h:
+/usr/local/include/openssl/ossl_typ.h:
 
-/usr/include/openssl/e_os2.h:
+/usr/local/include/openssl/e_os2.h:
 
-/usr/include/openssl/symhacks.h:
+/usr/local/include/openssl/symhacks.h:
 
-/usr/include/openssl/bio.h:
+/usr/local/include/openssl/bio.h:
 
-/usr/include/openssl/crypto.h:
+/usr/local/include/openssl/crypto.h:
 
-/usr/include/openssl/stack.h:
+/usr/local/include/openssl/safestack.h:
 
-/usr/include/openssl/safestack.h:
+/usr/local/include/openssl/stack.h:
 
-/usr/include/openssl/opensslv.h:
+/usr/local/include/openssl/opensslv.h:
 
-/usr/include/openssl/objects.h:
+/usr/local/include/openssl/cryptoerr.h:
 
-/usr/include/openssl/obj_mac.h:
+/usr/local/include/openssl/bioerr.h:
 
-/usr/include/openssl/asn1.h:
+/usr/local/include/openssl/evperr.h:
 
-/usr/include/openssl/bn.h:
+/usr/local/include/openssl/objects.h:
+
+/usr/local/include/openssl/obj_mac.h:
+
+/usr/local/include/openssl/asn1.h:
+
+/usr/local/include/openssl/asn1err.h:
+
+/usr/local/include/openssl/bn.h:
+
+/usr/local/include/openssl/bnerr.h:
+
+/usr/local/include/openssl/objectserr.h:

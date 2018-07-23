@@ -78,11 +78,13 @@ src/common/crypto_util.o: src/common/crypto_util.c \
  /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h \
  /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
  /usr/include/x86_64-linux-gnu/bits/stdlib.h src/common/util_bug.h \
- /usr/include/openssl/crypto.h /usr/include/openssl/e_os2.h \
- /usr/include/x86_64-linux-gnu/openssl/opensslconf.h \
- /usr/include/openssl/stack.h /usr/include/openssl/safestack.h \
- /usr/include/openssl/opensslv.h /usr/include/openssl/ossl_typ.h \
- /usr/include/openssl/symhacks.h
+ /usr/local/include/openssl/crypto.h /usr/local/include/openssl/e_os2.h \
+ /usr/local/include/openssl/opensslconf.h \
+ /usr/local/include/openssl/safestack.h \
+ /usr/local/include/openssl/stack.h /usr/local/include/openssl/opensslv.h \
+ /usr/local/include/openssl/ossl_typ.h \
+ /usr/local/include/openssl/cryptoerr.h \
+ /usr/local/include/openssl/symhacks.h
 
 /usr/include/stdc-predef.h:
 
@@ -298,18 +300,20 @@ src/common/di_ops.h:
 
 src/common/util_bug.h:
 
-/usr/include/openssl/crypto.h:
+/usr/local/include/openssl/crypto.h:
 
-/usr/include/openssl/e_os2.h:
+/usr/local/include/openssl/e_os2.h:
 
-/usr/include/x86_64-linux-gnu/openssl/opensslconf.h:
+/usr/local/include/openssl/opensslconf.h:
 
-/usr/include/openssl/stack.h:
+/usr/local/include/openssl/safestack.h:
 
-/usr/include/openssl/safestack.h:
+/usr/local/include/openssl/stack.h:
 
-/usr/include/openssl/opensslv.h:
+/usr/local/include/openssl/opensslv.h:
 
-/usr/include/openssl/ossl_typ.h:
+/usr/local/include/openssl/ossl_typ.h:
 
-/usr/include/openssl/symhacks.h:
+/usr/local/include/openssl/cryptoerr.h:
+
+/usr/local/include/openssl/symhacks.h:
