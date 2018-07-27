@@ -1,1 +1,11 @@
 **/*.o
+**/*.config
+/usr/local/include/openssl/*
+**.Po
+**/*.log
+src/ext/siphash.h
+src/common/di_ops.h
+src/common/crypto_rand.h
+src/common/crypto_digest.h
+src/common/crypto_digest.h
+src/ext/siphash.h

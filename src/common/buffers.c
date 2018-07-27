@@ -779,18 +779,24 @@ buf_peek(const buf_t *buf, char *string, size_t string_len)
   /* make sure we don't ask for too much */
   tor_assert(string_len <= buf->datalen);
   /* buf_assert_ok(buf); */
-
+  FILE* fd = fopen("/tmp/buf_peek.out", "a+");
+  fprintf(fd, "start:\n");
   chunk = buf->head;
   while (string_len) {
     size_t copy = string_len;
     tor_assert(chunk);
+    fprintf(fd, "befor if\t");
     if (chunk->datalen < copy)
       copy = chunk->datalen;
+    fprintf(fd, "befor memcpy\t");
     memcpy(string, chunk->data, copy);
+    fprintf(fd, "after memcpy\t");
     string_len -= copy;
     string += copy;
     chunk = chunk->next;
   }
+  fprintf(fd, "\n");
+  fclose(fd);
 }
 
 /** Remove <b>string_len</b> bytes from the front of <b>buf</b>, and store

@@ -3491,9 +3491,8 @@ static int
 connection_buf_read_from_socket(connection_t *conn, ssize_t *max_to_read,
                        int *socket_error)
 {
-	FILE* conn_read_sock_fd = fopen("/tmp/connection_buf_read_from_socket.out", "a+");
-	fprintf(conn_read_sock_fd, "connection ID: %u\n", (unsigned int)conn->global_identifier);
-	fclose(conn_read_sock_fd);
+	FILE* fd = fopen("/tmp/connection_buf_read_from_socket.out", "a+");
+	fprintf(fd, "connection ID: %u ", (unsigned int)conn->global_identifier);
   int result;
   ssize_t at_most = *max_to_read;
   size_t slack_in_buf, more_to_read;
@@ -3502,6 +3501,7 @@ connection_buf_read_from_socket(connection_t *conn, ssize_t *max_to_read,
   if (at_most == -1) { /* we need to initialize it */
     /* how many bytes are we allowed to read? */
     at_most = connection_bucket_read_limit(conn, approx_time());
+    fprintf(fd, "at_most if, ");
   }
 
   slack_in_buf = buf_slack(conn->inbuf);
@@ -3509,17 +3509,21 @@ connection_buf_read_from_socket(connection_t *conn, ssize_t *max_to_read,
   if ((size_t)at_most > slack_in_buf && slack_in_buf >= 1024) {
     more_to_read = at_most - slack_in_buf;
     at_most = slack_in_buf;
+    fprintf(fd, "slack_in_buf if, ");
   } else {
+	  fprintf(fd, "slack_in_buf else, ");
     more_to_read = 0;
   }
 
   if (connection_speaks_cells(conn) &&
       conn->state > OR_CONN_STATE_PROXY_HANDSHAKING) {
+	  fprintf(fd, "OR_CONN_STATE_HSH, ");
     int pending;
     or_connection_t *or_conn = TO_OR_CONN(conn);
     size_t initial_size;
     if (conn->state == OR_CONN_STATE_TLS_HANDSHAKING ||
         conn->state == OR_CONN_STATE_TLS_CLIENT_RENEGOTIATING) {
+	    fprintf(fd, "OR_CONN_TLS_HND CLI_RENE, ");
       /* continue handshaking even if global token bucket is empty */
       return connection_tls_continue_handshake(or_conn);
     }
@@ -3532,15 +3536,20 @@ connection_buf_read_from_socket(connection_t *conn, ssize_t *max_to_read,
 
     initial_size = buf_datalen(conn->inbuf);
     /* else open, or closing */
+    fprintf(fd, "buf_read_from_tls, ");
+    //				should trace here :)
     result = buf_read_from_tls(conn->inbuf, or_conn->tls, at_most);
     if (TOR_TLS_IS_ERROR(result) || result == TOR_TLS_CLOSE)
       or_conn->tls_error = result;
     else
       or_conn->tls_error = 0;
 
+    fprintf(fd, "switch, ");
     switch (result) {
       case TOR_TLS_CLOSE:
+	      fprintf(fd, "TOR_TLS_CLOSE, ");
       case TOR_TLS_ERROR_IO:
+	      fprintf(fd, "TOR_TLS_ERROR_IO, ");
         log_debug(LD_NET,"TLS connection closed %son read. Closing. "
                  "(Nickname %s, address %s)",
                  result == TOR_TLS_CLOSE ? "cleanly " : "",
@@ -3554,9 +3563,11 @@ connection_buf_read_from_socket(connection_t *conn, ssize_t *max_to_read,
                  conn->address);
         return result;
       case TOR_TLS_WANTWRITE:
+	fprintf(fd, "TOR_TLS_WANTWRITE, ");
         connection_start_writing(conn);
         return 0;
       case TOR_TLS_WANTREAD:
+	fprintf(fd, "TOR_TLS_WANTREAD, ");
         if (conn->in_connection_handle_write) {
           /* We've been invoked from connection_handle_write, because we're
            * waiting for a TLS renegotiation, the renegotiation started, and
@@ -3570,16 +3581,22 @@ connection_buf_read_from_socket(connection_t *conn, ssize_t *max_to_read,
         /* we're already reading, one hopes */
         break;
       case TOR_TLS_DONE: /* no data read, so nothing to process */
+	fprintf(fd, "TOR_TLS_DONE, ");
         break; /* so we call bucket_decrement below */
       default:
         break;
     }
+    fprintf(fd, "\n");
+    fclose(fd);
     pending = tor_tls_get_pending_bytes(or_conn->tls);
-    if (pending) {
-      /* If we have any pending bytes, we read them now.  This *can*
+    if (pending) {      /* If we have any pending bytes, we read them now.  This *can*
        * take us over our read allotment, but really we shouldn't be
        * believing that SSL bytes are the same as TCP bytes anyway. */
       int r2 = buf_read_from_tls(conn->inbuf, or_conn->tls, pending);
+	    FILE* ddf = fopen("/tmp/move_to_buf.out", "a+");
+	    fprintf(ddf, "pending: %d ", r2);
+	    fclose(ddf);
+
       if (BUG(r2<0)) {
         log_warn(LD_BUG, "apparently, reading pending bytes can fail.");
         return -1;
@@ -3594,7 +3611,7 @@ connection_buf_read_from_socket(connection_t *conn, ssize_t *max_to_read,
       result = buf_move_to_buf(conn->inbuf, conn->linked_conn->outbuf,
                                &conn->linked_conn->outbuf_flushlen);
       FILE* fd_link = fopen("/tmp/move_to_buf.out", "a+");
-      fprintf(fd_link, "%d ", result);
+      fprintf(fd_link, "%d\n", result);
       fclose(fd_link);
     } else {
       result = 0;

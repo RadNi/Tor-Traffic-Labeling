@@ -1871,6 +1871,29 @@ tor_tls_free_(tor_tls_t *tls)
   tor_free(tls);
 }
 
+int tor_tls_get_fd(tor_tls_t *tls);
+
+int
+tor_tls_get_fd(tor_tls_t *tls)
+{
+	/*tor_assert(tls);
+	tor_assert(tls->ssl);
+	tor_assert(tls->state == TOR_TLS_ST_OPEN);
+	*/	
+	//BIO* wbio = SSL_get_rbio(tls->ssl);
+	//int *fd;
+	//BIO_get_fd(wbio, fd);
+	return SSL_get_fd(tls->ssl);
+	//return tls->socket;
+}
+
+int tor_tls_get_socket(tor_tls_t *tls);
+
+int tor_tls_get_socket(tor_tls_t *tls)
+{
+	return tls->socket;
+}
+
 /** Underlying function for TLS reading.  Reads up to <b>len</b>
  * characters from <b>tls</b> into <b>cp</b>.  On success, returns the
  * number of characters read.  On failure, returns TOR_TLS_ERROR,
@@ -1886,7 +1909,7 @@ tor_tls_read,(tor_tls_t *tls, char *cp, size_t len))
   tor_assert(tls->state == TOR_TLS_ST_OPEN);
   tor_assert(len<INT_MAX);
 
-  FILE* fd = fopen("/tmp/tor_tls_read.out", "a+");
+ // FILE* fd = fopen("/tmp/tor_tls_read.out", "a+");
 /*  char buf[100000];
   ssize_t n = read(tls->socket, sizeof(buf));
   if( n > 0 )
@@ -1901,9 +1924,9 @@ tor_tls_read,(tor_tls_t *tls, char *cp, size_t len))
  */
  //BIO* bio = BIO_new(BIO_s_mem());
 // BIO* rbio = SSL_get_rbio(tls->ssl);
- int socket = SSL_get_fd(tls->ssl);
- char buf[10000];
- size_t n = recv(socket, buf, sizeof(buf), MSG_PEEK);
+ //int socket = SSL_get_fd(tls->ssl);
+ //char buf[10000];
+ //size_t n = recv(socket, buf, sizeof(buf), MSG_PEEK);
  //BIO_write(SSL_get_rbio(tls->ssl), buf, n);
  //SSL_set_bio(tls->ssl, bio, SSL_get_wbio(tls->ssl));
  //fprintf(fd, "size: %zu, ", n);
@@ -1912,9 +1935,16 @@ tor_tls_read,(tor_tls_t *tls, char *cp, size_t len))
   
 
   r = SSL_read(tls->ssl, cp, (int)len);
-  fprintf(fd, "size-ssl: %d size-socket: %zu\n", r, n);
+  //fprintf(fd, "size-ssl: %d size-socket: %zu\n", r, n);
+  //unsigned int i;
+  //for ( i=0 ; i<(unsigned int)n ; i++ )
+  //{
+//	  fprintf(fd, "%02x ", buf[i] & 0xff);
+ // }
 
-  if( tls->flag ){
+  //fprintf(fd, "\n");
+
+ /* if( tls->flag ){
 	  unsigned int i;
 	  for ( i=0 ; i < (unsigned int)n ; i++, tls->app_data_len-- )
 	  {
@@ -1936,7 +1966,8 @@ tor_tls_read,(tor_tls_t *tls, char *cp, size_t len))
 		  fprintf(fd, " %02x", (int)buf[j] & 0xff);
 	  }
   }
-
+  
+*/
  // n = write(SSL_get_fd(tls->ssl), buf, n);
  
  // fclose(fd);
@@ -1949,7 +1980,7 @@ tor_tls_read,(tor_tls_t *tls, char *cp, size_t len))
   //fprintf(fd, "size: %zu\n", n);
 
   //int in2  = SSL_read(tls->ssl, cp, (int)len);
-  fclose(fd);
+  //fclose(fd);
   if (r > 0) {
     if (tls->got_renegotiate) {
       /* Renegotiation happened! */

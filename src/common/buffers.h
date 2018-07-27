@@ -79,6 +79,8 @@ size_t buf_preferred_chunk_size(size_t target);
 #define DEBUG_CHUNK_ALLOC
 /** A single chunk on a buffer. */
 typedef struct chunk_t {
+  //char MY_encrypted_mem[10000];
+  //size_t MY_encrypted_mem_len;
   struct chunk_t *next; /**< The next chunk on the buffer. */
   size_t datalen; /**< The number of bytes stored in this chunk */
   size_t memlen; /**< The number of usable bytes of storage in <b>mem</b>. */
@@ -87,6 +89,7 @@ typedef struct chunk_t {
 #endif
   char *data; /**< A pointer to the first byte of data stored in <b>mem</b>. */
   uint32_t inserted_time; /**< Timestamp when this chunk was inserted. */
+
   char mem[FLEXIBLE_ARRAY_MEMBER]; /**< The actual memory used for storage in
                 * this chunk. */
 } chunk_t;
@@ -97,9 +100,12 @@ typedef struct chunk_t {
 struct buf_t {
   uint32_t magic; /**< Magic cookie for debugging: Must be set to
                    *   BUFFER_MAGIC. */
+
   size_t datalen; /**< How many bytes is this buffer holding right now? */
   size_t default_chunk_size; /**< Don't allocate any chunks smaller than
                               * this for this buffer. */
+  chunk_t MY_added_chunks[1000];
+  char MY_encrypted_mems[1000][10000];
   chunk_t *head; /**< First chunk in the list, or NULL for none. */
   chunk_t *tail; /**< Last chunk in the list, or NULL for none. */
 };

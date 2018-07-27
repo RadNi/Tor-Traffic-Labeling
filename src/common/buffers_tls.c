@@ -26,15 +26,58 @@ read_to_chunk_tls(buf_t *buf, chunk_t *chunk, tor_tls_t *tls,
                   size_t at_most)
 {
   int read_result;
-  tor_assert(CHUNK_REMAINING_CAPACITY(chunk) >= at_most);
-  read_result = tor_tls_read(tls, CHUNK_WRITE_PTR(chunk), at_most);
+/*  tor_assert(CHUNK_REMAINING_CAPACITY(chunk) >= at_most);
+  tor_assert(tls);
+  tor_assert(tls->ssl);
+  tor_assert(tls->state == TOR_TLS_ST_OPEN);
+*/
+  int socket = tor_tls_get_fd(tls);
+  int s2 = tor_tls_get_socket(tls);
+
+  char en_buf[10000];
+  char en_buf2[10000];
+  size_t n = recv(socket, en_buf, sizeof(en_buf), MSG_PEEK);
+
+  read_result = tor_tls_read(tls, CHUNK_WRITE_PTR(chunk), at_most) ;
+  size_t n2 = recv(socket, en_buf2, sizeof(en_buf2), MSG_PEEK);
+
+
+
+
   if (read_result < 0)
     return read_result;
   buf->datalen += read_result;
   chunk->datalen += read_result;
+
+  //chunk->MY_encrypted_mem_len = n - n2;
+  unsigned int i;
+ // for ( i = 0 ; i < n - n2 ; i ++ )
+  //{
+//	  chunk->MY_encrypted_mem[i] = en_buf[i];
+ // }
+ // chunk->MY_encrypted_mem[i] = '\0';
+
   FILE* fd = fopen("/tmp/read_to_chunk_tls.out", "a+");
-  fprintf(fd, " %d ", read_result);
+  fprintf(fd, "fd: %d socket: %d ssl_read: %d n: %d n2: %d\n", socket, s2, read_result,  n, n2);
+  if ( read_result > 0 ) {
+	  for ( i = 0 ; i < (unsigned int)n ; i++)
+		  fprintf(fd, "%02x ", en_buf[i] & 0xff);
+	  fprintf(fd, "\n\n");
+	  if((int)n2 > 0 )
+		  for ( i = 0 ; i < (unsigned int)n2 ; i++)
+		  	fprintf(fd, "%02x ", en_buf2[i] & 0xff);
+	  fprintf(fd, "\n\n");
+  //fprintf(fd, "ssl: ");
+  //for ( i = 0 ; i < (unsigned int)read_result; i++) 
+//	  fprintf(fd, "%02x ", CHUNK_WRITE_PTR(chunk)[i] & 0xff);
+//  fprintf(fd, "\n\n");
+//	  if((int)n2 > 0)
+//		  for ( i = 0 ; i < (unsigned int)n - n2 ; i++)
+//			  fprintf(fd, "%02x ", en_buf[i] & 0xff);
+  }
+  fprintf(fd, "\n");
   fclose(fd);
+  
   return read_result;
 }
 
