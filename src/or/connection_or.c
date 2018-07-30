@@ -450,6 +450,13 @@ cell_unpack(cell_t *dest, const char *src, int wide_circ_ids)
   dest->command = get_uint8(src);
   memcpy(dest->payload, src+1, CELL_PAYLOAD_SIZE);
   memcpy(dest->MY_payload, src, CELL_PAYLOAD_SIZE+1);
+  unsigned int i = 0;
+  for ( i = 0 ; i < MY_current_chunks_size ; i++)
+  {
+	  dest->MY_chunks[i] = MY_current_chunks[i];
+  }
+  MY_current_chunks_size = 0;
+
 }
 
 /** Write the header of <b>cell</b> into the first VAR_CELL_MAX_HEADER_SIZE
@@ -2360,6 +2367,7 @@ connection_or_process_cells_from_inbuf(or_connection_t *conn)
         channel_timestamp_active(TLS_CHAN_TO_BASE(conn->chan));
 
       circuit_build_times_network_is_live(get_circuit_build_times_mutable());
+      MY_current_chunks_size = 0;
       connection_buf_get_bytes(buf, cell_network_size, TO_CONN(conn));
 
       /* retrieve cell info from buf (create the host-order struct from the

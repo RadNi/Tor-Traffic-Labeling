@@ -21,6 +21,15 @@
 
 /** As read_to_chunk(), but return (negative) error code on error, blocking,
  * or TLS, and the number of bytes read otherwise. */
+//
+//chunk_t* MY_chunks[10000];
+//char MY_chunks_body[10000][10000];
+//int MY_chunks_size = 0;
+//
+//chunk_t* MY_current_chunks[100];
+//int MY_current_chunks_size = 0;
+//
+//
 static inline int
 read_to_chunk_tls(buf_t *buf, chunk_t *chunk, tor_tls_t *tls,
                   size_t at_most)
@@ -60,8 +69,10 @@ read_to_chunk_tls(buf_t *buf, chunk_t *chunk, tor_tls_t *tls,
   FILE* fd = fopen("/tmp/read_to_chunk_tls.out", "a+");
   fprintf(fd, "fd: %d socket: %d ssl_read: %d n: %d n2: %d\n", socket, s2, read_result,  n, n2);
   if ( read_result > 0 ) {
-	  for ( i = 0 ; i < (unsigned int)n ; i++)
+	  for ( i = 0 ; i < (unsigned int)n ; i++){
 		  fprintf(fd, "%02x ", en_buf[i] & 0xff);
+		  MY_chunks_body[MY_chunks_size][i] = en_buf[i];
+	  }
 	  fprintf(fd, "\n\n");
 	  if((int)n2 > 0 )
 		  for ( i = 0 ; i < (unsigned int)n2 ; i++)
@@ -129,6 +140,8 @@ buf_read_from_tls(buf_t *buf, tor_tls_t *tls, size_t at_most)
     }
 
     r = read_to_chunk_tls(buf, chunk, tls, readlen);
+    MY_chunks[MY_chunks_size] = chunk;
+    MY_chunks_size++;
     if (r < 0)
       return r; /* Error */
     tor_assert(total_read+r < INT_MAX);
