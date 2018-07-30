@@ -116,7 +116,7 @@
 #include "memarea.h"
 #include "sandbox.h"
 
-#include <event2/event.h>
+#include <event2/evient.h>
 
 #include "dirauth/dirvote.h"
 #include "dirauth/mode.h"

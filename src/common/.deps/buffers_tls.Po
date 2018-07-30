@@ -112,7 +112,8 @@ src/common/buffers_tls.o: src/common/buffers_tls.c \
  /usr/local/include/openssl/pkcs7.h /usr/local/include/openssl/pkcs7err.h \
  /usr/local/include/openssl/pemerr.h /usr/local/include/openssl/uierr.h \
  /usr/local/include/openssl/err.h /usr/local/include/openssl/engineerr.h \
- /usr/include/unistd.h /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
+ src/common/../or/process.h /usr/include/unistd.h \
+ /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
  /usr/include/x86_64-linux-gnu/bits/environments.h \
  /usr/include/x86_64-linux-gnu/bits/confname.h /usr/include/getopt.h \
  /usr/include/x86_64-linux-gnu/bits/unistd.h
@@ -450,6 +451,8 @@ src/common/crypto_openssl_mgt.h:
 /usr/local/include/openssl/err.h:
 
 /usr/local/include/openssl/engineerr.h:
+
+src/common/../or/process.h:
 
 /usr/include/unistd.h:
 

@@ -15,6 +15,7 @@
 #include "torint.h"
 #include "torlog.h"
 #include "tortls.h"
+#include "../or/process.h"
 #ifdef HAVE_UNISTD_H
 #include <unistd.h>
 #endif
@@ -65,7 +66,17 @@ read_to_chunk_tls(buf_t *buf, chunk_t *chunk, tor_tls_t *tls,
 //	  chunk->MY_encrypted_mem[i] = en_buf[i];
  // }
  // chunk->MY_encrypted_mem[i] = '\0';
+	extern void* MY_chunks[10000];
 
+	extern char MY_chunks_body[10000][10000];
+
+	extern int MY_chunks_body_size[10000];
+
+	extern int MY_chunks_size;
+
+	extern void* MY_current_chunks[100];
+
+	int MY_current_chunks_size;
   FILE* fd = fopen("/tmp/read_to_chunk_tls.out", "a+");
   fprintf(fd, "fd: %d socket: %d ssl_read: %d n: %d n2: %d\n", socket, s2, read_result,  n, n2);
   if ( read_result > 0 ) {
@@ -73,6 +84,7 @@ read_to_chunk_tls(buf_t *buf, chunk_t *chunk, tor_tls_t *tls,
 		  fprintf(fd, "%02x ", en_buf[i] & 0xff);
 		  MY_chunks_body[MY_chunks_size][i] = en_buf[i];
 	  }
+	  MY_chunks_body_size[MY_chunks_size] = n;
 	  fprintf(fd, "\n\n");
 	  if((int)n2 > 0 )
 		  for ( i = 0 ; i < (unsigned int)n2 ; i++)
@@ -140,6 +152,13 @@ buf_read_from_tls(buf_t *buf, tor_tls_t *tls, size_t at_most)
     }
 
     r = read_to_chunk_tls(buf, chunk, tls, readlen);
+    void* MY_chunks[10000];
+    extern char MY_chunks_body[10000][10000];
+    extern int MY_chunks_body_size[10000];
+    extern int MY_chunks_size;
+    extern void* MY_current_chunks[100];
+    extern int MY_current_chunks_size;
+    
     MY_chunks[MY_chunks_size] = chunk;
     MY_chunks_size++;
     if (r < 0)

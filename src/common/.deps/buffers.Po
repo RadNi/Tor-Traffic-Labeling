@@ -80,8 +80,8 @@ src/common/buffers.o: src/common/buffers.c /usr/include/stdc-predef.h \
  src/common/torlog.h /usr/include/syslog.h \
  /usr/include/x86_64-linux-gnu/sys/syslog.h \
  /usr/include/x86_64-linux-gnu/bits/syslog-path.h \
- /usr/include/x86_64-linux-gnu/bits/syslog.h /usr/include/unistd.h \
- /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
+ /usr/include/x86_64-linux-gnu/bits/syslog.h src/common/../or/process.h \
+ /usr/include/unistd.h /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
  /usr/include/x86_64-linux-gnu/bits/environments.h \
  /usr/include/x86_64-linux-gnu/bits/confname.h /usr/include/getopt.h \
  /usr/include/x86_64-linux-gnu/bits/unistd.h
@@ -311,6 +311,8 @@ src/common/torlog.h:
 /usr/include/x86_64-linux-gnu/bits/syslog-path.h:
 
 /usr/include/x86_64-linux-gnu/bits/syslog.h:
+
+src/common/../or/process.h:
 
 /usr/include/unistd.h:
 

@@ -23,6 +23,7 @@
 #include "or.h"
 #include "bridges.h"
 #include "buffers.h"
+#include "process.h"
 /*
  * Define this so we get channel internal functions, since we're implementing
  * part of a subclass (channel_tls_t).
@@ -450,10 +451,19 @@ cell_unpack(cell_t *dest, const char *src, int wide_circ_ids)
   dest->command = get_uint8(src);
   memcpy(dest->payload, src+1, CELL_PAYLOAD_SIZE);
   memcpy(dest->MY_payload, src, CELL_PAYLOAD_SIZE+1);
-  unsigned int i = 0;
+  extern unsigned int i;
+  extern void* MY_chunks[10000];
+  extern char MY_chunks_body[10000][10000];
+  extern int MY_chunks_body_size[10000];
+  extern int MY_chunks_size;
+  extern void* MY_current_chunks[100];
+  extern int MY_current_chunks_size;
+
+  dest->MY_chunks_size = 0;
   for ( i = 0 ; i < MY_current_chunks_size ; i++)
   {
 	  dest->MY_chunks[i] = MY_current_chunks[i];
+	  dest->MY_chunks_size++;
   }
   MY_current_chunks_size = 0;
 

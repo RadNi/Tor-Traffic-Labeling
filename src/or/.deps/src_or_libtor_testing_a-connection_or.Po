@@ -140,19 +140,20 @@ src/or/src_or_libtor_testing_a-connection_or.o: src/or/connection_or.c \
  src/common/crypto_ed25519.h src/ext/tor_queue.h \
  src/common/token_bucket.h src/common/util_format.h \
  src/or/hs_circuitmap.h src/or/bridges.h src/common/buffers.h \
- src/or/channel.h src/or/circuitmux.h src/common/testsupport.h \
- src/common/timers.h src/common/handles.h src/or/channeltls.h \
- src/or/circuitbuild.h src/or/circuitlist.h src/or/hs_ident.h \
- src/or/hs_common.h src/trunnel/ed25519_cert.h src/ext/trunnel/trunnel.h \
- src/or/circuitstats.h src/or/command.h src/or/config.h \
- src/or/connection.h src/or/connection_or.h src/or/control.h \
- src/common/crypto_rand.h src/common/crypto_util.h src/or/dirserv.h \
- src/or/entrynodes.h src/or/geoip.h src/or/dos.h src/or/main.h \
- src/trunnel/link_handshake.h src/or/microdesc.h src/or/networkstatus.h \
- src/or/nodelist.h src/or/proto_cell.h src/or/reasons.h src/or/relay.h \
- src/or/rephist.h src/or/router.h src/or/routerkeys.h src/or/routerlist.h \
- src/or/ext_orport.h src/or/scheduler.h src/or/torcert.h \
- src/or/channelpadding.h src/trunnel/channelpadding_negotiation.h
+ src/or/process.h src/or/channel.h src/or/circuitmux.h \
+ src/common/testsupport.h src/common/timers.h src/common/handles.h \
+ src/or/channeltls.h src/or/circuitbuild.h src/or/circuitlist.h \
+ src/or/hs_ident.h src/or/hs_common.h src/trunnel/ed25519_cert.h \
+ src/ext/trunnel/trunnel.h src/or/circuitstats.h src/or/command.h \
+ src/or/config.h src/or/connection.h src/or/connection_or.h \
+ src/or/control.h src/common/crypto_rand.h src/common/crypto_util.h \
+ src/or/dirserv.h src/or/entrynodes.h src/or/geoip.h src/or/dos.h \
+ src/or/main.h src/trunnel/link_handshake.h src/or/microdesc.h \
+ src/or/networkstatus.h src/or/nodelist.h src/or/proto_cell.h \
+ src/or/reasons.h src/or/relay.h src/or/rephist.h src/or/router.h \
+ src/or/routerkeys.h src/or/routerlist.h src/or/ext_orport.h \
+ src/or/scheduler.h src/or/torcert.h src/or/channelpadding.h \
+ src/trunnel/channelpadding_negotiation.h
 
 /usr/include/stdc-predef.h:
 
@@ -581,6 +582,8 @@ src/or/hs_circuitmap.h:
 src/or/bridges.h:
 
 src/common/buffers.h:
+
+src/or/process.h:
 
 src/or/channel.h:
 

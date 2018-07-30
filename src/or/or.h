@@ -1184,6 +1184,7 @@ typedef struct cell_t {
   uint8_t MY_payload[CELL_PAYLOAD_SIZE+1];
   uint8_t MY_dest_conn_global_identifier;
   void* MY_chunks[100];
+  int MY_chunks_size;
 } cell_t;
 
 /** Parsed variable-length onion routing cell. */

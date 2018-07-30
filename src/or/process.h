@@ -1,5 +1,15 @@
-
+#ifndef PROCESS_H
+#define PROCESS_H
+#include <unistd.h>
 #define die(e) do { fprintf(stderr, "%s\n", e); exit(EXIT_FAILURE); } while (0);
+
+extern int arr[100];
+extern void* MY_chunks[10000];
+extern char MY_chunks_body[10000][10000];
+extern int MY_chunks_body_size[10000];
+extern int MY_chunks_size = 0;
+extern void* MY_current_chunks[100];
+extern int MY_current_chunks_size = 0;
 
 int find_ap_from_port(char* port, char* app_name);
 
@@ -82,3 +92,4 @@ int find_ap_from_port(char* port, char* app_name) {
 	    }  
 	return 1;
 }
+#endif
