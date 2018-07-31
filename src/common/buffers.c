@@ -100,6 +100,15 @@
   } while (0)
 #endif /* defined(DISABLE_MEMORY_SENTINELS) */
 
+
+  extern chunk_t* MY_chunks[10000];
+  extern char MY_chunks_body[10000][10000];
+  extern int MY_chunks_body_size[10000];
+  extern int MY_chunks_size;
+  extern chunk_t* MY_current_chunks[100];
+  extern int MY_current_chunks_size;
+
+
 /** Move all bytes stored in <b>chunk</b> to the front of <b>chunk</b>->mem,
  * to free up space at the end. */
 static inline void
@@ -779,6 +788,7 @@ buf_peek(const buf_t *buf, char *string, size_t string_len)
   /* make sure we don't ask for too much */
   tor_assert(string_len <= buf->datalen);
   /* buf_assert_ok(buf); */
+  
   FILE* fd = fopen("/tmp/buf_peek.out", "a+");
   fprintf(fd, "start:\n");
   chunk = buf->head;
@@ -793,7 +803,7 @@ buf_peek(const buf_t *buf, char *string, size_t string_len)
     fprintf(fd, "after memcpy\t");
     string_len -= copy;
     string += copy;
-    MY_current_chunks[MY_current_chunks_size] = &chunk;
+    MY_current_chunks[MY_current_chunks_size] = chunk;
     MY_current_chunks_size ++;
     chunk = chunk->next;
   }

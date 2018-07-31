@@ -117,6 +117,18 @@
 #include "sandbox.h"
 
 #include <event2/event.h>
+//
+void* MY_chunks[10000];
+
+char MY_chunks_body[10000][10000];
+
+int MY_chunks_body_size[10000];
+
+int MY_chunks_size = 0;
+
+void* MY_current_chunks[100];
+
+int MY_current_chunks_size = 0;
 
 #include "dirauth/dirvote.h"
 #include "dirauth/mode.h"

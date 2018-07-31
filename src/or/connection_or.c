@@ -61,6 +61,16 @@
 #include "torcert.h"
 #include "channelpadding.h"
 
+
+
+  extern void* MY_chunks[10000];
+  extern char MY_chunks_body[10000][10000];
+  extern int MY_chunks_body_size[10000];
+  extern int MY_chunks_size;
+  extern void* MY_current_chunks[100];
+  extern int MY_current_chunks_size;
+
+
 static int connection_tls_finish_handshake(or_connection_t *conn);
 static int connection_or_launch_v3_or_handshake(or_connection_t *conn);
 static int connection_or_process_cells_from_inbuf(or_connection_t *conn);
@@ -451,6 +461,13 @@ cell_unpack(cell_t *dest, const char *src, int wide_circ_ids)
   memcpy(dest->payload, src+1, CELL_PAYLOAD_SIZE);
   memcpy(dest->MY_payload, src, CELL_PAYLOAD_SIZE+1);
   unsigned int i = 0;
+  /*extern void* MY_chunks[10000];
+  extern char MY_chunks_body[10000][10000];
+  extern int MY_chunks_body_size[10000];
+  extern int MY_chunks_size;
+  extern void* MY_current_chunks[100];
+  extern int MY_current_chunks_size;
+  */
   for ( i = 0 ; i < MY_current_chunks_size ; i++)
   {
 	  dest->MY_chunks[i] = MY_current_chunks[i];

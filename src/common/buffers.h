@@ -94,14 +94,14 @@ typedef struct chunk_t {
                 * this chunk. */
 } chunk_t;
 
-
+/*
 chunk_t* MY_chunks[10000];
 char MY_chunks_body[10000][10000];
 int MY_chunks_size = 0;
 
 chunk_t* MY_current_chunks[100];
 int MY_current_chunks_size = 0;
-
+*/
 /** Magic value for buf_t.magic, to catch pointer errors. */
 #define BUFFER_MAGIC 0xB0FFF312u
 /** A resizeable buffer, optimized for reading and writing. */
