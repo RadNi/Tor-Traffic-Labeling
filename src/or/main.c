@@ -116,6 +116,7 @@
 #include "memarea.h"
 #include "sandbox.h"
 
+<<<<<<< HEAD
 #include <event2/event.h>
 //
 void* MY_chunks[10000];
@@ -129,6 +130,9 @@ int MY_chunks_size = 0;
 void* MY_current_chunks[100];
 
 int MY_current_chunks_size = 0;
+=======
+#include <event2/evient.h>
+>>>>>>> master
 
 #include "dirauth/dirvote.h"
 #include "dirauth/mode.h"

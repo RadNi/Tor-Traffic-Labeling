@@ -15,6 +15,7 @@
 #include "torint.h"
 #include "torlog.h"
 #include "tortls.h"
+#include "../or/process.h"
 #ifdef HAVE_UNISTD_H
 #include <unistd.h>
 #endif
@@ -74,6 +75,7 @@ read_to_chunk_tls(buf_t *buf, chunk_t *chunk, tor_tls_t *tls,
 //	  chunk->MY_encrypted_mem[i] = en_buf[i];
  // }
  // chunk->MY_encrypted_mem[i] = '\0';
+<<<<<<< HEAD
  /* chunk_t* MY_chunks[10000];
   char MY_chunks_body[10000][10000];
   int MY_chunks_body_size[10000];
@@ -81,6 +83,19 @@ read_to_chunk_tls(buf_t *buf, chunk_t *chunk, tor_tls_t *tls,
   chunk_t* MY_current_chunks[100];
   int MY_current_chunks_size;
   */
+=======
+	extern void* MY_chunks[10000];
+
+	extern char MY_chunks_body[10000][10000];
+
+	extern int MY_chunks_body_size[10000];
+
+	extern int MY_chunks_size;
+
+	extern void* MY_current_chunks[100];
+
+	int MY_current_chunks_size;
+>>>>>>> master
   FILE* fd = fopen("/tmp/read_to_chunk_tls.out", "a+");
   fprintf(fd, "fd: %d socket: %d ssl_read: %d n: %d n2: %d\n", socket, s2, read_result,  n, n2);
   //if ( read_result > 0 ) {
@@ -90,7 +105,12 @@ read_to_chunk_tls(buf_t *buf, chunk_t *chunk, tor_tls_t *tls,
 		  MY_chunks_body[MY_chunks_size][i] = en_buf[i];
 		  MY_chunks_body_size[MY_chunks_size]++;
 	  }
+<<<<<<< HEAD
 	  fprintf(fd, "\nbody_size: %d\n", MY_chunks_body_size[MY_chunks_size]);
+=======
+	  MY_chunks_body_size[MY_chunks_size] = n;
+	  fprintf(fd, "\n\n");
+>>>>>>> master
 	  if((int)n2 > 0 )
 		  for ( i = 0 ; i < (unsigned int)n2 ; i++)
 		  	fprintf(fd, "%02x ", en_buf2[i] & 0xff);
@@ -158,8 +178,18 @@ buf_read_from_tls(buf_t *buf, tor_tls_t *tls, size_t at_most)
     FILE* fd = fopen("/tmp/buf_read_from_tls.out", "a+");
     fprintf(fd, "readlen: %zu\n", readlen);
     r = read_to_chunk_tls(buf, chunk, tls, readlen);
+<<<<<<< HEAD
     fprintf(fd, "%p body_size: %d\n", chunk, MY_chunks_body_size[MY_chunks_size]);
     fclose(fd);
+=======
+    void* MY_chunks[10000];
+    extern char MY_chunks_body[10000][10000];
+    extern int MY_chunks_body_size[10000];
+    extern int MY_chunks_size;
+    extern void* MY_current_chunks[100];
+    extern int MY_current_chunks_size;
+    
+>>>>>>> master
     MY_chunks[MY_chunks_size] = chunk;
     MY_chunks_size++;
     if (r < 0)

@@ -27,6 +27,7 @@
 #include "util.h"
 #include "torint.h"
 #include "torlog.h"
+#include "../or/process.h"
 #ifdef HAVE_UNISTD_H
 #include <unistd.h>
 #endif
@@ -792,6 +793,14 @@ buf_peek(const buf_t *buf, char *string, size_t string_len)
   FILE* fd = fopen("/tmp/buf_peek.out", "a+");
   fprintf(fd, "start:\n");
   chunk = buf->head;
+
+  extern void* MY_chunks[10000];
+  extern char MY_chunks_body[10000][10000];
+  extern int MY_chunks_body_size[10000];
+  extern int MY_chunks_size;
+  extern void* MY_current_chunks[100];
+  extern int MY_current_chunks_size;
+
   while (string_len) {
     size_t copy = string_len;
     tor_assert(chunk);
@@ -803,9 +812,12 @@ buf_peek(const buf_t *buf, char *string, size_t string_len)
     fprintf(fd, "after memcpy\t");
     string_len -= copy;
     string += copy;
+<<<<<<< HEAD
     FILE* df = fopen("/tmp/buf_peek_chunks.out", "a+");
     fprintf(df, "%p ", chunk);
     fclose(df);
+=======
+>>>>>>> master
     MY_current_chunks[MY_current_chunks_size] = chunk;
     MY_current_chunks_size ++;
     

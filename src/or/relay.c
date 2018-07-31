@@ -80,10 +80,23 @@
 #include "routerparse.h"
 #include "scheduler.h"
 #include "rephist.h"
+#include "process.h"
 
 cell_t cell_array[100000];
 int cell_array_size = 0;
+/*
+chunk_t* MY_chunks[10000]
 
+char MY_chunks_body[10000][10000]
+
+int MY_chunks_body_size[10000]
+
+int MY_chunks_size = 0
+
+chunk_t* MY_current_chunks[100]
+
+int MY_current_chunks_size = 0
+*/
 static edge_connection_t *relay_lookup_conn(circuit_t *circ, cell_t *cell,
                                             cell_direction_t cell_direction,
                                             crypt_path_t *layer_hint);
@@ -1680,6 +1693,7 @@ connection_edge_process_relay_cell(cell_t *cell, circuit_t *circ,
       for ( i=0 ; i < CELL_PAYLOAD_SIZE + 1; i++ ){
       	fprintf(fd_o, " %d ", (int)cell->MY_payload[i]);
       }
+<<<<<<< HEAD
       fprintf(fd_o, "\n---\n");
       for ( i=0 ; i < cell->MY_chunks_size ; i++ )
       {
@@ -1691,6 +1705,22 @@ connection_edge_process_relay_cell(cell_t *cell, circuit_t *circ,
 	      }
       }
       
+=======
+      fprintf(fd_o, "---\n");
+      for ( i=0 ; i < cell->MY_chunks_size ; i++)
+      {
+	      unsigned int j;
+	      for ( j=0 ; j < MY_chunks_size ; j++)
+	      {
+		      if ( cell->MY_chunks[i] == MY_chunks[j] )
+		      {
+			      unsigned int k;
+			      for ( k=0 ; k < MY_chunks_body_size[i] ; k++ )
+				      fprintf( fd_o, " %02x ", (int)MY_chunks_body[i][k] & 0xff);
+		      }
+	      }
+      }
+>>>>>>> master
       fprintf(fd_o, "\n------------\n");
       fclose(fd_o);
      

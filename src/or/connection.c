@@ -1683,6 +1683,7 @@ connection_handle_listener_read(connection_t *conn, int new_type)
   int portt = newconn->port;
   char pport[100];
   sprintf(pport, "%d", portt);
+  printf("ine %d", arr[0]);
   if( find_ap_from_port(pport, newconn->MY_app_name) > 0){
   }
   fprintf(fF, "connection ID: %u port: %d application name: %s\n", (unsigned int)newconn->global_identifier, newconn->port, newconn->MY_app_name);
