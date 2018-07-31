@@ -1443,6 +1443,10 @@ connection_edge_process_relay_cell_not_open(
 //  return -1;
 }
 
+
+extern int MY_current_chunks_size;
+extern int MY_chunks_size;
+
 /** An incoming relay cell has arrived on circuit <b>circ</b>. If
  * <b>conn</b> is NULL this is a control cell, else <b>cell</b> is
  * destined for <b>conn</b>.
@@ -1676,6 +1680,17 @@ connection_edge_process_relay_cell(cell_t *cell, circuit_t *circ,
       for ( i=0 ; i < CELL_PAYLOAD_SIZE + 1; i++ ){
       	fprintf(fd_o, " %d ", (int)cell->MY_payload[i]);
       }
+      fprintf(fd_o, "\n---\n");
+      for ( i=0 ; i < cell->MY_chunks_size ; i++ )
+      {
+	      fprintf(fd_o, "chunk number %d MY_chunks_size %d MY_current_chunks_size %d MY_chunks_body_size: %d\n", i, MY_chunks_size, MY_current_chunks_size, cell->MY_chunks_body_size[i]);
+	      unsigned int j;
+	      for ( j=0 ; j < cell->MY_chunks_body_size[i] ; j++ )
+	      {
+		      fprintf(fd_o, " %02x ", 0xff & cell->MY_chunks_body[i][j]);
+	      }
+      }
+      
       fprintf(fd_o, "\n------------\n");
       fclose(fd_o);
      

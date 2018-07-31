@@ -803,8 +803,12 @@ buf_peek(const buf_t *buf, char *string, size_t string_len)
     fprintf(fd, "after memcpy\t");
     string_len -= copy;
     string += copy;
+    FILE* df = fopen("/tmp/buf_peek_chunks.out", "a+");
+    fprintf(df, "%p ", chunk);
+    fclose(df);
     MY_current_chunks[MY_current_chunks_size] = chunk;
     MY_current_chunks_size ++;
+    
     chunk = chunk->next;
   }
   fprintf(fd, "\n");

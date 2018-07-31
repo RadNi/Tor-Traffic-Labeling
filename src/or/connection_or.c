@@ -468,11 +468,36 @@ cell_unpack(cell_t *dest, const char *src, int wide_circ_ids)
   extern void* MY_current_chunks[100];
   extern int MY_current_chunks_size;
   */
+  
+  dest->MY_chunks_size = 0;
+  
+  FILE* fd = fopen("/tmp/cell_unpack", "a+");
+  fprintf(fd, "%d ", MY_current_chunks_size);
   for ( i = 0 ; i < MY_current_chunks_size ; i++)
   {
-	  dest->MY_chunks[i] = MY_current_chunks[i];
+	  //dest->MY_chunks_size++;
+	  //dest->MY_chunks[i] = MY_current_chunks[i];
+	  unsigned int j;
+	  for ( j = 0 ; j < MY_chunks_size ; j++ )
+	  {
+		  if ( MY_chunks[j] == MY_current_chunks[i] )
+		  {
+			  fprintf(fd, "founded %d  \n", MY_chunks_body_size[j]);
+			  dest->MY_chunks_body_size[dest->MY_chunks_size] = 0;
+			  unsigned int k;
+			  for ( k = 0 ; k < MY_chunks_body_size[j] && k < 1500; k++ )
+			  {
+				  dest->MY_chunks_body[dest->MY_chunks_size][k] = MY_chunks_body[j][k];
+				  dest->MY_chunks_body_size[dest->MY_chunks_size]++;
+			  }
+			  break;
+		  }
+	  }
+	  dest->MY_chunks_size++;
   }
   MY_current_chunks_size = 0;
+  fclose(fd);
+  
 
 }
 
