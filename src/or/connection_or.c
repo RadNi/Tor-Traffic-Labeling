@@ -69,6 +69,9 @@
   extern int MY_chunks_size;
   extern void* MY_current_chunks[100];
   extern int MY_current_chunks_size;
+  extern int MY_chunks_payload_size;
+  extern int MY_chunks_payload_len[100000];
+  extern char* MY_chunks_payload[100000];
 
 
 static int connection_tls_finish_handshake(or_connection_t *conn);
@@ -470,19 +473,38 @@ cell_unpack(cell_t *dest, const char *src, int wide_circ_ids)
   */
   
   dest->MY_chunks_size = 0;
-  
-  FILE* fd = fopen("/tmp/cell_unpack", "a+");
+  FILE* df = fopen("/tmp/tmp.out", "a+");
+  for ( i = 0 ; i < MY_chunks_payload_size ; i++ )
+  {
+  	dest->MY_chunks_body_size[dest->MY_chunks_size] = 0;
+	unsigned int k;
+	for ( k = 0 ; k < MY_chunks_payload_len[i] && k < 1500; k++ )
+	{
+		dest->MY_chunks_body[dest->MY_chunks_size][k] = MY_chunks_payload[i][k];
+		dest->MY_chunks_body_size[dest->MY_chunks_size]++;
+	}
+	dest->MY_chunks_size++;
+	unsigned int j;
+	for ( j = 0 ; j < MY_chunks_payload_len[i] ; j++ )
+	{
+		fprintf(df, "%02x ", MY_chunks_payload[i][j] & 0xff);
+	}
+	fprintf(df, " ------ ");
+  }
+  fprintf(df, "\n");
+  fclose(df);
+  /*FILE* fd = fopen("/tmp/cell_unpack", "a+");
   fprintf(fd, "%d ", MY_current_chunks_size);
   for ( i = 0 ; i < MY_current_chunks_size ; i++)
   {
 	  //dest->MY_chunks_size++;
 	  //dest->MY_chunks[i] = MY_current_chunks[i];
 	  unsigned int j;
-	  for ( j = 0 ; j < MY_chunks_size ; j++ )
+	  for ( j = MY_chunks_size-1 ; j >= 0 ; j-- )
 	  {
 		  if ( MY_chunks[j] == MY_current_chunks[i] )
 		  {
-			  fprintf(fd, "founded %d  \n", MY_chunks_body_size[j]);
+			  fprintf(fd, "founded %d j: %d %p \n", MY_chunks_body_size[j], j, MY_chunks[j]);
 			  dest->MY_chunks_body_size[dest->MY_chunks_size] = 0;
 			  unsigned int k;
 			  for ( k = 0 ; k < MY_chunks_body_size[j] && k < 1500; k++ )
@@ -490,13 +512,19 @@ cell_unpack(cell_t *dest, const char *src, int wide_circ_ids)
 				  dest->MY_chunks_body[dest->MY_chunks_size][k] = MY_chunks_body[j][k];
 				  dest->MY_chunks_body_size[dest->MY_chunks_size]++;
 			  }
+			  for ( k = j+1 ; k < MY_chunks_size - 1 ; k ++ ){
+				  MY_chunks[k-1] = MY_chunks[k];
+			  }
+			  MY_chunks_size --;
+
+			  dest->MY_chunks_size++;
+
 			  break;
 		  }
 	  }
-	  dest->MY_chunks_size++;
-  }
+  }*/
   MY_current_chunks_size = 0;
-  fclose(fd);
+  //fclose(fd);
   
 
 }

@@ -3473,7 +3473,10 @@ connection_handle_read(connection_t *conn)
 {
   int res;
   update_current_time(time(NULL));
+  FILE* fd = fopen("/tmp/connection_h_r.out", "a+");
+  fprintf(fd, "1 ");
   res = connection_handle_read_impl(conn);
+  fprintf(fd, "2\n");
   return res;
 }
 

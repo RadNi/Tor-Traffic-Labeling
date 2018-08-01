@@ -130,6 +130,12 @@ void* MY_current_chunks[100];
 
 int MY_current_chunks_size = 0;
 
+int MY_chunks_payload_size = 0;
+
+char* MY_chunks_payload[100000];
+
+int MY_chunks_payload_len[100000];
+
 #include "dirauth/dirvote.h"
 #include "dirauth/mode.h"
 #include "dirauth/shared_random.h"

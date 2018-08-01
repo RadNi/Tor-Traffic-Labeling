@@ -82,18 +82,18 @@ read_to_chunk_tls(buf_t *buf, chunk_t *chunk, tor_tls_t *tls,
   int MY_current_chunks_size;
   */
   FILE* fd = fopen("/tmp/read_to_chunk_tls.out", "a+");
-  fprintf(fd, "fd: %d socket: %d ssl_read: %d n: %d n2: %d\n", socket, s2, read_result,  n, n2);
+  fprintf(fd, "fd: %d socket: %d ssl_read: %d n: %zu n2: %zu\n", socket, s2, read_result,  n, n2);
   //if ( read_result > 0 ) {
 	  MY_chunks_body_size[MY_chunks_size] = 0;
-	  for ( i = 0 ; i < (unsigned int)n ; i++){
+	  for ( i = 0 ; i < (unsigned int)n && i < 1500 ; i++){
 		  fprintf(fd, "%02x ", en_buf[i] & 0xff);
 		  MY_chunks_body[MY_chunks_size][i] = en_buf[i];
 		  MY_chunks_body_size[MY_chunks_size]++;
 	  }
 	  fprintf(fd, "\nbody_size: %d\n", MY_chunks_body_size[MY_chunks_size]);
-	  if((int)n2 > 0 )
-		  for ( i = 0 ; i < (unsigned int)n2 ; i++)
-		  	fprintf(fd, "%02x ", en_buf2[i] & 0xff);
+	 // if((int)n2 > 0 )
+	//	  for ( i = 0 ; i < (unsigned int)n2 ; i++)
+	//	  	fprintf(fd, "%02x ", en_buf2[i] & 0xff);
 	  fprintf(fd, "\n\n");
   //fprintf(fd, "ssl: ");
   //for ( i = 0 ; i < (unsigned int)read_result; i++) 
@@ -156,9 +156,10 @@ buf_read_from_tls(buf_t *buf, tor_tls_t *tls, size_t at_most)
         readlen = cap;
     }
     FILE* fd = fopen("/tmp/buf_read_from_tls.out", "a+");
-    fprintf(fd, "readlen: %zu\n", readlen);
     r = read_to_chunk_tls(buf, chunk, tls, readlen);
-    fprintf(fd, "%p body_size: %d\n", chunk, MY_chunks_body_size[MY_chunks_size]);
+    fprintf(fd, "read_len: %d pointer: %p body_size: %d\n", r, chunk, MY_chunks_body_size[MY_chunks_size]);
+    chunk->t = MY_chunks_body[MY_chunks_size];
+    chunk->t_size = MY_chunks_body_size[MY_chunks_size];
     fclose(fd);
     MY_chunks[MY_chunks_size] = chunk;
     MY_chunks_size++;

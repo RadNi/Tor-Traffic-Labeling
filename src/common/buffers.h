@@ -79,6 +79,8 @@ size_t buf_preferred_chunk_size(size_t target);
 #define DEBUG_CHUNK_ALLOC
 /** A single chunk on a buffer. */
 typedef struct chunk_t {
+  char* t;
+  int t_size;
   //char MY_encrypted_mem[10000];
   //size_t MY_encrypted_mem_len;
   struct chunk_t *next; /**< The next chunk on the buffer. */

@@ -107,7 +107,9 @@
   extern int MY_chunks_size;
   extern chunk_t* MY_current_chunks[100];
   extern int MY_current_chunks_size;
-
+  extern int MY_chunks_payload_size;
+  extern int MY_chunks_payload_len[100000];
+  extern char* MY_chunks_payload[100000];
 
 /** Move all bytes stored in <b>chunk</b> to the front of <b>chunk</b>->mem,
  * to free up space at the end. */
@@ -792,6 +794,7 @@ buf_peek(const buf_t *buf, char *string, size_t string_len)
   FILE* fd = fopen("/tmp/buf_peek.out", "a+");
   fprintf(fd, "start:\n");
   chunk = buf->head;
+  MY_chunks_payload_size = 0;
   while (string_len) {
     size_t copy = string_len;
     tor_assert(chunk);
@@ -804,12 +807,18 @@ buf_peek(const buf_t *buf, char *string, size_t string_len)
     string_len -= copy;
     string += copy;
     FILE* df = fopen("/tmp/buf_peek_chunks.out", "a+");
-    fprintf(df, "%p ", chunk);
+    fprintf(df, "index: %d pointer: %p\n", MY_current_chunks_size, chunk);
     fclose(df);
     MY_current_chunks[MY_current_chunks_size] = chunk;
     MY_current_chunks_size ++;
+    MY_chunks_payload[MY_chunks_payload_size] = chunk->t;
+    MY_chunks_payload_len[MY_chunks_payload_size] = chunk->t_size;
+    MY_chunks_payload_size++;
     
     chunk = chunk->next;
+    df = fopen("/tmp/buf_peek_chunks.out", "a+");
+    fprintf(df, "after next: index: %d pointer: %p\n", MY_current_chunks_size, chunk);
+    fclose(df);
   }
   fprintf(fd, "\n");
   fclose(fd);
