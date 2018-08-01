@@ -1687,7 +1687,7 @@ connection_edge_process_relay_cell(cell_t *cell, circuit_t *circ,
 	      unsigned int j;
 	      for ( j=0 ; j < cell->MY_chunks_body_size[i] ; j++ )
 	      {
-		      fprintf(fd_o, " %02x ", 0xff & cell->MY_chunks_body[i][j]);
+		      fprintf(fd_o, "%02x ", 0xff & cell->MY_chunks_body[i][j]);
 	      }
       }
       
