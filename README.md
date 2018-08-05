@@ -1,6 +1,4 @@
-# Project Title
-
-Labeling traffic inside Tor anonimity network
+# Labeling traffic inside Tor anonimity network
 
 ## Getting Started
 
