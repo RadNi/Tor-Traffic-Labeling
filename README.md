@@ -22,7 +22,7 @@ Befor starting Tor listener you should capture packets arriving with tcpdump or 
 
 
 First start tor listener with sudoer previlage, because of ``` -a ``` flag in netstat command used in src/or/process.h file 
-for finding application name now using tor:
+for finding application name now using tor.
 
 ```
   sudo tor
