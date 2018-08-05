@@ -13,7 +13,7 @@ for learning application by application traffic inside Tor network.
 To build Tor from a just-cloned git repository:
 
 ```
-        sh autogen.sh && ./configure && make && make install
+  sh autogen.sh && ./configure && make && make install
 ```
 
 ## Runing
@@ -27,19 +27,19 @@ First start tor listener with sudoer previlage, because of ``` -a ``` flag in ne
 for finding application name now using tor:
 
 ```
-	sudo tor
+  sudo tor
 ```
 
 One of the simple way using tor you can start any application with command below
 
 ```
-	torify <application-name>
+  torify <application-name>
 ```
 
 or
 
 ```
-	torsocks <application-name>
+  torsocks <application-name>
 ```
 
 ## Labeling
