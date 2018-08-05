@@ -1,31 +1,55 @@
+# Project Title
+
+Labeling traffic inside Tor anonimity network
+
+## Getting Started
+
 In this fork of torproject our goal is to lable traffic inside tor.
 after labeling tor traffic we want to impelement a specefic neural network
 for learning application by application traffic inside Tor network.
 
-To build Tor from source:
-        ./configure && make && make install
+### Installing
 
 To build Tor from a just-cloned git repository:
+
+```
         sh autogen.sh && ./configure && make && make install
+```
 
-Home page:
-        https://www.torproject.org/
+## Runing
 
-Download new versions:
-        https://www.torproject.org/download/download.html
+In this version labeling mechanism only support socks5 tunneling.
 
-Documentation, including links to installation and setup instructions:
-        https://www.torproject.org/docs/documentation.html
-
-Making applications work with Tor:
-        https://wiki.torproject.org/projects/tor/wiki/doc/TorifyHOWTO
-
-Frequently Asked Questions:
-        https://www.torproject.org/docs/faq.html
+Befor starting Tor listener you should capture packets arriving with tcpdump or wireshark.
 
 
-To get started working on Tor development:
-        See the doc/HACKING directory.
+First start tor listener with sudoer previlage, because of ``` -a ``` flag in netstat command used in src/or/process.h file 
+for finding application name now using tor:
 
-Release timeline:
-         https://trac.torproject.org/projects/tor/wiki/org/teams/NetworkTeam/CoreTorReleases
+```
+	sudo tor
+```
+
+One of the simple way using tor you can start any application with command below
+
+```
+	torify <application-name>
+```
+
+or
+
+```
+	torsocks <application-name>
+```
+
+## Labeling
+
+the python script in ```tor_labeling``` directory will give ```.pcap``` file from tcpdump and ```/tmp/lables_cell.out``` and 
+write the packet lalels in ordering of ```.pcap``` file.
+
+## Issues
+
+Now only we can label inbound traffic. For outbound buffers we have problem for finding the exact bytes is writing in socket
+after SSL encryption.
+
+
