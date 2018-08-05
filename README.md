@@ -1,4 +1,4 @@
-# Labeling traffic inside Tor anonimity network
+# Labeling traffic inside Tor anonymity network
 
 ## Getting Started
 
