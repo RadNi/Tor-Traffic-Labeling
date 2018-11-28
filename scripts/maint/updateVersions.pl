@@ -1,8 +1,8 @@
 #!/usr/bin/perl -w
 
-$CONFIGURE_IN = '/home/user/git/gitweb.tor/tor/configure.ac';
-$ORCONFIG_H = '/home/user/git/gitweb.tor/tor/src/win32/orconfig.h';
-$TOR_NSI = '/home/user/git/gitweb.tor/tor/contrib/win32build/tor-mingw.nsi.in';
+$CONFIGURE_IN = '/home/farid/Programming/Tor-Traffic-Labeling/configure.ac';
+$ORCONFIG_H = '/home/farid/Programming/Tor-Traffic-Labeling/src/win32/orconfig.h';
+$TOR_NSI = '/home/farid/Programming/Tor-Traffic-Labeling/contrib/win32build/tor-mingw.nsi.in';
 
 $quiet = 1;
 

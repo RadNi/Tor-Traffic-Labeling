@@ -1,6 +1,6 @@
 src/common/src_common_libor_testing_a-compat.o: src/common/compat.c \
  /usr/include/stdc-predef.h src/common/compat.h orconfig.h \
- src/common/torint.h /usr/lib/gcc/x86_64-linux-gnu/6/include/stdint.h \
+ src/common/torint.h /usr/lib/gcc/x86_64-linux-gnu/5/include/stdint.h \
  /usr/include/stdint.h /usr/include/features.h \
  /usr/include/x86_64-linux-gnu/sys/cdefs.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
@@ -10,7 +10,7 @@ src/common/src_common_libor_testing_a-compat.o: src/common/compat.c \
  /usr/include/x86_64-linux-gnu/sys/types.h \
  /usr/include/x86_64-linux-gnu/bits/types.h \
  /usr/include/x86_64-linux-gnu/bits/typesizes.h /usr/include/time.h \
- /usr/lib/gcc/x86_64-linux-gnu/6/include/stddef.h /usr/include/endian.h \
+ /usr/lib/gcc/x86_64-linux-gnu/5/include/stddef.h /usr/include/endian.h \
  /usr/include/x86_64-linux-gnu/bits/endian.h \
  /usr/include/x86_64-linux-gnu/bits/byteswap.h \
  /usr/include/x86_64-linux-gnu/bits/byteswap-16.h \
@@ -21,15 +21,15 @@ src/common/src_common_libor_testing_a-compat.o: src/common/compat.c \
  /usr/include/x86_64-linux-gnu/bits/select2.h \
  /usr/include/x86_64-linux-gnu/sys/sysmacros.h \
  /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
- /usr/lib/gcc/x86_64-linux-gnu/6/include-fixed/limits.h \
- /usr/lib/gcc/x86_64-linux-gnu/6/include-fixed/syslimits.h \
+ /usr/lib/gcc/x86_64-linux-gnu/5/include-fixed/limits.h \
+ /usr/lib/gcc/x86_64-linux-gnu/5/include-fixed/syslimits.h \
  /usr/include/limits.h /usr/include/x86_64-linux-gnu/bits/posix1_lim.h \
  /usr/include/x86_64-linux-gnu/bits/local_lim.h \
  /usr/include/linux/limits.h \
  /usr/include/x86_64-linux-gnu/bits/posix2_lim.h \
  /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
  /usr/include/x86_64-linux-gnu/bits/stdio_lim.h /usr/include/inttypes.h \
- /usr/lib/gcc/x86_64-linux-gnu/6/include/stdbool.h \
+ /usr/lib/gcc/x86_64-linux-gnu/5/include/stdbool.h \
  src/common/testsupport.h /usr/include/x86_64-linux-gnu/sys/param.h \
  /usr/include/signal.h /usr/include/x86_64-linux-gnu/bits/signum.h \
  /usr/include/x86_64-linux-gnu/bits/siginfo.h \
@@ -46,7 +46,7 @@ src/common/src_common_libor_testing_a-compat.o: src/common/compat.c \
  /usr/include/string.h /usr/include/x86_64-linux-gnu/bits/string.h \
  /usr/include/x86_64-linux-gnu/bits/string2.h /usr/include/stdlib.h \
  /usr/include/x86_64-linux-gnu/bits/string3.h \
- /usr/lib/gcc/x86_64-linux-gnu/6/include/stdarg.h \
+ /usr/lib/gcc/x86_64-linux-gnu/5/include/stdarg.h \
  /usr/include/x86_64-linux-gnu/sys/resource.h \
  /usr/include/x86_64-linux-gnu/bits/resource.h \
  /usr/include/x86_64-linux-gnu/sys/socket.h \
@@ -71,7 +71,7 @@ src/common/src_common_libor_testing_a-compat.o: src/common/compat.c \
  src/common/compat_threads.h /usr/include/pthread.h /usr/include/sched.h \
  /usr/include/x86_64-linux-gnu/bits/sched.h \
  /usr/include/x86_64-linux-gnu/bits/setjmp.h \
- /usr/lib/gcc/x86_64-linux-gnu/6/include/stdatomic.h \
+ /usr/lib/gcc/x86_64-linux-gnu/5/include/stdatomic.h \
  /usr/include/x86_64-linux-gnu/sys/utsname.h \
  /usr/include/x86_64-linux-gnu/bits/utsname.h \
  /usr/include/x86_64-linux-gnu/sys/sysctl.h /usr/include/linux/sysctl.h \
@@ -90,17 +90,16 @@ src/common/src_common_libor_testing_a-compat.o: src/common/compat.c \
  /usr/include/grp.h /usr/include/arpa/inet.h \
  /usr/include/x86_64-linux-gnu/sys/statvfs.h \
  /usr/include/x86_64-linux-gnu/bits/statvfs.h \
- /usr/include/sys/capability.h /usr/include/x86_64-linux-gnu/asm/types.h \
+ src/ext/tor_readpassphrase.h /usr/include/x86_64-linux-gnu/sys/prctl.h \
+ /usr/include/linux/prctl.h /usr/include/x86_64-linux-gnu/asm/types.h \
  /usr/include/asm-generic/types.h /usr/include/asm-generic/int-ll64.h \
  /usr/include/x86_64-linux-gnu/asm/bitsperlong.h \
  /usr/include/asm-generic/bitsperlong.h /usr/include/linux/posix_types.h \
  /usr/include/linux/stddef.h \
  /usr/include/x86_64-linux-gnu/asm/posix_types.h \
  /usr/include/x86_64-linux-gnu/asm/posix_types_64.h \
- /usr/include/asm-generic/posix_types.h /usr/include/linux/capability.h \
- src/ext/tor_readpassphrase.h /usr/include/x86_64-linux-gnu/sys/prctl.h \
- /usr/include/linux/prctl.h /usr/include/netdb.h /usr/include/rpc/netdb.h \
- /usr/include/x86_64-linux-gnu/bits/netdb.h \
+ /usr/include/asm-generic/posix_types.h /usr/include/netdb.h \
+ /usr/include/rpc/netdb.h /usr/include/x86_64-linux-gnu/bits/netdb.h \
  /usr/include/x86_64-linux-gnu/bits/waitflags.h \
  /usr/include/x86_64-linux-gnu/bits/waitstatus.h /usr/include/alloca.h \
  /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h \
@@ -115,11 +114,7 @@ src/common/src_common_libor_testing_a-compat.o: src/common/compat.c \
  /usr/include/x86_64-linux-gnu/bits/syslog.h src/common/util.h \
  src/common/di_ops.h src/common/util_bug.h src/common/container.h \
  src/ext/siphash.h src/common/address.h src/common/sandbox.h \
- /usr/include/seccomp.h /usr/include/elf.h \
- /usr/include/x86_64-linux-gnu/bits/auxv.h \
- /usr/include/x86_64-linux-gnu/asm/unistd.h \
- /usr/include/x86_64-linux-gnu/asm/unistd_64.h /usr/include/linux/audit.h \
- /usr/include/linux/elf-em.h src/ext/strlcpy.c src/ext/strlcat.c
+ src/ext/strlcpy.c src/ext/strlcat.c
 
 /usr/include/stdc-predef.h:
 
@@ -129,7 +124,7 @@ orconfig.h:
 
 src/common/torint.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/6/include/stdint.h:
+/usr/lib/gcc/x86_64-linux-gnu/5/include/stdint.h:
 
 /usr/include/stdint.h:
 
@@ -153,7 +148,7 @@ src/common/torint.h:
 
 /usr/include/time.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/6/include/stddef.h:
+/usr/lib/gcc/x86_64-linux-gnu/5/include/stddef.h:
 
 /usr/include/endian.h:
 
@@ -177,9 +172,9 @@ src/common/torint.h:
 
 /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/6/include-fixed/limits.h:
+/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed/limits.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/6/include-fixed/syslimits.h:
+/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed/syslimits.h:
 
 /usr/include/limits.h:
 
@@ -197,7 +192,7 @@ src/common/torint.h:
 
 /usr/include/inttypes.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/6/include/stdbool.h:
+/usr/lib/gcc/x86_64-linux-gnu/5/include/stdbool.h:
 
 src/common/testsupport.h:
 
@@ -243,7 +238,7 @@ src/common/testsupport.h:
 
 /usr/include/x86_64-linux-gnu/bits/string3.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/6/include/stdarg.h:
+/usr/lib/gcc/x86_64-linux-gnu/5/include/stdarg.h:
 
 /usr/include/x86_64-linux-gnu/sys/resource.h:
 
@@ -313,7 +308,7 @@ src/common/compat_threads.h:
 
 /usr/include/x86_64-linux-gnu/bits/setjmp.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/6/include/stdatomic.h:
+/usr/lib/gcc/x86_64-linux-gnu/5/include/stdatomic.h:
 
 /usr/include/x86_64-linux-gnu/sys/utsname.h:
 
@@ -367,7 +362,11 @@ src/common/compat_threads.h:
 
 /usr/include/x86_64-linux-gnu/bits/statvfs.h:
 
-/usr/include/sys/capability.h:
+src/ext/tor_readpassphrase.h:
+
+/usr/include/x86_64-linux-gnu/sys/prctl.h:
+
+/usr/include/linux/prctl.h:
 
 /usr/include/x86_64-linux-gnu/asm/types.h:
 
@@ -388,14 +387,6 @@ src/common/compat_threads.h:
 /usr/include/x86_64-linux-gnu/asm/posix_types_64.h:
 
 /usr/include/asm-generic/posix_types.h:
-
-/usr/include/linux/capability.h:
-
-src/ext/tor_readpassphrase.h:
-
-/usr/include/x86_64-linux-gnu/sys/prctl.h:
-
-/usr/include/linux/prctl.h:
 
 /usr/include/netdb.h:
 
@@ -448,20 +439,6 @@ src/ext/siphash.h:
 src/common/address.h:
 
 src/common/sandbox.h:
-
-/usr/include/seccomp.h:
-
-/usr/include/elf.h:
-
-/usr/include/x86_64-linux-gnu/bits/auxv.h:
-
-/usr/include/x86_64-linux-gnu/asm/unistd.h:
-
-/usr/include/x86_64-linux-gnu/asm/unistd_64.h:
-
-/usr/include/linux/audit.h:
-
-/usr/include/linux/elf-em.h:
 
 src/ext/strlcpy.c:
 

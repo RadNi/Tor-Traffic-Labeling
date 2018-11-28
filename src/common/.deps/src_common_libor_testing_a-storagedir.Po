@@ -1,7 +1,7 @@
 src/common/src_common_libor_testing_a-storagedir.o: \
  src/common/storagedir.c /usr/include/stdc-predef.h \
  src/common/container.h src/common/util.h orconfig.h src/common/torint.h \
- /usr/lib/gcc/x86_64-linux-gnu/6/include/stdint.h /usr/include/stdint.h \
+ /usr/lib/gcc/x86_64-linux-gnu/5/include/stdint.h /usr/include/stdint.h \
  /usr/include/features.h /usr/include/x86_64-linux-gnu/sys/cdefs.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
  /usr/include/x86_64-linux-gnu/gnu/stubs.h \
@@ -10,7 +10,7 @@ src/common/src_common_libor_testing_a-storagedir.o: \
  /usr/include/x86_64-linux-gnu/sys/types.h \
  /usr/include/x86_64-linux-gnu/bits/types.h \
  /usr/include/x86_64-linux-gnu/bits/typesizes.h /usr/include/time.h \
- /usr/lib/gcc/x86_64-linux-gnu/6/include/stddef.h /usr/include/endian.h \
+ /usr/lib/gcc/x86_64-linux-gnu/5/include/stddef.h /usr/include/endian.h \
  /usr/include/x86_64-linux-gnu/bits/endian.h \
  /usr/include/x86_64-linux-gnu/bits/byteswap.h \
  /usr/include/x86_64-linux-gnu/bits/byteswap-16.h \
@@ -21,15 +21,15 @@ src/common/src_common_libor_testing_a-storagedir.o: \
  /usr/include/x86_64-linux-gnu/bits/select2.h \
  /usr/include/x86_64-linux-gnu/sys/sysmacros.h \
  /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
- /usr/lib/gcc/x86_64-linux-gnu/6/include-fixed/limits.h \
- /usr/lib/gcc/x86_64-linux-gnu/6/include-fixed/syslimits.h \
+ /usr/lib/gcc/x86_64-linux-gnu/5/include-fixed/limits.h \
+ /usr/lib/gcc/x86_64-linux-gnu/5/include-fixed/syslimits.h \
  /usr/include/limits.h /usr/include/x86_64-linux-gnu/bits/posix1_lim.h \
  /usr/include/x86_64-linux-gnu/bits/local_lim.h \
  /usr/include/linux/limits.h \
  /usr/include/x86_64-linux-gnu/bits/posix2_lim.h \
  /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
  /usr/include/x86_64-linux-gnu/bits/stdio_lim.h /usr/include/inttypes.h \
- /usr/lib/gcc/x86_64-linux-gnu/6/include/stdbool.h src/common/compat.h \
+ /usr/lib/gcc/x86_64-linux-gnu/5/include/stdbool.h src/common/compat.h \
  src/common/testsupport.h /usr/include/x86_64-linux-gnu/sys/param.h \
  /usr/include/signal.h /usr/include/x86_64-linux-gnu/bits/signum.h \
  /usr/include/x86_64-linux-gnu/bits/siginfo.h \
@@ -46,7 +46,7 @@ src/common/src_common_libor_testing_a-storagedir.o: \
  /usr/include/string.h /usr/include/x86_64-linux-gnu/bits/string.h \
  /usr/include/x86_64-linux-gnu/bits/string2.h /usr/include/stdlib.h \
  /usr/include/x86_64-linux-gnu/bits/string3.h \
- /usr/lib/gcc/x86_64-linux-gnu/6/include/stdarg.h \
+ /usr/lib/gcc/x86_64-linux-gnu/5/include/stdarg.h \
  /usr/include/x86_64-linux-gnu/sys/resource.h \
  /usr/include/x86_64-linux-gnu/bits/resource.h \
  /usr/include/x86_64-linux-gnu/sys/socket.h \
@@ -71,29 +71,15 @@ src/common/src_common_libor_testing_a-storagedir.o: \
  src/common/compat_threads.h /usr/include/pthread.h /usr/include/sched.h \
  /usr/include/x86_64-linux-gnu/bits/sched.h \
  /usr/include/x86_64-linux-gnu/bits/setjmp.h \
- /usr/lib/gcc/x86_64-linux-gnu/6/include/stdatomic.h src/common/di_ops.h \
+ /usr/lib/gcc/x86_64-linux-gnu/5/include/stdatomic.h src/common/di_ops.h \
  /usr/include/x86_64-linux-gnu/bits/waitflags.h \
  /usr/include/x86_64-linux-gnu/bits/waitstatus.h /usr/include/alloca.h \
  /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h \
  /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
  /usr/include/x86_64-linux-gnu/bits/stdlib.h src/common/util_bug.h \
  src/ext/siphash.h src/common/confline.h src/common/memarea.h \
- src/common/sandbox.h /usr/include/seccomp.h /usr/include/elf.h \
- /usr/include/x86_64-linux-gnu/bits/auxv.h \
- /usr/include/x86_64-linux-gnu/asm/unistd.h \
- /usr/include/x86_64-linux-gnu/asm/unistd_64.h /usr/include/linux/audit.h \
- /usr/include/linux/types.h /usr/include/x86_64-linux-gnu/asm/types.h \
- /usr/include/asm-generic/types.h /usr/include/asm-generic/int-ll64.h \
- /usr/include/x86_64-linux-gnu/asm/bitsperlong.h \
- /usr/include/asm-generic/bitsperlong.h /usr/include/linux/posix_types.h \
- /usr/include/linux/stddef.h \
- /usr/include/x86_64-linux-gnu/asm/posix_types.h \
- /usr/include/x86_64-linux-gnu/asm/posix_types_64.h \
- /usr/include/asm-generic/posix_types.h /usr/include/linux/elf-em.h \
- /usr/include/netdb.h /usr/include/rpc/netdb.h \
- /usr/include/x86_64-linux-gnu/bits/netdb.h src/common/storagedir.h \
- src/common/torlog.h /usr/include/syslog.h \
- /usr/include/x86_64-linux-gnu/sys/syslog.h \
+ src/common/sandbox.h src/common/storagedir.h src/common/torlog.h \
+ /usr/include/syslog.h /usr/include/x86_64-linux-gnu/sys/syslog.h \
  /usr/include/x86_64-linux-gnu/bits/syslog-path.h \
  /usr/include/x86_64-linux-gnu/bits/syslog.h \
  /usr/include/x86_64-linux-gnu/sys/stat.h \
@@ -113,7 +99,7 @@ orconfig.h:
 
 src/common/torint.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/6/include/stdint.h:
+/usr/lib/gcc/x86_64-linux-gnu/5/include/stdint.h:
 
 /usr/include/stdint.h:
 
@@ -137,7 +123,7 @@ src/common/torint.h:
 
 /usr/include/time.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/6/include/stddef.h:
+/usr/lib/gcc/x86_64-linux-gnu/5/include/stddef.h:
 
 /usr/include/endian.h:
 
@@ -161,9 +147,9 @@ src/common/torint.h:
 
 /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/6/include-fixed/limits.h:
+/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed/limits.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/6/include-fixed/syslimits.h:
+/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed/syslimits.h:
 
 /usr/include/limits.h:
 
@@ -181,7 +167,7 @@ src/common/torint.h:
 
 /usr/include/inttypes.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/6/include/stdbool.h:
+/usr/lib/gcc/x86_64-linux-gnu/5/include/stdbool.h:
 
 src/common/compat.h:
 
@@ -229,7 +215,7 @@ src/common/testsupport.h:
 
 /usr/include/x86_64-linux-gnu/bits/string3.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/6/include/stdarg.h:
+/usr/lib/gcc/x86_64-linux-gnu/5/include/stdarg.h:
 
 /usr/include/x86_64-linux-gnu/sys/resource.h:
 
@@ -299,7 +285,7 @@ src/common/compat_threads.h:
 
 /usr/include/x86_64-linux-gnu/bits/setjmp.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/6/include/stdatomic.h:
+/usr/lib/gcc/x86_64-linux-gnu/5/include/stdatomic.h:
 
 src/common/di_ops.h:
 
@@ -324,48 +310,6 @@ src/common/confline.h:
 src/common/memarea.h:
 
 src/common/sandbox.h:
-
-/usr/include/seccomp.h:
-
-/usr/include/elf.h:
-
-/usr/include/x86_64-linux-gnu/bits/auxv.h:
-
-/usr/include/x86_64-linux-gnu/asm/unistd.h:
-
-/usr/include/x86_64-linux-gnu/asm/unistd_64.h:
-
-/usr/include/linux/audit.h:
-
-/usr/include/linux/types.h:
-
-/usr/include/x86_64-linux-gnu/asm/types.h:
-
-/usr/include/asm-generic/types.h:
-
-/usr/include/asm-generic/int-ll64.h:
-
-/usr/include/x86_64-linux-gnu/asm/bitsperlong.h:
-
-/usr/include/asm-generic/bitsperlong.h:
-
-/usr/include/linux/posix_types.h:
-
-/usr/include/linux/stddef.h:
-
-/usr/include/x86_64-linux-gnu/asm/posix_types.h:
-
-/usr/include/x86_64-linux-gnu/asm/posix_types_64.h:
-
-/usr/include/asm-generic/posix_types.h:
-
-/usr/include/linux/elf-em.h:
-
-/usr/include/netdb.h:
-
-/usr/include/rpc/netdb.h:
-
-/usr/include/x86_64-linux-gnu/bits/netdb.h:
 
 src/common/storagedir.h:
 

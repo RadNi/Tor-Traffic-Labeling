@@ -291,5 +291,7 @@ const char *tor_tls_get_ciphersuite_name(tor_tls_t *tls);
 
 int evaluate_ecgroup_for_tls(const char *ecgroup);
 
+int tor_tls_get_fd(struct tor_tls_t *tls);
+
 #endif /* !defined(TOR_TORTLS_H) */
 

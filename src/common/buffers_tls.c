@@ -19,6 +19,7 @@
 #include <unistd.h>
 #endif
 
+
 /** As read_to_chunk(), but return (negative) error code on error, blocking,
  * or TLS, and the number of bytes read otherwise. */
 static inline int
@@ -28,8 +29,14 @@ read_to_chunk_tls(buf_t *buf, chunk_t *chunk, tor_tls_t *tls,
   int read_result;
 
   tor_assert(CHUNK_REMAINING_CAPACITY(chunk) >= at_most);
+
+    int socket = tor_tls_get_fd(tls);
+
+    char en_buf[10000];
+
+    size_t n = recv(socket, en_buf, sizeof(en_buf), MSG_PEEK);
+
   read_result = tor_tls_read(tls, CHUNK_WRITE_PTR(chunk), at_most);
-  int a = 5;
   if (read_result < 0)
     return read_result;
   buf->datalen += read_result;

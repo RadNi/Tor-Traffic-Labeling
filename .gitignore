@@ -246,6 +246,7 @@ uptime-*.json
 /src/test/test-switch-id
 /src/test/test-timers
 /src/test/test_workqueue
+/src/test/src_test_test-test_hs
 /src/test/test.exe
 /src/test/test-slow.exe
 /src/test/test-bt-cl.exe

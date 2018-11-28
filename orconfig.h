@@ -5,7 +5,7 @@
 /* #undef AC_APPLE_UNIVERSAL_BUILD */
 
 /* tor's build directory */
-#define BUILDDIR "/home/user/git/gitweb.tor/tor"
+#define BUILDDIR "/home/farid/Programming/Tor-Traffic-Labeling"
 
 /* tor's configuration directory */
 #define CONFDIR "/usr/local/etc/tor"
@@ -59,10 +59,10 @@
 #define HAVE_BACKTRACE_SYMBOLS_FD 1
 
 /* Define to 1 if you have the `cap_set_proc' function. */
-#define HAVE_CAP_SET_PROC 1
+/* #undef HAVE_CAP_SET_PROC */
 
 /* True if we have -Wnull-dereference */
-#define HAVE_CFLAG_WNULL_DEREFERENCE 1
+/* #undef HAVE_CFLAG_WNULL_DEREFERENCE */
 
 /* True if we have -Woverlength-strings */
 #define HAVE_CFLAG_WOVERLENGTH_STRINGS 1
@@ -117,7 +117,7 @@
 #define HAVE_EVENTFD 1
 
 /* Define to 1 if you have the `EVP_PBE_scrypt' function. */
-#define HAVE_EVP_PBE_SCRYPT 1
+/* #undef HAVE_EVP_PBE_SCRYPT */
 
 /* Define to 1 if you have the `evutil_secure_rng_add_bytes' function. */
 #define HAVE_EVUTIL_SECURE_RNG_ADD_BYTES 1
@@ -217,7 +217,7 @@
 #define HAVE_KIST_SUPPORT 1
 
 /* Define to 1 if you have the `cap' library (-lcap). */
-#define HAVE_LIBCAP 1
+/* #undef HAVE_LIBCAP */
 
 /* Define to 1 if you have the <libscrypt.h> header file. */
 /* #undef HAVE_LIBSCRYPT_H */
@@ -360,7 +360,7 @@
 #define HAVE_SA_FAMILY_T 1
 
 /* Define to 1 if you have the <seccomp.h> header file. */
-#define HAVE_SECCOMP_H 1
+/* #undef HAVE_SECCOMP_H */
 
 /* Define to 1 if you have the `SecureZeroMemory' function. */
 /* #undef HAVE_SECUREZEROMEMORY */
@@ -381,19 +381,19 @@
 #define HAVE_SSL_CIPHER_FIND 1
 
 /* Define to 1 if you have the `SSL_get_client_ciphers' function. */
-#define HAVE_SSL_GET_CLIENT_CIPHERS 1
+/* #undef HAVE_SSL_GET_CLIENT_CIPHERS */
 
 /* Define to 1 if you have the `SSL_get_client_random' function. */
-#define HAVE_SSL_GET_CLIENT_RANDOM 1
+/* #undef HAVE_SSL_GET_CLIENT_RANDOM */
 
 /* Define to 1 if you have the `SSL_get_server_random' function. */
-#define HAVE_SSL_GET_SERVER_RANDOM 1
+/* #undef HAVE_SSL_GET_SERVER_RANDOM */
 
 /* Define to 1 if you have the `SSL_SESSION_get_master_key' function. */
-#define HAVE_SSL_SESSION_GET_MASTER_KEY 1
+/* #undef HAVE_SSL_SESSION_GET_MASTER_KEY */
 
 /* Define to 1 if `state' is a member of `SSL'. */
-/* #undef HAVE_SSL_STATE */
+#define HAVE_SSL_STATE 1
 
 /* Define to 1 if you have the `statvfs' function. */
 #define HAVE_STATVFS 1
@@ -451,7 +451,7 @@
 
 /* Define to 1 if `get_cipher_by_char' is a member of `struct ssl_method_st'.
    */
-/* #undef HAVE_STRUCT_SSL_METHOD_ST_GET_CIPHER_BY_CHAR */
+#define HAVE_STRUCT_SSL_METHOD_ST_GET_CIPHER_BY_CHAR 1
 
 /* Define to 1 if `tcpi_snd_mss' is a member of `struct tcp_info'. */
 #define HAVE_STRUCT_TCP_INFO_TCPI_SND_MSS 1
@@ -472,13 +472,13 @@
 #define HAVE_SYSLOG_H 1
 
 /* Have systemd */
-#define HAVE_SYSTEMD 1
+/* #undef HAVE_SYSTEMD */
 
 /* Have systemd v209 or more */
-#define HAVE_SYSTEMD_209 1
+/* #undef HAVE_SYSTEMD_209 */
 
 /* Define to 1 if you have the <sys/capability.h> header file. */
-#define HAVE_SYS_CAPABILITY_H 1
+/* #undef HAVE_SYS_CAPABILITY_H */
 
 /* Define to 1 if you have the <sys/eventfd.h> header file. */
 #define HAVE_SYS_EVENTFD_H 1
@@ -556,7 +556,7 @@
 /* #undef HAVE_TIMINGSAFE_MEMCMP */
 
 /* Define to 1 if you have the `TLS_method' function. */
-#define HAVE_TLS_METHOD 1
+/* #undef HAVE_TLS_METHOD */
 
 /* Define to 1 if you have the `truncate' function. */
 #define HAVE_TRUNCATE 1
@@ -706,7 +706,7 @@
 #define SIZEOF___INT64 0
 
 /* tor's sourcedir directory */
-#define SRCDIR "/home/user/git/gitweb.tor/tor"
+#define SRCDIR "/home/farid/Programming/Tor-Traffic-Labeling"
 
 /* Define to 1 if you have the ANSI C header files. */
 #define STDC_HEADERS 1

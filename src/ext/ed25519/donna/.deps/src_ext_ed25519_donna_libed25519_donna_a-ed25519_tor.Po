@@ -4,7 +4,7 @@ src/ext/ed25519/donna/src_ext_ed25519_donna_libed25519_donna_a-ed25519_tor.o: \
  src/ext/ed25519/donna/ed25519-donna-portable.h \
  src/ext/ed25519/donna/ed25519-donna-portable-identify.h \
  /usr/include/x86_64-linux-gnu/sys/param.h \
- /usr/lib/gcc/x86_64-linux-gnu/6/include/stddef.h \
+ /usr/lib/gcc/x86_64-linux-gnu/5/include/stddef.h \
  /usr/include/x86_64-linux-gnu/sys/types.h /usr/include/features.h \
  /usr/include/x86_64-linux-gnu/sys/cdefs.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
@@ -22,8 +22,8 @@ src/ext/ed25519/donna/src_ext_ed25519_donna_libed25519_donna_a-ed25519_tor.o: \
  /usr/include/x86_64-linux-gnu/bits/select2.h \
  /usr/include/x86_64-linux-gnu/sys/sysmacros.h \
  /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
- /usr/lib/gcc/x86_64-linux-gnu/6/include-fixed/limits.h \
- /usr/lib/gcc/x86_64-linux-gnu/6/include-fixed/syslimits.h \
+ /usr/lib/gcc/x86_64-linux-gnu/5/include-fixed/limits.h \
+ /usr/lib/gcc/x86_64-linux-gnu/5/include-fixed/syslimits.h \
  /usr/include/limits.h /usr/include/x86_64-linux-gnu/bits/posix1_lim.h \
  /usr/include/x86_64-linux-gnu/bits/local_lim.h \
  /usr/include/linux/limits.h \
@@ -40,7 +40,7 @@ src/ext/ed25519/donna/src_ext_ed25519_donna_libed25519_donna_a-ed25519_tor.o: \
  /usr/include/x86_64-linux-gnu/bits/param.h /usr/include/linux/param.h \
  /usr/include/x86_64-linux-gnu/asm/param.h \
  /usr/include/asm-generic/param.h \
- /usr/lib/gcc/x86_64-linux-gnu/6/include/stdint.h /usr/include/stdint.h \
+ /usr/lib/gcc/x86_64-linux-gnu/5/include/stdint.h /usr/include/stdint.h \
  /usr/include/x86_64-linux-gnu/bits/wchar.h /usr/include/stdlib.h \
  /usr/include/x86_64-linux-gnu/bits/waitflags.h \
  /usr/include/x86_64-linux-gnu/bits/waitstatus.h /usr/include/xlocale.h \
@@ -60,14 +60,14 @@ src/ext/ed25519/donna/src_ext_ed25519_donna_libed25519_donna_a-ed25519_tor.o: \
  src/ext/ed25519/donna/ed25519-donna-impl-base.h \
  src/ext/ed25519/donna/ed25519_donna_tor.h src/common/torint.h \
  /usr/include/inttypes.h \
- /usr/lib/gcc/x86_64-linux-gnu/6/include/stdbool.h \
+ /usr/lib/gcc/x86_64-linux-gnu/5/include/stdbool.h \
  src/ext/ed25519/donna/ed25519-randombytes.h \
  src/ext/ed25519/donna/ed25519-randombytes-custom.h \
  src/common/crypto_rand.h src/common/torint.h src/common/util.h \
  src/common/compat.h src/common/testsupport.h \
  /usr/include/x86_64-linux-gnu/sys/time.h \
  /usr/include/x86_64-linux-gnu/bits/timex.h \
- /usr/lib/gcc/x86_64-linux-gnu/6/include/stdarg.h \
+ /usr/lib/gcc/x86_64-linux-gnu/5/include/stdarg.h \
  /usr/include/x86_64-linux-gnu/sys/resource.h \
  /usr/include/x86_64-linux-gnu/bits/resource.h \
  /usr/include/x86_64-linux-gnu/sys/socket.h \
@@ -92,7 +92,7 @@ src/ext/ed25519/donna/src_ext_ed25519_donna_libed25519_donna_a-ed25519_tor.o: \
  src/common/compat_threads.h /usr/include/pthread.h /usr/include/sched.h \
  /usr/include/x86_64-linux-gnu/bits/sched.h \
  /usr/include/x86_64-linux-gnu/bits/setjmp.h \
- /usr/lib/gcc/x86_64-linux-gnu/6/include/stdatomic.h src/common/di_ops.h \
+ /usr/lib/gcc/x86_64-linux-gnu/5/include/stdatomic.h src/common/di_ops.h \
  src/common/util_bug.h src/ext/ed25519/donna/ed25519-hash.h \
  src/ext/ed25519/donna/ed25519-hash-custom.h src/common/crypto_digest.h \
  src/common/container.h src/ext/siphash.h src/common/crypto_util.h \
@@ -111,7 +111,7 @@ src/ext/ed25519/donna/ed25519-donna-portable-identify.h:
 
 /usr/include/x86_64-linux-gnu/sys/param.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/6/include/stddef.h:
+/usr/lib/gcc/x86_64-linux-gnu/5/include/stddef.h:
 
 /usr/include/x86_64-linux-gnu/sys/types.h:
 
@@ -153,9 +153,9 @@ src/ext/ed25519/donna/ed25519-donna-portable-identify.h:
 
 /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/6/include-fixed/limits.h:
+/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed/limits.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/6/include-fixed/syslimits.h:
+/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed/syslimits.h:
 
 /usr/include/limits.h:
 
@@ -195,7 +195,7 @@ src/ext/ed25519/donna/ed25519-donna-portable-identify.h:
 
 /usr/include/asm-generic/param.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/6/include/stdint.h:
+/usr/lib/gcc/x86_64-linux-gnu/5/include/stdint.h:
 
 /usr/include/stdint.h:
 
@@ -245,7 +245,7 @@ src/common/torint.h:
 
 /usr/include/inttypes.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/6/include/stdbool.h:
+/usr/lib/gcc/x86_64-linux-gnu/5/include/stdbool.h:
 
 src/ext/ed25519/donna/ed25519-randombytes.h:
 
@@ -265,7 +265,7 @@ src/common/testsupport.h:
 
 /usr/include/x86_64-linux-gnu/bits/timex.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/6/include/stdarg.h:
+/usr/lib/gcc/x86_64-linux-gnu/5/include/stdarg.h:
 
 /usr/include/x86_64-linux-gnu/sys/resource.h:
 
@@ -335,7 +335,7 @@ src/common/compat_threads.h:
 
 /usr/include/x86_64-linux-gnu/bits/setjmp.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/6/include/stdatomic.h:
+/usr/lib/gcc/x86_64-linux-gnu/5/include/stdatomic.h:
 
 src/common/di_ops.h:
 

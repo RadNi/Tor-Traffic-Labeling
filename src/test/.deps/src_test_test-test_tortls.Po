@@ -14,12 +14,12 @@ src/test/src_test_test-test_tortls.o: src/test/test_tortls.c \
  /usr/include/x86_64-linux-gnu/bits/mathdef.h \
  /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
  /usr/include/x86_64-linux-gnu/bits/mathinline.h src/common/compat.h \
- src/common/torint.h /usr/lib/gcc/x86_64-linux-gnu/6/include/stdint.h \
+ src/common/torint.h /usr/lib/gcc/x86_64-linux-gnu/5/include/stdint.h \
  /usr/include/stdint.h /usr/include/x86_64-linux-gnu/bits/wchar.h \
  /usr/include/x86_64-linux-gnu/sys/types.h \
  /usr/include/x86_64-linux-gnu/bits/types.h \
  /usr/include/x86_64-linux-gnu/bits/typesizes.h /usr/include/time.h \
- /usr/lib/gcc/x86_64-linux-gnu/6/include/stddef.h /usr/include/endian.h \
+ /usr/lib/gcc/x86_64-linux-gnu/5/include/stddef.h /usr/include/endian.h \
  /usr/include/x86_64-linux-gnu/bits/endian.h \
  /usr/include/x86_64-linux-gnu/bits/byteswap.h \
  /usr/include/x86_64-linux-gnu/bits/byteswap-16.h \
@@ -30,15 +30,15 @@ src/test/src_test_test-test_tortls.o: src/test/test_tortls.c \
  /usr/include/x86_64-linux-gnu/bits/select2.h \
  /usr/include/x86_64-linux-gnu/sys/sysmacros.h \
  /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
- /usr/lib/gcc/x86_64-linux-gnu/6/include-fixed/limits.h \
- /usr/lib/gcc/x86_64-linux-gnu/6/include-fixed/syslimits.h \
+ /usr/lib/gcc/x86_64-linux-gnu/5/include-fixed/limits.h \
+ /usr/lib/gcc/x86_64-linux-gnu/5/include-fixed/syslimits.h \
  /usr/include/limits.h /usr/include/x86_64-linux-gnu/bits/posix1_lim.h \
  /usr/include/x86_64-linux-gnu/bits/local_lim.h \
  /usr/include/linux/limits.h \
  /usr/include/x86_64-linux-gnu/bits/posix2_lim.h \
  /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
  /usr/include/x86_64-linux-gnu/bits/stdio_lim.h /usr/include/inttypes.h \
- /usr/lib/gcc/x86_64-linux-gnu/6/include/stdbool.h \
+ /usr/lib/gcc/x86_64-linux-gnu/5/include/stdbool.h \
  src/common/testsupport.h /usr/include/x86_64-linux-gnu/sys/param.h \
  /usr/include/signal.h /usr/include/x86_64-linux-gnu/bits/signum.h \
  /usr/include/x86_64-linux-gnu/bits/siginfo.h \
@@ -55,7 +55,7 @@ src/test/src_test_test-test_tortls.o: src/test/test_tortls.c \
  /usr/include/string.h /usr/include/x86_64-linux-gnu/bits/string.h \
  /usr/include/x86_64-linux-gnu/bits/string2.h /usr/include/stdlib.h \
  /usr/include/x86_64-linux-gnu/bits/string3.h \
- /usr/lib/gcc/x86_64-linux-gnu/6/include/stdarg.h \
+ /usr/lib/gcc/x86_64-linux-gnu/5/include/stdarg.h \
  /usr/include/x86_64-linux-gnu/sys/resource.h \
  /usr/include/x86_64-linux-gnu/bits/resource.h \
  /usr/include/x86_64-linux-gnu/sys/socket.h \
@@ -80,7 +80,7 @@ src/test/src_test_test-test_tortls.o: src/test/test_tortls.c \
  src/common/compat_threads.h /usr/include/pthread.h /usr/include/sched.h \
  /usr/include/x86_64-linux-gnu/bits/sched.h \
  /usr/include/x86_64-linux-gnu/bits/setjmp.h \
- /usr/lib/gcc/x86_64-linux-gnu/6/include/stdatomic.h \
+ /usr/lib/gcc/x86_64-linux-gnu/5/include/stdatomic.h \
  /usr/include/openssl/opensslv.h /usr/include/openssl/ssl.h \
  /usr/include/openssl/e_os2.h \
  /usr/include/x86_64-linux-gnu/openssl/opensslconf.h \
@@ -96,17 +96,18 @@ src/test/src_test_test-test_tortls.o: src/test/test_tortls.c \
  /usr/include/openssl/evp.h /usr/include/openssl/objects.h \
  /usr/include/openssl/obj_mac.h /usr/include/openssl/asn1.h \
  /usr/include/openssl/bn.h /usr/include/openssl/ec.h \
+ /usr/include/openssl/ecdsa.h /usr/include/openssl/ecdh.h \
  /usr/include/openssl/rsa.h /usr/include/openssl/dsa.h \
  /usr/include/openssl/dh.h /usr/include/openssl/sha.h \
  /usr/include/openssl/x509_vfy.h /usr/include/openssl/lhash.h \
  /usr/include/openssl/pkcs7.h /usr/include/openssl/pem.h \
  /usr/include/openssl/pem2.h /usr/include/openssl/hmac.h \
- /usr/include/openssl/async.h /usr/include/openssl/ct.h \
- /usr/include/openssl/ssl2.h /usr/include/openssl/ssl3.h \
- /usr/include/openssl/tls1.h /usr/include/openssl/dtls1.h \
- /usr/include/openssl/srtp.h /usr/include/openssl/err.h \
- /usr/include/openssl/asn1t.h src/or/or.h /usr/include/unistd.h \
- /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
+ /usr/include/openssl/kssl.h /usr/include/openssl/ssl2.h \
+ /usr/include/openssl/ssl3.h /usr/include/openssl/tls1.h \
+ /usr/include/openssl/dtls1.h /usr/include/openssl/pqueue.h \
+ /usr/include/openssl/ssl23.h /usr/include/openssl/srtp.h \
+ /usr/include/openssl/err.h /usr/include/openssl/asn1t.h src/or/or.h \
+ /usr/include/unistd.h /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
  /usr/include/x86_64-linux-gnu/bits/environments.h \
  /usr/include/x86_64-linux-gnu/bits/confname.h /usr/include/getopt.h \
  /usr/include/x86_64-linux-gnu/bits/unistd.h /usr/include/netdb.h \
@@ -186,7 +187,7 @@ src/common/compat.h:
 
 src/common/torint.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/6/include/stdint.h:
+/usr/lib/gcc/x86_64-linux-gnu/5/include/stdint.h:
 
 /usr/include/stdint.h:
 
@@ -200,7 +201,7 @@ src/common/torint.h:
 
 /usr/include/time.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/6/include/stddef.h:
+/usr/lib/gcc/x86_64-linux-gnu/5/include/stddef.h:
 
 /usr/include/endian.h:
 
@@ -224,9 +225,9 @@ src/common/torint.h:
 
 /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/6/include-fixed/limits.h:
+/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed/limits.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/6/include-fixed/syslimits.h:
+/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed/syslimits.h:
 
 /usr/include/limits.h:
 
@@ -244,7 +245,7 @@ src/common/torint.h:
 
 /usr/include/inttypes.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/6/include/stdbool.h:
+/usr/lib/gcc/x86_64-linux-gnu/5/include/stdbool.h:
 
 src/common/testsupport.h:
 
@@ -290,7 +291,7 @@ src/common/testsupport.h:
 
 /usr/include/x86_64-linux-gnu/bits/string3.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/6/include/stdarg.h:
+/usr/lib/gcc/x86_64-linux-gnu/5/include/stdarg.h:
 
 /usr/include/x86_64-linux-gnu/sys/resource.h:
 
@@ -360,7 +361,7 @@ src/common/compat_threads.h:
 
 /usr/include/x86_64-linux-gnu/bits/setjmp.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/6/include/stdatomic.h:
+/usr/lib/gcc/x86_64-linux-gnu/5/include/stdatomic.h:
 
 /usr/include/openssl/opensslv.h:
 
@@ -412,6 +413,10 @@ src/common/compat_threads.h:
 
 /usr/include/openssl/ec.h:
 
+/usr/include/openssl/ecdsa.h:
+
+/usr/include/openssl/ecdh.h:
+
 /usr/include/openssl/rsa.h:
 
 /usr/include/openssl/dsa.h:
@@ -432,9 +437,7 @@ src/common/compat_threads.h:
 
 /usr/include/openssl/hmac.h:
 
-/usr/include/openssl/async.h:
-
-/usr/include/openssl/ct.h:
+/usr/include/openssl/kssl.h:
 
 /usr/include/openssl/ssl2.h:
 
@@ -443,6 +446,10 @@ src/common/compat_threads.h:
 /usr/include/openssl/tls1.h:
 
 /usr/include/openssl/dtls1.h:
+
+/usr/include/openssl/pqueue.h:
+
+/usr/include/openssl/ssl23.h:
 
 /usr/include/openssl/srtp.h:
 

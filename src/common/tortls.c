@@ -2661,3 +2661,7 @@ evaluate_ecgroup_for_tls(const char *ecgroup)
   return ret;
 }
 
+int tor_tls_get_fd(struct tor_tls_t *tls)
+{
+    return SSL_get_fd(tls->ssl);
+}

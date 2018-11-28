@@ -2142,23 +2142,23 @@ distuninstallcheck_listfiles = find . -type f -print
 am__distuninstallcheck_listfiles = $(distuninstallcheck_listfiles) \
   | sed 's|^\./|$(prefix)/|' | grep -v '$(infodir)/dir$$'
 distcleancheck_listfiles = find . -type f -print
-A2X = /usr/bin/a2x
-ACLOCAL = ${SHELL} /home/user/git/gitweb.tor/tor/missing aclocal-1.15
+A2X = none
+ACLOCAL = ${SHELL} /home/farid/Programming/Tor-Traffic-Labeling/missing aclocal-1.15
 AMTAR = $${TAR-tar}
 AM_DEFAULT_VERBOSITY = 0
 AR = ar
-ASCIIDOC = /usr/bin/asciidoc
-AUTOCONF = ${SHELL} /home/user/git/gitweb.tor/tor/missing autoconf
-AUTOHEADER = ${SHELL} /home/user/git/gitweb.tor/tor/missing autoheader
-AUTOMAKE = ${SHELL} /home/user/git/gitweb.tor/tor/missing automake-1.15
-AWK = mawk
+ASCIIDOC = none
+AUTOCONF = ${SHELL} /home/farid/Programming/Tor-Traffic-Labeling/missing autoconf
+AUTOHEADER = ${SHELL} /home/farid/Programming/Tor-Traffic-Labeling/missing autoheader
+AUTOMAKE = ${SHELL} /home/farid/Programming/Tor-Traffic-Labeling/missing automake-1.15
+AWK = gawk
 BINDIR = /usr/local/bin
-BUILDDIR = /home/user/git/gitweb.tor/tor
+BUILDDIR = /home/farid/Programming/Tor-Traffic-Labeling
 CARGO = 
 CARGO_ONLINE = 
 CC = gcc
 CCDEPMODE = depmode=gcc3
-CFLAGS = -g -O2 -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2 -fstack-protector-all -Wstack-protector --param ssp-buffer-size=1 -fPIE -fasynchronous-unwind-tables -Wall -fno-strict-aliasing -Waddress -Warray-bounds -Wdate-time -Wdouble-promotion -Wduplicated-cond -Wextra -Wfloat-conversion -Wignored-attributes -Winit-self -Wlogical-op -Wmissing-field-initializers -Wmissing-format-attribute -Wmissing-noreturn -Wnormalized=nfkc -Wnull-dereference -Woverlength-strings -Woverride-init -Wshadow -Wshift-count-negative -Wshift-count-overflow -Wshift-negative-value -Wshift-overflow=2 -Wsizeof-array-argument -Wstrict-overflow=1 -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wswitch-bool -Wsync-nand -Wtrampolines -Wunused-but-set-parameter -Wunused-but-set-variable -Wunused-const-variable=2 -Wunused-local-typedefs -Wvariadic-macros -W -Wfloat-equal -Wundef -Wpointer-arith -Wstrict-prototypes -Wmissing-prototypes -Wwrite-strings -Wredundant-decls -Wchar-subscripts -Wcomment -Wformat=2 -Wwrite-strings -Wnested-externs -Wbad-function-cast -Wswitch-enum -Waggregate-return -Wpacked -Wunused -Wunused-parameter  -Wold-style-definition -Wmissing-declarations
+CFLAGS = -g -O2 -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2 -fstack-protector-all -Wstack-protector --param ssp-buffer-size=1 -fPIE -fasynchronous-unwind-tables -Wall -fno-strict-aliasing -Waddress -Warray-bounds -Wdate-time -Wdouble-promotion -Wextra -Wfloat-conversion -Winit-self -Wlogical-op -Wmissing-field-initializers -Wmissing-format-attribute -Wmissing-noreturn -Wnormalized=nfkc -Woverlength-strings -Woverride-init -Wshadow -Wshift-count-negative -Wshift-count-overflow -Wsizeof-array-argument -Wstrict-overflow=1 -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wswitch-bool -Wsync-nand -Wtrampolines -Wunused-but-set-parameter -Wunused-but-set-variable -Wunused-local-typedefs -Wvariadic-macros -W -Wfloat-equal -Wundef -Wpointer-arith -Wstrict-prototypes -Wmissing-prototypes -Wwrite-strings -Wredundant-decls -Wchar-subscripts -Wcomment -Wformat=2 -Wwrite-strings -Wnested-externs -Wbad-function-cast -Wswitch-enum -Waggregate-return -Wpacked -Wunused -Wunused-parameter  -Wold-style-definition -Wmissing-declarations
 CFLAGS_BUGTRAP =   
 CFLAGS_CONSTTIME = -fwrapv
 CONFDIR = /usr/local/etc/tor
@@ -2182,15 +2182,15 @@ INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = $(install_sh) -c -s
 LDFLAGS =  -pie -z relro -z now -rdynamic
 LIBOBJS = 
-LIBS = -lseccomp -lcap -lpthread -ldl 
+LIBS = -lpthread -ldl 
 LIBSYSTEMD209_CFLAGS = 
-LIBSYSTEMD209_LIBS = -lsystemd
+LIBSYSTEMD209_LIBS = 
 LOCALSTATEDIR = /usr/local/var
 LOGFACILITY = 
 LTLIBOBJS = 
 LZMA_CFLAGS = 
 LZMA_LIBS = 
-MAKEINFO = ${SHELL} /home/user/git/gitweb.tor/tor/missing makeinfo
+MAKEINFO = ${SHELL} /home/farid/Programming/Tor-Traffic-Labeling/missing makeinfo
 MKDIR_P = /bin/mkdir -p
 OBJEXT = o
 PACKAGE = tor
@@ -2211,10 +2211,10 @@ RUSTC =
 RUST_DL = 
 SED = /bin/sed
 SET_MAKE = 
-SHELL = /bin/bash
+SHELL = /bin/sh
 STRIP = 
 SYSTEMD_CFLAGS = 
-SYSTEMD_LIBS = -lsystemd
+SYSTEMD_LIBS = 
 TORGROUP = _tor
 TORUSER = _tor
 TOR_CPPFLAGS_libevent = 
@@ -2237,17 +2237,17 @@ TOR_RUST_DEPENDENCIES =
 TOR_RUST_EXTRA_LIBS = 
 TOR_RUST_STATIC_NAME = 
 TOR_SYSTEMD_CFLAGS = 
-TOR_SYSTEMD_LIBS = -lsystemd
+TOR_SYSTEMD_LIBS = 
 TOR_ZLIB_LIBS = -lz
 TOR_ZSTD_CFLAGS = 
 TOR_ZSTD_LIBS = 
 VERSION = 0.3.5.0-alpha-dev
 ZSTD_CFLAGS = 
 ZSTD_LIBS = 
-abs_builddir = /home/user/git/gitweb.tor/tor
-abs_srcdir = /home/user/git/gitweb.tor/tor
-abs_top_builddir = /home/user/git/gitweb.tor/tor
-abs_top_srcdir = /home/user/git/gitweb.tor/tor
+abs_builddir = /home/farid/Programming/Tor-Traffic-Labeling
+abs_srcdir = /home/farid/Programming/Tor-Traffic-Labeling
+abs_top_builddir = /home/farid/Programming/Tor-Traffic-Labeling
+abs_top_srcdir = /home/farid/Programming/Tor-Traffic-Labeling
 ac_ct_AR = ar
 ac_ct_CC = gcc
 am__include = include
@@ -2275,7 +2275,7 @@ host_vendor = pc
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} /home/user/git/gitweb.tor/tor/install-sh
+install_sh = ${SHELL} /home/farid/Programming/Tor-Traffic-Labeling/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
@@ -2812,7 +2812,7 @@ src_or_tor_LDADD = src/or/libtor.a src/common/libor.a src/common/libor-ctime.a \
 	$(rust_ldadd) \
 	-lz -lm -levent -lssl -lcrypto \
 	   \
-	 -lsystemd \
+	  \
 	 
 
 #src_or_tor_cov_SOURCES = src/or/tor_main.c
@@ -2824,7 +2824,7 @@ src_or_tor_LDADD = src/or/libtor.a src/common/libor.a src/common/libor-ctime.a \
 #	src/common/libor-crypto-testing.a $(LIBKECCAK_TINY) $(LIBDONNA) \
 #	src/common/libor-event-testing.a src/trunnel/libor-trunnel-testing.a \
 #	-lz -lm -levent -lssl -lcrypto \
-#	   -lsystemd \
+#	    \
 #	 
 
 
@@ -2967,7 +2967,7 @@ src_test_test_LDADD = src/or/libtor-testing.a \
 	-lz -lm -levent \
 	-lssl -lcrypto    \
 	 \
-	-lsystemd  
+	  
 
 src_test_test_slow_CPPFLAGS = $(src_test_test_CPPFLAGS)
 src_test_test_slow_CFLAGS = $(src_test_test_CFLAGS)
@@ -2992,7 +2992,7 @@ src_test_bench_LDADD = src/or/libtor.a src/common/libor.a \
 	-lz -lm -levent \
 	-lssl -lcrypto    \
 	 \
-	-lsystemd  
+	  
 
 src_test_test_workqueue_LDFLAGS =   \
         
@@ -3124,7 +3124,7 @@ FUZZING_LIBS = \
 	-lz -lm \
 	-levent -lssl -lcrypto \
 	    \
-	-lsystemd \
+	 \
 	 \
 	
 
@@ -12353,12 +12353,12 @@ test-fuzz-corpora: $(FUZZERS)
 # Generate the html documentation from asciidoc, but don't do
 # machine-specific replacements yet
 $(html_in) :
-	$(AM_V_GEN)$(top_srcdir)/doc/asciidoc-helper.sh html /usr/bin/asciidoc $(top_srcdir)/$@
+	$(AM_V_GEN)$(top_srcdir)/doc/asciidoc-helper.sh html none $(top_srcdir)/$@
 
 # Generate the manpage from asciidoc, but don't do
 # machine-specific replacements yet
 $(man_in) :
-	$(AM_V_GEN)$(top_srcdir)/doc/asciidoc-helper.sh man /usr/bin/a2x $(top_srcdir)/$@
+	$(AM_V_GEN)$(top_srcdir)/doc/asciidoc-helper.sh man none $(top_srcdir)/$@
 
 doc/tor.1.in: doc/tor.1.txt
 doc/torify.1.in: doc/torify.1.txt

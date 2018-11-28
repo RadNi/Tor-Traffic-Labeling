@@ -4,11 +4,11 @@ src/test/src_test_test_slow-test_slow.o: src/test/test_slow.c \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
  /usr/include/x86_64-linux-gnu/gnu/stubs.h \
  /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
- /usr/lib/gcc/x86_64-linux-gnu/6/include/stddef.h \
+ /usr/lib/gcc/x86_64-linux-gnu/5/include/stddef.h \
  /usr/include/x86_64-linux-gnu/bits/types.h \
  /usr/include/x86_64-linux-gnu/bits/typesizes.h /usr/include/libio.h \
  /usr/include/_G_config.h /usr/include/wchar.h \
- /usr/lib/gcc/x86_64-linux-gnu/6/include/stdarg.h \
+ /usr/lib/gcc/x86_64-linux-gnu/5/include/stdarg.h \
  /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
  /usr/include/x86_64-linux-gnu/bits/sys_errlist.h \
  /usr/include/x86_64-linux-gnu/bits/stdio.h \
@@ -41,7 +41,7 @@ src/test/src_test_test_slow-test_slow.o: src/test/test_slow.c \
  /usr/include/x86_64-linux-gnu/sys/ucontext.h \
  /usr/include/x86_64-linux-gnu/bits/sigthread.h /usr/include/netdb.h \
  /usr/include/netinet/in.h \
- /usr/lib/gcc/x86_64-linux-gnu/6/include/stdint.h /usr/include/stdint.h \
+ /usr/lib/gcc/x86_64-linux-gnu/5/include/stdint.h /usr/include/stdint.h \
  /usr/include/x86_64-linux-gnu/bits/wchar.h \
  /usr/include/x86_64-linux-gnu/sys/socket.h \
  /usr/include/x86_64-linux-gnu/sys/uio.h \
@@ -56,8 +56,8 @@ src/test/src_test_test_slow-test_slow.o: src/test/test_slow.c \
  /usr/include/x86_64-linux-gnu/bits/in.h /usr/include/rpc/netdb.h \
  /usr/include/x86_64-linux-gnu/bits/netdb.h \
  /usr/include/x86_64-linux-gnu/sys/param.h \
- /usr/lib/gcc/x86_64-linux-gnu/6/include-fixed/limits.h \
- /usr/lib/gcc/x86_64-linux-gnu/6/include-fixed/syslimits.h \
+ /usr/lib/gcc/x86_64-linux-gnu/5/include-fixed/limits.h \
+ /usr/lib/gcc/x86_64-linux-gnu/5/include-fixed/syslimits.h \
  /usr/include/limits.h /usr/include/x86_64-linux-gnu/bits/posix1_lim.h \
  /usr/include/x86_64-linux-gnu/bits/local_lim.h \
  /usr/include/linux/limits.h \
@@ -67,7 +67,7 @@ src/test/src_test_test_slow-test_slow.o: src/test/test_slow.c \
  /usr/include/x86_64-linux-gnu/asm/param.h \
  /usr/include/asm-generic/param.h src/common/torint.h \
  /usr/include/inttypes.h \
- /usr/lib/gcc/x86_64-linux-gnu/6/include/stdbool.h \
+ /usr/lib/gcc/x86_64-linux-gnu/5/include/stdbool.h \
  /usr/include/x86_64-linux-gnu/sys/fcntl.h \
  /usr/include/x86_64-linux-gnu/sys/ioctl.h \
  /usr/include/x86_64-linux-gnu/bits/ioctls.h \
@@ -93,7 +93,7 @@ src/test/src_test_test_slow-test_slow.o: src/test/test_slow.c \
  src/common/compat_threads.h /usr/include/pthread.h /usr/include/sched.h \
  /usr/include/x86_64-linux-gnu/bits/sched.h \
  /usr/include/x86_64-linux-gnu/bits/setjmp.h \
- /usr/lib/gcc/x86_64-linux-gnu/6/include/stdatomic.h src/common/util.h \
+ /usr/lib/gcc/x86_64-linux-gnu/5/include/stdatomic.h src/common/util.h \
  src/common/di_ops.h /usr/include/x86_64-linux-gnu/bits/waitflags.h \
  /usr/include/x86_64-linux-gnu/bits/waitstatus.h /usr/include/alloca.h \
  /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h \
@@ -113,7 +113,8 @@ src/test/src_test_test_slow-test_slow.o: src/test/test_slow.c \
  /usr/include/openssl/opensslv.h /usr/include/openssl/symhacks.h \
  /usr/include/openssl/rsa.h /usr/include/openssl/asn1.h \
  /usr/include/openssl/bio.h /usr/include/openssl/dsa.h \
- /usr/include/openssl/dh.h /usr/include/openssl/ec.h \
+ /usr/include/openssl/dh.h /usr/include/openssl/ecdh.h \
+ /usr/include/openssl/ec.h /usr/include/openssl/ecdsa.h \
  /usr/include/openssl/rand.h /usr/include/openssl/ui.h \
  /usr/include/openssl/err.h /usr/include/openssl/lhash.h \
  /usr/include/openssl/x509.h /usr/include/openssl/buffer.h \
@@ -145,7 +146,7 @@ orconfig.h:
 
 /usr/include/x86_64-linux-gnu/gnu/stubs-64.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/6/include/stddef.h:
+/usr/lib/gcc/x86_64-linux-gnu/5/include/stddef.h:
 
 /usr/include/x86_64-linux-gnu/bits/types.h:
 
@@ -157,7 +158,7 @@ orconfig.h:
 
 /usr/include/wchar.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/6/include/stdarg.h:
+/usr/lib/gcc/x86_64-linux-gnu/5/include/stdarg.h:
 
 /usr/include/x86_64-linux-gnu/bits/stdio_lim.h:
 
@@ -239,7 +240,7 @@ src/or/or.h:
 
 /usr/include/netinet/in.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/6/include/stdint.h:
+/usr/lib/gcc/x86_64-linux-gnu/5/include/stdint.h:
 
 /usr/include/stdint.h:
 
@@ -273,9 +274,9 @@ src/or/or.h:
 
 /usr/include/x86_64-linux-gnu/sys/param.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/6/include-fixed/limits.h:
+/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed/limits.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/6/include-fixed/syslimits.h:
+/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed/syslimits.h:
 
 /usr/include/limits.h:
 
@@ -301,7 +302,7 @@ src/common/torint.h:
 
 /usr/include/inttypes.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/6/include/stdbool.h:
+/usr/lib/gcc/x86_64-linux-gnu/5/include/stdbool.h:
 
 /usr/include/x86_64-linux-gnu/sys/fcntl.h:
 
@@ -383,7 +384,7 @@ src/common/compat_threads.h:
 
 /usr/include/x86_64-linux-gnu/bits/setjmp.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/6/include/stdatomic.h:
+/usr/lib/gcc/x86_64-linux-gnu/5/include/stdatomic.h:
 
 src/common/util.h:
 
@@ -459,7 +460,11 @@ src/common/crypto_openssl_mgt.h:
 
 /usr/include/openssl/dh.h:
 
+/usr/include/openssl/ecdh.h:
+
 /usr/include/openssl/ec.h:
+
+/usr/include/openssl/ecdsa.h:
 
 /usr/include/openssl/rand.h:
 
