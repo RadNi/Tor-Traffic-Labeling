@@ -128,16 +128,16 @@ src/or/src_or_libtor_testing_a-hs_common.o: src/or/hs_common.c \
  src/or/replaycache.h src/common/crypto_curve25519.h \
  src/common/crypto_ed25519.h src/ext/tor_queue.h \
  src/common/token_bucket.h src/common/util_format.h \
- src/or/hs_circuitmap.h src/or/config.h src/common/testsupport.h \
- src/or/circuitbuild.h src/common/crypto_rand.h src/common/crypto_util.h \
- src/or/networkstatus.h src/or/nodelist.h src/or/hs_cache.h \
- src/or/hs_common.h src/trunnel/ed25519_cert.h src/ext/trunnel/trunnel.h \
- src/or/hs_descriptor.h src/or/torcert.h src/or/rendcommon.h \
- src/or/hs_client.h src/or/hs_ident.h src/or/hs_service.h \
- src/or/hs_intropoint.h src/trunnel/hs/cell_establish_intro.h \
- src/or/policies.h src/or/rendservice.h src/or/routerset.h \
- src/or/router.h src/or/shared_random_client.h \
- src/or/dirauth/shared_random.h src/or/or.h \
+ src/or/hs_circuitmap.h src/or/../common/tor_labelling.h src/or/config.h \
+ src/common/testsupport.h src/or/circuitbuild.h src/common/crypto_rand.h \
+ src/common/crypto_util.h src/or/networkstatus.h src/or/nodelist.h \
+ src/or/hs_cache.h src/or/hs_common.h src/trunnel/ed25519_cert.h \
+ src/ext/trunnel/trunnel.h src/or/hs_descriptor.h src/or/torcert.h \
+ src/or/rendcommon.h src/or/hs_client.h src/or/hs_ident.h \
+ src/or/hs_service.h src/or/hs_intropoint.h \
+ src/trunnel/hs/cell_establish_intro.h src/or/policies.h \
+ src/or/rendservice.h src/or/routerset.h src/or/router.h \
+ src/or/shared_random_client.h src/or/dirauth/shared_random.h src/or/or.h \
  src/or/dirauth/shared_random_state.h src/or/dirauth/shared_random.h
 
 /usr/include/stdc-predef.h:
@@ -531,6 +531,8 @@ src/common/token_bucket.h:
 src/common/util_format.h:
 
 src/or/hs_circuitmap.h:
+
+src/or/../common/tor_labelling.h:
 
 src/or/config.h:
 

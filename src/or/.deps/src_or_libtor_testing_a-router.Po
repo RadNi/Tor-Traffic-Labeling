@@ -128,10 +128,11 @@ src/or/src_or_libtor_testing_a-router.o: src/or/router.c \
  src/or/replaycache.h src/common/crypto_curve25519.h \
  src/common/crypto_ed25519.h src/ext/tor_queue.h \
  src/common/token_bucket.h src/common/util_format.h \
- src/or/hs_circuitmap.h src/or/circuitbuild.h src/or/circuitlist.h \
- src/common/testsupport.h src/or/hs_ident.h src/or/hs_common.h \
- src/trunnel/ed25519_cert.h src/ext/trunnel/trunnel.h src/or/circuituse.h \
- src/or/config.h src/or/connection.h src/common/buffers.h \
+ src/or/hs_circuitmap.h src/or/../common/tor_labelling.h \
+ src/or/circuitbuild.h src/or/circuitlist.h src/common/testsupport.h \
+ src/or/hs_ident.h src/or/hs_common.h src/trunnel/ed25519_cert.h \
+ src/ext/trunnel/trunnel.h src/or/circuituse.h src/or/config.h \
+ src/or/connection.h src/common/buffers.h src/common/tor_labelling.h \
  src/or/control.h src/common/crypto_rand.h src/common/crypto_util.h \
  src/or/directory.h src/or/dirserv.h src/or/dns.h src/or/geoip.h \
  src/or/dos.h src/or/hibernate.h src/or/main.h src/or/networkstatus.h \
@@ -533,6 +534,8 @@ src/common/util_format.h:
 
 src/or/hs_circuitmap.h:
 
+src/or/../common/tor_labelling.h:
+
 src/or/circuitbuild.h:
 
 src/or/circuitlist.h:
@@ -554,6 +557,8 @@ src/or/config.h:
 src/or/connection.h:
 
 src/common/buffers.h:
+
+src/common/tor_labelling.h:
 
 src/or/control.h:
 

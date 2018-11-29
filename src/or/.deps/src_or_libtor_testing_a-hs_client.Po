@@ -128,18 +128,19 @@ src/or/src_or_libtor_testing_a-hs_client.o: src/or/hs_client.c \
  src/or/replaycache.h src/common/crypto_curve25519.h \
  src/common/crypto_ed25519.h src/ext/tor_queue.h \
  src/common/token_bucket.h src/common/util_format.h \
- src/or/hs_circuitmap.h src/or/circpathbias.h src/or/circuitbuild.h \
- src/or/circuitlist.h src/common/testsupport.h src/or/hs_ident.h \
- src/or/hs_common.h src/trunnel/ed25519_cert.h src/ext/trunnel/trunnel.h \
- src/or/circuituse.h src/or/config.h src/or/connection.h \
- src/common/buffers.h src/or/connection_edge.h src/common/crypto_rand.h \
- src/common/crypto_util.h src/or/directory.h src/or/hs_cache.h \
- src/or/hs_descriptor.h src/or/torcert.h src/or/rendcommon.h \
- src/or/hs_cell.h src/or/hs_service.h src/or/hs_intropoint.h \
- src/trunnel/hs/cell_establish_intro.h src/or/hs_circuit.h \
- src/or/hs_client.h src/or/hs_control.h src/or/hs_ntor.h \
- src/or/networkstatus.h src/or/nodelist.h src/or/reasons.h \
- src/or/rendclient.h src/or/rendcache.h src/or/router.h \
+ src/or/hs_circuitmap.h src/or/../common/tor_labelling.h \
+ src/or/circpathbias.h src/or/circuitbuild.h src/or/circuitlist.h \
+ src/common/testsupport.h src/or/hs_ident.h src/or/hs_common.h \
+ src/trunnel/ed25519_cert.h src/ext/trunnel/trunnel.h src/or/circuituse.h \
+ src/or/config.h src/or/connection.h src/common/buffers.h \
+ src/common/tor_labelling.h src/or/connection_edge.h \
+ src/common/crypto_rand.h src/common/crypto_util.h src/or/directory.h \
+ src/or/hs_cache.h src/or/hs_descriptor.h src/or/torcert.h \
+ src/or/rendcommon.h src/or/hs_cell.h src/or/hs_service.h \
+ src/or/hs_intropoint.h src/trunnel/hs/cell_establish_intro.h \
+ src/or/hs_circuit.h src/or/hs_client.h src/or/hs_control.h \
+ src/or/hs_ntor.h src/or/networkstatus.h src/or/nodelist.h \
+ src/or/reasons.h src/or/rendclient.h src/or/rendcache.h src/or/router.h \
  src/or/routerset.h
 
 /usr/include/stdc-predef.h:
@@ -534,6 +535,8 @@ src/common/util_format.h:
 
 src/or/hs_circuitmap.h:
 
+src/or/../common/tor_labelling.h:
+
 src/or/circpathbias.h:
 
 src/or/circuitbuild.h:
@@ -557,6 +560,8 @@ src/or/config.h:
 src/or/connection.h:
 
 src/common/buffers.h:
+
+src/common/tor_labelling.h:
 
 src/or/connection_edge.h:
 

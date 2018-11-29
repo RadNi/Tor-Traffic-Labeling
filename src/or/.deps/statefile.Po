@@ -128,9 +128,10 @@ src/or/statefile.o: src/or/statefile.c /usr/include/stdc-predef.h \
  src/or/replaycache.h src/common/crypto_curve25519.h \
  src/common/crypto_ed25519.h src/ext/tor_queue.h \
  src/common/token_bucket.h src/common/util_format.h \
- src/or/hs_circuitmap.h src/or/circuitstats.h src/or/config.h \
- src/common/testsupport.h src/or/confparse.h src/or/connection.h \
- src/common/buffers.h src/or/control.h src/or/entrynodes.h \
+ src/or/hs_circuitmap.h src/or/../common/tor_labelling.h \
+ src/or/circuitstats.h src/or/config.h src/common/testsupport.h \
+ src/or/confparse.h src/or/connection.h src/common/buffers.h \
+ src/common/tor_labelling.h src/or/control.h src/or/entrynodes.h \
  src/common/handles.h src/or/hibernate.h src/or/main.h src/or/rephist.h \
  src/or/router.h src/common/sandbox.h src/or/statefile.h
 
@@ -526,6 +527,8 @@ src/common/util_format.h:
 
 src/or/hs_circuitmap.h:
 
+src/or/../common/tor_labelling.h:
+
 src/or/circuitstats.h:
 
 src/or/config.h:
@@ -537,6 +540,8 @@ src/or/confparse.h:
 src/or/connection.h:
 
 src/common/buffers.h:
+
+src/common/tor_labelling.h:
 
 src/or/control.h:
 

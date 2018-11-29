@@ -110,6 +110,7 @@
 #include "tor_api_internal.h"
 #include "util_process.h"
 #include "ext_orport.h"
+#include "../common/tor_labelling.h"
 #ifdef USE_DMALLOC
 #include <dmalloc.h>
 #endif
@@ -231,6 +232,14 @@ static int can_complete_circuits = 0;
  * For 1, we log warnings only.  For 2, we log nothing.
  */
 int quiet_level = 0;
+
+/**
+ * Stores the head of the linked-list of the encrypted chunks of a buf.
+ * This way the encrypted data could be passed between the buf_peek and
+ * cell_unpack function.
+ */
+struct buf_chunks_encrypted_data_list_struct* buf_chunks_encrypted_data_list_head = NULL;
+struct buf_chunks_encrypted_data_list_struct* buf_chunks_encrypted_data_list_tail = NULL;
 
 /********* END VARIABLES ************/
 

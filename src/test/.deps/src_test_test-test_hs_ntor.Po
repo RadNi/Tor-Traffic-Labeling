@@ -128,8 +128,8 @@ src/test/src_test_test-test_hs_ntor.o: src/test/test_hs_ntor.c \
  src/or/replaycache.h src/common/crypto_curve25519.h \
  src/common/crypto_ed25519.h src/ext/tor_queue.h \
  src/common/token_bucket.h src/common/util_format.h \
- src/or/hs_circuitmap.h src/test/log_test_helpers.h src/or/hs_ntor.h \
- src/or/or.h
+ src/or/hs_circuitmap.h src/or/../common/tor_labelling.h \
+ src/test/log_test_helpers.h src/or/hs_ntor.h src/or/or.h
 
 /usr/include/stdc-predef.h:
 
@@ -532,6 +532,8 @@ src/common/token_bucket.h:
 src/common/util_format.h:
 
 src/or/hs_circuitmap.h:
+
+src/or/../common/tor_labelling.h:
 
 src/test/log_test_helpers.h:
 

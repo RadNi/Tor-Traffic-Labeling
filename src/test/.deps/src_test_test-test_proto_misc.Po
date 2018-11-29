@@ -128,10 +128,11 @@ src/test/src_test_test-test_proto_misc.o: src/test/test_proto_misc.c \
  src/or/replaycache.h src/common/crypto_curve25519.h \
  src/common/crypto_ed25519.h src/ext/tor_queue.h \
  src/common/token_bucket.h src/common/util_format.h \
- src/or/hs_circuitmap.h src/test/test.h src/common/compat.h \
- src/ext/tinytest.h src/ext/tinytest_macros.h src/common/buffers.h \
- src/or/connection_or.h src/or/ext_orport.h src/or/proto_cell.h \
- src/or/proto_control0.h src/or/proto_ext_or.h
+ src/or/hs_circuitmap.h src/or/../common/tor_labelling.h src/test/test.h \
+ src/common/compat.h src/ext/tinytest.h src/ext/tinytest_macros.h \
+ src/common/buffers.h src/common/tor_labelling.h src/or/connection_or.h \
+ src/or/ext_orport.h src/or/proto_cell.h src/or/proto_control0.h \
+ src/or/proto_ext_or.h
 
 /usr/include/stdc-predef.h:
 
@@ -525,6 +526,8 @@ src/common/util_format.h:
 
 src/or/hs_circuitmap.h:
 
+src/or/../common/tor_labelling.h:
+
 src/test/test.h:
 
 src/common/compat.h:
@@ -534,6 +537,8 @@ src/ext/tinytest.h:
 src/ext/tinytest_macros.h:
 
 src/common/buffers.h:
+
+src/common/tor_labelling.h:
 
 src/or/connection_or.h:
 

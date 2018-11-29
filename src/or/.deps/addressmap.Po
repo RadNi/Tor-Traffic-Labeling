@@ -128,9 +128,10 @@ src/or/addressmap.o: src/or/addressmap.c /usr/include/stdc-predef.h \
  src/or/replaycache.h src/common/crypto_curve25519.h \
  src/common/crypto_ed25519.h src/ext/tor_queue.h \
  src/common/token_bucket.h src/common/util_format.h \
- src/or/hs_circuitmap.h src/or/addressmap.h src/common/testsupport.h \
- src/or/circuituse.h src/or/config.h src/or/connection_edge.h \
- src/or/control.h src/common/crypto_rand.h src/or/dns.h src/or/nodelist.h \
+ src/or/hs_circuitmap.h src/or/../common/tor_labelling.h \
+ src/or/addressmap.h src/common/testsupport.h src/or/circuituse.h \
+ src/or/config.h src/or/connection_edge.h src/or/control.h \
+ src/common/crypto_rand.h src/or/dns.h src/or/nodelist.h \
  src/or/routerset.h
 
 /usr/include/stdc-predef.h:
@@ -524,6 +525,8 @@ src/common/token_bucket.h:
 src/common/util_format.h:
 
 src/or/hs_circuitmap.h:
+
+src/or/../common/tor_labelling.h:
 
 src/or/addressmap.h:
 

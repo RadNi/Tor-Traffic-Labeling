@@ -128,11 +128,12 @@ src/or/channelpadding.o: src/or/channelpadding.c \
  src/or/replaycache.h src/common/crypto_curve25519.h \
  src/common/crypto_ed25519.h src/ext/tor_queue.h \
  src/common/token_bucket.h src/common/util_format.h \
- src/or/hs_circuitmap.h src/or/channel.h src/or/circuitmux.h \
- src/common/testsupport.h src/common/timers.h src/common/handles.h \
- src/or/channelpadding.h src/trunnel/channelpadding_negotiation.h \
- src/ext/trunnel/trunnel.h src/or/channeltls.h src/or/config.h \
- src/or/networkstatus.h src/or/connection.h src/common/buffers.h \
+ src/or/hs_circuitmap.h src/or/../common/tor_labelling.h src/or/channel.h \
+ src/or/circuitmux.h src/common/testsupport.h src/common/timers.h \
+ src/common/handles.h src/or/channelpadding.h \
+ src/trunnel/channelpadding_negotiation.h src/ext/trunnel/trunnel.h \
+ src/or/channeltls.h src/or/config.h src/or/networkstatus.h \
+ src/or/connection.h src/common/buffers.h src/common/tor_labelling.h \
  src/or/connection_or.h src/common/crypto_rand.h src/or/main.h \
  src/or/rephist.h src/or/router.h src/common/compat_time.h \
  src/or/rendservice.h src/or/hs_service.h src/or/hs_common.h \
@@ -532,6 +533,8 @@ src/common/util_format.h:
 
 src/or/hs_circuitmap.h:
 
+src/or/../common/tor_labelling.h:
+
 src/or/channel.h:
 
 src/or/circuitmux.h:
@@ -557,6 +560,8 @@ src/or/networkstatus.h:
 src/or/connection.h:
 
 src/common/buffers.h:
+
+src/common/tor_labelling.h:
 
 src/or/connection_or.h:
 

@@ -128,8 +128,9 @@ src/or/src_or_libtor_testing_a-main.o: src/or/main.c \
  src/or/replaycache.h src/common/crypto_curve25519.h \
  src/common/crypto_ed25519.h src/ext/tor_queue.h \
  src/common/token_bucket.h src/common/util_format.h \
- src/or/hs_circuitmap.h src/or/addressmap.h src/common/testsupport.h \
- src/common/backtrace.h src/or/bridges.h src/common/buffers.h \
+ src/or/hs_circuitmap.h src/or/../common/tor_labelling.h \
+ src/or/addressmap.h src/common/testsupport.h src/common/backtrace.h \
+ src/or/bridges.h src/common/buffers.h src/common/tor_labelling.h \
  src/common/buffers_tls.h src/or/channel.h src/or/circuitmux.h \
  src/common/timers.h src/common/handles.h src/or/channeltls.h \
  src/or/channelpadding.h src/trunnel/channelpadding_negotiation.h \
@@ -550,6 +551,8 @@ src/common/util_format.h:
 
 src/or/hs_circuitmap.h:
 
+src/or/../common/tor_labelling.h:
+
 src/or/addressmap.h:
 
 src/common/testsupport.h:
@@ -559,6 +562,8 @@ src/common/backtrace.h:
 src/or/bridges.h:
 
 src/common/buffers.h:
+
+src/common/tor_labelling.h:
 
 src/common/buffers_tls.h:
 

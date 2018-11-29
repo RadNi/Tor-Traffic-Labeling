@@ -126,16 +126,17 @@ src/or/circuitlist.o: src/or/circuitlist.c /usr/include/stdc-predef.h \
  src/or/replaycache.h src/common/crypto_curve25519.h \
  src/common/crypto_ed25519.h src/ext/tor_queue.h \
  src/common/token_bucket.h src/common/util_format.h \
- src/or/hs_circuitmap.h src/or/channel.h src/or/circuitmux.h \
- src/common/testsupport.h src/common/timers.h src/common/handles.h \
- src/or/circpathbias.h src/or/circuitbuild.h src/or/circuitlist.h \
- src/or/hs_ident.h src/or/hs_common.h src/trunnel/ed25519_cert.h \
- src/ext/trunnel/trunnel.h src/or/circuituse.h src/or/circuitstats.h \
- src/or/connection.h src/common/buffers.h src/or/config.h \
- src/or/connection_edge.h src/or/connection_or.h src/or/control.h \
- src/common/crypto_rand.h src/common/crypto_util.h src/or/entrynodes.h \
- src/or/main.h src/or/hs_circuit.h src/or/hs_service.h \
- src/or/hs_descriptor.h src/or/torcert.h src/or/hs_intropoint.h \
+ src/or/hs_circuitmap.h src/or/../common/tor_labelling.h src/or/channel.h \
+ src/or/circuitmux.h src/common/testsupport.h src/common/timers.h \
+ src/common/handles.h src/or/circpathbias.h src/or/circuitbuild.h \
+ src/or/circuitlist.h src/or/hs_ident.h src/or/hs_common.h \
+ src/trunnel/ed25519_cert.h src/ext/trunnel/trunnel.h src/or/circuituse.h \
+ src/or/circuitstats.h src/or/connection.h src/common/buffers.h \
+ src/common/tor_labelling.h src/or/config.h src/or/connection_edge.h \
+ src/or/connection_or.h src/or/control.h src/common/crypto_rand.h \
+ src/common/crypto_util.h src/or/entrynodes.h src/or/main.h \
+ src/or/hs_circuit.h src/or/hs_service.h src/or/hs_descriptor.h \
+ src/or/torcert.h src/or/hs_intropoint.h \
  src/trunnel/hs/cell_establish_intro.h src/or/networkstatus.h \
  src/or/nodelist.h src/or/onion.h src/or/onion_fast.h src/or/policies.h \
  src/or/relay.h src/or/relay_crypto.h src/or/rendclient.h \
@@ -536,6 +537,8 @@ src/common/util_format.h:
 
 src/or/hs_circuitmap.h:
 
+src/or/../common/tor_labelling.h:
+
 src/or/channel.h:
 
 src/or/circuitmux.h:
@@ -567,6 +570,8 @@ src/or/circuitstats.h:
 src/or/connection.h:
 
 src/common/buffers.h:
+
+src/common/tor_labelling.h:
 
 src/or/config.h:
 

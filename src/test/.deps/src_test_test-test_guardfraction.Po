@@ -129,11 +129,11 @@ src/test/src_test_test-test_guardfraction.o: \
  src/or/replaycache.h src/common/crypto_curve25519.h \
  src/common/crypto_ed25519.h src/ext/tor_queue.h \
  src/common/token_bucket.h src/common/util_format.h \
- src/or/hs_circuitmap.h src/or/config.h src/common/testsupport.h \
- src/or/dirserv.h src/or/entrynodes.h src/common/handles.h \
- src/common/util.h src/or/routerparse.h src/or/networkstatus.h \
- src/test/test.h src/common/compat.h src/ext/tinytest.h \
- src/ext/tinytest_macros.h src/test/test_helpers.h \
+ src/or/hs_circuitmap.h src/or/../common/tor_labelling.h src/or/config.h \
+ src/common/testsupport.h src/or/dirserv.h src/or/entrynodes.h \
+ src/common/handles.h src/common/util.h src/or/routerparse.h \
+ src/or/networkstatus.h src/test/test.h src/common/compat.h \
+ src/ext/tinytest.h src/ext/tinytest_macros.h src/test/test_helpers.h \
  src/test/log_test_helpers.h
 
 /usr/include/stdc-predef.h:
@@ -527,6 +527,8 @@ src/common/token_bucket.h:
 src/common/util_format.h:
 
 src/or/hs_circuitmap.h:
+
+src/or/../common/tor_labelling.h:
 
 src/or/config.h:
 

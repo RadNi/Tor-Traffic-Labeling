@@ -128,8 +128,9 @@ src/or/src_or_libtor_testing_a-hs_stats.o: src/or/hs_stats.c \
  src/or/replaycache.h src/common/crypto_curve25519.h \
  src/common/crypto_ed25519.h src/ext/tor_queue.h \
  src/common/token_bucket.h src/common/util_format.h \
- src/or/hs_circuitmap.h src/or/hs_stats.h src/or/hs_service.h \
- src/or/hs_common.h src/trunnel/ed25519_cert.h src/ext/trunnel/trunnel.h \
+ src/or/hs_circuitmap.h src/or/../common/tor_labelling.h \
+ src/or/hs_stats.h src/or/hs_service.h src/or/hs_common.h \
+ src/trunnel/ed25519_cert.h src/ext/trunnel/trunnel.h \
  src/or/hs_descriptor.h src/or/torcert.h src/or/hs_ident.h \
  src/or/hs_intropoint.h src/trunnel/hs/cell_establish_intro.h
 
@@ -524,6 +525,8 @@ src/common/token_bucket.h:
 src/common/util_format.h:
 
 src/or/hs_circuitmap.h:
+
+src/or/../common/tor_labelling.h:
 
 src/or/hs_stats.h:
 

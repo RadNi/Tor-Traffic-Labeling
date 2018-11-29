@@ -130,11 +130,11 @@ src/test/src_test_test-test_hs_descriptor.o: \
  src/ext/ht.h src/common/confline.h src/or/replaycache.h \
  src/common/crypto_curve25519.h src/ext/tor_queue.h \
  src/common/token_bucket.h src/common/util_format.h \
- src/or/hs_circuitmap.h src/or/hs_descriptor.h src/or/or.h \
- src/or/torcert.h src/test/test.h src/common/compat.h src/ext/tinytest.h \
- src/ext/tinytest_macros.h src/or/torcert.h src/test/hs_test_helpers.h \
- src/test/test_helpers.h src/test/log_test_helpers.h \
- src/test/test_hs_descriptor.inc
+ src/or/hs_circuitmap.h src/or/../common/tor_labelling.h \
+ src/or/hs_descriptor.h src/or/or.h src/or/torcert.h src/test/test.h \
+ src/common/compat.h src/ext/tinytest.h src/ext/tinytest_macros.h \
+ src/or/torcert.h src/test/hs_test_helpers.h src/test/test_helpers.h \
+ src/test/log_test_helpers.h src/test/test_hs_descriptor.inc
 
 /usr/include/stdc-predef.h:
 
@@ -535,6 +535,8 @@ src/common/token_bucket.h:
 src/common/util_format.h:
 
 src/or/hs_circuitmap.h:
+
+src/or/../common/tor_labelling.h:
 
 src/or/hs_descriptor.h:
 

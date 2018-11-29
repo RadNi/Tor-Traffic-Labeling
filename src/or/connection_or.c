@@ -20,6 +20,7 @@
  *
  * This module also implements the client side of the v3 Tor link handshake,
  **/
+#include <string.h>
 #include "or.h"
 #include "bridges.h"
 #include "buffers.h"
@@ -60,6 +61,7 @@
 #include "scheduler.h"
 #include "torcert.h"
 #include "channelpadding.h"
+#include "../common/tor_labelling.h"
 
 static int connection_tls_finish_handshake(or_connection_t *conn);
 static int connection_or_launch_v3_or_handshake(or_connection_t *conn);
@@ -111,6 +113,9 @@ connection_or_clear_identity_map(void)
     }
   });
 }
+
+extern buf_chunks_encrypted_data_list* buf_chunks_encrypted_data_list_head;
+extern buf_chunks_encrypted_data_list* buf_chunks_encrypted_data_list_tail;
 
 /** Change conn->identity_digest to digest, and add conn into
  * the appropriate digest maps.
@@ -449,6 +454,35 @@ cell_unpack(cell_t *dest, const char *src, int wide_circ_ids)
   }
   dest->command = get_uint8(src);
   memcpy(dest->payload, src+1, CELL_PAYLOAD_SIZE);
+
+  int buf_chunks_encrypted_data_list_count = 0;
+
+  buf_chunks_encrypted_data_list* current = buf_chunks_encrypted_data_list_head;
+
+  while(current){
+    buf_chunks_encrypted_data_list_count ++;
+    current = current->next;
+  }
+
+  dest->encrypted_data = (char**)malloc(buf_chunks_encrypted_data_list_count * sizeof(char*));
+  dest->encrypted_data_length = (int*)malloc(buf_chunks_encrypted_data_list_count * sizeof(int));
+  dest->encrypted_data_chunks_count = buf_chunks_encrypted_data_list_count;
+
+  current = buf_chunks_encrypted_data_list_head;
+  int i = 0;
+  while(current){
+    dest->encrypted_data[i] = (char *) malloc(current->data_length);
+    memcpy(dest->encrypted_data[i], current->data, current->data_length);
+    dest->encrypted_data_length[i] = (int) current->data_length;
+
+    buf_chunks_encrypted_data_list * freed = current;
+    current = current->next;
+    free(freed);
+    i++;
+  }
+
+  buf_chunks_encrypted_data_list_head = NULL;
+  buf_chunks_encrypted_data_list_tail = NULL;
 }
 
 /** Write the header of <b>cell</b> into the first VAR_CELL_MAX_HEADER_SIZE

@@ -129,8 +129,8 @@ src/test/fuzz/src_test_fuzz_fuzz_diff_apply-fuzz_diff_apply.o: \
  src/or/replaycache.h src/common/crypto_curve25519.h \
  src/common/crypto_ed25519.h src/ext/tor_queue.h \
  src/common/token_bucket.h src/common/util_format.h \
- src/or/hs_circuitmap.h src/or/consdiff.h src/or/or.h \
- src/test/fuzz/fuzzing.h
+ src/or/hs_circuitmap.h src/or/../common/tor_labelling.h \
+ src/or/consdiff.h src/or/or.h src/test/fuzz/fuzzing.h
 
 /usr/include/stdc-predef.h:
 
@@ -523,6 +523,8 @@ src/common/token_bucket.h:
 src/common/util_format.h:
 
 src/or/hs_circuitmap.h:
+
+src/or/../common/tor_labelling.h:
 
 src/or/consdiff.h:
 

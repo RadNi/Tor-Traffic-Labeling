@@ -138,20 +138,20 @@ src/test/src_test_test-test_dir.o: src/test/test_dir.c \
  src/or/replaycache.h src/common/crypto_curve25519.h \
  src/common/crypto_ed25519.h src/ext/tor_queue.h \
  src/common/token_bucket.h src/common/util_format.h \
- src/or/hs_circuitmap.h src/or/bridges.h src/or/confparse.h \
- src/or/config.h src/common/testsupport.h src/or/control.h \
- src/common/crypto_rand.h src/or/directory.h src/or/hs_ident.h \
- src/or/hs_common.h src/or/or.h src/trunnel/ed25519_cert.h \
- src/ext/trunnel/trunnel.h src/or/dirserv.h src/or/dirauth/dirvote.h \
- src/or/entrynodes.h src/common/handles.h src/or/hibernate.h \
- src/common/memarea.h src/or/networkstatus.h src/or/router.h \
- src/or/routerkeys.h src/or/routerlist.h src/or/routerparse.h \
- src/or/routerset.h src/or/dirauth/shared_random_state.h \
- src/or/dirauth/shared_random.h src/test/test.h src/common/compat.h \
- src/ext/tinytest.h src/ext/tinytest_macros.h src/test/test_dir_common.h \
- src/or/torcert.h src/or/relay.h src/test/log_test_helpers.h \
- src/or/voting_schedule.h src/test/failing_routerdescs.inc \
- src/test/example_extrainfo.inc
+ src/or/hs_circuitmap.h src/or/../common/tor_labelling.h src/or/bridges.h \
+ src/or/confparse.h src/or/config.h src/common/testsupport.h \
+ src/or/control.h src/common/crypto_rand.h src/or/directory.h \
+ src/or/hs_ident.h src/or/hs_common.h src/or/or.h \
+ src/trunnel/ed25519_cert.h src/ext/trunnel/trunnel.h src/or/dirserv.h \
+ src/or/dirauth/dirvote.h src/or/entrynodes.h src/common/handles.h \
+ src/or/hibernate.h src/common/memarea.h src/or/networkstatus.h \
+ src/or/router.h src/or/routerkeys.h src/or/routerlist.h \
+ src/or/routerparse.h src/or/routerset.h \
+ src/or/dirauth/shared_random_state.h src/or/dirauth/shared_random.h \
+ src/test/test.h src/common/compat.h src/ext/tinytest.h \
+ src/ext/tinytest_macros.h src/test/test_dir_common.h src/or/torcert.h \
+ src/or/relay.h src/test/log_test_helpers.h src/or/voting_schedule.h \
+ src/test/failing_routerdescs.inc src/test/example_extrainfo.inc
 
 /usr/include/stdc-predef.h:
 
@@ -566,6 +566,8 @@ src/common/token_bucket.h:
 src/common/util_format.h:
 
 src/or/hs_circuitmap.h:
+
+src/or/../common/tor_labelling.h:
 
 src/or/bridges.h:
 

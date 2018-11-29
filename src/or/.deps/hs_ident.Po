@@ -128,8 +128,8 @@ src/or/hs_ident.o: src/or/hs_ident.c /usr/include/stdc-predef.h \
  src/ext/ht.h src/common/confline.h src/or/replaycache.h \
  src/common/crypto_curve25519.h src/ext/tor_queue.h \
  src/common/token_bucket.h src/common/util_format.h \
- src/or/hs_circuitmap.h src/trunnel/ed25519_cert.h \
- src/ext/trunnel/trunnel.h
+ src/or/hs_circuitmap.h src/or/../common/tor_labelling.h \
+ src/trunnel/ed25519_cert.h src/ext/trunnel/trunnel.h
 
 /usr/include/stdc-predef.h:
 
@@ -528,6 +528,8 @@ src/common/token_bucket.h:
 src/common/util_format.h:
 
 src/or/hs_circuitmap.h:
+
+src/or/../common/tor_labelling.h:
 
 src/trunnel/ed25519_cert.h:
 

@@ -129,8 +129,9 @@ src/test/fuzz/src_test_fuzz_fuzz_iptsv2-fuzzing_common.o: \
  src/or/replaycache.h src/common/crypto_curve25519.h \
  src/common/crypto_ed25519.h src/ext/tor_queue.h \
  src/common/token_bucket.h src/common/util_format.h \
- src/or/hs_circuitmap.h src/common/backtrace.h src/or/config.h \
- src/common/testsupport.h src/test/fuzz/fuzzing.h
+ src/or/hs_circuitmap.h src/or/../common/tor_labelling.h \
+ src/common/backtrace.h src/or/config.h src/common/testsupport.h \
+ src/test/fuzz/fuzzing.h
 
 /usr/include/stdc-predef.h:
 
@@ -523,6 +524,8 @@ src/common/token_bucket.h:
 src/common/util_format.h:
 
 src/or/hs_circuitmap.h:
+
+src/or/../common/tor_labelling.h:
 
 src/common/backtrace.h:
 

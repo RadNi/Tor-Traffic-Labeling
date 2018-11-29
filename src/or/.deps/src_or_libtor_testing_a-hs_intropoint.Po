@@ -128,10 +128,10 @@ src/or/src_or_libtor_testing_a-hs_intropoint.o: src/or/hs_intropoint.c \
  src/or/replaycache.h src/common/crypto_curve25519.h \
  src/common/crypto_ed25519.h src/ext/tor_queue.h \
  src/common/token_bucket.h src/common/util_format.h \
- src/or/hs_circuitmap.h src/or/config.h src/common/testsupport.h \
- src/or/circuitlist.h src/or/hs_ident.h src/or/hs_common.h \
- src/trunnel/ed25519_cert.h src/ext/trunnel/trunnel.h src/or/circuituse.h \
- src/or/relay.h src/or/rendmid.h src/or/rephist.h \
+ src/or/hs_circuitmap.h src/or/../common/tor_labelling.h src/or/config.h \
+ src/common/testsupport.h src/or/circuitlist.h src/or/hs_ident.h \
+ src/or/hs_common.h src/trunnel/ed25519_cert.h src/ext/trunnel/trunnel.h \
+ src/or/circuituse.h src/or/relay.h src/or/rendmid.h src/or/rephist.h \
  src/trunnel/hs/cell_common.h src/trunnel/hs/cell_establish_intro.h \
  src/trunnel/hs/cell_introduce1.h src/or/hs_descriptor.h src/or/torcert.h \
  src/or/hs_intropoint.h
@@ -527,6 +527,8 @@ src/common/token_bucket.h:
 src/common/util_format.h:
 
 src/or/hs_circuitmap.h:
+
+src/or/../common/tor_labelling.h:
 
 src/or/config.h:
 

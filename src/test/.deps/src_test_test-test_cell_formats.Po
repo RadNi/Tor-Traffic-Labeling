@@ -128,13 +128,13 @@ src/test/src_test_test-test_cell_formats.o: src/test/test_cell_formats.c \
  src/or/replaycache.h src/common/crypto_curve25519.h \
  src/common/crypto_ed25519.h src/ext/tor_queue.h \
  src/common/token_bucket.h src/common/util_format.h \
- src/or/hs_circuitmap.h src/or/channel.h src/or/or.h src/or/circuitmux.h \
- src/common/testsupport.h src/common/timers.h src/common/handles.h \
- src/or/connection_edge.h src/or/connection_or.h src/or/config.h \
- src/common/crypto_rand.h src/or/onion.h src/or/onion_tap.h \
- src/or/onion_fast.h src/or/onion_ntor.h src/common/di_ops.h \
- src/or/relay.h src/test/test.h src/common/compat.h src/ext/tinytest.h \
- src/ext/tinytest_macros.h
+ src/or/hs_circuitmap.h src/or/../common/tor_labelling.h src/or/channel.h \
+ src/or/or.h src/or/circuitmux.h src/common/testsupport.h \
+ src/common/timers.h src/common/handles.h src/or/connection_edge.h \
+ src/or/connection_or.h src/or/config.h src/common/crypto_rand.h \
+ src/or/onion.h src/or/onion_tap.h src/or/onion_fast.h \
+ src/or/onion_ntor.h src/common/di_ops.h src/or/relay.h src/test/test.h \
+ src/common/compat.h src/ext/tinytest.h src/ext/tinytest_macros.h
 
 /usr/include/stdc-predef.h:
 
@@ -527,6 +527,8 @@ src/common/token_bucket.h:
 src/common/util_format.h:
 
 src/or/hs_circuitmap.h:
+
+src/or/../common/tor_labelling.h:
 
 src/or/channel.h:
 

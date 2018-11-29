@@ -128,13 +128,14 @@ src/or/cpuworker.o: src/or/cpuworker.c /usr/include/stdc-predef.h \
  src/or/replaycache.h src/common/crypto_curve25519.h \
  src/common/crypto_ed25519.h src/ext/tor_queue.h \
  src/common/token_bucket.h src/common/util_format.h \
- src/or/hs_circuitmap.h src/or/channel.h src/or/circuitmux.h \
- src/common/testsupport.h src/common/timers.h src/common/handles.h \
- src/or/circuitbuild.h src/or/circuitlist.h src/or/hs_ident.h \
- src/or/hs_common.h src/trunnel/ed25519_cert.h src/ext/trunnel/trunnel.h \
- src/or/connection_or.h src/or/config.h src/or/cpuworker.h \
- src/common/crypto_rand.h src/common/crypto_util.h src/or/main.h \
- src/or/onion.h src/or/rephist.h src/or/router.h src/common/workqueue.h
+ src/or/hs_circuitmap.h src/or/../common/tor_labelling.h src/or/channel.h \
+ src/or/circuitmux.h src/common/testsupport.h src/common/timers.h \
+ src/common/handles.h src/or/circuitbuild.h src/or/circuitlist.h \
+ src/or/hs_ident.h src/or/hs_common.h src/trunnel/ed25519_cert.h \
+ src/ext/trunnel/trunnel.h src/or/connection_or.h src/or/config.h \
+ src/or/cpuworker.h src/common/crypto_rand.h src/common/crypto_util.h \
+ src/or/main.h src/or/onion.h src/or/rephist.h src/or/router.h \
+ src/common/workqueue.h
 
 /usr/include/stdc-predef.h:
 
@@ -527,6 +528,8 @@ src/common/token_bucket.h:
 src/common/util_format.h:
 
 src/or/hs_circuitmap.h:
+
+src/or/../common/tor_labelling.h:
 
 src/or/channel.h:
 

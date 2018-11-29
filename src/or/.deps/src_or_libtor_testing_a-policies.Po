@@ -128,10 +128,11 @@ src/or/src_or_libtor_testing_a-policies.o: src/or/policies.c \
  src/or/replaycache.h src/common/crypto_curve25519.h \
  src/common/crypto_ed25519.h src/ext/tor_queue.h \
  src/common/token_bucket.h src/common/util_format.h \
- src/or/hs_circuitmap.h src/or/bridges.h src/or/config.h \
- src/common/testsupport.h src/or/dirserv.h src/or/microdesc.h \
- src/or/networkstatus.h src/or/nodelist.h src/or/policies.h \
- src/or/router.h src/or/routerparse.h src/or/geoip.h src/or/dos.h
+ src/or/hs_circuitmap.h src/or/../common/tor_labelling.h src/or/bridges.h \
+ src/or/config.h src/common/testsupport.h src/or/dirserv.h \
+ src/or/microdesc.h src/or/networkstatus.h src/or/nodelist.h \
+ src/or/policies.h src/or/router.h src/or/routerparse.h src/or/geoip.h \
+ src/or/dos.h
 
 /usr/include/stdc-predef.h:
 
@@ -524,6 +525,8 @@ src/common/token_bucket.h:
 src/common/util_format.h:
 
 src/or/hs_circuitmap.h:
+
+src/or/../common/tor_labelling.h:
 
 src/or/bridges.h:
 

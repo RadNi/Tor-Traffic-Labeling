@@ -71,8 +71,8 @@ src/common/buffers.o: src/common/buffers.c /usr/include/stdc-predef.h \
  /usr/include/x86_64-linux-gnu/bits/sched.h \
  /usr/include/x86_64-linux-gnu/bits/setjmp.h \
  /usr/lib/gcc/x86_64-linux-gnu/5/include/stdatomic.h \
- src/common/compress.h src/common/util.h src/common/di_ops.h \
- /usr/include/x86_64-linux-gnu/bits/waitflags.h \
+ src/common/tor_labelling.h src/common/compress.h src/common/util.h \
+ src/common/di_ops.h /usr/include/x86_64-linux-gnu/bits/waitflags.h \
  /usr/include/x86_64-linux-gnu/bits/waitstatus.h /usr/include/alloca.h \
  /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h \
  /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
@@ -281,6 +281,8 @@ src/common/compat_threads.h:
 /usr/include/x86_64-linux-gnu/bits/setjmp.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/5/include/stdatomic.h:
+
+src/common/tor_labelling.h:
 
 src/common/compress.h:
 

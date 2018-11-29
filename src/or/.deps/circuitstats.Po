@@ -128,12 +128,13 @@ src/or/circuitstats.o: src/or/circuitstats.c /usr/include/stdc-predef.h \
  src/or/replaycache.h src/common/crypto_curve25519.h \
  src/common/crypto_ed25519.h src/ext/tor_queue.h \
  src/common/token_bucket.h src/common/util_format.h \
- src/or/hs_circuitmap.h src/or/circuitbuild.h src/or/circuitstats.h \
- src/or/config.h src/common/testsupport.h src/or/confparse.h \
- src/or/control.h src/common/crypto_rand.h src/or/main.h \
- src/or/networkstatus.h src/or/rendclient.h src/or/rendcache.h \
- src/or/rendcommon.h src/or/rendservice.h src/or/hs_service.h \
- src/or/hs_common.h src/trunnel/ed25519_cert.h src/ext/trunnel/trunnel.h \
+ src/or/hs_circuitmap.h src/or/../common/tor_labelling.h \
+ src/or/circuitbuild.h src/or/circuitstats.h src/or/config.h \
+ src/common/testsupport.h src/or/confparse.h src/or/control.h \
+ src/common/crypto_rand.h src/or/main.h src/or/networkstatus.h \
+ src/or/rendclient.h src/or/rendcache.h src/or/rendcommon.h \
+ src/or/rendservice.h src/or/hs_service.h src/or/hs_common.h \
+ src/trunnel/ed25519_cert.h src/ext/trunnel/trunnel.h \
  src/or/hs_descriptor.h src/or/torcert.h src/or/hs_ident.h \
  src/or/hs_intropoint.h src/trunnel/hs/cell_establish_intro.h \
  src/or/router.h src/or/statefile.h src/or/circuitlist.h \
@@ -540,6 +541,8 @@ src/common/token_bucket.h:
 src/common/util_format.h:
 
 src/or/hs_circuitmap.h:
+
+src/or/../common/tor_labelling.h:
 
 src/or/circuitbuild.h:
 

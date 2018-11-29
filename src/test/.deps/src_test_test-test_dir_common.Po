@@ -127,8 +127,9 @@ src/test/src_test_test-test_dir_common.o: src/test/test_dir_common.c \
  src/ext/ht.h src/common/confline.h src/or/replaycache.h \
  src/common/crypto_curve25519.h src/common/crypto_ed25519.h \
  src/ext/tor_queue.h src/common/token_bucket.h src/common/util_format.h \
- src/or/hs_circuitmap.h src/or/dirauth/dirvote.h src/or/nodelist.h \
- src/or/routerlist.h src/common/testsupport.h src/test/test_dir_common.h \
+ src/or/hs_circuitmap.h src/or/../common/tor_labelling.h \
+ src/or/dirauth/dirvote.h src/or/nodelist.h src/or/routerlist.h \
+ src/common/testsupport.h src/test/test_dir_common.h \
  src/or/networkstatus.h src/or/routerparse.h src/or/voting_schedule.h \
  src/or/or.h
 
@@ -531,6 +532,8 @@ src/common/token_bucket.h:
 src/common/util_format.h:
 
 src/or/hs_circuitmap.h:
+
+src/or/../common/tor_labelling.h:
 
 src/or/dirauth/dirvote.h:
 

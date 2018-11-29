@@ -27,6 +27,7 @@
 #include "util.h"
 #include "torint.h"
 #include "torlog.h"
+#include "tor_labelling.h"
 #ifdef HAVE_UNISTD_H
 #include <unistd.h>
 #endif
@@ -100,6 +101,9 @@
   } while (0)
 #endif /* defined(DISABLE_MEMORY_SENTINELS) */
 
+extern buf_chunks_encrypted_data_list* buf_chunks_encrypted_data_list_head;
+extern buf_chunks_encrypted_data_list* buf_chunks_encrypted_data_list_tail;
+
 /** Move all bytes stored in <b>chunk</b> to the front of <b>chunk</b>->mem,
  * to free up space at the end. */
 static inline void
@@ -124,6 +128,7 @@ buf_chunk_free_unchecked(chunk_t *chunk)
   tor_assert(total_bytes_allocated_in_chunks >=
              CHUNK_ALLOC_SIZE(chunk->memlen));
   total_bytes_allocated_in_chunks -= CHUNK_ALLOC_SIZE(chunk->memlen);
+    free(chunk->encrypted_data);
   tor_free(chunk);
 }
 static inline chunk_t *
@@ -131,6 +136,8 @@ chunk_new_with_alloc_size(size_t alloc)
 {
   chunk_t *ch;
   ch = tor_malloc(alloc);
+    ch->encrypted_data = (char*)malloc(CHUNK_MAX_ENCRYPTED_DATA_LENGTH);
+    ch->encrypted_data_length = 0;
   ch->next = NULL;
   ch->datalen = 0;
 #ifdef DEBUG_CHUNK_ALLOC
@@ -783,6 +790,21 @@ buf_peek(const buf_t *buf, char *string, size_t string_len)
     memcpy(string, chunk->data, copy);
     string_len -= copy;
     string += copy;
+
+      buf_chunks_encrypted_data_list* new_chunk_encrypted_data;
+      new_chunk_encrypted_data = (buf_chunks_encrypted_data_list*)malloc(sizeof(buf_chunks_encrypted_data_list));
+      memcpy(new_chunk_encrypted_data->data, chunk->encrypted_data, chunk->encrypted_data_length);
+      new_chunk_encrypted_data->data_length = chunk->encrypted_data_length;
+      new_chunk_encrypted_data->next = NULL;
+
+      if (buf_chunks_encrypted_data_list_head == NULL){
+          buf_chunks_encrypted_data_list_head = new_chunk_encrypted_data;
+          buf_chunks_encrypted_data_list_tail = new_chunk_encrypted_data;
+      } else {
+          buf_chunks_encrypted_data_list_tail->next = new_chunk_encrypted_data;
+          buf_chunks_encrypted_data_list_tail = new_chunk_encrypted_data;
+      }
+
     chunk = chunk->next;
   }
 }

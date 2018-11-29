@@ -128,9 +128,9 @@ src/or/rendcache.o: src/or/rendcache.c /usr/include/stdc-predef.h \
  src/or/replaycache.h src/common/crypto_curve25519.h \
  src/common/crypto_ed25519.h src/ext/tor_queue.h \
  src/common/token_bucket.h src/common/util_format.h \
- src/or/hs_circuitmap.h src/or/rendcommon.h src/or/config.h \
- src/common/testsupport.h src/or/rephist.h src/or/routerlist.h \
- src/or/routerparse.h
+ src/or/hs_circuitmap.h src/or/../common/tor_labelling.h \
+ src/or/rendcommon.h src/or/config.h src/common/testsupport.h \
+ src/or/rephist.h src/or/routerlist.h src/or/routerparse.h
 
 /usr/include/stdc-predef.h:
 
@@ -525,6 +525,8 @@ src/common/token_bucket.h:
 src/common/util_format.h:
 
 src/or/hs_circuitmap.h:
+
+src/or/../common/tor_labelling.h:
 
 src/or/rendcommon.h:
 

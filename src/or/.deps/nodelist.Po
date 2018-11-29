@@ -128,12 +128,13 @@ src/or/nodelist.o: src/or/nodelist.c /usr/include/stdc-predef.h \
  src/or/replaycache.h src/common/crypto_curve25519.h \
  src/common/crypto_ed25519.h src/ext/tor_queue.h \
  src/common/token_bucket.h src/common/util_format.h \
- src/or/hs_circuitmap.h src/common/address_set.h src/or/bridges.h \
- src/or/config.h src/common/testsupport.h src/or/control.h \
- src/or/dirserv.h src/or/entrynodes.h src/common/handles.h src/or/geoip.h \
- src/or/dos.h src/or/hs_common.h src/trunnel/ed25519_cert.h \
- src/ext/trunnel/trunnel.h src/or/hs_client.h src/or/hs_descriptor.h \
- src/or/torcert.h src/or/hs_ident.h src/or/main.h src/or/microdesc.h \
+ src/or/hs_circuitmap.h src/or/../common/tor_labelling.h \
+ src/common/address_set.h src/or/bridges.h src/or/config.h \
+ src/common/testsupport.h src/or/control.h src/or/dirserv.h \
+ src/or/entrynodes.h src/common/handles.h src/or/geoip.h src/or/dos.h \
+ src/or/hs_common.h src/trunnel/ed25519_cert.h src/ext/trunnel/trunnel.h \
+ src/or/hs_client.h src/or/hs_descriptor.h src/or/torcert.h \
+ src/or/hs_ident.h src/or/main.h src/or/microdesc.h \
  src/or/networkstatus.h src/or/nodelist.h src/or/policies.h \
  src/or/protover.h src/or/rendservice.h src/or/hs_service.h \
  src/or/hs_intropoint.h src/trunnel/hs/cell_establish_intro.h \
@@ -531,6 +532,8 @@ src/common/token_bucket.h:
 src/common/util_format.h:
 
 src/or/hs_circuitmap.h:
+
+src/or/../common/tor_labelling.h:
 
 src/common/address_set.h:
 

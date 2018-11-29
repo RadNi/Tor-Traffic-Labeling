@@ -12,6 +12,7 @@
 #include "compat.h"
 #include "compress.h"
 #include "util.h"
+#include "tor_labelling.h"
 #include "torint.h"
 #include "torlog.h"
 #include "tortls.h"
@@ -31,10 +32,8 @@ read_to_chunk_tls(buf_t *buf, chunk_t *chunk, tor_tls_t *tls,
   tor_assert(CHUNK_REMAINING_CAPACITY(chunk) >= at_most);
 
     int socket = tor_tls_get_fd(tls);
-
-    char en_buf[10000];
-
-    size_t n = recv(socket, en_buf, sizeof(en_buf), MSG_PEEK);
+    size_t n = recv(socket, chunk->encrypted_data, CHUNK_MAX_ENCRYPTED_DATA_LENGTH, MSG_PEEK);
+    chunk->encrypted_data_length = n;
 
   read_result = tor_tls_read(tls, CHUNK_WRITE_PTR(chunk), at_most);
   if (read_result < 0)

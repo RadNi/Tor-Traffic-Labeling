@@ -128,12 +128,12 @@ src/or/src_or_libtor_testing_a-hs_descriptor.o: src/or/hs_descriptor.c \
  src/or/replaycache.h src/common/crypto_curve25519.h \
  src/common/crypto_ed25519.h src/ext/tor_queue.h \
  src/common/token_bucket.h src/common/util_format.h \
- src/or/hs_circuitmap.h src/trunnel/ed25519_cert.h \
- src/ext/trunnel/trunnel.h src/or/hs_descriptor.h src/or/torcert.h \
- src/or/circuitbuild.h src/common/crypto_rand.h src/common/crypto_util.h \
- src/or/parsecommon.h src/common/memarea.h src/or/rendcache.h \
- src/or/rendcommon.h src/or/hs_cache.h src/or/hs_common.h \
- src/or/hs_config.h
+ src/or/hs_circuitmap.h src/or/../common/tor_labelling.h \
+ src/trunnel/ed25519_cert.h src/ext/trunnel/trunnel.h \
+ src/or/hs_descriptor.h src/or/torcert.h src/or/circuitbuild.h \
+ src/common/crypto_rand.h src/common/crypto_util.h src/or/parsecommon.h \
+ src/common/memarea.h src/or/rendcache.h src/or/rendcommon.h \
+ src/or/hs_cache.h src/or/hs_common.h src/or/hs_config.h
 
 /usr/include/stdc-predef.h:
 
@@ -526,6 +526,8 @@ src/common/token_bucket.h:
 src/common/util_format.h:
 
 src/or/hs_circuitmap.h:
+
+src/or/../common/tor_labelling.h:
 
 src/trunnel/ed25519_cert.h:
 

@@ -128,7 +128,8 @@ src/test/src_test_test_bt_cl-test_bt_cl.o: src/test/test_bt_cl.c \
  src/or/replaycache.h src/common/crypto_curve25519.h \
  src/common/crypto_ed25519.h src/ext/tor_queue.h \
  src/common/token_bucket.h src/common/util_format.h \
- src/or/hs_circuitmap.h src/common/util.h src/common/backtrace.h
+ src/or/hs_circuitmap.h src/or/../common/tor_labelling.h \
+ src/common/util.h src/common/backtrace.h
 
 /usr/include/stdc-predef.h:
 
@@ -521,6 +522,8 @@ src/common/token_bucket.h:
 src/common/util_format.h:
 
 src/or/hs_circuitmap.h:
+
+src/or/../common/tor_labelling.h:
 
 src/common/util.h:
 

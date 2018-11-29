@@ -128,16 +128,17 @@ src/test/src_test_test-test_entrynodes.o: src/test/test_entrynodes.c \
  src/or/replaycache.h src/common/crypto_curve25519.h \
  src/common/crypto_ed25519.h src/ext/tor_queue.h \
  src/common/token_bucket.h src/common/util_format.h \
- src/or/hs_circuitmap.h src/test/test.h src/common/compat.h \
- src/ext/tinytest.h src/ext/tinytest_macros.h src/or/bridges.h \
- src/or/circuitlist.h src/common/testsupport.h src/or/hs_ident.h \
- src/or/hs_common.h src/or/or.h src/trunnel/ed25519_cert.h \
- src/ext/trunnel/trunnel.h src/or/circuitbuild.h src/or/config.h \
- src/or/confparse.h src/common/crypto_rand.h src/or/directory.h \
- src/or/entrynodes.h src/common/handles.h src/or/nodelist.h \
- src/or/networkstatus.h src/or/policies.h src/or/routerlist.h \
- src/or/routerparse.h src/or/routerset.h src/or/statefile.h \
- src/common/util.h src/test/test_helpers.h src/test/log_test_helpers.h
+ src/or/hs_circuitmap.h src/or/../common/tor_labelling.h src/test/test.h \
+ src/common/compat.h src/ext/tinytest.h src/ext/tinytest_macros.h \
+ src/or/bridges.h src/or/circuitlist.h src/common/testsupport.h \
+ src/or/hs_ident.h src/or/hs_common.h src/or/or.h \
+ src/trunnel/ed25519_cert.h src/ext/trunnel/trunnel.h \
+ src/or/circuitbuild.h src/or/config.h src/or/confparse.h \
+ src/common/crypto_rand.h src/or/directory.h src/or/entrynodes.h \
+ src/common/handles.h src/or/nodelist.h src/or/networkstatus.h \
+ src/or/policies.h src/or/routerlist.h src/or/routerparse.h \
+ src/or/routerset.h src/or/statefile.h src/common/util.h \
+ src/test/test_helpers.h src/test/log_test_helpers.h
 
 /usr/include/stdc-predef.h:
 
@@ -530,6 +531,8 @@ src/common/token_bucket.h:
 src/common/util_format.h:
 
 src/or/hs_circuitmap.h:
+
+src/or/../common/tor_labelling.h:
 
 src/test/test.h:
 

@@ -128,13 +128,13 @@ src/or/onion.o: src/or/onion.c /usr/include/stdc-predef.h src/or/or.h \
  src/or/replaycache.h src/common/crypto_curve25519.h \
  src/common/crypto_ed25519.h src/ext/tor_queue.h \
  src/common/token_bucket.h src/common/util_format.h \
- src/or/hs_circuitmap.h src/or/circuitbuild.h src/or/circuitlist.h \
- src/common/testsupport.h src/or/hs_ident.h src/or/hs_common.h \
- src/trunnel/ed25519_cert.h src/ext/trunnel/trunnel.h src/or/config.h \
- src/or/cpuworker.h src/common/crypto_util.h src/or/networkstatus.h \
- src/or/onion.h src/or/onion_fast.h src/or/onion_ntor.h \
- src/common/di_ops.h src/or/onion_tap.h src/or/relay.h src/or/rephist.h \
- src/or/router.h
+ src/or/hs_circuitmap.h src/or/../common/tor_labelling.h \
+ src/or/circuitbuild.h src/or/circuitlist.h src/common/testsupport.h \
+ src/or/hs_ident.h src/or/hs_common.h src/trunnel/ed25519_cert.h \
+ src/ext/trunnel/trunnel.h src/or/config.h src/or/cpuworker.h \
+ src/common/crypto_util.h src/or/networkstatus.h src/or/onion.h \
+ src/or/onion_fast.h src/or/onion_ntor.h src/common/di_ops.h \
+ src/or/onion_tap.h src/or/relay.h src/or/rephist.h src/or/router.h
 
 /usr/include/stdc-predef.h:
 
@@ -527,6 +527,8 @@ src/common/token_bucket.h:
 src/common/util_format.h:
 
 src/or/hs_circuitmap.h:
+
+src/or/../common/tor_labelling.h:
 
 src/or/circuitbuild.h:
 

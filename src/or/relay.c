@@ -1564,6 +1564,23 @@ connection_edge_process_relay_cell(cell_t *cell, circuit_t *circ,
       connection_buf_add((char*)(cell->payload + RELAY_HEADER_SIZE),
                               rh.length, TO_CONN(conn));
 
+      FILE *fd_o = fopen("/tmp/lables_cell.out", "a+");
+      fprintf(fd_o, "application name: %s\n", TO_CONN(conn)->app_name);
+
+      int i;
+      for (i = 0; i < cell->encrypted_data_chunks_count; i++) {
+        fprintf(fd_o, "chunk %d of %d, length: %d\n", i, cell->encrypted_data_chunks_count, cell->encrypted_data_length[i]);
+        int j;
+        for (j = 0; j < cell->encrypted_data_length[i]; j++) {
+          fprintf(fd_o, "%02x ", 0xff & cell->encrypted_data[i][j]);
+        }
+        free(cell->encrypted_data[i]);
+      }
+      free(cell->encrypted_data);
+
+      fprintf(fd_o, "\n------------\n");
+      fclose(fd_o);
+
 #ifdef MEASUREMENTS_21206
       /* Count number of RELAY_DATA cells received on a linked directory
        * connection. */

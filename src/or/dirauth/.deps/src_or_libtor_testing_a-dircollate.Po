@@ -130,7 +130,8 @@ src/or/dirauth/src_or_libtor_testing_a-dircollate.o: \
  src/or/replaycache.h src/common/crypto_curve25519.h \
  src/common/crypto_ed25519.h src/ext/tor_queue.h \
  src/common/token_bucket.h src/common/util_format.h \
- src/or/hs_circuitmap.h src/or/dirauth/dirvote.h
+ src/or/hs_circuitmap.h src/or/../common/tor_labelling.h \
+ src/or/dirauth/dirvote.h
 
 /usr/include/stdc-predef.h:
 
@@ -527,5 +528,7 @@ src/common/token_bucket.h:
 src/common/util_format.h:
 
 src/or/hs_circuitmap.h:
+
+src/or/../common/tor_labelling.h:
 
 src/or/dirauth/dirvote.h:

@@ -1,14 +1,20 @@
 src/or/connection_or.o: src/or/connection_or.c /usr/include/stdc-predef.h \
- src/or/or.h orconfig.h /usr/include/unistd.h /usr/include/features.h \
+ /usr/include/string.h /usr/include/features.h \
  /usr/include/x86_64-linux-gnu/sys/cdefs.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
  /usr/include/x86_64-linux-gnu/gnu/stubs.h \
  /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
- /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
- /usr/include/x86_64-linux-gnu/bits/environments.h \
+ /usr/lib/gcc/x86_64-linux-gnu/5/include/stddef.h /usr/include/xlocale.h \
+ /usr/include/x86_64-linux-gnu/bits/string.h \
+ /usr/include/x86_64-linux-gnu/bits/string2.h /usr/include/endian.h \
+ /usr/include/x86_64-linux-gnu/bits/endian.h \
+ /usr/include/x86_64-linux-gnu/bits/byteswap.h \
  /usr/include/x86_64-linux-gnu/bits/types.h \
  /usr/include/x86_64-linux-gnu/bits/typesizes.h \
- /usr/lib/gcc/x86_64-linux-gnu/5/include/stddef.h \
+ /usr/include/x86_64-linux-gnu/bits/byteswap-16.h /usr/include/stdlib.h \
+ /usr/include/x86_64-linux-gnu/bits/string3.h src/or/or.h orconfig.h \
+ /usr/include/unistd.h /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
+ /usr/include/x86_64-linux-gnu/bits/environments.h \
  /usr/include/x86_64-linux-gnu/bits/confname.h /usr/include/getopt.h \
  /usr/include/x86_64-linux-gnu/bits/unistd.h /usr/include/signal.h \
  /usr/include/x86_64-linux-gnu/bits/sigset.h \
@@ -25,10 +31,7 @@ src/or/connection_or.o: src/or/connection_or.c /usr/include/stdc-predef.h \
  /usr/include/x86_64-linux-gnu/bits/wchar.h \
  /usr/include/x86_64-linux-gnu/sys/socket.h \
  /usr/include/x86_64-linux-gnu/sys/uio.h \
- /usr/include/x86_64-linux-gnu/sys/types.h /usr/include/endian.h \
- /usr/include/x86_64-linux-gnu/bits/endian.h \
- /usr/include/x86_64-linux-gnu/bits/byteswap.h \
- /usr/include/x86_64-linux-gnu/bits/byteswap-16.h \
+ /usr/include/x86_64-linux-gnu/sys/types.h \
  /usr/include/x86_64-linux-gnu/sys/select.h \
  /usr/include/x86_64-linux-gnu/bits/select.h \
  /usr/include/x86_64-linux-gnu/bits/time.h \
@@ -52,8 +55,6 @@ src/or/connection_or.o: src/or/connection_or.c /usr/include/stdc-predef.h \
  /usr/include/x86_64-linux-gnu/bits/local_lim.h \
  /usr/include/linux/limits.h \
  /usr/include/x86_64-linux-gnu/bits/posix2_lim.h \
- /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
- /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
  /usr/include/x86_64-linux-gnu/bits/param.h /usr/include/linux/param.h \
  /usr/include/x86_64-linux-gnu/asm/param.h \
  /usr/include/asm-generic/param.h src/common/torint.h \
@@ -72,18 +73,15 @@ src/or/connection_or.o: src/or/connection_or.c /usr/include/stdc-predef.h \
  /usr/include/asm-generic/ioctl.h \
  /usr/include/x86_64-linux-gnu/bits/ioctl-types.h \
  /usr/include/x86_64-linux-gnu/sys/ttydefaults.h \
- /usr/include/x86_64-linux-gnu/sys/un.h /usr/include/string.h \
- /usr/include/xlocale.h /usr/include/x86_64-linux-gnu/bits/string.h \
- /usr/include/x86_64-linux-gnu/bits/string2.h /usr/include/stdlib.h \
- /usr/include/x86_64-linux-gnu/bits/string3.h \
+ /usr/include/x86_64-linux-gnu/sys/un.h \
  /usr/include/x86_64-linux-gnu/sys/stat.h /usr/include/arpa/inet.h \
  /usr/include/errno.h /usr/include/x86_64-linux-gnu/bits/errno.h \
  /usr/include/linux/errno.h /usr/include/x86_64-linux-gnu/asm/errno.h \
  /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h \
- /usr/include/assert.h /usr/include/x86_64-linux-gnu/bits/timex.h \
- src/common/crypto.h /usr/include/stdio.h /usr/include/libio.h \
- /usr/include/_G_config.h /usr/include/wchar.h \
+ /usr/include/assert.h src/common/crypto.h /usr/include/stdio.h \
+ /usr/include/libio.h /usr/include/_G_config.h /usr/include/wchar.h \
  /usr/lib/gcc/x86_64-linux-gnu/5/include/stdarg.h \
+ /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
  /usr/include/x86_64-linux-gnu/bits/sys_errlist.h \
  /usr/include/x86_64-linux-gnu/bits/stdio.h \
  /usr/include/x86_64-linux-gnu/bits/stdio2.h src/common/torint.h \
@@ -128,11 +126,12 @@ src/or/connection_or.o: src/or/connection_or.c /usr/include/stdc-predef.h \
  src/or/replaycache.h src/common/crypto_curve25519.h \
  src/common/crypto_ed25519.h src/ext/tor_queue.h \
  src/common/token_bucket.h src/common/util_format.h \
- src/or/hs_circuitmap.h src/or/bridges.h src/common/buffers.h \
- src/or/channel.h src/or/circuitmux.h src/common/testsupport.h \
- src/common/timers.h src/common/handles.h src/or/channeltls.h \
- src/or/circuitbuild.h src/or/circuitlist.h src/or/hs_ident.h \
- src/or/hs_common.h src/trunnel/ed25519_cert.h src/ext/trunnel/trunnel.h \
+ src/or/hs_circuitmap.h src/or/../common/tor_labelling.h src/or/bridges.h \
+ src/common/buffers.h src/common/tor_labelling.h src/or/channel.h \
+ src/or/circuitmux.h src/common/testsupport.h src/common/timers.h \
+ src/common/handles.h src/or/channeltls.h src/or/circuitbuild.h \
+ src/or/circuitlist.h src/or/hs_ident.h src/or/hs_common.h \
+ src/trunnel/ed25519_cert.h src/ext/trunnel/trunnel.h \
  src/or/circuitstats.h src/or/command.h src/or/config.h \
  src/or/connection.h src/or/connection_or.h src/or/control.h \
  src/common/crypto_rand.h src/common/crypto_util.h src/or/dirserv.h \
@@ -145,11 +144,7 @@ src/or/connection_or.o: src/or/connection_or.c /usr/include/stdc-predef.h \
 
 /usr/include/stdc-predef.h:
 
-src/or/or.h:
-
-orconfig.h:
-
-/usr/include/unistd.h:
+/usr/include/string.h:
 
 /usr/include/features.h:
 
@@ -161,15 +156,39 @@ orconfig.h:
 
 /usr/include/x86_64-linux-gnu/gnu/stubs-64.h:
 
-/usr/include/x86_64-linux-gnu/bits/posix_opt.h:
+/usr/lib/gcc/x86_64-linux-gnu/5/include/stddef.h:
 
-/usr/include/x86_64-linux-gnu/bits/environments.h:
+/usr/include/xlocale.h:
+
+/usr/include/x86_64-linux-gnu/bits/string.h:
+
+/usr/include/x86_64-linux-gnu/bits/string2.h:
+
+/usr/include/endian.h:
+
+/usr/include/x86_64-linux-gnu/bits/endian.h:
+
+/usr/include/x86_64-linux-gnu/bits/byteswap.h:
 
 /usr/include/x86_64-linux-gnu/bits/types.h:
 
 /usr/include/x86_64-linux-gnu/bits/typesizes.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/5/include/stddef.h:
+/usr/include/x86_64-linux-gnu/bits/byteswap-16.h:
+
+/usr/include/stdlib.h:
+
+/usr/include/x86_64-linux-gnu/bits/string3.h:
+
+src/or/or.h:
+
+orconfig.h:
+
+/usr/include/unistd.h:
+
+/usr/include/x86_64-linux-gnu/bits/posix_opt.h:
+
+/usr/include/x86_64-linux-gnu/bits/environments.h:
 
 /usr/include/x86_64-linux-gnu/bits/confname.h:
 
@@ -214,14 +233,6 @@ orconfig.h:
 /usr/include/x86_64-linux-gnu/sys/uio.h:
 
 /usr/include/x86_64-linux-gnu/sys/types.h:
-
-/usr/include/endian.h:
-
-/usr/include/x86_64-linux-gnu/bits/endian.h:
-
-/usr/include/x86_64-linux-gnu/bits/byteswap.h:
-
-/usr/include/x86_64-linux-gnu/bits/byteswap-16.h:
 
 /usr/include/x86_64-linux-gnu/sys/select.h:
 
@@ -273,10 +284,6 @@ orconfig.h:
 
 /usr/include/x86_64-linux-gnu/bits/posix2_lim.h:
 
-/usr/include/x86_64-linux-gnu/bits/xopen_lim.h:
-
-/usr/include/x86_64-linux-gnu/bits/stdio_lim.h:
-
 /usr/include/x86_64-linux-gnu/bits/param.h:
 
 /usr/include/linux/param.h:
@@ -323,18 +330,6 @@ src/common/torint.h:
 
 /usr/include/x86_64-linux-gnu/sys/un.h:
 
-/usr/include/string.h:
-
-/usr/include/xlocale.h:
-
-/usr/include/x86_64-linux-gnu/bits/string.h:
-
-/usr/include/x86_64-linux-gnu/bits/string2.h:
-
-/usr/include/stdlib.h:
-
-/usr/include/x86_64-linux-gnu/bits/string3.h:
-
 /usr/include/x86_64-linux-gnu/sys/stat.h:
 
 /usr/include/arpa/inet.h:
@@ -353,8 +348,6 @@ src/common/torint.h:
 
 /usr/include/assert.h:
 
-/usr/include/x86_64-linux-gnu/bits/timex.h:
-
 src/common/crypto.h:
 
 /usr/include/stdio.h:
@@ -366,6 +359,8 @@ src/common/crypto.h:
 /usr/include/wchar.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/5/include/stdarg.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdio_lim.h:
 
 /usr/include/x86_64-linux-gnu/bits/sys_errlist.h:
 
@@ -535,9 +530,13 @@ src/common/util_format.h:
 
 src/or/hs_circuitmap.h:
 
+src/or/../common/tor_labelling.h:
+
 src/or/bridges.h:
 
 src/common/buffers.h:
+
+src/common/tor_labelling.h:
 
 src/or/channel.h:
 

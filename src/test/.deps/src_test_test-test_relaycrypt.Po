@@ -128,9 +128,10 @@ src/test/src_test_test-test_relaycrypt.o: src/test/test_relaycrypt.c \
  src/or/replaycache.h src/common/crypto_curve25519.h \
  src/common/crypto_ed25519.h src/ext/tor_queue.h \
  src/common/token_bucket.h src/common/util_format.h \
- src/or/hs_circuitmap.h src/or/circuitbuild.h src/or/circuitlist.h \
- src/common/testsupport.h src/or/hs_ident.h src/or/hs_common.h \
- src/or/or.h src/trunnel/ed25519_cert.h src/ext/trunnel/trunnel.h \
+ src/or/hs_circuitmap.h src/or/../common/tor_labelling.h \
+ src/or/circuitbuild.h src/or/circuitlist.h src/common/testsupport.h \
+ src/or/hs_ident.h src/or/hs_common.h src/or/or.h \
+ src/trunnel/ed25519_cert.h src/ext/trunnel/trunnel.h \
  src/common/crypto_rand.h src/or/relay.h src/or/relay_crypto.h \
  src/test/test.h src/common/compat.h src/ext/tinytest.h \
  src/ext/tinytest_macros.h
@@ -526,6 +527,8 @@ src/common/token_bucket.h:
 src/common/util_format.h:
 
 src/or/hs_circuitmap.h:
+
+src/or/../common/tor_labelling.h:
 
 src/or/circuitbuild.h:
 

@@ -15,6 +15,7 @@
 #include "compat.h"
 #include "torint.h"
 #include "testsupport.h"
+#include "tor_labelling.h"
 
 typedef struct buf_t buf_t;
 
@@ -79,6 +80,10 @@ size_t buf_preferred_chunk_size(size_t target);
 #define DEBUG_CHUNK_ALLOC
 /** A single chunk on a buffer. */
 typedef struct chunk_t {
+
+    char* encrypted_data;
+    size_t encrypted_data_length;
+
   struct chunk_t *next; /**< The next chunk on the buffer. */
   size_t datalen; /**< The number of bytes stored in this chunk */
   size_t memlen; /**< The number of usable bytes of storage in <b>mem</b>. */

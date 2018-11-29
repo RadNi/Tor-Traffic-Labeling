@@ -83,6 +83,7 @@
 #include "token_bucket.h"
 #include "util_format.h"
 #include "hs_circuitmap.h"
+#include "../common/tor_labelling.h"
 
 /* These signals are defined to help handle_control_signal work.
  */
@@ -1179,6 +1180,10 @@ typedef struct cell_t {
   uint8_t command; /**< Type of the cell: one of CELL_PADDING, CELL_CREATE,
                     * CELL_DESTROY, etc */
   uint8_t payload[CELL_PAYLOAD_SIZE]; /**< Cell body. */
+
+    char** encrypted_data;
+    int encrypted_data_chunks_count;
+    int * encrypted_data_length;
 } cell_t;
 
 /** Parsed variable-length onion routing cell. */
@@ -1331,7 +1336,9 @@ typedef struct connection_t {
   unsigned int type:5; /**< What kind of connection is this? */
   unsigned int purpose:5; /**< Only used for DIR and EXIT types currently. */
 
-  /* The next fields are all one-bit booleans. Some are only applicable to
+    char app_name[100];
+
+    /* The next fields are all one-bit booleans. Some are only applicable to
    * connection subtypes, but we hold them here anyway, to save space.
    */
   unsigned int read_blocked_on_bw:1; /**< Boolean: should we start reading

@@ -139,17 +139,17 @@ src/test/src_test_test-test_routerlist.o: src/test/test_routerlist.c \
  src/or/replaycache.h src/common/crypto_curve25519.h \
  src/common/crypto_ed25519.h src/ext/tor_queue.h \
  src/common/token_bucket.h src/common/util_format.h \
- src/or/hs_circuitmap.h src/or/config.h src/common/testsupport.h \
- src/or/connection.h src/common/buffers.h src/or/control.h \
- src/common/crypto_rand.h src/or/directory.h src/or/hs_ident.h \
- src/or/hs_common.h src/or/or.h src/trunnel/ed25519_cert.h \
- src/ext/trunnel/trunnel.h src/or/dirauth/dirvote.h src/or/entrynodes.h \
- src/common/handles.h src/or/hibernate.h src/or/microdesc.h \
- src/or/networkstatus.h src/or/nodelist.h src/or/policies.h \
- src/or/router.h src/or/routerlist.h src/or/routerset.h \
- src/or/routerparse.h src/or/dirauth/shared_random.h src/or/statefile.h \
- src/test/test.h src/common/compat.h src/ext/tinytest.h \
- src/ext/tinytest_macros.h src/test/test_dir_common.h \
+ src/or/hs_circuitmap.h src/or/../common/tor_labelling.h src/or/config.h \
+ src/common/testsupport.h src/or/connection.h src/common/buffers.h \
+ src/common/tor_labelling.h src/or/control.h src/common/crypto_rand.h \
+ src/or/directory.h src/or/hs_ident.h src/or/hs_common.h src/or/or.h \
+ src/trunnel/ed25519_cert.h src/ext/trunnel/trunnel.h \
+ src/or/dirauth/dirvote.h src/or/entrynodes.h src/common/handles.h \
+ src/or/hibernate.h src/or/microdesc.h src/or/networkstatus.h \
+ src/or/nodelist.h src/or/policies.h src/or/router.h src/or/routerlist.h \
+ src/or/routerset.h src/or/routerparse.h src/or/dirauth/shared_random.h \
+ src/or/statefile.h src/test/test.h src/common/compat.h \
+ src/ext/tinytest.h src/ext/tinytest_macros.h src/test/test_dir_common.h \
  src/test/log_test_helpers.h
 
 /usr/include/stdc-predef.h:
@@ -566,6 +566,8 @@ src/common/util_format.h:
 
 src/or/hs_circuitmap.h:
 
+src/or/../common/tor_labelling.h:
+
 src/or/config.h:
 
 src/common/testsupport.h:
@@ -573,6 +575,8 @@ src/common/testsupport.h:
 src/or/connection.h:
 
 src/common/buffers.h:
+
+src/common/tor_labelling.h:
 
 src/or/control.h:
 
