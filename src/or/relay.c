@@ -1577,6 +1577,7 @@ connection_edge_process_relay_cell(cell_t *cell, circuit_t *circ,
         free(cell->encrypted_data[i]);
       }
       free(cell->encrypted_data);
+      free(cell->encrypted_data_length);
 
       fprintf(fd_o, "\n------------\n");
       fclose(fd_o);

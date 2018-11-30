@@ -118,85 +118,133 @@
 
 int find_ap_from_port(char* port, char* app_name);
 
-int find_ap_from_port(char* port, char* app_name) {
-    int link[2];
-    pid_t pid;
-    char foo[4096];
+int find_ap_from_port(char* port, char* app_name){
+    char* output = (char*)malloc(1000);
 
-    if (pipe(link)==-1)
-        die("pipe");
+    char command[200] = "fuser ";
+    char command2[200] = "/tcp 2>/dev/null";
+    strcat(command, port);
+    strcat(command, command2);
 
-    if ((pid = fork()) == -1)
-        die("fork");
-    if(pid == 0) {
-        dup2 (link[1], STDOUT_FILENO);
-        close(link[0]);
-        close(link[1]);
-        execl("/bin/netstat", "netstat", "-lnpa", (char *)0);
-        die("execl");
-    } else {
+    // now command is something like fuser 40146/tcp 2>/dev/null
+    // this command will give us the pid for the app.(and ignores the stderr)
 
-        close(link[1]);
-        if( read(link[0], foo, sizeof(foo)) < 0 ){
-            return -1;
-        }
-        FILE* fd = fopen("/tmp/find_app.out", "a+");
-        fprintf(fd, "%s", foo);
-        fclose(fd);
-        close(link[0]);
-        close(link[1]);
-        if( pipe(link) == -1)
-            return -1;
-        pid = fork();
-        if(pid == 0)
-        {
-            dup2 (link[1], STDOUT_FILENO);
-            close(link[0]);
-            close(link[0]);
-            execl("/bin/grep", "grep", (const char*)port, "/tmp/find_app.out", (char*)0);
-            die("execl");
-            //if( read(link[0], foo, sizeof(app)) >= 0 ){
-            //	fprintf(stdout, "app_name output: %s", app);
-            //	return 1;
-            //}
+    FILE *fp;
+    fp = popen(command, "r");
 
-        }
-        else{
-            int nbytes = read( link[0], foo, sizeof(foo));
-            if( nbytes ){
-                int flag = 0;
-                int app_ind = 0;
-                unsigned int i;
-                for ( i=0; i < strlen(foo);i++)
-                {
-                    if (flag == 1)
-                    {
-                        if(foo[i] == '\n' || foo[i] == ' ')
-                        {
-                            app_name[app_ind] = '\0';
-                            if(strcmp(app_name, "tor") == 0)
-                            {
-                                app_ind = 0;
-                            }
-                            else{
-                                break;
-                            }
-                            flag = 0;
-                        }
-                        else{
-                            app_name[app_ind] = foo[i];
-                            app_ind ++;
-                        }
-                    }
-                    if(foo[i] == '/')
-                        flag = 1;
-                }
-                return 1;
-            }
-        }
+    if (fp == NULL) {
+        printf("Failed to run command\n" );
+        die("popen failed");
     }
-    return 1;
+
+    /* Read the output a line at a time - output it. */
+    while (fgets(output, sizeof(output)-1, fp) != NULL) {
+
+        // now we have the pid; we need to get the app name which can be found in /proc/pid/comm
+
+        char app_name_file_path[100] = "/proc/";
+        char rest[] = "/comm";
+        output++; // the first character is a space. ignoring that char for a moment until we output --;
+        strcat(app_name_file_path, output);
+        strcat(app_name_file_path, rest);
+        output--; //
+
+        // app_name_file_path is now something like /proc/12352/comm
+        // this file has the app name for the specified pid
+
+        FILE * app_name_file = fopen(app_name_file_path, "r");
+        if(fgets(app_name, 100, app_name_file) != NULL){
+            app_name[strlen(app_name) - 1] = '\0'; // the last char is a new line. throwing that away.
+            fclose(app_name_file);
+        }
+        break;
+    }
+
+    /* close */
+    pclose(fp);
+    free(output);
+    return 0;
 }
+
+//int find_ap_from_port(char* port, char* app_name) {
+//    int link[2];
+//    pid_t pid;
+//    char foo[4096];
+//
+//    if (pipe(link)==-1)
+//        die("pipe");
+//
+//    if ((pid = fork()) == -1)
+//        die("fork");
+//    if(pid == 0) {
+//        dup2 (link[1], STDOUT_FILENO);
+//        close(link[0]);
+//        close(link[1]);
+//        execl("/bin/netstat", "netstat", "-lnpa", (char *)0);
+//        die("execl");
+//    } else {
+//
+//        close(link[1]);
+//        if( read(link[0], foo, sizeof(foo)) < 0 ){
+//            return -1;
+//        }
+//        FILE* fd = fopen("/tmp/find_app.out", "a+");
+//        fprintf(fd, "%s", foo);
+//        fclose(fd);
+//        close(link[0]);
+//        close(link[1]);
+//        if( pipe(link) == -1)
+//            return -1;
+//        pid = fork();
+//        if(pid == 0)
+//        {
+//            dup2 (link[1], STDOUT_FILENO);
+//            close(link[0]);
+//            close(link[0]);
+//            execl("/bin/grep", "grep", (const char*)port, "/tmp/find_app.out", (char*)0);
+//            die("execl");
+//            //if( read(link[0], foo, sizeof(app)) >= 0 ){
+//            //	fprintf(stdout, "app_name output: %s", app);
+//            //	return 1;
+//            //}
+//
+//        }
+//        else{
+//            int nbytes = read( link[0], foo, sizeof(foo));
+//            if( nbytes ){
+//                int flag = 0;
+//                int app_ind = 0;
+//                unsigned int i;
+//                for ( i=0; i < strlen(foo);i++)
+//                {
+//                    if (flag == 1)
+//                    {
+//                        if(foo[i] == '\n' || foo[i] == ' ')
+//                        {
+//                            app_name[app_ind] = '\0';
+//                            if(strcmp(app_name, "tor") == 0)
+//                            {
+//                                app_ind = 0;
+//                            }
+//                            else{
+//                                break;
+//                            }
+//                            flag = 0;
+//                        }
+//                        else{
+//                            app_name[app_ind] = foo[i];
+//                            app_ind ++;
+//                        }
+//                    }
+//                    if(foo[i] == '/')
+//                        flag = 1;
+//                }
+//                return 1;
+//            }
+//        }
+//    }
+//    return 1;
+//}
 
 
 static connection_t *connection_listener_new(
@@ -1763,7 +1811,7 @@ connection_handle_listener_read(connection_t *conn, int new_type)
   int port_number = newconn->port;
   char port_string[100];
   sprintf(port_string, "%d", port_number);
-  if( find_ap_from_port(port_string, newconn->app_name) > 0){}
+  find_ap_from_port(port_string, newconn->app_name);
 
   return 0;
 }
