@@ -3788,6 +3788,13 @@ connection_buf_get_bytes(char *string, size_t len, connection_t *conn)
   return buf_get_bytes(conn->inbuf, string, len);
 }
 
+int
+connection_buf_get_bytes_labelling(char *string, size_t len, connection_t *conn, buf_chunks_encrypted_data_linked_list* list)
+{
+  return buf_get_bytes_labelling(conn->inbuf, string, len, list);
+}
+
+
 /** As buf_get_line(), but read from a connection's input buffer. */
 int
 connection_buf_get_line(connection_t *conn, char *data,

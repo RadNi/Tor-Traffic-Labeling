@@ -133,6 +133,9 @@ void connection_consider_empty_write_buckets(connection_t *conn);
 int connection_handle_read(connection_t *conn);
 
 int connection_buf_get_bytes(char *string, size_t len, connection_t *conn);
+
+int connection_buf_get_bytes_labelling(char *string, size_t len, connection_t *conn, buf_chunks_encrypted_data_linked_list* list);
+
 int connection_buf_get_line(connection_t *conn, char *data,
                                    size_t *data_len);
 int connection_fetch_from_buf_http(connection_t *conn,

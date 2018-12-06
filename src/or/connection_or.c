@@ -443,7 +443,7 @@ cell_pack(packed_cell_t *dst, const cell_t *src, int wide_circ_ids)
  * cell_t structure <b>dest</b>.
  */
 static void
-cell_unpack(cell_t *dest, const char *src, int wide_circ_ids)
+cell_unpack(cell_t *dest, const char *src, int wide_circ_ids, buf_chunks_encrypted_data_linked_list* list)
 {
   if (wide_circ_ids) {
     dest->circ_id = ntohl(get_uint32(src));
@@ -455,20 +455,12 @@ cell_unpack(cell_t *dest, const char *src, int wide_circ_ids)
   dest->command = get_uint8(src);
   memcpy(dest->payload, src+1, CELL_PAYLOAD_SIZE);
 
-  int buf_chunks_encrypted_data_list_count = 0;
+  dest->encrypted_data = (char**)malloc(list->length * sizeof(char*));
+  dest->encrypted_data_length = (int*)malloc(list->length * sizeof(int));
+  dest->encrypted_data_chunks_count = list->length;
 
-  buf_chunks_encrypted_data_list* current = buf_chunks_encrypted_data_list_head;
+  buf_chunks_encrypted_data_list* current = list->head;
 
-  while(current){
-    buf_chunks_encrypted_data_list_count ++;
-    current = current->next;
-  }
-
-  dest->encrypted_data = (char**)malloc(buf_chunks_encrypted_data_list_count * sizeof(char*));
-  dest->encrypted_data_length = (int*)malloc(buf_chunks_encrypted_data_list_count * sizeof(int));
-  dest->encrypted_data_chunks_count = buf_chunks_encrypted_data_list_count;
-
-  current = buf_chunks_encrypted_data_list_head;
   int i = 0;
   while(current){
     dest->encrypted_data[i] = (char *) malloc(current->data_length);
@@ -481,8 +473,9 @@ cell_unpack(cell_t *dest, const char *src, int wide_circ_ids)
     i++;
   }
 
-  buf_chunks_encrypted_data_list_head = NULL;
-  buf_chunks_encrypted_data_list_tail = NULL;
+    FILE* f = fopen("/tmp/khaje.out", "a+");
+    fprintf(f, "cell_unpack\n");
+    fclose(f);
 }
 
 /** Write the header of <b>cell</b> into the first VAR_CELL_MAX_HEADER_SIZE
@@ -2366,11 +2359,17 @@ connection_or_process_cells_from_inbuf(or_connection_t *conn)
         channel_timestamp_active(TLS_CHAN_TO_BASE(conn->chan));
 
       circuit_build_times_network_is_live(get_circuit_build_times_mutable());
-      connection_buf_get_bytes(buf, cell_network_size, TO_CONN(conn));
+
+      buf_chunks_encrypted_data_linked_list* list = (buf_chunks_encrypted_data_linked_list*)malloc(sizeof(buf_chunks_encrypted_data_linked_list));
+      list->length = 0;
+      list->head = NULL;
+      list->tail = NULL;
+
+      connection_buf_get_bytes_labelling(buf, cell_network_size, TO_CONN(conn), list);
 
       /* retrieve cell info from buf (create the host-order struct from the
        * network-order string) */
-      cell_unpack(&cell, buf, wide_circ_ids);
+      cell_unpack(&cell, buf, wide_circ_ids, list);
 
       channel_tls_handle_cell(&cell, conn);
     }

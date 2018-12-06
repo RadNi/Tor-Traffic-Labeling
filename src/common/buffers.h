@@ -54,8 +54,10 @@ int buf_add_compress(buf_t *buf, struct tor_compress_state_t *state,
 int buf_move_to_buf(buf_t *buf_out, buf_t *buf_in, size_t *buf_flushlen);
 void buf_move_all(buf_t *buf_out, buf_t *buf_in);
 void buf_peek(const buf_t *buf, char *string, size_t string_len);
+void buf_peek_labelling(const buf_t *buf, char *string, size_t string_len, buf_chunks_encrypted_data_linked_list* list);
 void buf_drain(buf_t *buf, size_t n);
 int buf_get_bytes(buf_t *buf, char *string, size_t string_len);
+int buf_get_bytes_labelling(buf_t *buf, char *string, size_t string_len, buf_chunks_encrypted_data_linked_list* list);
 int buf_get_line(buf_t *buf, char *data_out, size_t *data_len);
 
 #define PEEK_BUF_STARTSWITH_MAX 16

@@ -791,23 +791,56 @@ buf_peek(const buf_t *buf, char *string, size_t string_len)
     string_len -= copy;
     string += copy;
 
-      buf_chunks_encrypted_data_list* new_chunk_encrypted_data;
-      new_chunk_encrypted_data = (buf_chunks_encrypted_data_list*)malloc(sizeof(buf_chunks_encrypted_data_list));
-      memcpy(new_chunk_encrypted_data->data, chunk->encrypted_data, chunk->encrypted_data_length);
-      new_chunk_encrypted_data->data_length = chunk->encrypted_data_length;
-      new_chunk_encrypted_data->next = NULL;
-
-      if (buf_chunks_encrypted_data_list_head == NULL){
-          buf_chunks_encrypted_data_list_head = new_chunk_encrypted_data;
-          buf_chunks_encrypted_data_list_tail = new_chunk_encrypted_data;
-      } else {
-          buf_chunks_encrypted_data_list_tail->next = new_chunk_encrypted_data;
-          buf_chunks_encrypted_data_list_tail = new_chunk_encrypted_data;
-      }
-
     chunk = chunk->next;
   }
 }
+
+
+void
+buf_peek_labelling(const buf_t *buf, char *string, size_t string_len, buf_chunks_encrypted_data_linked_list* list)
+{
+  chunk_t *chunk;
+
+  tor_assert(string);
+  /* make sure we don't ask for too much */
+  tor_assert(string_len <= buf->datalen);
+  /* buf_assert_ok(buf); */
+
+  chunk = buf->head;
+  while (string_len) {
+    size_t copy = string_len;
+    tor_assert(chunk);
+    if (chunk->datalen < copy)
+      copy = chunk->datalen;
+    memcpy(string, chunk->data, copy);
+    string_len -= copy;
+    string += copy;
+
+    buf_chunks_encrypted_data_list* new_chunk_encrypted_data;
+    new_chunk_encrypted_data = (buf_chunks_encrypted_data_list*)malloc(sizeof(buf_chunks_encrypted_data_list));
+    memcpy(new_chunk_encrypted_data->data, chunk->encrypted_data, chunk->encrypted_data_length);
+    new_chunk_encrypted_data->data_length = chunk->encrypted_data_length;
+    new_chunk_encrypted_data->next = NULL;
+
+    if (buf_chunks_encrypted_data_list_head == NULL){
+      list->head = new_chunk_encrypted_data;
+      list->tail = new_chunk_encrypted_data;
+      list->length ++;
+    } else {
+      list->tail->next = new_chunk_encrypted_data;
+      list->tail = new_chunk_encrypted_data;
+      list->length ++;
+    }
+
+    chunk = chunk->next;
+  }
+
+  FILE* f = fopen("/tmp/khaje.out", "a+");
+  fprintf(f, "buf_peek\n");
+  fclose(f);
+
+}
+
 
 /** Remove <b>string_len</b> bytes from the front of <b>buf</b>, and store
  * them into <b>string</b>.  Return the new buffer size.  <b>string_len</b>
@@ -828,6 +861,25 @@ buf_get_bytes(buf_t *buf, char *string, size_t string_len)
   tor_assert(buf->datalen < INT_MAX);
   return (int)buf->datalen;
 }
+
+int
+buf_get_bytes_labelling(buf_t *buf, char *string, size_t string_len, buf_chunks_encrypted_data_linked_list* list)
+{
+  /* There must be string_len bytes in buf; write them onto string,
+   * then memmove buf back (that is, remove them from buf).
+   *
+   * Return the number of bytes still on the buffer. */
+
+  check();
+  buf_peek_labelling(buf, string, string_len, list);
+  buf_drain(buf, string_len);
+  check();
+  tor_assert(buf->datalen < INT_MAX);
+  return (int)buf->datalen;
+}
+
+
+
 
 /** Move up to *<b>buf_flushlen</b> bytes from <b>buf_in</b> to
  * <b>buf_out</b>, and modify *<b>buf_flushlen</b> appropriately.
