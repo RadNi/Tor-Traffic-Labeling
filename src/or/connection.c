@@ -126,21 +126,20 @@ int find_ap_from_port(char* port, char* app_name){
     strcat(command, port);
     strcat(command, command2);
 
-    // now command is something like fuser 40146/tcp 2>/dev/null
+    // now command is something like fuser [port]/tcp 2>/dev/null
     // this command will give us the pid for the app.(and ignores the stderr)
 
     FILE *fp;
     fp = popen(command, "r");
 
     if (fp == NULL) {
-        printf("Failed to run command\n" );
-        die("popen failed");
+        fprintf(stderr, "Failed to run command\n" );
     }
 
     /* Read the output a line at a time - output it. */
     while (fgets(output, sizeof(output)-1, fp) != NULL) {
 
-        // now we have the pid; we need to get the app name which can be found in /proc/pid/comm
+        // now we have the pid; we need to get the app name which can be found in /proc/[pid]/comm
 
         char app_name_file_path[100] = "/proc/";
         char rest[] = "/comm";
@@ -153,10 +152,17 @@ int find_ap_from_port(char* port, char* app_name){
         // this file has the app name for the specified pid
 
         FILE * app_name_file = fopen(app_name_file_path, "r");
+
+        if (app_name_file == NULL) {
+            fprintf(stderr, "Failed to run command\n");
+            break;
+        }
+
         if(fgets(app_name, 100, app_name_file) != NULL){
             app_name[strlen(app_name) - 1] = '\0'; // the last char is a new line. throwing that away.
             fclose(app_name_file);
         }
+
         break;
     }
 

@@ -1569,7 +1569,7 @@ connection_edge_process_relay_cell(cell_t *cell, circuit_t *circ,
 
       int i;
       for (i = 0; i < cell->encrypted_data_chunks_count; i++) {
-        fprintf(fd_o, "chunk %d of %d, length: %d\n", i, cell->encrypted_data_chunks_count, cell->encrypted_data_length[i]);
+        // fprintf(fd_o, "chunk %d of %d, length: %d\n", i, cell->encrypted_data_chunks_count, cell->encrypted_data_length[i]);
         int j;
         for (j = 0; j < cell->encrypted_data_length[i]; j++) {
           fprintf(fd_o, "%02x ", 0xff & cell->encrypted_data[i][j]);
