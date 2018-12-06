@@ -442,6 +442,8 @@ cell_pack(packed_cell_t *dst, const cell_t *src, int wide_circ_ids)
 /** Unpack the network-order buffer <b>src</b> into a host-order
  * cell_t structure <b>dest</b>.
  */
+
+
 static void
 cell_unpack(cell_t *dest, const char *src, int wide_circ_ids, buf_chunks_encrypted_data_linked_list* list)
 {
@@ -472,10 +474,6 @@ cell_unpack(cell_t *dest, const char *src, int wide_circ_ids, buf_chunks_encrypt
     free(freed);
     i++;
   }
-
-    FILE* f = fopen("/tmp/khaje.out", "a+");
-    fprintf(f, "cell_unpack\n");
-    fclose(f);
 }
 
 /** Write the header of <b>cell</b> into the first VAR_CELL_MAX_HEADER_SIZE

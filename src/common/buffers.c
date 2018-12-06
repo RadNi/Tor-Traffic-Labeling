@@ -822,7 +822,7 @@ buf_peek_labelling(const buf_t *buf, char *string, size_t string_len, buf_chunks
     new_chunk_encrypted_data->data_length = chunk->encrypted_data_length;
     new_chunk_encrypted_data->next = NULL;
 
-    if (buf_chunks_encrypted_data_list_head == NULL){
+    if (list->head == NULL){
       list->head = new_chunk_encrypted_data;
       list->tail = new_chunk_encrypted_data;
       list->length ++;
@@ -834,10 +834,6 @@ buf_peek_labelling(const buf_t *buf, char *string, size_t string_len, buf_chunks
 
     chunk = chunk->next;
   }
-
-  FILE* f = fopen("/tmp/khaje.out", "a+");
-  fprintf(f, "buf_peek\n");
-  fclose(f);
 
 }
 

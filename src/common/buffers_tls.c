@@ -39,13 +39,13 @@ read_to_chunk_tls(buf_t *buf, chunk_t *chunk, tor_tls_t *tls,
 
 
   read_result = tor_tls_read(tls, CHUNK_WRITE_PTR(chunk), at_most);
-
-    char temp[CHUNK_MAX_ENCRYPTED_DATA_LENGTH];
-    size_t n2 = recv(socket, temp, CHUNK_MAX_ENCRYPTED_DATA_LENGTH, MSG_PEEK);
-
-    FILE* f = fopen("/tmp/farid.out", "a+");
-    fprintf(f, "%d %d\n", n, n2);
-    fclose(f);
+//
+//    char temp[CHUNK_MAX_ENCRYPTED_DATA_LENGTH];
+//    size_t n2 = recv(socket, temp, CHUNK_MAX_ENCRYPTED_DATA_LENGTH, MSG_PEEK);
+//
+//    FILE* f = fopen("/tmp/farid.out", "a+");
+//    fprintf(f, "%d %d\n", n, n2);
+//    fclose(f);
 
   if (read_result < 0)
     return read_result;

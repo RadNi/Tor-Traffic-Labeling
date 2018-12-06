@@ -1184,6 +1184,7 @@ typedef struct cell_t {
     char** encrypted_data;
     int encrypted_data_chunks_count;
     int * encrypted_data_length;
+
 } cell_t;
 
 /** Parsed variable-length onion routing cell. */
