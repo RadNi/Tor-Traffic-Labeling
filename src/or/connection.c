@@ -122,7 +122,7 @@ int find_ap_from_port(char* port, char* app_name){
     char* output = (char*)malloc(1000);
 
     char command[200] = "fuser ";
-    char command2[200] = "/tcp 2>/dev/null";
+    char command2[200] = "/tcp";
     strcat(command, port);
     strcat(command, command2);
 
@@ -133,7 +133,8 @@ int find_ap_from_port(char* port, char* app_name){
     fp = popen(command, "r");
 
     if (fp == NULL) {
-        fprintf(stderr, "Failed to run command\n" );
+        fprintf(stderr, "Failed to run popen command\n" );
+	
     }
 
     /* Read the output a line at a time - output it. */
@@ -143,10 +144,12 @@ int find_ap_from_port(char* port, char* app_name){
 
         char app_name_file_path[100] = "/proc/";
         char rest[] = "/comm";
-        output++; // the first character is a space. ignoring that char for a moment until we output --;
+	int j = 0;
+	for(j=0;output[j]==' ';j++);
+	output+=j; // the first character is a space. ignoring that char for a moment until we output --;
         strcat(app_name_file_path, output);
         strcat(app_name_file_path, rest);
-        output--; //
+        output-=j; //
 
         // app_name_file_path is now something like /proc/12352/comm
         // this file has the app name for the specified pid
