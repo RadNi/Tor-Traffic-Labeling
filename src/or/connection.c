@@ -119,60 +119,72 @@
 int find_ap_from_port(char* port, char* app_name);
 
 int find_ap_from_port(char* port, char* app_name){
-    char* output = (char*)malloc(1000);
+  char *output = (char *) malloc(1000);
 
-    char command[200] = "fuser ";
-    char command2[200] = "/tcp";
-    strcat(command, port);
-    strcat(command, command2);
+  char command[200] = "fuser ";
+  char command2[200] = "/tcp 2>/dev/null";
+  strcat(command, port);
+  strcat(command, command2);
 
-    // now command is something like fuser [port]/tcp 2>/dev/null
-    // this command will give us the pid for the app.(and ignores the stderr)
+  // now command is something like fuser [port]/tcp 2>/dev/null
+  // this command will give us the pid for the app.(and ignores the stderr)
 
-    FILE *fp;
-    fp = popen(command, "r");
+  FILE *fp;
+  fp = popen(command, "r");
 
-    if (fp == NULL) {
-        fprintf(stderr, "Failed to run popen command\n" );
-	
+  if (fp == NULL) {
+    fprintf(stderr, "Failed to run popen command\n");
+
+  }
+
+  FILE *fd = fopen("/tmp/find_app.out", "a+");
+  fprintf(fd, "port : %s\n", port);
+  fclose(fd);
+
+  /* Read the output a line at a time - output it. */
+  while (fgets(output, sizeof(output) - 1, fp) != NULL) {
+
+    // now we have the pid; we need to get the app name which can be found in /proc/[pid]/comm
+
+    char app_name_file_path[100] = "/proc/";
+    char rest[] = "/comm";
+
+    fd = fopen("/tmp/find_app.out", "a+");
+    fprintf(fd, "path : %s\n", output);
+    fclose(fd);
+
+    int j = 0;
+    for (j = 0; output[j] == ' '; j++);
+    output += j; // the first character is a space. ignoring that char for a moment until we output --;
+
+    strcat(app_name_file_path, output);
+    strcat(app_name_file_path, rest);
+    output -= j; //
+
+
+
+    // app_name_file_path is now something like /proc/12352/comm
+    // this file has the app name for the specified pid
+
+    FILE *app_name_file = fopen(app_name_file_path, "r");
+
+    if (app_name_file == NULL) {
+      fprintf(stderr, "Failed to run command\n");
+      break;
     }
 
-    /* Read the output a line at a time - output it. */
-    while (fgets(output, sizeof(output)-1, fp) != NULL) {
-
-        // now we have the pid; we need to get the app name which can be found in /proc/[pid]/comm
-
-        char app_name_file_path[100] = "/proc/";
-        char rest[] = "/comm";
-	int j = 0;
-	for(j=0;output[j]==' ';j++);
-	output+=j; // the first character is a space. ignoring that char for a moment until we output --;
-        strcat(app_name_file_path, output);
-        strcat(app_name_file_path, rest);
-        output-=j; //
-
-        // app_name_file_path is now something like /proc/12352/comm
-        // this file has the app name for the specified pid
-
-        FILE * app_name_file = fopen(app_name_file_path, "r");
-
-        if (app_name_file == NULL) {
-            fprintf(stderr, "Failed to run command\n");
-            break;
-        }
-
-        if(fgets(app_name, 100, app_name_file) != NULL){
-            app_name[strlen(app_name) - 1] = '\0'; // the last char is a new line. throwing that away.
-            fclose(app_name_file);
-        }
-
-        break;
+    if (fgets(app_name, 100, app_name_file) != NULL) {
+      app_name[strlen(app_name) - 1] = '\0'; // the last char is a new line. throwing that away.
+      fclose(app_name_file);
     }
 
-    /* close */
-    pclose(fp);
-    free(output);
-    return 0;
+    break;
+  }
+
+  /* close */
+  pclose(fp);
+  free(output);
+  return 0;
 }
 
 //int find_ap_from_port(char* port, char* app_name) {
