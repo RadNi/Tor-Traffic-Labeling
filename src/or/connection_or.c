@@ -20,6 +20,7 @@
  *
  * This module also implements the client side of the v3 Tor link handshake,
  **/
+#include <string.h>
 #include "or.h"
 #include "bridges.h"
 #include "buffers.h"
@@ -60,19 +61,7 @@
 #include "scheduler.h"
 #include "torcert.h"
 #include "channelpadding.h"
-
-
-
-  extern void* MY_chunks[10000];
-  extern char MY_chunks_body[10000][10000];
-  extern int MY_chunks_body_size[10000];
-  extern int MY_chunks_size;
-  extern void* MY_current_chunks[100];
-  extern int MY_current_chunks_size;
-  extern int MY_chunks_payload_size;
-  extern int MY_chunks_payload_len[100000];
-  extern char* MY_chunks_payload[100000];
-
+#include "../common/tor_labelling.h"
 
 static int connection_tls_finish_handshake(or_connection_t *conn);
 static int connection_or_launch_v3_or_handshake(or_connection_t *conn);
@@ -124,6 +113,9 @@ connection_or_clear_identity_map(void)
     }
   });
 }
+
+extern buf_chunks_encrypted_data_list* buf_chunks_encrypted_data_list_head;
+extern buf_chunks_encrypted_data_list* buf_chunks_encrypted_data_list_tail;
 
 /** Change conn->identity_digest to digest, and add conn into
  * the appropriate digest maps.
@@ -450,8 +442,10 @@ cell_pack(packed_cell_t *dst, const cell_t *src, int wide_circ_ids)
 /** Unpack the network-order buffer <b>src</b> into a host-order
  * cell_t structure <b>dest</b>.
  */
+
+
 static void
-cell_unpack(cell_t *dest, const char *src, int wide_circ_ids)
+cell_unpack(cell_t *dest, const char *src, int wide_circ_ids, buf_chunks_encrypted_data_linked_list* list)
 {
   if (wide_circ_ids) {
     dest->circ_id = ntohl(get_uint32(src));
@@ -462,71 +456,24 @@ cell_unpack(cell_t *dest, const char *src, int wide_circ_ids)
   }
   dest->command = get_uint8(src);
   memcpy(dest->payload, src+1, CELL_PAYLOAD_SIZE);
-  memcpy(dest->MY_payload, src, CELL_PAYLOAD_SIZE+1);
-  unsigned int i = 0;
-  /*extern void* MY_chunks[10000];
-  extern char MY_chunks_body[10000][10000];
-  extern int MY_chunks_body_size[10000];
-  extern int MY_chunks_size;
-  extern void* MY_current_chunks[100];
-  extern int MY_current_chunks_size;
-  */
-  
-  dest->MY_chunks_size = 0;
-  FILE* df = fopen("/tmp/tmp.out", "a+");
-  for ( i = 0 ; i < MY_chunks_payload_size ; i++ )
-  {
-  	dest->MY_chunks_body_size[dest->MY_chunks_size] = 0;
-	unsigned int k;
-	for ( k = 0 ; k < MY_chunks_payload_len[i] && k < 1500; k++ )
-	{
-		dest->MY_chunks_body[dest->MY_chunks_size][k] = MY_chunks_payload[i][k];
-		dest->MY_chunks_body_size[dest->MY_chunks_size]++;
-	}
-	dest->MY_chunks_size++;
-	unsigned int j;
-	for ( j = 0 ; j < MY_chunks_payload_len[i] ; j++ )
-	{
-		fprintf(df, "%02x ", MY_chunks_payload[i][j] & 0xff);
-	}
-	fprintf(df, " ------ ");
+
+  dest->encrypted_data = (char**)malloc(list->length * sizeof(char*));
+  dest->encrypted_data_length = (int*)malloc(list->length * sizeof(int));
+  dest->encrypted_data_chunks_count = list->length;
+
+  buf_chunks_encrypted_data_list* current = list->head;
+
+  int i = 0;
+  while(current){
+    dest->encrypted_data[i] = (char *) malloc(current->data_length);
+    memcpy(dest->encrypted_data[i], current->data, current->data_length);
+    dest->encrypted_data_length[i] = (int) current->data_length;
+
+    buf_chunks_encrypted_data_list * freed = current;
+    current = current->next;
+    free(freed);
+    i++;
   }
-  fprintf(df, "\n");
-  fclose(df);
-  /*FILE* fd = fopen("/tmp/cell_unpack", "a+");
-  fprintf(fd, "%d ", MY_current_chunks_size);
-  for ( i = 0 ; i < MY_current_chunks_size ; i++)
-  {
-	  //dest->MY_chunks_size++;
-	  //dest->MY_chunks[i] = MY_current_chunks[i];
-	  unsigned int j;
-	  for ( j = MY_chunks_size-1 ; j >= 0 ; j-- )
-	  {
-		  if ( MY_chunks[j] == MY_current_chunks[i] )
-		  {
-			  fprintf(fd, "founded %d j: %d %p \n", MY_chunks_body_size[j], j, MY_chunks[j]);
-			  dest->MY_chunks_body_size[dest->MY_chunks_size] = 0;
-			  unsigned int k;
-			  for ( k = 0 ; k < MY_chunks_body_size[j] && k < 1500; k++ )
-			  {
-				  dest->MY_chunks_body[dest->MY_chunks_size][k] = MY_chunks_body[j][k];
-				  dest->MY_chunks_body_size[dest->MY_chunks_size]++;
-			  }
-			  for ( k = j+1 ; k < MY_chunks_size - 1 ; k ++ ){
-				  MY_chunks[k-1] = MY_chunks[k];
-			  }
-			  MY_chunks_size --;
-
-			  dest->MY_chunks_size++;
-
-			  break;
-		  }
-	  }
-  }*/
-  MY_current_chunks_size = 0;
-  //fclose(fd);
-  
-
 }
 
 /** Write the header of <b>cell</b> into the first VAR_CELL_MAX_HEADER_SIZE
@@ -618,12 +565,9 @@ connection_or_process_inbuf(or_connection_t *conn)
 
   int ret = 0;
   tor_assert(conn);
-  FILE* fd_in = fopen("/tmp/connection_or_process_inbuf.out", "a+");
-  fprintf(fd_in, "connection ID: %u ", (unsigned int)conn->base_.global_identifier);
+
   switch (conn->base_.state) {
     case OR_CONN_STATE_PROXY_HANDSHAKING:
-      fprintf(fd_in, " OR_CONN_STATE_PROXY_HANDSHAKING\n");
-     // fclose(fd);
       ret = connection_read_proxy_handshake(TO_CONN(conn));
 
       /* start TLS after handshake completion, or deal with error */
@@ -641,17 +585,9 @@ connection_or_process_inbuf(or_connection_t *conn)
 
       return ret;
     case OR_CONN_STATE_TLS_SERVER_RENEGOTIATING:
-      fprintf(fd_in, "OR_CONN_STATE_TLS_SERVER_RENEGOTIATING\n");
-    //  fclose(fd_in);
     case OR_CONN_STATE_OPEN:
-      fprintf(fd_in, "OR_CONN_STATE_OPEN\n");
-     // fclose(fd_in);
     case OR_CONN_STATE_OR_HANDSHAKING_V2:
-      fprintf(fd_in, "OR_CONN_STATE_OR_HANDSHAKING_V2\n");
-     // fclose(fd_in);
     case OR_CONN_STATE_OR_HANDSHAKING_V3:
-      fprintf(fd_in, "OR_CONN_STATE_OR_HANDSHAKING_V3\n");
-      fclose(fd_in);
       return connection_or_process_cells_from_inbuf(conn);
     default:
       break; /* don't do anything */
@@ -2340,9 +2276,6 @@ MOCK_IMPL(void,
 connection_or_write_var_cell_to_buf,(const var_cell_t *cell,
                                      or_connection_t *conn))
 {
-	FILE* fd_s = fopen("/tmp/connection_or_write_var_cell_to_buf.out", "a+");
-	fprintf(fd_s, "d ");
-	fclose(fd_s);
   int n;
   char hdr[VAR_CELL_MAX_HEADER_SIZE];
   tor_assert(cell);
@@ -2394,36 +2327,23 @@ connection_or_process_cells_from_inbuf(or_connection_t *conn)
    */
 
   while (1) {
-	  
     log_debug(LD_OR,
               TOR_SOCKET_T_FORMAT": starting, inbuf_datalen %d "
               "(%d pending in tls object).",
               conn->base_.s,(int)connection_get_inbuf_len(TO_CONN(conn)),
               tor_tls_get_pending_bytes(conn->tls));
     if (connection_fetch_var_cell_from_buf(conn, &var_cell)) {
-
-  FILE* fdd_d = fopen("/tmp/connection_or_process_cells_from_inbuf.out", "a+");
-  fprintf(fdd_d, "connection ID: %u ", (unsigned int)conn->base_.global_identifier);
-    fprintf(fdd_d, "var_cell: %zu\n", strlen((char*)var_cell->payload));
-    fclose(fdd_d);
-      if (!var_cell){
+      if (!var_cell)
         return 0; /* not yet. */
-      }
 
       /* Touch the channel's active timestamp if there is one */
       if (conn->chan)
         channel_timestamp_active(TLS_CHAN_TO_BASE(conn->chan));
 
       circuit_build_times_network_is_live(get_circuit_build_times_mutable());
-     // fprintf(fdd_d, " var_cell: %d ", var_cell->payload_len);
       channel_tls_handle_var_cell(var_cell, conn);
       var_cell_free(var_cell);
     } else {
-
-  FILE* fdd_d = fopen("/tmp/connection_or_process_cells_from_inbuf.out", "a+");
-  fprintf(fdd_d, "connection ID: %u ", (unsigned int)conn->base_.global_identifier);
-    fprintf(fdd_d, "cell: %d\n", CELL_PAYLOAD_SIZE);
-    fclose(fdd_d);
       const int wide_circ_ids = conn->wide_circ_ids;
       size_t cell_network_size = get_cell_network_size(conn->wide_circ_ids);
       char buf[CELL_MAX_NETWORK_SIZE];
@@ -2437,14 +2357,18 @@ connection_or_process_cells_from_inbuf(or_connection_t *conn)
         channel_timestamp_active(TLS_CHAN_TO_BASE(conn->chan));
 
       circuit_build_times_network_is_live(get_circuit_build_times_mutable());
-      MY_current_chunks_size = 0;
-      connection_buf_get_bytes(buf, cell_network_size, TO_CONN(conn));
+
+      buf_chunks_encrypted_data_linked_list* list = (buf_chunks_encrypted_data_linked_list*)malloc(sizeof(buf_chunks_encrypted_data_linked_list));
+      list->length = 0;
+      list->head = NULL;
+      list->tail = NULL;
+
+      connection_buf_get_bytes_labelling(buf, cell_network_size, TO_CONN(conn), list);
 
       /* retrieve cell info from buf (create the host-order struct from the
        * network-order string) */
-      cell_unpack(&cell, buf, wide_circ_ids);
+      cell_unpack(&cell, buf, wide_circ_ids, list);
 
-     // fprintf(fdd_d, " cell: %d ", CELL_PAYLOAD_SIZE);
       channel_tls_handle_cell(&cell, conn);
     }
   }

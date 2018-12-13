@@ -5314,10 +5314,7 @@ connection_control_process_inbuf(control_connection_t *conn)
     conn->incoming_cmd_len = 1024;
     conn->incoming_cmd_cur_len = 0;
   }
-  
-  FILE* cn_p_fd = fopen("/tmp/connection_control_process_inbuf.out", "a+");
-  fprintf(cn_p_fd, "connection ID: %u\n", (unsigned int)conn->base_.global_identifier);
-  fclose(cn_p_fd);
+
   if (conn->base_.state == CONTROL_CONN_STATE_NEEDAUTH &&
       peek_connection_has_control0_command(TO_CONN(conn))) {
     /* Detect v0 commands and send a "no more v0" message. */

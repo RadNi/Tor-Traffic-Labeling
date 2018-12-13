@@ -3184,9 +3184,6 @@ spooled_resource_flush_some(spooled_resource_t *spooled,
               ptr + spooled->cached_dir_offset,
               bytes, conn, 0);
     } else {
-	    FILE* dirs_fd = fopen("/tmp/dirfd.out", "a+");
-	    fprintf(dirs_fd, "he ");
-	    fclose(dirs_fd);
       connection_buf_add(ptr + spooled->cached_dir_offset,
                               bytes, TO_CONN(conn));
     }
@@ -3452,9 +3449,6 @@ connection_dirserv_flushed_some(dir_connection_t *conn)
   if (conn->compress_state) {
     /* Flush the compression state: there could be more bytes pending in there,
      * and we don't want to omit bytes. */
-	  FILE* fdd = fopen("/tmp/controll_compress.out", "a+");
-	  fprintf(fdd, "really?! ");
-	  fclose(fdd);
     connection_buf_add_compress("", 0, conn, 1);
     tor_compress_free(conn->compress_state);
     conn->compress_state = NULL;

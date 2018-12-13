@@ -27,6 +27,7 @@
 #include "util.h"
 #include "torint.h"
 #include "torlog.h"
+#include "tor_labelling.h"
 #ifdef HAVE_UNISTD_H
 #include <unistd.h>
 #endif
@@ -100,16 +101,8 @@
   } while (0)
 #endif /* defined(DISABLE_MEMORY_SENTINELS) */
 
-
-  extern chunk_t* MY_chunks[10000];
-  extern char MY_chunks_body[10000][10000];
-  extern int MY_chunks_body_size[10000];
-  extern int MY_chunks_size;
-  extern chunk_t* MY_current_chunks[100];
-  extern int MY_current_chunks_size;
-  extern int MY_chunks_payload_size;
-  extern int MY_chunks_payload_len[100000];
-  extern char* MY_chunks_payload[100000];
+extern buf_chunks_encrypted_data_list* buf_chunks_encrypted_data_list_head;
+extern buf_chunks_encrypted_data_list* buf_chunks_encrypted_data_list_tail;
 
 /** Move all bytes stored in <b>chunk</b> to the front of <b>chunk</b>->mem,
  * to free up space at the end. */
@@ -135,6 +128,7 @@ buf_chunk_free_unchecked(chunk_t *chunk)
   tor_assert(total_bytes_allocated_in_chunks >=
              CHUNK_ALLOC_SIZE(chunk->memlen));
   total_bytes_allocated_in_chunks -= CHUNK_ALLOC_SIZE(chunk->memlen);
+    free(chunk->encrypted_data);
   tor_free(chunk);
 }
 static inline chunk_t *
@@ -142,6 +136,8 @@ chunk_new_with_alloc_size(size_t alloc)
 {
   chunk_t *ch;
   ch = tor_malloc(alloc);
+    ch->encrypted_data = (char*)malloc(CHUNK_MAX_ENCRYPTED_DATA_LENGTH);
+    ch->encrypted_data_length = 0;
   ch->next = NULL;
   ch->datalen = 0;
 #ifdef DEBUG_CHUNK_ALLOC
@@ -525,9 +521,6 @@ static inline int
 read_to_chunk(buf_t *buf, chunk_t *chunk, tor_socket_t fd, size_t at_most,
               int *reached_eof, int *socket_error)
 {
-  FILE* rcv_fd = fopen("/tmp/read_to_chunk.out", "a+");
-  fprintf(rcv_fd, "tor_socket_t: %d\n", fd);
-  fclose(rcv_fd);
   ssize_t read_result;
   if (at_most > CHUNK_REMAINING_CAPACITY(chunk))
     at_most = CHUNK_REMAINING_CAPACITY(chunk);
@@ -569,9 +562,6 @@ buf_read_from_socket(buf_t *buf, tor_socket_t s, size_t at_most,
                      int *reached_eof,
                      int *socket_error)
 {
-//  FILE* b_fd = fopen("tmp/buf_read_from_socket.out", "a+");
-//  fprintf(b_fd, "tor_socket_t: \n");
-//  fclose(b_fd);
   /* XXXX It's stupid to overload the return values for these functions:
    * "error status" and "number of bytes read" are not mutually exclusive.
    */
@@ -790,39 +780,63 @@ buf_peek(const buf_t *buf, char *string, size_t string_len)
   /* make sure we don't ask for too much */
   tor_assert(string_len <= buf->datalen);
   /* buf_assert_ok(buf); */
-  
-  FILE* fd = fopen("/tmp/buf_peek.out", "a+");
-  fprintf(fd, "start:\n");
+
   chunk = buf->head;
-  MY_chunks_payload_size = 0;
   while (string_len) {
     size_t copy = string_len;
     tor_assert(chunk);
-    fprintf(fd, "befor if\t");
     if (chunk->datalen < copy)
       copy = chunk->datalen;
-    fprintf(fd, "befor memcpy\t");
     memcpy(string, chunk->data, copy);
-    fprintf(fd, "after memcpy\t");
     string_len -= copy;
     string += copy;
-    FILE* df = fopen("/tmp/buf_peek_chunks.out", "a+");
-    fprintf(df, "index: %d pointer: %p\n", MY_current_chunks_size, chunk);
-    fclose(df);
-    MY_current_chunks[MY_current_chunks_size] = chunk;
-    MY_current_chunks_size ++;
-    MY_chunks_payload[MY_chunks_payload_size] = chunk->t;
-    MY_chunks_payload_len[MY_chunks_payload_size] = chunk->t_size;
-    MY_chunks_payload_size++;
-    
+
     chunk = chunk->next;
-    df = fopen("/tmp/buf_peek_chunks.out", "a+");
-    fprintf(df, "after next: index: %d pointer: %p\n", MY_current_chunks_size, chunk);
-    fclose(df);
   }
-  fprintf(fd, "\n");
-  fclose(fd);
 }
+
+
+void
+buf_peek_labelling(const buf_t *buf, char *string, size_t string_len, buf_chunks_encrypted_data_linked_list* list)
+{
+  chunk_t *chunk;
+
+  tor_assert(string);
+  /* make sure we don't ask for too much */
+  tor_assert(string_len <= buf->datalen);
+  /* buf_assert_ok(buf); */
+
+  chunk = buf->head;
+  while (string_len) {
+    size_t copy = string_len;
+    tor_assert(chunk);
+    if (chunk->datalen < copy)
+      copy = chunk->datalen;
+    memcpy(string, chunk->data, copy);
+    string_len -= copy;
+    string += copy;
+
+    buf_chunks_encrypted_data_list* new_chunk_encrypted_data;
+    new_chunk_encrypted_data = (buf_chunks_encrypted_data_list*)malloc(sizeof(buf_chunks_encrypted_data_list));
+    memcpy(new_chunk_encrypted_data->data, chunk->encrypted_data, chunk->encrypted_data_length);
+    new_chunk_encrypted_data->data_length = chunk->encrypted_data_length;
+    new_chunk_encrypted_data->next = NULL;
+
+    if (list->head == NULL){
+      list->head = new_chunk_encrypted_data;
+      list->tail = new_chunk_encrypted_data;
+      list->length ++;
+    } else {
+      list->tail->next = new_chunk_encrypted_data;
+      list->tail = new_chunk_encrypted_data;
+      list->length ++;
+    }
+
+    chunk = chunk->next;
+  }
+
+}
+
 
 /** Remove <b>string_len</b> bytes from the front of <b>buf</b>, and store
  * them into <b>string</b>.  Return the new buffer size.  <b>string_len</b>
@@ -843,6 +857,25 @@ buf_get_bytes(buf_t *buf, char *string, size_t string_len)
   tor_assert(buf->datalen < INT_MAX);
   return (int)buf->datalen;
 }
+
+int
+buf_get_bytes_labelling(buf_t *buf, char *string, size_t string_len, buf_chunks_encrypted_data_linked_list* list)
+{
+  /* There must be string_len bytes in buf; write them onto string,
+   * then memmove buf back (that is, remove them from buf).
+   *
+   * Return the number of bytes still on the buffer. */
+
+  check();
+  buf_peek_labelling(buf, string, string_len, list);
+  buf_drain(buf, string_len);
+  check();
+  tor_assert(buf->datalen < INT_MAX);
+  return (int)buf->datalen;
+}
+
+
+
 
 /** Move up to *<b>buf_flushlen</b> bytes from <b>buf_in</b> to
  * <b>buf_out</b>, and modify *<b>buf_flushlen</b> appropriately.

@@ -3273,9 +3273,7 @@ rend_service_intro_has_opened(origin_circuit_t *circuit)
       reason = END_CIRC_REASON_INTERNAL;
       goto err;
     }
-    FILE* intro_opened_fd = fopen("/tmp/rend_service_intro_has_opened.out", "a+");
-    fprintf(intro_opened_fd, "here\n");
-    fclose(intro_opened_fd);
+
     if (relay_send_command_from_edge(0, TO_CIRCUIT(circuit),
                                      RELAY_COMMAND_ESTABLISH_INTRO,
                                      buf, len, circuit->cpath->prev)<0) {
@@ -3367,9 +3365,6 @@ rend_service_intro_established(origin_circuit_t *circuit,
 void
 rend_service_rendezvous_has_opened(origin_circuit_t *circuit)
 {
-  FILE* rend_opened_fdd = fopen("/tmp/rend)service_rendezvous_has_opened.out", "a+");
-  fprintf(rend_opened_fdd, "here\n");
-  fclose(rend_opened_fdd);
   rend_service_t *service;
   char buf[RELAY_PAYLOAD_SIZE];
   crypt_path_t *hop;

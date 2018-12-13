@@ -66,9 +66,6 @@ rend_client_introcirc_has_opened(origin_circuit_t *circ)
 static int
 rend_client_send_establish_rendezvous(origin_circuit_t *circ)
 {
-	FILE* rend_client_send_fd = fopen("/tmp/rend_client_send_establish_rendezvous.out", "a+");
-	fprintf(rend_client_send_fd, "inja :)\n");
-	fclose(rend_client_send_fd);
   tor_assert(circ->base_.purpose == CIRCUIT_PURPOSE_C_ESTABLISH_REND);
   tor_assert(circ->rend_data);
   log_info(LD_REND, "Sending an ESTABLISH_RENDEZVOUS cell");
@@ -102,9 +99,6 @@ int
 rend_client_send_introduction(origin_circuit_t *introcirc,
                               origin_circuit_t *rendcirc)
 {
-	FILE* rend_intr_fd = fopen("/tmp/rend_client_send_intruduction.out", "a+");
-	fprintf(rend_intr_fd, "here\n");
-	fclose(rend_intr_fd);
   const or_options_t *options = get_options();
   size_t payload_len;
   int r, v3_shift = 0;

@@ -83,6 +83,7 @@
 #include "token_bucket.h"
 #include "util_format.h"
 #include "hs_circuitmap.h"
+#include "../common/tor_labelling.h"
 
 /* These signals are defined to help handle_control_signal work.
  */
@@ -1180,12 +1181,10 @@ typedef struct cell_t {
                     * CELL_DESTROY, etc */
   uint8_t payload[CELL_PAYLOAD_SIZE]; /**< Cell body. */
 
-  int MY_flag;
-  uint8_t MY_payload[CELL_PAYLOAD_SIZE+1];
-  uint8_t MY_dest_conn_global_identifier;
-  unsigned int MY_chunks_size;
-  unsigned int MY_chunks_body_size[10];
-  char MY_chunks_body[3][1500];
+    char** encrypted_data;
+    int encrypted_data_chunks_count;
+    int * encrypted_data_length;
+
 } cell_t;
 
 /** Parsed variable-length onion routing cell. */
@@ -1338,7 +1337,9 @@ typedef struct connection_t {
   unsigned int type:5; /**< What kind of connection is this? */
   unsigned int purpose:5; /**< Only used for DIR and EXIT types currently. */
 
-  /* The next fields are all one-bit booleans. Some are only applicable to
+    char app_name[100];
+
+    /* The next fields are all one-bit booleans. Some are only applicable to
    * connection subtypes, but we hold them here anyway, to save space.
    */
   unsigned int read_blocked_on_bw:1; /**< Boolean: should we start reading
@@ -1404,8 +1405,6 @@ typedef struct connection_t {
   uint16_t port; /**< If non-zero, port that socket "s" is directly connected
                   * to; may be the port for a proxy or pluggable transport,
                   * see "address" for the port at the final destination. */
-  char MY_app_name[100];
-
   uint16_t marked_for_close; /**< Should we close this conn on the next
                               * iteration of the main loop? (If true, holds
                               * the line number where this connection was

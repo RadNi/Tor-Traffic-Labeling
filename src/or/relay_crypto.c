@@ -182,16 +182,11 @@ relay_encrypt_cell_outbound(cell_t *cell,
 {
   crypt_path_t *thishop; /* counter for repeated crypts */
   relay_set_digest(layer_hint->crypto.f_digest, cell);
-  FILE* _fd_ = fopen("/tmp/after_set_diget.out", "a+");
-  fprintf(_fd_, "data size: %zu\n", strlen((const char*)cell->payload));
-  fclose(_fd_);
+
   thishop = layer_hint;
   /* moving from farthest to nearest hop */
   do {
     tor_assert(thishop);
-    FILE* _fd = fopen("/tmp/relay_crypt_cell_outbuond_while.out", "a+");
-    fprintf(_fd, "data size: %zu\n", strlen((const char*)cell->payload));
-    fclose(_fd);
     log_debug(LD_OR,"encrypting a layer of the relay cell.");
     relay_crypt_one_payload(thishop->crypto.f_crypto, cell->payload);
 

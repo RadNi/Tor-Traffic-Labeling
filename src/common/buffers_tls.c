@@ -12,6 +12,7 @@
 #include "compat.h"
 #include "compress.h"
 #include "util.h"
+#include "tor_labelling.h"
 #include "torint.h"
 #include "torlog.h"
 #include "tortls.h"
@@ -19,93 +20,37 @@
 #include <unistd.h>
 #endif
 
+
 /** As read_to_chunk(), but return (negative) error code on error, blocking,
  * or TLS, and the number of bytes read otherwise. */
-//
-//chunk_t* MY_chunks[10000];
-//char MY_chunks_body[10000][10000];
-//int MY_chunks_size = 0;
-//
-//chunk_t* MY_current_chunks[100];
-//int MY_current_chunks_size = 0;
-//
-//
-
-
-    extern chunk_t* MY_chunks[10000];
-    extern char MY_chunks_body[10000][10000];
-    extern int MY_chunks_body_size[10000];
-    extern int MY_chunks_size;
-    extern chunk_t* MY_current_chunks[100];
-    extern int MY_current_chunks_size;
-
 static inline int
 read_to_chunk_tls(buf_t *buf, chunk_t *chunk, tor_tls_t *tls,
                   size_t at_most)
 {
   int read_result;
-/*  tor_assert(CHUNK_REMAINING_CAPACITY(chunk) >= at_most);
-  tor_assert(tls);
-  tor_assert(tls->ssl);
-  tor_assert(tls->state == TOR_TLS_ST_OPEN);
-*/
-  int socket = tor_tls_get_fd(tls);
-  int s2 = tor_tls_get_socket(tls);
 
-  char en_buf[10000];
-  char en_buf2[10000];
-  size_t n = recv(socket, en_buf, sizeof(en_buf), MSG_PEEK);
-
-  read_result = tor_tls_read(tls, CHUNK_WRITE_PTR(chunk), at_most) ;
-  size_t n2 = recv(socket, en_buf2, sizeof(en_buf2), MSG_PEEK);
+  tor_assert(CHUNK_REMAINING_CAPACITY(chunk) >= at_most);
 
 
+    int socket = tor_tls_get_fd(tls);
 
+    size_t n = recv(socket, chunk->encrypted_data, CHUNK_MAX_ENCRYPTED_DATA_LENGTH, MSG_PEEK);
+    chunk->encrypted_data_length = n;
+
+
+  read_result = tor_tls_read(tls, CHUNK_WRITE_PTR(chunk), at_most);
+//
+//    char temp[CHUNK_MAX_ENCRYPTED_DATA_LENGTH];
+//    size_t n2 = recv(socket, temp, CHUNK_MAX_ENCRYPTED_DATA_LENGTH, MSG_PEEK);
+//
+//    FILE* f = fopen("/tmp/farid.out", "a+");
+//    fprintf(f, "%d %d\n", n, n2);
+//    fclose(f);
 
   if (read_result < 0)
     return read_result;
   buf->datalen += read_result;
   chunk->datalen += read_result;
-
-  //chunk->MY_encrypted_mem_len = n - n2;
-  unsigned int i;
- // for ( i = 0 ; i < n - n2 ; i ++ )
-  //{
-//	  chunk->MY_encrypted_mem[i] = en_buf[i];
- // }
- // chunk->MY_encrypted_mem[i] = '\0';
- /* chunk_t* MY_chunks[10000];
-  char MY_chunks_body[10000][10000];
-  int MY_chunks_body_size[10000];
-  int MY_chunks_size;
-  chunk_t* MY_current_chunks[100];
-  int MY_current_chunks_size;
-  */
-  FILE* fd = fopen("/tmp/read_to_chunk_tls.out", "a+");
-  fprintf(fd, "fd: %d socket: %d ssl_read: %d n: %zu n2: %zu\n", socket, s2, read_result,  n, n2);
-  //if ( read_result > 0 ) {
-	  MY_chunks_body_size[MY_chunks_size] = 0;
-	  for ( i = 0 ; i < (unsigned int)n && i < 1500 ; i++){
-		  fprintf(fd, "%02x ", en_buf[i] & 0xff);
-		  MY_chunks_body[MY_chunks_size][i] = en_buf[i];
-		  MY_chunks_body_size[MY_chunks_size]++;
-	  }
-	  fprintf(fd, "\nbody_size: %d\n", MY_chunks_body_size[MY_chunks_size]);
-	 // if((int)n2 > 0 )
-	//	  for ( i = 0 ; i < (unsigned int)n2 ; i++)
-	//	  	fprintf(fd, "%02x ", en_buf2[i] & 0xff);
-	  fprintf(fd, "\n\n");
-  //fprintf(fd, "ssl: ");
-  //for ( i = 0 ; i < (unsigned int)read_result; i++) 
-//	  fprintf(fd, "%02x ", CHUNK_WRITE_PTR(chunk)[i] & 0xff);
-//  fprintf(fd, "\n\n");
-//	  if((int)n2 > 0)
-//		  for ( i = 0 ; i < (unsigned int)n - n2 ; i++)
-//			  fprintf(fd, "%02x ", en_buf[i] & 0xff);
- // }
-  fprintf(fd, "\n");
-  fclose(fd);
-  
   return read_result;
 }
 
@@ -155,14 +100,8 @@ buf_read_from_tls(buf_t *buf, tor_tls_t *tls, size_t at_most)
       if (cap < readlen)
         readlen = cap;
     }
-    FILE* fd = fopen("/tmp/buf_read_from_tls.out", "a+");
+
     r = read_to_chunk_tls(buf, chunk, tls, readlen);
-    fprintf(fd, "read_len: %d pointer: %p body_size: %d\n", r, chunk, MY_chunks_body_size[MY_chunks_size]);
-    chunk->t = MY_chunks_body[MY_chunks_size];
-    chunk->t_size = MY_chunks_body_size[MY_chunks_size];
-    fclose(fd);
-    MY_chunks[MY_chunks_size] = chunk;
-    MY_chunks_size++;
     if (r < 0)
       return r; /* Error */
     tor_assert(total_read+r < INT_MAX);

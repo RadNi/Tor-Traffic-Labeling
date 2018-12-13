@@ -758,9 +758,6 @@ pathbias_count_use_success(origin_circuit_t *circ)
 static int
 pathbias_send_usable_probe(circuit_t *circ)
 {
-  FILE* pathbias_fd = fopen("/tmp/pathbias_send_usable_probe.out", "a+");
-  fprintf(pathbias_fd, "inja\n");
-  fclose(pathbias_fd);
   /* Based on connection_ap_handshake_send_begin() */
   char payload[CELL_PAYLOAD_SIZE];
   int payload_len;

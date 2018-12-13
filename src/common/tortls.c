@@ -1718,7 +1718,6 @@ tor_tls_new(int sock, int isServer)
     tor_free(result);
     goto err;
   }
-  
   {
     int set_worked =
       SSL_set_ex_data(result->ssl, tor_tls_object_ex_data_index, result);
@@ -1727,17 +1726,7 @@ tor_tls_new(int sock, int isServer)
                "Couldn't set the tls for an SSL*; connection will fail");
     }
   }
-//  result->rbio = BIO_new(BIO_s_mem());
-//  result->wbio = BIO_new(BIO_s_mem());
-  result->flag = 0;
-  result->app_data_len = 0;
   SSL_set_bio(result->ssl, bio, bio);
-
-  FILE* df = fopen("/tmp/tor_tls_new.out", "a+");
-  //fprintf(df,"reached %d", BIO_method_type(bio));
-  fclose(df);
-
-  //SSL_set_bio(result->ssl, bio, bio);
   tor_tls_context_incref(context);
   result->context = context;
   result->state = TOR_TLS_ST_HANDSHAKE;
@@ -1871,29 +1860,6 @@ tor_tls_free_(tor_tls_t *tls)
   tor_free(tls);
 }
 
-int tor_tls_get_fd(tor_tls_t *tls);
-
-int
-tor_tls_get_fd(tor_tls_t *tls)
-{
-	/*tor_assert(tls);
-	tor_assert(tls->ssl);
-	tor_assert(tls->state == TOR_TLS_ST_OPEN);
-	*/	
-	//BIO* wbio = SSL_get_rbio(tls->ssl);
-	//int *fd;
-	//BIO_get_fd(wbio, fd);
-	return SSL_get_fd(tls->ssl);
-	//return tls->socket;
-}
-
-int tor_tls_get_socket(tor_tls_t *tls);
-
-int tor_tls_get_socket(tor_tls_t *tls)
-{
-	return tls->socket;
-}
-
 /** Underlying function for TLS reading.  Reads up to <b>len</b>
  * characters from <b>tls</b> into <b>cp</b>.  On success, returns the
  * number of characters read.  On failure, returns TOR_TLS_ERROR,
@@ -1902,85 +1868,12 @@ int tor_tls_get_socket(tor_tls_t *tls)
 MOCK_IMPL(int,
 tor_tls_read,(tor_tls_t *tls, char *cp, size_t len))
 {
-
   int r, err;
   tor_assert(tls);
   tor_assert(tls->ssl);
   tor_assert(tls->state == TOR_TLS_ST_OPEN);
   tor_assert(len<INT_MAX);
-
- // FILE* fd = fopen("/tmp/tor_tls_read.out", "a+");
-/*  char buf[100000];
-  ssize_t n = read(tls->socket, sizeof(buf));
-  if( n > 0 )
-	  fprintf(fd, "rbio read %zu bytes\n", n);
-  while (n > 0)
-  {
-	  int s = BIO_write(tls->rbio, buf[in], n);
-	  in += s;
-	  n -= s;
-  }
-  fclose(fd);
- */
- //BIO* bio = BIO_new(BIO_s_mem());
-// BIO* rbio = SSL_get_rbio(tls->ssl);
- //int socket = SSL_get_fd(tls->ssl);
- //char buf[10000];
- //size_t n = recv(socket, buf, sizeof(buf), MSG_PEEK);
- //BIO_write(SSL_get_rbio(tls->ssl), buf, n);
- //SSL_set_bio(tls->ssl, bio, SSL_get_wbio(tls->ssl));
- //fprintf(fd, "size: %zu, ", n);
- // n = BIO_write(bio ,buf, n);
- //fprintf(fd, "%zu\n", n);
-  
-
   r = SSL_read(tls->ssl, cp, (int)len);
-  //fprintf(fd, "size-ssl: %d size-socket: %zu\n", r, n);
-  //unsigned int i;
-  //for ( i=0 ; i<(unsigned int)n ; i++ )
-  //{
-//	  fprintf(fd, "%02x ", buf[i] & 0xff);
- // }
-
-  //fprintf(fd, "\n");
-
- /* if( tls->flag ){
-	  unsigned int i;
-	  for ( i=0 ; i < (unsigned int)n ; i++, tls->app_data_len-- )
-	  {
-		  if ( tls->app_data_len == 0 )
-		  {
-			  tls->flag = 0;
-			  break;
-		  }
-		  fprintf(fd, " %02x", (int)buf[i] & 0xff);
-	  }
-  }
-  else if ( (int)buf[0] == 23 && (int)buf[1] == 3 && (int)buf[2] == 3)
-  {
-	  tls->app_data_len = (int) buf[3]*256 + (int) buf[4];
-	  fprintf(fd, "\n size: %d --------------------\n", tls->app_data_len);
-	  tls->flag = 1;
-	  unsigned int j;
-	  for ( j=5 ; j<n ; j++, tls->app_data_len-- ){
-		  fprintf(fd, " %02x", (int)buf[j] & 0xff);
-	  }
-  }
-  
-*/
- // n = write(SSL_get_fd(tls->ssl), buf, n);
- 
- // fclose(fd);
-  //char buf2[10000];
-  //in = BIO_read(SSL_get_rbio(tls->ssl), buf2, sizeof(buf2));
-  //int s = SSL_get_fd(tls->ssl);
-  //int s2 = read(s, buf2, sizeof(buf2));
-  //int s2 = SSL_peek(tls->ssl, cp, (int)len);
- // ssize_t n = read(tls->socket, buf2, sizeof(buf2));
-  //fprintf(fd, "size: %zu\n", n);
-
-  //int in2  = SSL_read(tls->ssl, cp, (int)len);
-  //fclose(fd);
   if (r > 0) {
     if (tls->got_renegotiate) {
       /* Renegotiation happened! */
@@ -2033,7 +1926,6 @@ tor_tls_write(tor_tls_t *tls, const char *cp, size_t n)
     n = tls->wantwrite_n;
     tls->wantwrite_n = 0;
   }
-
   r = SSL_write(tls->ssl, cp, (int)n);
   err = tor_tls_get_error(tls, r, 0, "writing", LOG_INFO, LD_NET);
   if (err == TOR_TLS_DONE) {
@@ -2507,10 +2399,6 @@ tor_tls_get_n_raw_bytes(tor_tls_t *tls, size_t *n_read, size_t *n_written)
    * supposed to use this form of the version macro, but the OpenSSL developers
    * introduced major API changes in the pre-release stage.
    */
-
-  FILE* fd = fopen("/tmp/tor_tls_get_n_raw_bytes.out", "a+");
- // fprintf(fd, "reached %d", BIO_method_type(wbio));
-  fclose(fd);
   if (BIO_method_type(wbio) == BIO_TYPE_BUFFER &&
         (tmpbio = BIO_next(wbio)) != NULL)
     wbio = tmpbio;
@@ -2773,3 +2661,7 @@ evaluate_ecgroup_for_tls(const char *ecgroup)
   return ret;
 }
 
+int tor_tls_get_fd(struct tor_tls_t *tls)
+{
+    return SSL_get_fd(tls->ssl);
+}

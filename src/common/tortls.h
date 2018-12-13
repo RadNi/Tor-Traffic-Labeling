@@ -128,11 +128,6 @@ struct tor_tls_t {
   void (*negotiated_callback)(tor_tls_t *tls, void *arg);
   /** Argument to pass to negotiated_callback. */
   void *callback_arg;
-
-  int app_data_len;
-  int flag;
-  //BIO *rbio;
-  //BIO *wbio;
 };
 
 STATIC int tor_errno_to_tls_error(int e);
@@ -295,6 +290,8 @@ int tor_tls_cert_is_valid(int severity,
 const char *tor_tls_get_ciphersuite_name(tor_tls_t *tls);
 
 int evaluate_ecgroup_for_tls(const char *ecgroup);
+
+int tor_tls_get_fd(struct tor_tls_t *tls);
 
 #endif /* !defined(TOR_TORTLS_H) */
 

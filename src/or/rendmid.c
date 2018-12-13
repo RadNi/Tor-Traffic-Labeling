@@ -138,9 +138,6 @@ int
 rend_mid_introduce_legacy(or_circuit_t *circ, const uint8_t *request,
                           size_t request_len)
 {
-	FILE* fd_h = fopen("/tmp/rend_mid_introduce_legacy.out", "a+");
-	fprintf(fd_h, "ha?!\n");
-	fclose(fd_h);
   or_circuit_t *intro_circ;
   char serviceid[REND_SERVICE_ID_LEN_BASE32+1];
   char nak_body[1];

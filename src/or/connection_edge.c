@@ -230,38 +230,28 @@ connection_edge_reached_eof(edge_connection_t *conn)
 int
 connection_edge_process_inbuf(edge_connection_t *conn, int package_partial)
 {
-	FILE* edge_conn_fd = fopen("/tmp/connection_edge_process_inbuf.out", "a+");
-	
   tor_assert(conn);
 
   switch (conn->base_.state) {
     case AP_CONN_STATE_SOCKS_WAIT:
-	    fprintf(edge_conn_fd, "connection ID: %u Mode: AP_CONN_STATE_SOCKS_WAIT\n", (unsigned int) (TO_CONN(conn)->global_identifier));
-	    fclose(edge_conn_fd);
       if (connection_ap_handshake_process_socks(EDGE_TO_ENTRY_CONN(conn)) <0) {
         /* already marked */
         return -1;
       }
       return 0;
     case AP_CONN_STATE_NATD_WAIT:
-	    fprintf(edge_conn_fd, "connection ID: %u Mode: AP_CONN_SATE_NATD_WAIT\n", (unsigned int) (TO_CONN(conn)->global_identifier));
-	    fclose(edge_conn_fd);
       if (connection_ap_process_natd(EDGE_TO_ENTRY_CONN(conn)) < 0) {
         /* already marked */
         return -1;
       }
       return 0;
     case AP_CONN_STATE_HTTP_CONNECT_WAIT:
-	    fprintf(edge_conn_fd, "connection ID: %u Mode: AP_CONN_STATE_HTTP_CONNECT_WAIT\n", (unsigned int) (TO_CONN(conn)->global_identifier));
- 	    fclose(edge_conn_fd);
       if (connection_ap_process_http_connect(EDGE_TO_ENTRY_CONN(conn)) < 0) {
         return -1;
       }
       return 0;
     case AP_CONN_STATE_OPEN:
     case EXIT_CONN_STATE_OPEN:
-	    fprintf(edge_conn_fd, "connection ID: %u Mode: AP_CONN_STATE_SOCKS_WAIT\n", (unsigned int) (TO_CONN(conn)->global_identifier));
- 	    fclose(edge_conn_fd);
       if (connection_edge_package_raw_inbuf(conn, package_partial, NULL) < 0) {
         /* (We already sent an end cell if possible) */
         connection_mark_for_close(TO_CONN(conn));
@@ -269,8 +259,6 @@ connection_edge_process_inbuf(edge_connection_t *conn, int package_partial)
       }
       return 0;
     case AP_CONN_STATE_CONNECT_WAIT:
-	    fprintf(edge_conn_fd, "connection ID: %u Mode: AP_CONN_STATE_CONNECT_WAIT\n", (unsigned int) (TO_CONN(conn)->global_identifier));
- 	    fclose(edge_conn_fd);
       if (connection_ap_supports_optimistic_data(EDGE_TO_ENTRY_CONN(conn))) {
         log_info(LD_EDGE,
                  "data from edge while in '%s' state. Sending it anyway. "
@@ -298,7 +286,6 @@ connection_edge_process_inbuf(edge_connection_t *conn, int package_partial)
                conn_state_to_string(conn->base_.type, conn->base_.state));
       return 0;
   }
-  fclose(edge_conn_fd);
   log_warn(LD_BUG,"Got unexpected state %d. Closing.",conn->base_.state);
   tor_fragile_assert();
   connection_edge_end(conn, END_STREAM_REASON_INTERNAL);
@@ -343,9 +330,6 @@ static int
 relay_send_end_cell_from_edge(streamid_t stream_id, circuit_t *circ,
                               uint8_t reason, crypt_path_t *cpath_layer)
 {
-	FILE* send_end_cell_fd = fopen("/tmp/relay_send_end_cell.out", "a+");
-	fprintf(send_end_cell_fd, "stream ID: %u\n", (unsigned int)stream_id);
-	fclose(send_end_cell_fd);
   char payload[1];
 
   if (CIRCUIT_PURPOSE_IS_CLIENT(circ->purpose)) {
@@ -1659,11 +1643,6 @@ connection_ap_handshake_rewrite_and_attach(entry_connection_t *conn,
   time_t now = time(NULL);
   rewrite_result_t rr;
 
-
-  FILE* rew_fd = fopen("/tmp/connection_ap_handshake_rewrite_and_attach.out", "a+");
-  fprintf(rew_fd, "connection ID: %u\n", (unsigned int)base_conn->global_identifier);
-  fclose(rew_fd);
-
   /* First we'll do the rewrite part.  Let's see if we get a reasonable
    * answer.
    */
@@ -2330,9 +2309,7 @@ connection_ap_handshake_process_socks(entry_connection_t *conn)
   const or_options_t *options = get_options();
   int had_reply = 0;
   connection_t *base_conn = ENTRY_TO_CONN(conn);
-  FILE* s_fd = fopen("/tmp/connection_ap_handshake_process_socks.out", "a+");
-  fprintf(s_fd, "connection ID:%u\n", (unsigned int)ENTRY_TO_CONN(conn)->global_identifier);
-  fclose(s_fd);
+
   tor_assert(conn);
   tor_assert(base_conn->type == CONN_TYPE_AP);
   tor_assert(base_conn->state == AP_CONN_STATE_SOCKS_WAIT);
@@ -2394,9 +2371,7 @@ connection_ap_process_transparent(entry_connection_t *conn)
   tor_assert(conn);
   tor_assert(conn->socks_request);
   socks = conn->socks_request;
-  FILE* tr_fd = fopen("/tmp/connection_ap_process_transparent.out", "a+");
-  fprintf(tr_fd, "connection ID: %u\n", (unsigned int)ENTRY_TO_CONN(conn)->global_identifier);
-  fclose(tr_fd);
+
   /* pretend that a socks handshake completed so we don't try to
    * send a socks reply down a transparent conn */
   socks->command = SOCKS_COMMAND_CONNECT;
@@ -2510,10 +2485,7 @@ connection_ap_process_http_connect(entry_connection_t *conn)
   char *command = NULL, *addrport = NULL;
   char *addr = NULL;
   size_t bodylen = 0;
-  
-  FILE* ht_fd = fopen("/tmp/connection_ap_process_http_connect.out", "a+");
-  fprintf(ht_fd, "connection ID: %u\n", (unsigned int)ENTRY_TO_CONN(conn)->global_identifier);
-  fclose(ht_fd);
+
   const char *errmsg = NULL;
   int rv = 0;
 
@@ -2830,7 +2802,6 @@ connection_ap_handshake_send_begin,(entry_connection_t *ap_conn))
 int
 connection_ap_handshake_send_resolve(entry_connection_t *ap_conn)
 {
-  FILE* handshake_fd = fopen("/tmp/connection_ap_handshake_send_resolve.out", "a+");
   int payload_len, command;
   const char *string_addr;
   char inaddr_buf[REVERSE_LOOKUP_NAME_BUF_LEN];
@@ -2898,8 +2869,7 @@ connection_ap_handshake_send_resolve(entry_connection_t *ap_conn)
                            RELAY_COMMAND_RESOLVE,
                            string_addr, payload_len) < 0)
     return -1; /* circuit is closed, don't continue */
-  fprintf(handshake_fd, "string addr: %s\n", string_addr);
-  fclose(handshake_fd);
+
   if (!base_conn->address) {
     /* This might be unnecessary. XXXX */
     base_conn->address = tor_addr_to_str_dup(&base_conn->addr);

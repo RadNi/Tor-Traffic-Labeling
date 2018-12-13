@@ -2723,9 +2723,6 @@ connection_ap_handshake_attach_chosen_circuit(entry_connection_t *conn,
                                               origin_circuit_t *circ,
                                               crypt_path_t *cpath)
 {
-  FILE* atach_fdd = fopen("/tmp/connection_ap_handshake_attach_chosen_circuit.out", "a+");
-  fprintf(atach_fdd, "here\n");
-  fclose(atach_fdd);
   connection_t *base_conn = ENTRY_TO_CONN(conn);
   tor_assert(conn);
   tor_assert(base_conn->state == AP_CONN_STATE_CIRCUIT_WAIT ||

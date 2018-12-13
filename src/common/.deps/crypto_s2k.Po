@@ -1,6 +1,6 @@
 src/common/crypto_s2k.o: src/common/crypto_s2k.c \
  /usr/include/stdc-predef.h src/common/compat.h orconfig.h \
- src/common/torint.h /usr/lib/gcc/x86_64-linux-gnu/6/include/stdint.h \
+ src/common/torint.h /usr/lib/gcc/x86_64-linux-gnu/5/include/stdint.h \
  /usr/include/stdint.h /usr/include/features.h \
  /usr/include/x86_64-linux-gnu/sys/cdefs.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
@@ -10,7 +10,7 @@ src/common/crypto_s2k.o: src/common/crypto_s2k.c \
  /usr/include/x86_64-linux-gnu/sys/types.h \
  /usr/include/x86_64-linux-gnu/bits/types.h \
  /usr/include/x86_64-linux-gnu/bits/typesizes.h /usr/include/time.h \
- /usr/lib/gcc/x86_64-linux-gnu/6/include/stddef.h /usr/include/endian.h \
+ /usr/lib/gcc/x86_64-linux-gnu/5/include/stddef.h /usr/include/endian.h \
  /usr/include/x86_64-linux-gnu/bits/endian.h \
  /usr/include/x86_64-linux-gnu/bits/byteswap.h \
  /usr/include/x86_64-linux-gnu/bits/byteswap-16.h \
@@ -21,15 +21,15 @@ src/common/crypto_s2k.o: src/common/crypto_s2k.c \
  /usr/include/x86_64-linux-gnu/bits/select2.h \
  /usr/include/x86_64-linux-gnu/sys/sysmacros.h \
  /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
- /usr/lib/gcc/x86_64-linux-gnu/6/include-fixed/limits.h \
- /usr/lib/gcc/x86_64-linux-gnu/6/include-fixed/syslimits.h \
+ /usr/lib/gcc/x86_64-linux-gnu/5/include-fixed/limits.h \
+ /usr/lib/gcc/x86_64-linux-gnu/5/include-fixed/syslimits.h \
  /usr/include/limits.h /usr/include/x86_64-linux-gnu/bits/posix1_lim.h \
  /usr/include/x86_64-linux-gnu/bits/local_lim.h \
  /usr/include/linux/limits.h \
  /usr/include/x86_64-linux-gnu/bits/posix2_lim.h \
  /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
  /usr/include/x86_64-linux-gnu/bits/stdio_lim.h /usr/include/inttypes.h \
- /usr/lib/gcc/x86_64-linux-gnu/6/include/stdbool.h \
+ /usr/lib/gcc/x86_64-linux-gnu/5/include/stdbool.h \
  src/common/testsupport.h /usr/include/x86_64-linux-gnu/sys/param.h \
  /usr/include/signal.h /usr/include/x86_64-linux-gnu/bits/signum.h \
  /usr/include/x86_64-linux-gnu/bits/siginfo.h \
@@ -46,7 +46,7 @@ src/common/crypto_s2k.o: src/common/crypto_s2k.c \
  /usr/include/string.h /usr/include/x86_64-linux-gnu/bits/string.h \
  /usr/include/x86_64-linux-gnu/bits/string2.h /usr/include/stdlib.h \
  /usr/include/x86_64-linux-gnu/bits/string3.h \
- /usr/lib/gcc/x86_64-linux-gnu/6/include/stdarg.h \
+ /usr/lib/gcc/x86_64-linux-gnu/5/include/stdarg.h \
  /usr/include/x86_64-linux-gnu/sys/resource.h \
  /usr/include/x86_64-linux-gnu/bits/resource.h \
  /usr/include/x86_64-linux-gnu/sys/socket.h \
@@ -71,7 +71,7 @@ src/common/crypto_s2k.o: src/common/crypto_s2k.c \
  src/common/compat_threads.h /usr/include/pthread.h /usr/include/sched.h \
  /usr/include/x86_64-linux-gnu/bits/sched.h \
  /usr/include/x86_64-linux-gnu/bits/setjmp.h \
- /usr/lib/gcc/x86_64-linux-gnu/6/include/stdatomic.h src/common/crypto.h \
+ /usr/lib/gcc/x86_64-linux-gnu/5/include/stdatomic.h src/common/crypto.h \
  src/common/util.h src/common/di_ops.h \
  /usr/include/x86_64-linux-gnu/bits/waitflags.h \
  /usr/include/x86_64-linux-gnu/bits/waitstatus.h /usr/include/alloca.h \
@@ -84,20 +84,14 @@ src/common/crypto_s2k.o: src/common/crypto_s2k.c \
  /usr/include/x86_64-linux-gnu/bits/syslog-path.h \
  /usr/include/x86_64-linux-gnu/bits/syslog.h src/common/crypto_rand.h \
  src/common/crypto_s2k.h src/common/crypto_util.h \
- /usr/local/include/openssl/evp.h \
- /usr/local/include/openssl/opensslconf.h \
- /usr/local/include/openssl/ossl_typ.h /usr/local/include/openssl/e_os2.h \
- /usr/local/include/openssl/symhacks.h /usr/local/include/openssl/bio.h \
- /usr/local/include/openssl/crypto.h \
- /usr/local/include/openssl/safestack.h \
- /usr/local/include/openssl/stack.h /usr/local/include/openssl/opensslv.h \
- /usr/local/include/openssl/cryptoerr.h \
- /usr/local/include/openssl/bioerr.h /usr/local/include/openssl/evperr.h \
- /usr/local/include/openssl/objects.h \
- /usr/local/include/openssl/obj_mac.h /usr/local/include/openssl/asn1.h \
- /usr/local/include/openssl/asn1err.h /usr/local/include/openssl/bn.h \
- /usr/local/include/openssl/bnerr.h \
- /usr/local/include/openssl/objectserr.h
+ /usr/include/openssl/evp.h \
+ /usr/include/x86_64-linux-gnu/openssl/opensslconf.h \
+ /usr/include/openssl/ossl_typ.h /usr/include/openssl/e_os2.h \
+ /usr/include/openssl/symhacks.h /usr/include/openssl/bio.h \
+ /usr/include/openssl/crypto.h /usr/include/openssl/stack.h \
+ /usr/include/openssl/safestack.h /usr/include/openssl/opensslv.h \
+ /usr/include/openssl/objects.h /usr/include/openssl/obj_mac.h \
+ /usr/include/openssl/asn1.h /usr/include/openssl/bn.h
 
 /usr/include/stdc-predef.h:
 
@@ -107,7 +101,7 @@ orconfig.h:
 
 src/common/torint.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/6/include/stdint.h:
+/usr/lib/gcc/x86_64-linux-gnu/5/include/stdint.h:
 
 /usr/include/stdint.h:
 
@@ -131,7 +125,7 @@ src/common/torint.h:
 
 /usr/include/time.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/6/include/stddef.h:
+/usr/lib/gcc/x86_64-linux-gnu/5/include/stddef.h:
 
 /usr/include/endian.h:
 
@@ -155,9 +149,9 @@ src/common/torint.h:
 
 /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/6/include-fixed/limits.h:
+/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed/limits.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/6/include-fixed/syslimits.h:
+/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed/syslimits.h:
 
 /usr/include/limits.h:
 
@@ -175,7 +169,7 @@ src/common/torint.h:
 
 /usr/include/inttypes.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/6/include/stdbool.h:
+/usr/lib/gcc/x86_64-linux-gnu/5/include/stdbool.h:
 
 src/common/testsupport.h:
 
@@ -221,7 +215,7 @@ src/common/testsupport.h:
 
 /usr/include/x86_64-linux-gnu/bits/string3.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/6/include/stdarg.h:
+/usr/lib/gcc/x86_64-linux-gnu/5/include/stdarg.h:
 
 /usr/include/x86_64-linux-gnu/sys/resource.h:
 
@@ -291,7 +285,7 @@ src/common/compat_threads.h:
 
 /usr/include/x86_64-linux-gnu/bits/setjmp.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/6/include/stdatomic.h:
+/usr/lib/gcc/x86_64-linux-gnu/5/include/stdatomic.h:
 
 src/common/crypto.h:
 
@@ -337,42 +331,30 @@ src/common/crypto_s2k.h:
 
 src/common/crypto_util.h:
 
-/usr/local/include/openssl/evp.h:
+/usr/include/openssl/evp.h:
 
-/usr/local/include/openssl/opensslconf.h:
+/usr/include/x86_64-linux-gnu/openssl/opensslconf.h:
 
-/usr/local/include/openssl/ossl_typ.h:
+/usr/include/openssl/ossl_typ.h:
 
-/usr/local/include/openssl/e_os2.h:
+/usr/include/openssl/e_os2.h:
 
-/usr/local/include/openssl/symhacks.h:
+/usr/include/openssl/symhacks.h:
 
-/usr/local/include/openssl/bio.h:
+/usr/include/openssl/bio.h:
 
-/usr/local/include/openssl/crypto.h:
+/usr/include/openssl/crypto.h:
 
-/usr/local/include/openssl/safestack.h:
+/usr/include/openssl/stack.h:
 
-/usr/local/include/openssl/stack.h:
+/usr/include/openssl/safestack.h:
 
-/usr/local/include/openssl/opensslv.h:
+/usr/include/openssl/opensslv.h:
 
-/usr/local/include/openssl/cryptoerr.h:
+/usr/include/openssl/objects.h:
 
-/usr/local/include/openssl/bioerr.h:
+/usr/include/openssl/obj_mac.h:
 
-/usr/local/include/openssl/evperr.h:
+/usr/include/openssl/asn1.h:
 
-/usr/local/include/openssl/objects.h:
-
-/usr/local/include/openssl/obj_mac.h:
-
-/usr/local/include/openssl/asn1.h:
-
-/usr/local/include/openssl/asn1err.h:
-
-/usr/local/include/openssl/bn.h:
-
-/usr/local/include/openssl/bnerr.h:
-
-/usr/local/include/openssl/objectserr.h:
+/usr/include/openssl/bn.h:

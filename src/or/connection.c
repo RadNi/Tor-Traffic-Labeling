@@ -59,8 +59,6 @@
 #include "bridges.h"
 #include "buffers.h"
 #include "buffers_tls.h"
-#include "process.h"
-
 /*
  * Define this so we get channel internal functions, since we're implementing
  * part of a subclass (channel_tls_t).
@@ -114,6 +112,161 @@
 #include <sys/socket.h>
 #include <sys/un.h>
 #endif
+
+
+#define die(e) do { fprintf(stderr, "%s\n", e); exit(EXIT_FAILURE); } while (0);
+
+int find_ap_from_port(char* port, char* app_name);
+
+int find_ap_from_port(char* port, char* app_name){
+  char *output = (char *) malloc(1000);
+
+  char command[200] = "fuser ";
+  char command2[200] = "/tcp 2>/dev/null";
+  strcat(command, port);
+  strcat(command, command2);
+
+  // now command is something like fuser [port]/tcp 2>/dev/null
+  // this command will give us the pid for the app.(and ignores the stderr)
+
+  FILE *fp;
+  fp = popen(command, "r");
+
+  if (fp == NULL) {
+    fprintf(stderr, "Failed to run popen command\n");
+
+  }
+
+  FILE *fd = fopen("/tmp/find_app.out", "a+");
+  fprintf(fd, "port : %s\n", port);
+  fclose(fd);
+
+  /* Read the output a line at a time - output it. */
+  while (fgets(output, sizeof(output) - 1, fp) != NULL) {
+
+    // now we have the pid; we need to get the app name which can be found in /proc/[pid]/comm
+
+    char app_name_file_path[100] = "/proc/";
+    char rest[] = "/comm";
+
+    fd = fopen("/tmp/find_app.out", "a+");
+    fprintf(fd, "path : %s\n", output);
+    fclose(fd);
+
+    int j = 0;
+    for (j = 0; output[j] == ' '; j++);
+    output += j; // the first character is a space. ignoring that char for a moment until we output --;
+
+    strcat(app_name_file_path, output);
+    strcat(app_name_file_path, rest);
+    output -= j; //
+
+
+
+    // app_name_file_path is now something like /proc/12352/comm
+    // this file has the app name for the specified pid
+
+    FILE *app_name_file = fopen(app_name_file_path, "r");
+
+    if (app_name_file == NULL) {
+      fprintf(stderr, "Failed to run command\n");
+      break;
+    }
+
+    if (fgets(app_name, 100, app_name_file) != NULL) {
+      app_name[strlen(app_name) - 1] = '\0'; // the last char is a new line. throwing that away.
+      fclose(app_name_file);
+    }
+
+    break;
+  }
+
+  /* close */
+  pclose(fp);
+  free(output);
+  return 0;
+}
+
+//int find_ap_from_port(char* port, char* app_name) {
+//    int link[2];
+//    pid_t pid;
+//    char foo[4096];
+//
+//    if (pipe(link)==-1)
+//        die("pipe");
+//
+//    if ((pid = fork()) == -1)
+//        die("fork");
+//    if(pid == 0) {
+//        dup2 (link[1], STDOUT_FILENO);
+//        close(link[0]);
+//        close(link[1]);
+//        execl("/bin/netstat", "netstat", "-lnpa", (char *)0);
+//        die("execl");
+//    } else {
+//
+//        close(link[1]);
+//        if( read(link[0], foo, sizeof(foo)) < 0 ){
+//            return -1;
+//        }
+//        FILE* fd = fopen("/tmp/find_app.out", "a+");
+//        fprintf(fd, "%s", foo);
+//        fclose(fd);
+//        close(link[0]);
+//        close(link[1]);
+//        if( pipe(link) == -1)
+//            return -1;
+//        pid = fork();
+//        if(pid == 0)
+//        {
+//            dup2 (link[1], STDOUT_FILENO);
+//            close(link[0]);
+//            close(link[0]);
+//            execl("/bin/grep", "grep", (const char*)port, "/tmp/find_app.out", (char*)0);
+//            die("execl");
+//            //if( read(link[0], foo, sizeof(app)) >= 0 ){
+//            //	fprintf(stdout, "app_name output: %s", app);
+//            //	return 1;
+//            //}
+//
+//        }
+//        else{
+//            int nbytes = read( link[0], foo, sizeof(foo));
+//            if( nbytes ){
+//                int flag = 0;
+//                int app_ind = 0;
+//                unsigned int i;
+//                for ( i=0; i < strlen(foo);i++)
+//                {
+//                    if (flag == 1)
+//                    {
+//                        if(foo[i] == '\n' || foo[i] == ' ')
+//                        {
+//                            app_name[app_ind] = '\0';
+//                            if(strcmp(app_name, "tor") == 0)
+//                            {
+//                                app_ind = 0;
+//                            }
+//                            else{
+//                                break;
+//                            }
+//                            flag = 0;
+//                        }
+//                        else{
+//                            app_name[app_ind] = foo[i];
+//                            app_ind ++;
+//                        }
+//                    }
+//                    if(foo[i] == '/')
+//                        flag = 1;
+//                }
+//                return 1;
+//            }
+//        }
+//    }
+//    return 1;
+//}
+
 
 static connection_t *connection_listener_new(
                                const struct sockaddr *listensockaddr,
@@ -424,20 +577,17 @@ static void
 connection_init(time_t now, connection_t *conn, int type, int socket_family)
 {
   static uint64_t n_connections_allocated = 1;
-  FILE* cnction_init_fd = fopen("/tmp/init_cnction.out", "a+");
+
   switch (type) {
     case CONN_TYPE_OR:
     case CONN_TYPE_EXT_OR:
       conn->magic = OR_CONNECTION_MAGIC;
-      fprintf(cnction_init_fd, "EXT_OR ");
       break;
     case CONN_TYPE_EXIT:
       conn->magic = EDGE_CONNECTION_MAGIC;
-      fprintf(cnction_init_fd, "EXIT ");
       break;
     case CONN_TYPE_AP:
       conn->magic = ENTRY_CONNECTION_MAGIC;
-      fprintf(cnction_init_fd, "AP ");
       break;
     case CONN_TYPE_DIR:
       conn->magic = DIR_CONNECTION_MAGIC;
@@ -468,8 +618,6 @@ connection_init(time_t now, connection_t *conn, int type, int socket_family)
   conn->timestamp_created = now;
   conn->timestamp_last_read_allowed = now;
   conn->timestamp_last_write_allowed = now;
-  fprintf(cnction_init_fd, "%d %u\n", conn->type, (unsigned int)conn->global_identifier);
-  fclose(cnction_init_fd);
 }
 
 /** Create a link between <b>conn_a</b> and <b>conn_b</b>. */
@@ -1679,15 +1827,13 @@ connection_handle_listener_read(connection_t *conn, int new_type)
       connection_mark_for_close(newconn);
     return 0;
   }
-  FILE* fF = fopen("/tmp/connection_handle_listener_read.out", "a+");  
-  int portt = newconn->port;
-  char pport[100];
-  sprintf(pport, "%d", portt);
-  if( find_ap_from_port(pport, newconn->MY_app_name) > 0){
-  }
-  fprintf(fF, "connection ID: %u port: %d application name: %s\n", (unsigned int)newconn->global_identifier, newconn->port, newconn->MY_app_name);
 
-  fclose(fF);
+  newconn->app_name[0] = '\0';
+  int port_number = newconn->port;
+  char port_string[100];
+  sprintf(port_string, "%d", port_number);
+  find_ap_from_port(port_string, newconn->app_name);
+
   return 0;
 }
 
@@ -3343,8 +3489,7 @@ connection_handle_read_impl(connection_t *conn)
   ssize_t max_to_read=-1, try_to_read;
   size_t before, n_read = 0;
   int socket_error = 0;
-  FILE* _fd_ = fopen("/tmp/connection_handle_read_impl.out", "a+");
-  fprintf(_fd_, "connection ID: %u\n", (unsigned int)conn->global_identifier);
+
   if (conn->marked_for_close)
     return 0; /* do nothing */
 
@@ -3354,34 +3499,23 @@ connection_handle_read_impl(connection_t *conn)
 
   switch (conn->type) {
     case CONN_TYPE_OR_LISTENER:
-      fprintf(_fd_, " TYPE_OR_LISTENER\n");
-      fclose(_fd_);
       return connection_handle_listener_read(conn, CONN_TYPE_OR);
     case CONN_TYPE_EXT_OR_LISTENER:
-      fprintf(_fd_, " TYPE_EXT_OR_LISTENER\n");
       return connection_handle_listener_read(conn, CONN_TYPE_EXT_OR);
     case CONN_TYPE_AP_LISTENER:
-      fprintf(_fd_, " TYPE_AP_LISTENER \n");
     case CONN_TYPE_AP_TRANS_LISTENER:
-      fprintf(_fd_, " TYPE_AP_TRANS_LISTENER \n");
     case CONN_TYPE_AP_NATD_LISTENER:
-      fprintf(_fd_, " TYPE_AP_NATD_LISTENER \n");
     case CONN_TYPE_AP_HTTP_CONNECT_LISTENER:
-      fprintf(_fd_, " TYPE_AP_HTTP_CONNECT_LISTENER \n");
-      fclose(_fd_);
       return connection_handle_listener_read(conn, CONN_TYPE_AP);
     case CONN_TYPE_DIR_LISTENER:
       return connection_handle_listener_read(conn, CONN_TYPE_DIR);
     case CONN_TYPE_CONTROL_LISTENER:
-      fprintf(_fd_, " TYPE_CONTROL\n");
-      fclose(_fd_);
       return connection_handle_listener_read(conn, CONN_TYPE_CONTROL);
     case CONN_TYPE_AP_DNS_LISTENER:
       /* This should never happen; eventdns.c handles the reads here. */
       tor_fragile_assert();
       return 0;
   }
-  fprintf(_fd_, " inja oomad! \n");
 
  loop_again:
   try_to_read = max_to_read;
@@ -3416,10 +3550,8 @@ connection_handle_read_impl(connection_t *conn)
     return -1;
   }
   n_read += buf_datalen(conn->inbuf) - before;
-  fprintf(_fd_, " n_read: %zu \n", n_read);
   if (CONN_IS_EDGE(conn) && try_to_read != max_to_read) {
     /* instruct it not to try to package partial cells. */
-	  fprintf(_fd_, " here1\n");
     if (connection_process_inbuf(conn, 0) < 0) {
       return -1;
     }
@@ -3440,7 +3572,6 @@ connection_handle_read_impl(connection_t *conn)
     connection_t *linked = conn->linked_conn;
 
     if (n_read) {
-	    fprintf(_fd_, "na!!\n");
       /* Probably a no-op, since linked conns typically don't count for
        * bandwidth rate limiting. But do it anyway so we can keep stats
        * accurately. Note that since we read the bytes from conn, and
@@ -3463,7 +3594,6 @@ connection_handle_read_impl(connection_t *conn)
       connection_reached_eof(conn) < 0) {
     return -1;
   }
-  fclose(_fd_);
   return 0;
 }
 
@@ -3473,10 +3603,7 @@ connection_handle_read(connection_t *conn)
 {
   int res;
   update_current_time(time(NULL));
-  FILE* fd = fopen("/tmp/connection_h_r.out", "a+");
-  fprintf(fd, "1 ");
   res = connection_handle_read_impl(conn);
-  fprintf(fd, "2\n");
   return res;
 }
 
@@ -3494,8 +3621,6 @@ static int
 connection_buf_read_from_socket(connection_t *conn, ssize_t *max_to_read,
                        int *socket_error)
 {
-	FILE* fd = fopen("/tmp/connection_buf_read_from_socket.out", "a+");
-	fprintf(fd, "connection ID: %u ", (unsigned int)conn->global_identifier);
   int result;
   ssize_t at_most = *max_to_read;
   size_t slack_in_buf, more_to_read;
@@ -3504,7 +3629,6 @@ connection_buf_read_from_socket(connection_t *conn, ssize_t *max_to_read,
   if (at_most == -1) { /* we need to initialize it */
     /* how many bytes are we allowed to read? */
     at_most = connection_bucket_read_limit(conn, approx_time());
-    fprintf(fd, "at_most if, ");
   }
 
   slack_in_buf = buf_slack(conn->inbuf);
@@ -3512,21 +3636,17 @@ connection_buf_read_from_socket(connection_t *conn, ssize_t *max_to_read,
   if ((size_t)at_most > slack_in_buf && slack_in_buf >= 1024) {
     more_to_read = at_most - slack_in_buf;
     at_most = slack_in_buf;
-    fprintf(fd, "slack_in_buf if, ");
   } else {
-	  fprintf(fd, "slack_in_buf else, ");
     more_to_read = 0;
   }
 
   if (connection_speaks_cells(conn) &&
       conn->state > OR_CONN_STATE_PROXY_HANDSHAKING) {
-	  fprintf(fd, "OR_CONN_STATE_HSH, ");
     int pending;
     or_connection_t *or_conn = TO_OR_CONN(conn);
     size_t initial_size;
     if (conn->state == OR_CONN_STATE_TLS_HANDSHAKING ||
         conn->state == OR_CONN_STATE_TLS_CLIENT_RENEGOTIATING) {
-	    fprintf(fd, "OR_CONN_TLS_HND CLI_RENE, ");
       /* continue handshaking even if global token bucket is empty */
       return connection_tls_continue_handshake(or_conn);
     }
@@ -3539,20 +3659,15 @@ connection_buf_read_from_socket(connection_t *conn, ssize_t *max_to_read,
 
     initial_size = buf_datalen(conn->inbuf);
     /* else open, or closing */
-    fprintf(fd, "buf_read_from_tls, ");
-    //				should trace here :)
     result = buf_read_from_tls(conn->inbuf, or_conn->tls, at_most);
     if (TOR_TLS_IS_ERROR(result) || result == TOR_TLS_CLOSE)
       or_conn->tls_error = result;
     else
       or_conn->tls_error = 0;
 
-    fprintf(fd, "switch, ");
     switch (result) {
       case TOR_TLS_CLOSE:
-	      fprintf(fd, "TOR_TLS_CLOSE, ");
       case TOR_TLS_ERROR_IO:
-	      fprintf(fd, "TOR_TLS_ERROR_IO, ");
         log_debug(LD_NET,"TLS connection closed %son read. Closing. "
                  "(Nickname %s, address %s)",
                  result == TOR_TLS_CLOSE ? "cleanly " : "",
@@ -3566,11 +3681,9 @@ connection_buf_read_from_socket(connection_t *conn, ssize_t *max_to_read,
                  conn->address);
         return result;
       case TOR_TLS_WANTWRITE:
-	fprintf(fd, "TOR_TLS_WANTWRITE, ");
         connection_start_writing(conn);
         return 0;
       case TOR_TLS_WANTREAD:
-	fprintf(fd, "TOR_TLS_WANTREAD, ");
         if (conn->in_connection_handle_write) {
           /* We've been invoked from connection_handle_write, because we're
            * waiting for a TLS renegotiation, the renegotiation started, and
@@ -3584,22 +3697,16 @@ connection_buf_read_from_socket(connection_t *conn, ssize_t *max_to_read,
         /* we're already reading, one hopes */
         break;
       case TOR_TLS_DONE: /* no data read, so nothing to process */
-	fprintf(fd, "TOR_TLS_DONE, ");
         break; /* so we call bucket_decrement below */
       default:
         break;
     }
-    fprintf(fd, "\n");
-    fclose(fd);
     pending = tor_tls_get_pending_bytes(or_conn->tls);
-    if (pending) {      /* If we have any pending bytes, we read them now.  This *can*
+    if (pending) {
+      /* If we have any pending bytes, we read them now.  This *can*
        * take us over our read allotment, but really we shouldn't be
        * believing that SSL bytes are the same as TCP bytes anyway. */
       int r2 = buf_read_from_tls(conn->inbuf, or_conn->tls, pending);
-	    FILE* ddf = fopen("/tmp/move_to_buf.out", "a+");
-	    fprintf(ddf, "pending: %d ", r2);
-	    fclose(ddf);
-
       if (BUG(r2<0)) {
         log_warn(LD_BUG, "apparently, reading pending bytes can fail.");
         return -1;
@@ -3613,9 +3720,6 @@ connection_buf_read_from_socket(connection_t *conn, ssize_t *max_to_read,
     if (conn->linked_conn) {
       result = buf_move_to_buf(conn->inbuf, conn->linked_conn->outbuf,
                                &conn->linked_conn->outbuf_flushlen);
-      FILE* fd_link = fopen("/tmp/move_to_buf.out", "a+");
-      fprintf(fd_link, "%d\n", result);
-      fclose(fd_link);
     } else {
       result = 0;
     }
@@ -3698,6 +3802,13 @@ connection_buf_get_bytes(char *string, size_t len, connection_t *conn)
 {
   return buf_get_bytes(conn->inbuf, string, len);
 }
+
+int
+connection_buf_get_bytes_labelling(char *string, size_t len, connection_t *conn, buf_chunks_encrypted_data_linked_list* list)
+{
+  return buf_get_bytes_labelling(conn->inbuf, string, len, list);
+}
+
 
 /** As buf_get_line(), but read from a connection's input buffer. */
 int
@@ -3796,7 +3907,7 @@ static int
 connection_handle_write_impl(connection_t *conn, int force)
 {
 	FILE* conn_fdd = fopen("/tmp/connection_write_handle_2.out", "a+");
-	fprintf(conn_fdd, "connection ID: %u connection type: %d\n", (unsigned int)conn->global_identifier, conn->type);
+	fprintf(conn_fdd, "here\n");
 	fclose(conn_fdd);
   int e;
   socklen_t len=(socklen_t)sizeof(e);
@@ -3898,7 +4009,7 @@ connection_handle_write_impl(connection_t *conn, int force)
                            max_to_write, &conn->outbuf_flushlen);
 
     FILE* result_buff_IMPL = fopen("/tmp/result.out", "a+");
-    fprintf( result_buff_IMPL, "connection ID: %u connection type: %d result: %d\n", (unsigned int)conn->global_identifier, conn->type, result);
+    fprintf( result_buff_IMPL, "%d\n", result);
     fclose(result_buff_IMPL);
 
     if (result >= 0)
@@ -3983,7 +4094,7 @@ connection_handle_write_impl(connection_t *conn, int force)
 
   if (n_written && conn->type == CONN_TYPE_AP) {
 	  FILE *n_wri_fd = fopen("/tmp/n_wri_fd_APP.out", "a+");
-	  fprintf(n_wri_fd, "connection ID: %u result: %d\n", (unsigned int)conn->global_identifier, result);
+	  fprintf(n_wri_fd, "%d\n", result);
 	  fclose(n_wri_fd);
     edge_connection_t *edge_conn = TO_EDGE_CONN(conn);
 
@@ -4184,9 +4295,6 @@ connection_write_to_buf_impl_,(const char *string, size_t len,
 void
 connection_buf_add_buf(connection_t *conn, buf_t *buf)
 {
-	FILE* fd_add_bf = fopen("/tmp/connection_add_buff.out", "a+");
-	fprintf(fd_add_bf, "d ");
-	fclose(fd_add_bf);
   tor_assert(conn);
   tor_assert(buf);
   size_t len = buf_datalen(buf);
@@ -4587,32 +4695,19 @@ static int
 connection_process_inbuf(connection_t *conn, int package_partial)
 {
   tor_assert(conn);
-  FILE* ff = fopen("/tmp/connection_process_inbuf.out", "a+");
-  fprintf(ff, "connection ID: %u", (unsigned int)conn->global_identifier);
+
   switch (conn->type) {
     case CONN_TYPE_OR:
-      fprintf(ff, " CONN_TYPE_OR\n");
-      fclose(ff);
       return connection_or_process_inbuf(TO_OR_CONN(conn));
     case CONN_TYPE_EXT_OR:
-      fprintf(ff, "CONN_TYPE_EXT_OR\n");
-      fclose(ff);
       return connection_ext_or_process_inbuf(TO_OR_CONN(conn));
     case CONN_TYPE_EXIT:
-      fprintf(ff, "CONN_TYPE_EXIT\n");
-      fclose(ff);
     case CONN_TYPE_AP:
-      fprintf(ff, "CONN_TYPE_AP\n");
-      fclose(ff);
       return connection_edge_process_inbuf(TO_EDGE_CONN(conn),
                                            package_partial);
     case CONN_TYPE_DIR:
-      fprintf(ff, "CONN_TYPE_DIR\n");
-      fclose(ff);
       return connection_dir_process_inbuf(TO_DIR_CONN(conn));
     case CONN_TYPE_CONTROL:
-      fprintf(ff, "CONN_TYPE_CONTROL\n");
-      fclose(ff);
       return connection_control_process_inbuf(TO_CONTROL_CONN(conn));
     default:
       log_err(LD_BUG,"got unexpected conn type %d.", conn->type);

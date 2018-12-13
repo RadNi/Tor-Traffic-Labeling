@@ -321,10 +321,6 @@ struct channel_s {
   /** Channel counters for cell channels */
   uint64_t n_cells_recved, n_bytes_recved;
   uint64_t n_cells_xmitted, n_bytes_xmitted;
-
-  /**	this is my flag - by this flag we can trace the code in command_process_cell for detecting AP_CONNECTIONS cell - if value was 3355 we consider that specefied channel was signd	**/
-  int MY_flag;
-  uint64_t MY_conn_global_identifier;
 };
 
 struct channel_listener_s {

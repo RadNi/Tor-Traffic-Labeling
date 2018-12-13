@@ -81,9 +81,6 @@
 #include "scheduler.h"
 #include "rephist.h"
 
-cell_t cell_array[100000];
-int cell_array_size = 0;
-
 static edge_connection_t *relay_lookup_conn(circuit_t *circ, cell_t *cell,
                                             cell_direction_t cell_direction,
                                             crypt_path_t *layer_hint);
@@ -217,11 +214,6 @@ int
 circuit_receive_relay_cell(cell_t *cell, circuit_t *circ,
                            cell_direction_t cell_direction)
 {
-      if(cell->MY_flag == 3355){
-      	FILE* df = fopen("/tmp/circuit_receive_relay_cell.out", "a+");
-      	fprintf(df, "circuit ID: %u \n", (unsigned int)cell->circ_id);
-      	fclose(df);
-      }
   channel_t *chan = NULL;
   crypt_path_t *layer_hint=NULL;
   char recognized=0;
@@ -244,11 +236,6 @@ circuit_receive_relay_cell(cell_t *cell, circuit_t *circ,
   circuit_update_channel_usage(circ, cell);
 
   if (recognized) {
-	  if(cell->MY_flag == 3355){
-  	    	FILE* f = fopen("/tmp/circuit_receive_relay_cell.out", "a+");
-  	    	fprintf(f, "\t recognized\n");
-  	    	fclose(f);
-  	}
     edge_connection_t *conn = NULL;
 
     if (circ->purpose == CIRCUIT_PURPOSE_PATH_BIAS_TESTING) {
@@ -274,11 +261,6 @@ circuit_receive_relay_cell(cell_t *cell, circuit_t *circ,
     if (cell_direction == CELL_DIRECTION_IN) {
       ++stats_n_relay_cells_delivered;
       log_debug(LD_OR,"Sending to origin.");
-      if(cell->MY_flag == 3355){
-      	FILE* ddf = fopen("/tmp/circuit_receive_relay_cell.out", "a+");
-      	fprintf(ddf, "\t CELL_DIRECTION_IN\n");
-      	fclose(ddf);
-      }
       if ((reason = connection_edge_process_relay_cell(cell, circ, conn,
                                                        layer_hint)) < 0) {
         /* If a client is trying to connect to unknown hidden service port,
@@ -346,9 +328,6 @@ circuit_receive_relay_cell(cell_t *cell, circuit_t *circ,
                                   * we might kill the circ before we relay
                                   * the cells. */
 
-  FILE* circ_rc_cell = fopen("/tmp/circ_rc_cell_to_circ_queue.out", "a+");
-  fprintf(circ_rc_cell, "data size: %zu chan ID: %u stream_t_id: 0", strlen((const char*)cell->payload), (unsigned int)chan->global_identifier);
-  fclose(circ_rc_cell);
   append_cell_to_circuit_queue(circ, chan, cell, cell_direction, 0);
   return 0;
 }
@@ -392,11 +371,8 @@ circuit_package_relay_cell(cell_t *cell, circuit_t *circ,
       log_backtrace(LOG_WARN,LD_BUG,"");
       return 0; /* just drop it */
     }
-    FILE* f_d = fopen("/tmp/pkg_cell.out", "a+'");
-    fprintf(f_d, "befor encrypt: %zu ", strlen((const char*)cell->payload));
+
     relay_encrypt_cell_outbound(cell, TO_ORIGIN_CIRCUIT(circ), layer_hint);
-    fprintf(f_d, "after: %zu\n", strlen((const char*)cell->payload));
-    fclose(f_d);
 
     /* Update circ written totals for control port */
     origin_circuit_t *ocirc = TO_ORIGIN_CIRCUIT(circ);
@@ -416,9 +392,7 @@ circuit_package_relay_cell(cell_t *cell, circuit_t *circ,
     chan = or_circ->p_chan;
   }
   ++stats_n_relay_cells_relayed;
-  FILE* pkg_fd = fopen("/tmp/pkg_cell.out", "a+");
-  fprintf(pkg_fd, "data size: %zu chann: %u\n", strlen((const char*)cell->payload), (unsigned int)chan->global_identifier);
-  fclose(pkg_fd);
+
   append_cell_to_circuit_queue(circ, chan, cell, cell_direction, on_stream);
   return 0;
 }
@@ -642,9 +616,6 @@ relay_send_command_from_edge_,(streamid_t stream_id, circuit_t *circ,
     circuit_sent_valid_data(origin_circ, rh.length);
   }
 
-  FILE* fd_cm = fopen("/tmp/relay_send_command_from_edge.out", "a+");
-  fprintf(fd_cm, "data size: %zu stream ID: %u\n", payload_len, (unsigned int)stream_id);
-  fclose(fd_cm);
   if (circuit_package_relay_cell(&cell, circ, cell_direction, cpath_layer,
                                  stream_id, filename, lineno) < 0) {
     log_warn(LD_BUG,"circuit_package_relay_cell failed. Closing.");
@@ -673,7 +644,7 @@ connection_edge_send_command(edge_connection_t *fromconn,
   crypt_path_t *cpath_layer = fromconn->cpath_layer;
   tor_assert(fromconn);
   circ = fromconn->on_circuit;
-  
+
   if (fromconn->base_.marked_for_close) {
     log_warn(LD_BUG,
              "called on conn that's already marked for close at %s:%d.",
@@ -712,9 +683,6 @@ connection_edge_send_command(edge_connection_t *fromconn,
   }
 #endif /* defined(MEASUREMENTS_21206) */
 
- FILE* c_ed_fd = fopen("/tmp/connection_edge_send_command.out", "a+");
- fprintf(c_ed_fd, "data size: %zu connection ID: %u connection type: %d\n", payload_len, (unsigned int)fromconn->base_.global_identifier, fromconn->base_.type);
-  fclose(c_ed_fd);
   return relay_send_command_from_edge(fromconn->stream_id, circ,
                                       relay_command, payload,
                                       payload_len, cpath_layer);
@@ -1443,10 +1411,6 @@ connection_edge_process_relay_cell_not_open(
 //  return -1;
 }
 
-
-extern int MY_current_chunks_size;
-extern int MY_chunks_size;
-
 /** An incoming relay cell has arrived on circuit <b>circ</b>. If
  * <b>conn</b> is NULL this is a control cell, else <b>cell</b> is
  * destined for <b>conn</b>.
@@ -1487,47 +1451,11 @@ connection_edge_process_relay_cell(cell_t *cell, circuit_t *circ,
   if (rh.stream_id == 0) {
     switch (rh.command) {
       case RELAY_COMMAND_BEGIN:
-	  if(cell->MY_flag == 3355){
-	  	FILE* f = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
-	  	fprintf(f, "RELAY_COMMAND_BEGIN");
-	  	fclose(f);
-	  }
-  
       case RELAY_COMMAND_CONNECTED:
-	  if(cell->MY_flag == 3355){
-	  	FILE* f = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
-	  	fprintf(f, "RELAY_COMMAND_CONNECTED "); 
-	  	fclose(f);
-	  }
-
       case RELAY_COMMAND_END:
-	  if(cell->MY_flag == 3355){
-	  	FILE* f = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
-	  	fprintf(f, "RELAY_COMMAND_END "); 
-	  	fclose(f);
-	  }
-
       case RELAY_COMMAND_RESOLVE:
-	  if(cell->MY_flag == 3355){
-	  	FILE* f = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
-	  	fprintf(f, "RELAY_COMMAND_RESOLVE ");
-	  	fclose(f);
-	  }
-
       case RELAY_COMMAND_RESOLVED:
-	  if(cell->MY_flag == 3355){
-	  	FILE* f = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
-	  	fprintf(f, "RELAY_COMMAND_RESOLVED ");
-	  	fclose(f);
-	  }
-
       case RELAY_COMMAND_BEGIN_DIR:
-	  if(cell->MY_flag == 3355){
-	  	FILE* f = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
-	  	fprintf(f, "RELAY_COMMAND_BEGIN_DIR"); 
-	  	fclose(f);
-	  }
-
         log_fn(LOG_PROTOCOL_WARN, LD_PROTOCOL, "Relay command %d with zero "
                "stream_id. Dropping.", (int)rh.command);
         return 0;
@@ -1557,37 +1485,13 @@ connection_edge_process_relay_cell(cell_t *cell, circuit_t *circ,
     }
   }
 
-	  if(cell->MY_flag == 3355){
-	  	FILE* f = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
-	  	fprintf(f, "__________"); 
-	  	fclose(f);
-	  }
-
   switch (rh.command) {
     case RELAY_COMMAND_DROP:
-	  if(cell->MY_flag == 3355){
-	  	FILE* f = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
-	  	fprintf(f, "RELAY_COMMAND_DROP ");
-	  	fclose(f);
-	  }
-
       rep_hist_padding_count_read(PADDING_TYPE_DROP);
 //      log_info(domain,"Got a relay-level padding cell. Dropping.");
       return 0;
     case RELAY_COMMAND_BEGIN:
-	  if(cell->MY_flag == 3355){
-	  	FILE* f = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
-	  	fprintf(f, "RELAY_COMMAND_BEGIN "); 
-	  	fclose(f);
-	  }
-
     case RELAY_COMMAND_BEGIN_DIR:
-	  if(cell->MY_flag == 3355){
-	  	FILE* f = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
-	  	fprintf(f, "RELAY_COMMAND_BEGIN_DIR "); 
-	  	fclose(f);
-	  }
-
       if (layer_hint &&
           circ->purpose != CIRCUIT_PURPOSE_S_REND_JOINED) {
         log_fn(LOG_PROTOCOL_WARN, LD_APP,
@@ -1618,12 +1522,6 @@ connection_edge_process_relay_cell(cell_t *cell, circuit_t *circ,
       }
       return connection_exit_begin_conn(cell, circ);
     case RELAY_COMMAND_DATA:
-	  if(cell->MY_flag == 3355){
-	  	FILE* f = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
-	  	fprintf(f, "RELAY_COMMAND_DATA "); 
-	  	fclose(f);
-	  }
-
       ++stats_n_data_cells_received;
       if (( layer_hint && --layer_hint->deliver_window < 0) ||
           (!layer_hint && --circ->deliver_window < 0)) {
@@ -1662,38 +1560,27 @@ connection_edge_process_relay_cell(cell_t *cell, circuit_t *circ,
         circuit_read_valid_data(TO_ORIGIN_CIRCUIT(circ), rh.length);
       }
 
-      FILE* relay_data_fd = fopen("/tmp/relay_data.out", "a+");
-      fprintf(relay_data_fd, "%s _____changed____ \n", (char*)(cell->payload + RELAY_HEADER_SIZE));
-      fclose(relay_data_fd);
-      FILE* Ff = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
-      fprintf(Ff, "connection ID: %u\n", (unsigned int)TO_CONN(conn)->global_identifier);
-      fclose(Ff);
       stats_n_data_bytes_received += rh.length;
       connection_buf_add((char*)(cell->payload + RELAY_HEADER_SIZE),
                               rh.length, TO_CONN(conn));
-      cell_array[cell_array_size] = *cell;
-      cell_array[cell_array_size].MY_dest_conn_global_identifier = TO_CONN(conn)->global_identifier;
-      cell_array_size++;
-      unsigned int i;
-      FILE* fd_o = fopen("/tmp/lables_cell.out", "a+");
-      fprintf(fd_o, "application name: %s\n", TO_CONN(conn)->MY_app_name);
-      for ( i=0 ; i < CELL_PAYLOAD_SIZE + 1; i++ ){
-      	fprintf(fd_o, " %d ", (int)cell->MY_payload[i]);
+
+      FILE *fd_o = fopen("/tmp/lables_cell.out", "a+");
+      fprintf(fd_o, "application name: %s\n", TO_CONN(conn)->app_name);
+
+      int i;
+      for (i = 0; i < cell->encrypted_data_chunks_count; i++) {
+        // fprintf(fd_o, "chunk %d of %d, length: %d\n", i, cell->encrypted_data_chunks_count, cell->encrypted_data_length[i]);
+        int j;
+        for (j = 0; j < cell->encrypted_data_length[i]; j++) {
+          fprintf(fd_o, "%02x ", 0xff & cell->encrypted_data[i][j]);
+        }
+        free(cell->encrypted_data[i]);
       }
-      fprintf(fd_o, "\n---\n");
-      for ( i=0 ; i < cell->MY_chunks_size ; i++ )
-      {
-	      fprintf(fd_o, "chunk number %d MY_chunks_size %d MY_current_chunks_size %d MY_chunks_body_size: %d\n", i, MY_chunks_size, MY_current_chunks_size, cell->MY_chunks_body_size[i]);
-	      unsigned int j;
-	      for ( j=0 ; j < cell->MY_chunks_body_size[i] ; j++ )
-	      {
-		      fprintf(fd_o, "%02x ", 0xff & cell->MY_chunks_body[i][j]);
-	      }
-      }
-      
+      free(cell->encrypted_data);
+      free(cell->encrypted_data_length);
+
       fprintf(fd_o, "\n------------\n");
       fclose(fd_o);
-     
 
 #ifdef MEASUREMENTS_21206
       /* Count number of RELAY_DATA cells received on a linked directory
@@ -1709,20 +1596,11 @@ connection_edge_process_relay_cell(cell_t *cell, circuit_t *circ,
         /* Only send a SENDME if we're not getting optimistic data; otherwise
          * a SENDME could arrive before the CONNECTED.
          */
-	      FILE* F = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
-	      fprintf(F, "op\n");
-	      fclose(F);
         connection_edge_consider_sending_sendme(conn);
       }
 
       return 0;
     case RELAY_COMMAND_END:
-	  if(cell->MY_flag == 3355){
-	  	FILE* f = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
-	  	fprintf(f, "RELAY_COMMAND_END ");
-	  	fclose(f);
-	  }
-
       reason = rh.length > 0 ?
         get_uint8(cell->payload+RELAY_HEADER_SIZE) : END_STREAM_REASON_MISC;
       if (!conn) {
@@ -1759,19 +1637,7 @@ connection_edge_process_relay_cell(cell_t *cell, circuit_t *circ,
       }
       return 0;
     case RELAY_COMMAND_EXTEND:
-	  if(cell->MY_flag == 3355){
-	  	FILE* f = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
-	  	fprintf(f, "RELAY_COMMAND_EXTEND "); 
-	  	fclose(f);
-	  }
-
     case RELAY_COMMAND_EXTEND2: {
-	  if(cell->MY_flag == 3355){
-	  	FILE* f = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
-	  	fprintf(f, "RELAY_COMMAND_EXTEND2 "); 
-	  	fclose(f);
-	  }
-
       static uint64_t total_n_extend=0, total_nonearly=0;
       total_n_extend++;
       if (rh.stream_id) {
@@ -1806,19 +1672,7 @@ connection_edge_process_relay_cell(cell_t *cell, circuit_t *circ,
       return circuit_extend(cell, circ);
     }
     case RELAY_COMMAND_EXTENDED:
-	  if(cell->MY_flag == 3355){
-	  	FILE* f = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
-	  	fprintf(f, "RELAY_COMMAND_EXTENDED"); 
-	  	fclose(f);
-	  }
-
     case RELAY_COMMAND_EXTENDED2:
-	  if(cell->MY_flag == 3355){
-	  	FILE* f = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
-	  	fprintf(f, "RELAY_COMMAND_EXTENDED2 "); 
-	  	fclose(f);
-	  }
-
       if (!layer_hint) {
         log_fn(LOG_PROTOCOL_WARN, LD_PROTOCOL,
                "'extended' unsupported at non-origin. Dropping.");
@@ -1851,12 +1705,6 @@ connection_edge_process_relay_cell(cell_t *cell, circuit_t *circ,
       }
       return 0;
     case RELAY_COMMAND_TRUNCATE:
-	  if(cell->MY_flag == 3355){
-	  	FILE* f = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
-	  	fprintf(f, "RELAY_COMMAND_TRUNCATE "); 
-	  	fclose(f);
-	  }
-
       if (layer_hint) {
         log_fn(LOG_PROTOCOL_WARN, LD_APP,
                "'truncate' unsupported at origin. Dropping.");
@@ -1881,20 +1729,11 @@ connection_edge_process_relay_cell(cell_t *cell, circuit_t *circ,
       {
         char payload[1];
         payload[0] = (char)END_CIRC_REASON_REQUESTED;
-	FILE* prc_r_e_fd = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
-	fprintf(prc_r_e_fd, "inja\n");
-	fclose(prc_r_e_fd);
         relay_send_command_from_edge(0, circ, RELAY_COMMAND_TRUNCATED,
                                      payload, sizeof(payload), NULL);
       }
       return 0;
     case RELAY_COMMAND_TRUNCATED:
-	  if(cell->MY_flag == 3355){
-	  	FILE* f = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
-	  	fprintf(f, "RELAY_COMMAND_TRUNCATED "); 
-	  	fclose(f);
-	  }
-
       if (!layer_hint) {
         log_fn(LOG_PROTOCOL_WARN, LD_EXIT,
                "'truncated' unsupported at non-origin. Dropping.");
@@ -1904,12 +1743,6 @@ connection_edge_process_relay_cell(cell_t *cell, circuit_t *circ,
                         get_uint8(cell->payload + RELAY_HEADER_SIZE));
       return 0;
     case RELAY_COMMAND_CONNECTED:
-	  if(cell->MY_flag == 3355){
-	  	FILE* f = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
-	  	fprintf(f, "RELAY_COMMAND_CONNECTED"); 
-	  	fclose(f);
-	  }
-
       if (conn) {
         log_fn(LOG_PROTOCOL_WARN, LD_PROTOCOL,
                "'connected' unsupported while open. Closing circ.");
@@ -1921,12 +1754,6 @@ connection_edge_process_relay_cell(cell_t *cell, circuit_t *circ,
                (unsigned)circ->n_circ_id, rh.stream_id);
       return 0;
     case RELAY_COMMAND_SENDME:
-	  if(cell->MY_flag == 3355){
-	  	FILE* f = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
-	  	fprintf(f, "RELAY_COMMAND_SENDME"); 
-	  	fclose(f);
-	  }
-
       if (!rh.stream_id) {
         if (layer_hint) {
           if (layer_hint->package_window + CIRCWINDOW_INCREMENT >
@@ -1990,12 +1817,6 @@ connection_edge_process_relay_cell(cell_t *cell, circuit_t *circ,
       }
       return 0;
     case RELAY_COMMAND_RESOLVE:
-	  if(cell->MY_flag == 3355){
-	  	FILE* f = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
-	  	fprintf(f, "RELAY_COMMAND_RESOLVE"); 
-	  	fclose(f);
-	  }
-
       if (layer_hint) {
         log_fn(LOG_PROTOCOL_WARN, LD_APP,
                "resolve request unsupported at AP; dropping.");
@@ -2013,12 +1834,6 @@ connection_edge_process_relay_cell(cell_t *cell, circuit_t *circ,
       connection_exit_begin_resolve(cell, TO_OR_CIRCUIT(circ));
       return 0;
     case RELAY_COMMAND_RESOLVED:
-	  if(cell->MY_flag == 3355){
-	  	FILE* f = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
-	  	fprintf(f, "RELAY_COMMAND_RESOLVED"); 
-	  	fclose(f);
-	  }
-
       if (conn) {
         log_fn(LOG_PROTOCOL_WARN, domain,
                "'resolved' unsupported while open. Closing circ.");
@@ -2028,68 +1843,14 @@ connection_edge_process_relay_cell(cell_t *cell, circuit_t *circ,
                "'resolved' received, no conn attached anymore. Ignoring.");
       return 0;
     case RELAY_COMMAND_ESTABLISH_INTRO:
-	  if(cell->MY_flag == 3355){
-	  	FILE* f = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
-	  	fprintf(f, "RELAY_COMMAND_ESTABLISH_INTRO "); 
-	  	fclose(f);
-	  }
-
     case RELAY_COMMAND_ESTABLISH_RENDEZVOUS:
-	  if(cell->MY_flag == 3355){
-	  	FILE* f = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
-	  	fprintf(f, "RELAY_COMMAND_ESTABLISH_RENDEZVOUS "); 
-	  	fclose(f);
-	  }
-
     case RELAY_COMMAND_INTRODUCE1:
-	  if(cell->MY_flag == 3355){
-	  	FILE* f = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
-	  	fprintf(f, "RELAY_COMMAND_INTRODUCE1 "); 
-	  	fclose(f);
-	  }
-
     case RELAY_COMMAND_INTRODUCE2:
-	  if(cell->MY_flag == 3355){
-	  	FILE* f = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
-	  	fprintf(f, "RELAY_COMMAND_INTRODUCE2 "); 
-	  	fclose(f);
-	  }
-
     case RELAY_COMMAND_INTRODUCE_ACK:
-	  if(cell->MY_flag == 3355){
-	  	FILE* f = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
-	  	fprintf(f, "RELAY_COMMAND_INTRODUCE_ACK "); 
-	  	fclose(f);
-	  }
-
     case RELAY_COMMAND_RENDEZVOUS1:
-	  if(cell->MY_flag == 3355){
-	  	FILE* f = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
-	  	fprintf(f, "RELAY_COMMAND_RENDEZVOUS1 "); 
-	  	fclose(f);
-	  }
-
     case RELAY_COMMAND_RENDEZVOUS2:
-	  if(cell->MY_flag == 3355){
-	  	FILE* f = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
-	  	fprintf(f, "RELAY_COMMAND_RENDEZVOUS2 ");
-	  	fclose(f);
-	  }
-
     case RELAY_COMMAND_INTRO_ESTABLISHED:
-	  if(cell->MY_flag == 3355){
-	  	FILE* f = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
-	  	fprintf(f, "RELAY_COMMAND_INTRO_ESTABLISHED ");
-	  	fclose(f);
-	  }
-
     case RELAY_COMMAND_RENDEZVOUS_ESTABLISHED:
-    if(cell->MY_flag == 3355){
-	  FILE* f = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
-	  fprintf(f, "RELAY_COMMAND_RENDEZVOUS_ESTABLISHED ");
-	  fclose(f);
-    }
-
       rend_process_relay_cell(circ, layer_hint,
                               rh.command, rh.length,
                               cell->payload+RELAY_HEADER_SIZE);
@@ -2099,13 +1860,6 @@ connection_edge_process_relay_cell(cell_t *cell, circuit_t *circ,
          "Received unknown relay command %d. Perhaps the other side is using "
          "a newer version of Tor? Dropping.",
          rh.command);
-  
-    if(cell->MY_flag == 3355){
-	  FILE* f = fopen("/tmp/connection_edge_process_relay_cell.out", "a+");
-	  fprintf(f, "\n");
-	  fclose(f);
-    }
-
   return 0; /* for forward compatibility, don't kill the circuit */
 }
 
@@ -2292,9 +2046,6 @@ connection_edge_consider_sending_sendme(edge_connection_t *conn)
               "Outbuf %d, Queuing stream sendme.",
               (int)conn->base_.outbuf_flushlen);
     conn->deliver_window += STREAMWINDOW_INCREMENT;
-  FILE* fD = fopen("/tmp/connection_edge_consider_sending_sendme.out", "a+");
-  fprintf(fD, "d ");
-  fclose(fD);
     if (connection_edge_send_command(conn, RELAY_COMMAND_SENDME,
                                      NULL, 0) < 0) {
       log_warn(LD_APP,"connection_edge_send_command failed. Skipping.");
@@ -2533,9 +2284,6 @@ circuit_consider_stop_edge_reading(circuit_t *circ, crypt_path_t *layer_hint)
 static void
 circuit_consider_sending_sendme(circuit_t *circ, crypt_path_t *layer_hint)
 {
-  FILE* cons_fd = fopen("/tmp/circuit_consider_sending_sendme.out", "a+");
-  fprintf(cons_fd, "inja\n");
-  fclose(cons_fd);
 //  log_fn(LOG_INFO,"Considering: layer_hint is %s",
 //         layer_hint ? "defined" : "null");
   while ((layer_hint ? layer_hint->deliver_window : circ->deliver_window) <=
@@ -2993,9 +2741,6 @@ channel_flush_from_first_active_circuit, (channel_t *chan, int max))
     if (!circ) break;
 
     if (circ->n_chan == chan) {
-	    FILE* que_fd = fopen("/tmp/queue_in_if_circ_id.out", "a+");
-	    fprintf(que_fd, "circ n_chan: %u n_cir_id: %u channel_id: %u\n", (unsigned int)circ->n_chan->global_identifier, (unsigned int)circ->n_circ_id, (unsigned int)chan->global_identifier);
-	    fclose(que_fd);
       queue = &circ->n_chan_cells;
       streams_blocked = circ->streams_blocked_on_n_chan;
     } else {
@@ -3023,9 +2768,6 @@ channel_flush_from_first_active_circuit, (channel_t *chan, int max))
      * has more than one.
      */
     cell = cell_queue_pop(queue);
-    FILE* cell_fd = fopen("/tmp/cell_queue_pop.out", "a+");
-    fprintf(cell_fd, "data size: %zu\n", strlen((char*)cell->body));
-    fclose(cell_fd);
 
     /* Calculate the exact time that this cell has spent in the queue. */
     if (get_options()->CellStatistics ||
@@ -3169,9 +2911,6 @@ append_cell_to_circuit_queue(circuit_t *circ, channel_t *chan,
                              cell_t *cell, cell_direction_t direction,
                              streamid_t fromstream)
 {
-	FILE* append_cell = fopen("/tmp/append_cell.out", "a+");
-	fprintf(append_cell, "data size: %zu channel: %u\n", strlen((const char*) cell->payload),(unsigned int) chan->global_identifier);
-	fclose(append_cell);
   or_circuit_t *orcirc = NULL;
   cell_queue_t *queue;
   int streams_blocked;

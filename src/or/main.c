@@ -110,6 +110,7 @@
 #include "tor_api_internal.h"
 #include "util_process.h"
 #include "ext_orport.h"
+#include "../common/tor_labelling.h"
 #ifdef USE_DMALLOC
 #include <dmalloc.h>
 #endif
@@ -117,24 +118,6 @@
 #include "sandbox.h"
 
 #include <event2/event.h>
-//
-void* MY_chunks[10000];
-
-char MY_chunks_body[10000][10000];
-
-int MY_chunks_body_size[10000];
-
-int MY_chunks_size = 0;
-
-void* MY_current_chunks[100];
-
-int MY_current_chunks_size = 0;
-
-int MY_chunks_payload_size = 0;
-
-char* MY_chunks_payload[100000];
-
-int MY_chunks_payload_len[100000];
 
 #include "dirauth/dirvote.h"
 #include "dirauth/mode.h"
@@ -249,6 +232,14 @@ static int can_complete_circuits = 0;
  * For 1, we log warnings only.  For 2, we log nothing.
  */
 int quiet_level = 0;
+
+/**
+ * Stores the head of the linked-list of the encrypted chunks of a buf.
+ * This way the encrypted data could be passed between the buf_peek and
+ * cell_unpack function.
+ */
+struct buf_chunks_encrypted_data_list_struct* buf_chunks_encrypted_data_list_head = NULL;
+struct buf_chunks_encrypted_data_list_struct* buf_chunks_encrypted_data_list_tail = NULL;
 
 /********* END VARIABLES ************/
 

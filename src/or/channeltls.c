@@ -825,9 +825,6 @@ channel_tls_write_packed_cell_method(channel_t *chan,
   tor_assert(packed_cell);
 
   if (tlschan->conn) {
-	  FILE* tlschn_fd = fopen("/tmp/channel_tls_write_packed_cell.out", "a+");
-	  fprintf(tlschn_fd, "connection ID: %u data-size: %zu \n", (unsigned int)(TO_CONN(tlschan->conn)->global_identifier), strlen((char*)(packed_cell->body)));
-	  fclose(tlschn_fd);
     connection_buf_add(packed_cell->body, cell_network_size,
                             TO_CONN(tlschan->conn));
   } else {
@@ -1088,11 +1085,9 @@ channel_tls_handle_cell(cell_t *cell, or_connection_t *conn)
 
   if (TLS_CHAN_TO_BASE(chan)->currently_padding)
     rep_hist_padding_count_read(PADDING_TYPE_ENABLED_TOTAL);
-  FILE* _fd = fopen("/tmp/channel_tls_handle_cell.out", "a+");
-  fprintf(_fd, "connection ID: %u ", (unsigned int)conn->base_.global_identifier);
+
   switch (cell->command) {
     case CELL_PADDING:
-	    fprintf(_fd, "CELL_PADDING ");
       rep_hist_padding_count_read(PADDING_TYPE_CELL);
       if (TLS_CHAN_TO_BASE(chan)->currently_padding)
         rep_hist_padding_count_read(PADDING_TYPE_ENABLED_CELL);
@@ -1100,45 +1095,30 @@ channel_tls_handle_cell(cell_t *cell, or_connection_t *conn)
       /* do nothing */
       break;
     case CELL_VERSIONS:
-      fprintf(_fd, "CELL_VERSIONS ");
       tor_fragile_assert();
       break;
     case CELL_NETINFO:
       ++stats_n_netinfo_cells_processed;
       PROCESS_CELL(netinfo, cell, chan);
-      fprintf(_fd, "CELL_NETINFO ");
       break;
     case CELL_PADDING_NEGOTIATE:
-      fprintf(_fd, "CELL_PADDING_NEGOTIATE ");
       ++stats_n_netinfo_cells_processed;
       PROCESS_CELL(padding_negotiate, cell, chan);
       break;
     case CELL_CREATE:
-      fprintf(_fd, "CELL_CREATE ");
     case CELL_CREATE_FAST:
-      fprintf(_fd, "CELL_CREATE_FAST ");
     case CELL_CREATED:
-      fprintf(_fd, "CELL_CREATED ");
     case CELL_CREATED_FAST:
-      fprintf(_fd, "CELL_CREATED_FAST ");
     case CELL_RELAY:
-      fprintf(_fd, "CELL_RELAY ");
     case CELL_RELAY_EARLY:
-      fprintf(_fd, "CELL_RELAY_EARLY ");
     case CELL_DESTROY:
-      fprintf(_fd, "CELL_DESTROY ");
     case CELL_CREATE2:
-      fprintf(_fd, "CELL_CREATE2 ");
     case CELL_CREATED2:
-      fprintf(_fd, "CELL_CREATED2 ");
       /*
        * These are all transport independent and we pass them up through the
        * channel_t mechanism.  They are ultimately handled in command.c.
        */
-      channel_t* tmp = TLS_CHAN_TO_BASE(chan);
-      tmp->MY_flag = 3355;
-      tmp->MY_conn_global_identifier = conn->base_.global_identifier;
-      channel_process_cell(tmp, cell);
+      channel_process_cell(TLS_CHAN_TO_BASE(chan), cell);
       break;
     default:
       log_fn(LOG_INFO, LD_PROTOCOL,
@@ -1147,8 +1127,6 @@ channel_tls_handle_cell(cell_t *cell, or_connection_t *conn)
              cell->command);
              break;
   }
-  fprintf(_fd, "\n");
-  fclose(_fd);
 }
 
 /**
