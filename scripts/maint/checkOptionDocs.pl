@@ -7,7 +7,7 @@ my %torrcSampleOptions = ();
 my %manPageOptions = ();
 
 # Load the canonical list as actually accepted by Tor.
-open(F, "/home/farid/Programming/Tor-Traffic-Labeling/src/or/tor --list-torrc-options |") or die;
+open(F, "/home/amirhossein/github/Tor-Traffic-Labeling/src/or/tor --list-torrc-options |") or die;
 while (<F>) {
     next if m!\[notice\] Tor v0\.!;
     if (m!^([A-Za-z0-9_]+)!) {
@@ -34,12 +34,12 @@ sub loadTorrc {
     0;
 }
 
-loadTorrc("/home/farid/Programming/Tor-Traffic-Labeling/src/config/torrc.sample.in", \%torrcSampleOptions);
+loadTorrc("/home/amirhossein/github/Tor-Traffic-Labeling/src/config/torrc.sample.in", \%torrcSampleOptions);
 
 # Try to figure out what's in the man page.
 
 my $considerNextLine = 0;
-open(F, "/home/farid/Programming/Tor-Traffic-Labeling/doc/tor.1.txt") or die;
+open(F, "/home/amirhossein/github/Tor-Traffic-Labeling/doc/tor.1.txt") or die;
 while (<F>) {
     if (m!^(?:\[\[([A-za-z0-9_]+)\]\] *)?\*\*([A-Za-z0-9_]+)\*\*!) {
         $manPageOptions{$2} = 1;

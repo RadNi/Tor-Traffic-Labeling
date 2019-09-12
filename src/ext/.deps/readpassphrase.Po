@@ -28,20 +28,15 @@ src/ext/readpassphrase.o: src/ext/readpassphrase.c \
  /usr/include/x86_64-linux-gnu/sys/select.h \
  /usr/include/x86_64-linux-gnu/bits/select.h \
  /usr/include/x86_64-linux-gnu/bits/time.h \
- /usr/include/x86_64-linux-gnu/bits/select2.h \
  /usr/include/x86_64-linux-gnu/sys/sysmacros.h \
- /usr/include/x86_64-linux-gnu/bits/stat.h \
- /usr/include/x86_64-linux-gnu/bits/fcntl2.h src/ext/tor_readpassphrase.h \
+ /usr/include/x86_64-linux-gnu/bits/stat.h src/ext/tor_readpassphrase.h \
  /usr/include/errno.h /usr/include/x86_64-linux-gnu/bits/errno.h \
  /usr/include/linux/errno.h /usr/include/x86_64-linux-gnu/asm/errno.h \
  /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h \
- /usr/include/string.h /usr/include/x86_64-linux-gnu/bits/string.h \
- /usr/include/x86_64-linux-gnu/bits/string2.h /usr/include/stdlib.h \
- /usr/include/x86_64-linux-gnu/bits/string3.h /usr/include/unistd.h \
+ /usr/include/string.h /usr/include/unistd.h \
  /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
  /usr/include/x86_64-linux-gnu/bits/environments.h \
- /usr/include/x86_64-linux-gnu/bits/confname.h /usr/include/getopt.h \
- /usr/include/x86_64-linux-gnu/bits/unistd.h
+ /usr/include/x86_64-linux-gnu/bits/confname.h /usr/include/getopt.h
 
 /usr/include/stdc-predef.h:
 
@@ -119,13 +114,9 @@ orconfig.h:
 
 /usr/include/x86_64-linux-gnu/bits/time.h:
 
-/usr/include/x86_64-linux-gnu/bits/select2.h:
-
 /usr/include/x86_64-linux-gnu/sys/sysmacros.h:
 
 /usr/include/x86_64-linux-gnu/bits/stat.h:
-
-/usr/include/x86_64-linux-gnu/bits/fcntl2.h:
 
 src/ext/tor_readpassphrase.h:
 
@@ -143,14 +134,6 @@ src/ext/tor_readpassphrase.h:
 
 /usr/include/string.h:
 
-/usr/include/x86_64-linux-gnu/bits/string.h:
-
-/usr/include/x86_64-linux-gnu/bits/string2.h:
-
-/usr/include/stdlib.h:
-
-/usr/include/x86_64-linux-gnu/bits/string3.h:
-
 /usr/include/unistd.h:
 
 /usr/include/x86_64-linux-gnu/bits/posix_opt.h:
@@ -160,5 +143,3 @@ src/ext/tor_readpassphrase.h:
 /usr/include/x86_64-linux-gnu/bits/confname.h:
 
 /usr/include/getopt.h:
-
-/usr/include/x86_64-linux-gnu/bits/unistd.h:

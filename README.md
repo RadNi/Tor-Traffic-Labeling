@@ -42,7 +42,7 @@ or
 
 ## Labeling
 
-the python script in ```tor_labeling``` directory will give ```.pcap``` file from tcpdump and ```/tmp/lables_cell.out``` and 
+the python script in ```tor_labeling``` directory will give ```.pcap``` file from tcpdump and ```/tmp/labeled_cells.out``` and 
 write the packet lalels in ordering of ```.pcap``` file.
 
 ## Issues

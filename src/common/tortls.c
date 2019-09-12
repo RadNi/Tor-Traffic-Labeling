@@ -1873,7 +1873,9 @@ tor_tls_read,(tor_tls_t *tls, char *cp, size_t len))
   tor_assert(tls->ssl);
   tor_assert(tls->state == TOR_TLS_ST_OPEN);
   tor_assert(len<INT_MAX);
+
   r = SSL_read(tls->ssl, cp, (int)len);
+
   if (r > 0) {
     if (tls->got_renegotiate) {
       /* Renegotiation happened! */
@@ -1894,6 +1896,57 @@ tor_tls_read,(tor_tls_t *tls, char *cp, size_t len))
     log_debug(LD_NET,"read returned r=%d, err=%d",r,err);
     return err;
   }
+}
+
+int enc_len = 0;
+char enc_data[16 * 1024];
+
+
+MOCK_IMPL(int, tor_tls_read_labeling,(tor_tls_t *tls, char *cp, size_t len, char** enc_data_return, int* enc_len_return))
+{
+    int r, err;
+    tor_assert(tls);
+    tor_assert(tls->ssl);
+    tor_assert(tls->state == TOR_TLS_ST_OPEN);
+    tor_assert(len<INT_MAX);
+
+
+    r = SSL_read_tor(tls->ssl, cp, (int)len, enc_data, &enc_len);
+
+
+
+//    FILE* f = fopen("/tmp/openssl.log", "a+");
+//    fprintf(f, "read %d encrypted bytes to get %d decrypted bytes.", (int)enc_len, r);
+//    fprintf(f,"\n\n");
+//    fclose(f);
+
+    if (r > 0) {
+        *enc_data_return = enc_data;
+        *enc_len_return = enc_len;
+        enc_len = 0;
+        if (tls->got_renegotiate) {
+            /* Renegotiation happened! */
+            log_info(LD_NET, "Got a TLS renegotiation from %s", ADDR(tls));
+            if (tls->negotiated_callback)
+                tls->negotiated_callback(tls, tls->callback_arg);
+            tls->got_renegotiate = 0;
+//            FILE* f = fopen("/tmp/openssl.log", "a+");
+//            fprintf(f, "Got TLS renegotiation.", (int)enc_len, r);
+//            fprintf(f,"\n\n");
+//            fclose(f);
+        }
+        return r;
+    }
+    err = tor_tls_get_error(tls, r, CATCH_ZERO, "reading", LOG_DEBUG, LD_NET);
+    if (err == TOR_TLS_ZERORETURN_ || err == TOR_TLS_CLOSE) {
+        log_debug(LD_NET,"read returned r=%d; TLS is closed",r);
+        tls->state = TOR_TLS_ST_CLOSED;
+        return TOR_TLS_CLOSE;
+    } else {
+        tor_assert(err != TOR_TLS_DONE);
+        log_debug(LD_NET,"read returned r=%d, err=%d",r,err);
+        return err;
+    }
 }
 
 /** Total number of bytes that we've used TLS to send.  Used to track TLS

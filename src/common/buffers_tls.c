@@ -24,7 +24,7 @@
 /** As read_to_chunk(), but return (negative) error code on error, blocking,
  * or TLS, and the number of bytes read otherwise. */
 static inline int
-read_to_chunk_tls(buf_t *buf, chunk_t *chunk, tor_tls_t *tls,
+read_to_chunk_tls(buf_t  *buf, chunk_t *chunk, tor_tls_t *tls,
                   size_t at_most)
 {
   int read_result;
@@ -32,14 +32,18 @@ read_to_chunk_tls(buf_t *buf, chunk_t *chunk, tor_tls_t *tls,
   tor_assert(CHUNK_REMAINING_CAPACITY(chunk) >= at_most);
 
 
-    int socket = tor_tls_get_fd(tls);
-
-    size_t n = recv(socket, chunk->encrypted_data, CHUNK_MAX_ENCRYPTED_DATA_LENGTH, MSG_PEEK);
-    chunk->encrypted_data_length = n;
-
-
-  read_result = tor_tls_read(tls, CHUNK_WRITE_PTR(chunk), at_most);
+//    int socket = tor_tls_get_fd(tls);
 //
+//    size_t n = recv(socket, chunk->encrypted_data, CHUNK_MAX_ENCRYPTED_DATA_LENGTH, MSG_PEEK);
+//    chunk->encrypted_data_length = n;
+
+
+    char* enc_data;
+    int enc_len;
+
+  read_result = tor_tls_read_labeling(tls, CHUNK_WRITE_PTR(chunk), at_most, &enc_data, &enc_len);
+
+
 //    char temp[CHUNK_MAX_ENCRYPTED_DATA_LENGTH];
 //    size_t n2 = recv(socket, temp, CHUNK_MAX_ENCRYPTED_DATA_LENGTH, MSG_PEEK);
 //
@@ -48,9 +52,28 @@ read_to_chunk_tls(buf_t *buf, chunk_t *chunk, tor_tls_t *tls,
 //    fclose(f);
 
   if (read_result < 0)
-    return read_result;
+       return read_result;
+
+//    FILE* f = fopen("/tmp/openssl.log", "a+");
+//    fprintf(f, "adding %d bytes of enc data to chunk enc.\n", enc_len);
+//    int j;
+//    for (j = 0; j < enc_len; j++) {
+//        fprintf(f, "%02x ", 0xff & enc_data[j]);
+//    }
+
+
+  memcpy(chunk->tls_data+ chunk->tls_data_len, enc_data, enc_len);
+  chunk->tls_data_len += enc_len;
+  chunk->header_flag = 1;
+
+//    fprintf(f, "assigning %d to %d.\n", chunk->tls_data_len, enc_len);
+//
+//    fprintf(f,"\n\n");
+//    fclose(f);
+
   buf->datalen += read_result;
   chunk->datalen += read_result;
+
   return read_result;
 }
 
@@ -92,6 +115,7 @@ buf_read_from_tls(buf_t *buf, tor_tls_t *tls, size_t at_most)
     chunk_t *chunk;
     if (!buf->tail || CHUNK_REMAINING_CAPACITY(buf->tail) < MIN_READ_LEN) {
       chunk = buf_add_chunk_with_capacity(buf, at_most, 1);
+      chunk->tls_data_pointer = 0;
       if (readlen > chunk->memlen)
         readlen = chunk->memlen;
     } else {
@@ -100,8 +124,11 @@ buf_read_from_tls(buf_t *buf, tor_tls_t *tls, size_t at_most)
       if (cap < readlen)
         readlen = cap;
     }
-
-    r = read_to_chunk_tls(buf, chunk, tls, readlen);
+      r = read_to_chunk_tls(buf, chunk, tls, readlen);
+      FILE* f = fopen("/tmp/openssl.log", "a+");
+      fprintf(f, "Hello from read to chunk %d -> %d", readlen, r);
+      fprintf(f,"\n\n");
+      fclose(f);
     if (r < 0)
       return r; /* Error */
     tor_assert(total_read+r < INT_MAX);

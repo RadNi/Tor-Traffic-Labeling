@@ -16,6 +16,7 @@
 #include "torint.h"
 #include "testsupport.h"
 #include "tor_labelling.h"
+#include "or.h"
 
 typedef struct buf_t buf_t;
 
@@ -54,10 +55,11 @@ int buf_add_compress(buf_t *buf, struct tor_compress_state_t *state,
 int buf_move_to_buf(buf_t *buf_out, buf_t *buf_in, size_t *buf_flushlen);
 void buf_move_all(buf_t *buf_out, buf_t *buf_in);
 void buf_peek(const buf_t *buf, char *string, size_t string_len);
-void buf_peek_labelling(const buf_t *buf, char *string, size_t string_len, buf_chunks_encrypted_data_linked_list* list);
+void buf_peek_labelling(const buf_t *buf, char *string, size_t string_len, cell_t* cell);
 void buf_drain(buf_t *buf, size_t n);
+void buf_drain_labeling(buf_t *buf, size_t n, cell_t* cell);
 int buf_get_bytes(buf_t *buf, char *string, size_t string_len);
-int buf_get_bytes_labelling(buf_t *buf, char *string, size_t string_len, buf_chunks_encrypted_data_linked_list* list);
+int buf_get_bytes_labelling(buf_t *buf, char *string, size_t string_len, cell_t *);
 int buf_get_line(buf_t *buf, char *data_out, size_t *data_len);
 
 #define PEEK_BUF_STARTSWITH_MAX 16
@@ -83,8 +85,10 @@ size_t buf_preferred_chunk_size(size_t target);
 /** A single chunk on a buffer. */
 typedef struct chunk_t {
 
-    char* encrypted_data;
-    size_t encrypted_data_length;
+//    char* encrypted_data;
+//    size_t encrypted_data_length;
+
+
 
   struct chunk_t *next; /**< The next chunk on the buffer. */
   size_t datalen; /**< The number of bytes stored in this chunk */
@@ -92,10 +96,19 @@ typedef struct chunk_t {
 #ifdef DEBUG_CHUNK_ALLOC
   size_t DBG_alloc;
 #endif
+
+    char* tls_data;
+    int tls_data_len;
+    int tls_data_pointer;
+    int header_flag;
+    int magic;
+
   char *data; /**< A pointer to the first byte of data stored in <b>mem</b>. */
   uint32_t inserted_time; /**< Timestamp when this chunk was inserted. */
   char mem[FLEXIBLE_ARRAY_MEMBER]; /**< The actual memory used for storage in
                 * this chunk. */
+
+
 } chunk_t;
 
 /** Magic value for buf_t.magic, to catch pointer errors. */

@@ -1411,6 +1411,31 @@ connection_edge_process_relay_cell_not_open(
 //  return -1;
 }
 
+
+#ifdef CAPTURE_SKINS
+void insert_into_table(const char* table_name, char blob[], char* label){
+    
+    char file_path[1000];
+    sprintf(file_path, "/tmp/%s", table_name); 
+
+    FILE* fd = fopen(file_path, "a+");
+    
+    if(strlen(label) == 0){
+        fwrite("Unknown", strlen("Unknown"), 1, fd);
+    } else {
+        fwrite(label, strlen(label), 1, fd);
+    }
+
+    fwrite(" ", 1, 1, fd); 
+    fwrite(blob, CELL_PAYLOAD_SIZE, 1, fd);
+    fwrite("\n", 1, 1, fd);
+	
+    fclose(fd);
+    
+    return;
+}
+#endif
+
 /** An incoming relay cell has arrived on circuit <b>circ</b>. If
  * <b>conn</b> is NULL this is a control cell, else <b>cell</b> is
  * destined for <b>conn</b>.
@@ -1564,24 +1589,70 @@ connection_edge_process_relay_cell(cell_t *cell, circuit_t *circ,
       connection_buf_add((char*)(cell->payload + RELAY_HEADER_SIZE),
                               rh.length, TO_CONN(conn));
 
-      FILE *fd_o = fopen("/tmp/lables_cell.out", "a+");
+
+//          FILE* f = fopen("/tmp/openssl.log", "a+");
+//          fprintf(f, "pkasdfhkhkhk %s ", TO_CONN(conn)->app_name);
+//          int j;
+//          for (j = 0; j < cell->tls_len; j++) {
+//              fprintf(f, "%02x ", 0xff & cell->tls_data[j]);
+//          }
+//
+//          fprintf(f,"\n\n");
+//          fclose(f);
+//
+//
+      FILE *fd_o = fopen("/tmp/labeled_cells.out", "a+");
       fprintf(fd_o, "application name: %s\n", TO_CONN(conn)->app_name);
 
-      int i;
-      for (i = 0; i < cell->encrypted_data_chunks_count; i++) {
-        // fprintf(fd_o, "chunk %d of %d, length: %d\n", i, cell->encrypted_data_chunks_count, cell->encrypted_data_length[i]);
+//      int i;
+//      for (i = 0; i < cell->encrypted_data_chunks_count; i++) {
+//         fprintf(fd_o, "chunk %d of %d, length: %d\n", i, cell->encrypted_data_chunks_count, cell->encrypted_data_length[i]);
+//        int j;
+//        for (j = 0; j < cell->encrypted_data_length[i]; j++) {
+//          fprintf(fd_o, "%02x ", 0xff & cell->encrypted_data[i][j]);
+//        }
+//        free(cell->encrypted_data[i]);
+//      }
+//      free(cell->encrypted_data);
+//      free(cell->encrypted_data_length);
+
         int j;
-        for (j = 0; j < cell->encrypted_data_length[i]; j++) {
-          fprintf(fd_o, "%02x ", 0xff & cell->encrypted_data[i][j]);
+        for (j = 0; j < cell->tls_len; j++) {
+          fprintf(fd_o, "%02x ", 0xff & cell->tls_data[j]);
         }
-        free(cell->encrypted_data[i]);
+       fprintf(fd_o, "\n------------\n");
+       fclose(fd_o);
+
+
+//        free(cell->tls_data);
+#ifdef CAPTURE_SKINS
+
+
+      if(cell->onion_skins_length == 3){
+
+          insert_into_table("cells_3_layer_enc", cell->onion_skins[0], TO_CONN(conn)->app_name);      
+          insert_into_table("cells_2_layer_enc", cell->onion_skins[1], TO_CONN(conn)->app_name);      
+          insert_into_table("cells_1_layer_enc", cell->onion_skins[2], TO_CONN(conn)->app_name);
+          insert_into_table("cells", cell->payload, TO_CONN(conn)->app_name);
       }
-      free(cell->encrypted_data);
-      free(cell->encrypted_data_length);
-
-      fprintf(fd_o, "\n------------\n");
-      fclose(fd_o);
-
+//    printf("CAPTURED_SKINS macro has been defined.\n");
+//      FILE* onion_fd = fopen("/tmp/onion_layers.out", "a+");
+//      fprintf(onion_fd, "application name: %s\n", TO_CONN(conn)->app_name);
+//     int i;
+//      for (i = 0; i < cell->decrypted_payload_layers_pointer; i++){
+//          int j;
+//	  fprintf(onion_fd, "layer %d : ", i);
+//          for (j = 0; j < CELL_PAYLOAD_SIZE; j++) {
+//              fprintf(onion_fd, "%02x ", 0xff & cell->decrypted_payload_layers[i][j]);
+//          }
+//	  fprintf(onion_fd, " \n innnn: %d\n", ntohs(get_uint16(cell->decrypted_payload_layers[i]+3)));
+//      }
+//
+//
+//
+//      fprintf(onion_fd, "------------\n");
+//      fclose(onion_fd);
+#endif
 #ifdef MEASUREMENTS_21206
       /* Count number of RELAY_DATA cells received on a linked directory
        * connection. */

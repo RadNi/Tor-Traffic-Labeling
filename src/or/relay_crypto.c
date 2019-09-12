@@ -124,10 +124,18 @@ relay_decrypt_cell(circuit_t *circ, cell_t *cell,
                "Relay cell before first created cell? Closing.");
         return -1;
       }
+#ifdef CAPTURE_SKINS
+      int i = 0;
+      cell->onion_skins_length = 0;
+#endif
       do { /* Remember: cpath is in forward order, that is, first hop first. */
         tor_assert(thishop);
 
         /* decrypt one layer */
+#ifdef CAPTURE_SKINS
+        memcpy(cell->onion_skins[i++], cell->payload, CELL_PAYLOAD_SIZE);
+        cell->onion_skins_length ++;
+#endif
         relay_crypt_one_payload(thishop->crypto.b_crypto, cell->payload);
 
         relay_header_unpack(&rh, cell->payload);

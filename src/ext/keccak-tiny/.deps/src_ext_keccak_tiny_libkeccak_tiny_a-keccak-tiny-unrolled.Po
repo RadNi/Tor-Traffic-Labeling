@@ -19,7 +19,6 @@ src/ext/keccak-tiny/src_ext_keccak_tiny_libkeccak_tiny_a-keccak-tiny-unrolled.o:
  /usr/include/x86_64-linux-gnu/bits/select.h \
  /usr/include/x86_64-linux-gnu/bits/sigset.h \
  /usr/include/x86_64-linux-gnu/bits/time.h \
- /usr/include/x86_64-linux-gnu/bits/select2.h \
  /usr/include/x86_64-linux-gnu/sys/sysmacros.h \
  /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
  /usr/lib/gcc/x86_64-linux-gnu/5/include-fixed/limits.h \
@@ -31,10 +30,8 @@ src/ext/keccak-tiny/src_ext_keccak_tiny_libkeccak_tiny_a-keccak-tiny-unrolled.o:
  /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
  /usr/include/x86_64-linux-gnu/bits/stdio_lim.h /usr/include/inttypes.h \
  /usr/lib/gcc/x86_64-linux-gnu/5/include/stdbool.h /usr/include/string.h \
- /usr/include/xlocale.h /usr/include/x86_64-linux-gnu/bits/string.h \
- /usr/include/x86_64-linux-gnu/bits/string2.h /usr/include/stdlib.h \
- /usr/include/x86_64-linux-gnu/bits/string3.h src/common/crypto_util.h \
- src/common/torint.h src/ext/byteorder.h
+ /usr/include/xlocale.h src/common/crypto_util.h src/common/torint.h \
+ src/ext/byteorder.h
 
 /usr/include/stdc-predef.h:
 
@@ -86,8 +83,6 @@ orconfig.h:
 
 /usr/include/x86_64-linux-gnu/bits/time.h:
 
-/usr/include/x86_64-linux-gnu/bits/select2.h:
-
 /usr/include/x86_64-linux-gnu/sys/sysmacros.h:
 
 /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h:
@@ -117,14 +112,6 @@ orconfig.h:
 /usr/include/string.h:
 
 /usr/include/xlocale.h:
-
-/usr/include/x86_64-linux-gnu/bits/string.h:
-
-/usr/include/x86_64-linux-gnu/bits/string2.h:
-
-/usr/include/stdlib.h:
-
-/usr/include/x86_64-linux-gnu/bits/string3.h:
 
 src/common/crypto_util.h:
 

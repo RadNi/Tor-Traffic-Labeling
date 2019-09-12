@@ -21,6 +21,7 @@
  * This module also implements the client side of the v3 Tor link handshake,
  **/
 #include <string.h>
+#include <stdio.h>
 #include "or.h"
 #include "bridges.h"
 #include "buffers.h"
@@ -445,7 +446,7 @@ cell_pack(packed_cell_t *dst, const cell_t *src, int wide_circ_ids)
 
 
 static void
-cell_unpack(cell_t *dest, const char *src, int wide_circ_ids, buf_chunks_encrypted_data_linked_list* list)
+cell_unpack(cell_t *dest, const char *src, int wide_circ_ids)
 {
   if (wide_circ_ids) {
     dest->circ_id = ntohl(get_uint32(src));
@@ -457,23 +458,23 @@ cell_unpack(cell_t *dest, const char *src, int wide_circ_ids, buf_chunks_encrypt
   dest->command = get_uint8(src);
   memcpy(dest->payload, src+1, CELL_PAYLOAD_SIZE);
 
-  dest->encrypted_data = (char**)malloc(list->length * sizeof(char*));
-  dest->encrypted_data_length = (int*)malloc(list->length * sizeof(int));
-  dest->encrypted_data_chunks_count = list->length;
-
-  buf_chunks_encrypted_data_list* current = list->head;
-
-  int i = 0;
-  while(current){
-    dest->encrypted_data[i] = (char *) malloc(current->data_length);
-    memcpy(dest->encrypted_data[i], current->data, current->data_length);
-    dest->encrypted_data_length[i] = (int) current->data_length;
-
-    buf_chunks_encrypted_data_list * freed = current;
-    current = current->next;
-    free(freed);
-    i++;
-  }
+//  dest->encrypted_data = (char**)malloc(list->length * sizeof(char*));
+//  dest->encrypted_data_length = (int*)malloc(list->length * sizeof(int));
+//  dest->encrypted_data_chunks_count = list->length;
+//
+//  buf_chunks_encrypted_data_list* current = list->head;
+//
+//  int i = 0;
+//  while(current){
+//    dest->encrypted_data[i] = (char *) malloc(current->data_length);
+//    memcpy(dest->encrypted_data[i], current->data, current->data_length);
+//    dest->encrypted_data_length[i] = (int) current->data_length;
+//
+//    buf_chunks_encrypted_data_list * freed = current;
+//    current = current->next;
+//    free(freed);
+//    i++;
+//  }
 }
 
 /** Write the header of <b>cell</b> into the first VAR_CELL_MAX_HEADER_SIZE
@@ -2342,12 +2343,20 @@ connection_or_process_cells_from_inbuf(or_connection_t *conn)
 
       circuit_build_times_network_is_live(get_circuit_build_times_mutable());
       channel_tls_handle_var_cell(var_cell, conn);
+
+//        FILE* f = fopen("/tmp/openssl.log", "a+");
+//        fprintf(f, "handling var cell : %d \n\n", (int)var_cell->payload_len);
+//        fprintf(f,"\n\n");
+//        fclose(f);
+
+
       var_cell_free(var_cell);
     } else {
       const int wide_circ_ids = conn->wide_circ_ids;
       size_t cell_network_size = get_cell_network_size(conn->wide_circ_ids);
       char buf[CELL_MAX_NETWORK_SIZE];
       cell_t cell;
+      cell.tls_len = 0;
       if (connection_get_inbuf_len(TO_CONN(conn))
           < cell_network_size) /* whole response available? */
         return 0; /* not yet */
@@ -2358,16 +2367,21 @@ connection_or_process_cells_from_inbuf(or_connection_t *conn)
 
       circuit_build_times_network_is_live(get_circuit_build_times_mutable());
 
-      buf_chunks_encrypted_data_linked_list* list = (buf_chunks_encrypted_data_linked_list*)malloc(sizeof(buf_chunks_encrypted_data_linked_list));
-      list->length = 0;
-      list->head = NULL;
-      list->tail = NULL;
+//        FILE* f = fopen("/tmp/openssl.log", "a+");
+//        fprintf(f, "handling normal cell : %d \n\n", 509);
+//        fprintf(f,"\n\n");
+//        fclose(f);
 
-      connection_buf_get_bytes_labelling(buf, cell_network_size, TO_CONN(conn), list);
+//      buf_chunks_encrypted_data_linked_list* list = (buf_chunks_encrypted_data_linked_list*)malloc(sizeof(buf_chunks_encrypted_data_linked_list));
+//      list->length = 0;
+//      list->head = NULL;
+//      list->tail = NULL;
+
+      connection_buf_get_bytes_labelling(buf, cell_network_size, TO_CONN(conn), &cell);
 
       /* retrieve cell info from buf (create the host-order struct from the
        * network-order string) */
-      cell_unpack(&cell, buf, wide_circ_ids, list);
+      cell_unpack(&cell, buf, wide_circ_ids);
 
       channel_tls_handle_cell(&cell, conn);
     }

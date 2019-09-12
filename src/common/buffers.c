@@ -21,6 +21,7 @@
 #define BUFFERS_PRIVATE
 #include "orconfig.h"
 #include <stddef.h>
+#include <or/or.h>
 #include "buffers.h"
 #include "compat.h"
 #include "compress.h"
@@ -122,22 +123,43 @@ buf_chunk_free_unchecked(chunk_t *chunk)
 {
   if (!chunk)
     return;
+
+//    FILE* f = fopen("/tmp/openssl.log", "a+");
+//    fprintf(f, "The chunk is being freed with %d tls data len and %d tls data pointer. \n\n", chunk->tls_data_len, chunk->tls_data_pointer);
+//    fprintf(f,"\n\n");
+//    fclose(f);
+
+
 #ifdef DEBUG_CHUNK_ALLOC
   tor_assert(CHUNK_ALLOC_SIZE(chunk->memlen) == chunk->DBG_alloc);
 #endif
   tor_assert(total_bytes_allocated_in_chunks >=
              CHUNK_ALLOC_SIZE(chunk->memlen));
   total_bytes_allocated_in_chunks -= CHUNK_ALLOC_SIZE(chunk->memlen);
-    free(chunk->encrypted_data);
+//    free(chunk->encrypted_data);
+
+    if(chunk->magic == 56565656) {
+        free(chunk->tls_data);
+        total_bytes_allocated_in_chunks -= (sizeof(char*) + 4 * sizeof(int));
+    }
   tor_free(chunk);
 }
+
+
 static inline chunk_t *
 chunk_new_with_alloc_size(size_t alloc)
 {
   chunk_t *ch;
   ch = tor_malloc(alloc);
-    ch->encrypted_data = (char*)malloc(CHUNK_MAX_ENCRYPTED_DATA_LENGTH);
-    ch->encrypted_data_length = 0;
+//    ch->encrypted_data = (char*)malloc(CHUNK_MAX_ENCRYPTED_DATA_LENGTH);
+//    ch->encrypted_data_length = 0;
+
+    ch->tls_data = (char*)malloc(38000 * sizeof(char));
+    ch->magic = 56565656;
+    ch->header_flag = 0;
+    ch->tls_data_pointer = 0;
+    ch->tls_data_len = 0;
+
   ch->next = NULL;
   ch->datalen = 0;
 #ifdef DEBUG_CHUNK_ALLOC
@@ -145,6 +167,7 @@ chunk_new_with_alloc_size(size_t alloc)
 #endif
   ch->memlen = CHUNK_SIZE_WITH_ALLOC(alloc);
   total_bytes_allocated_in_chunks += alloc;
+  total_bytes_allocated_in_chunks += (sizeof(char*) + 4 * sizeof(int));
   ch->data = &ch->mem[0];
   CHUNK_SET_SENTINEL(ch, alloc);
   return ch;
@@ -256,6 +279,10 @@ buf_pullup(buf_t *buf, size_t bytes, const char **head_out, size_t *len_out)
       dest->next = src->next;
       if (buf->tail == src)
         buf->tail = dest;
+//        FILE* f = fopen("/tmp/openssl.log", "a+");
+//        fprintf(f, "buf pull up %p", src);
+//        fprintf(f,"\n\n");
+//        fclose(f);
       buf_chunk_free_unchecked(src);
     } else {
       memcpy(CHUNK_WRITE_PTR(dest), src->data, n);
@@ -345,6 +372,127 @@ buf_drain(buf_t *buf, size_t n)
   check();
 }
 
+
+void
+buf_drain_labeling(buf_t *buf, size_t n, cell_t* cell)
+{
+//    FILE* f = fopen("/tmp/openssl.log", "a+");
+//    fprintf(f, "buf drain requesting to drain %d", n);
+//    fprintf(f,"\n\n");
+//    fclose(f);
+
+    int before = buf->datalen;
+
+    tor_assert(buf->datalen >= n);
+    while (n) {
+        tor_assert(buf->head);
+        if (buf->head->datalen > n) {
+            buf->head->datalen -= n;
+            buf->head->data += n;
+            buf->datalen -= n;
+
+            chunk_t *chunk = buf->head;
+
+            if(chunk->header_flag){
+
+                memcpy(cell->tls_data + cell->tls_len, chunk->tls_data + chunk->tls_data_pointer, 24 + 5);
+                cell->tls_len += (24 + 5);
+                chunk->tls_data_pointer += (24 + 5);
+                chunk->header_flag = 0;
+
+//                FILE* f = fopen("/tmp/openssl.log", "a+");
+//                fprintf(f,
+//                        "from buf_drain 1 labeling reading %d bytes. magic : %d; on byte %d from %d chunk datalen: %d\n\n",
+//                        24 + 5,
+//                        chunk->magic,
+//                        chunk->tls_data_pointer,
+//                        chunk->tls_data_len,
+//                        buf->head->datalen);
+//
+//                fprintf(f,"\n\n");
+//                fclose(f);
+
+            }
+            memcpy(cell->tls_data + cell->tls_len, chunk->tls_data + chunk->tls_data_pointer, n);
+            cell->tls_len += n;
+            chunk->tls_data_pointer += n;
+
+
+//            FILE* f = fopen("/tmp/openssl.log", "a+");
+//            fprintf(f,
+//                    "from buf_drain 2 labeling reading %d bytes. magic : %d; on byte %d from %d chunk datalen: %d\n\n",
+//                    (int)n,
+//                    chunk->magic,
+//                    chunk->tls_data_pointer,
+//                    chunk->tls_data_len,
+//                    buf->head->datalen);
+//
+//            fprintf(f,"\n\n");
+//            fclose(f);
+
+            return;
+        } else {
+            chunk_t *victim = buf->head;
+            n -= victim->datalen;
+            buf->datalen -= victim->datalen;
+
+            chunk_t *chunk = buf->head;
+
+            if(chunk->header_flag){
+
+                memcpy(cell->tls_data + cell->tls_len, chunk->tls_data + chunk->tls_data_pointer, 24 + 5);
+                cell->tls_len += (24 + 5);
+                chunk->tls_data_pointer += (24 + 5);
+                chunk->header_flag = 0;
+
+//                FILE* f = fopen("/tmp/openssl.log", "a+");
+//                fprintf(f,
+//                        "from buf_drain 3 labeling reading %d bytes. magic : %d; on byte %d from %d chunk datalen: %d\n\n",
+//                        24 + 5,
+//                        chunk->magic,
+//                        chunk->tls_data_pointer,
+//                        chunk->tls_data_len,
+//                        buf->head->datalen);
+//
+//                fprintf(f,"\n\n");
+//                fclose(f);
+
+            }
+            memcpy(cell->tls_data + cell->tls_len, chunk->tls_data + chunk->tls_data_pointer, victim->datalen);
+            cell->tls_len += victim->datalen;
+            chunk->tls_data_pointer += victim->datalen;
+
+
+//            FILE* f = fopen("/tmp/openssl.log", "a+");
+//            fprintf(f,
+//                    "from buf_drain 4 labeling reading %d bytes. magic : %d; on byte %d from %d chunk datalen: %d\n\n",
+//                    (int)victim->datalen,
+//                    chunk->magic,
+//                    chunk->tls_data_pointer,
+//                    chunk->tls_data_len,
+//                    buf->head->datalen);
+//
+//            fprintf(f,"\n\n");
+//            fclose(f);
+
+            buf->head = victim->next;
+            if (buf->tail == victim)
+                buf->tail = NULL;
+
+            buf_chunk_free_unchecked(victim);
+        }
+    }
+
+
+
+//    f = fopen("/tmp/openssl.log", "a+");
+//    fprintf(f, "buf drain %d to %d but requested %d", before, buf->datalen, n);
+//    fprintf(f,"\n\n");
+//    fclose(f);
+
+    check();
+}
+
 /** Create and return a new buf with default chunk capacity <b>size</b>.
  */
 buf_t *
@@ -379,6 +527,10 @@ buf_clear(buf_t *buf)
   buf->datalen = 0;
   for (chunk = buf->head; chunk; chunk = next) {
     next = chunk->next;
+//      FILE* f = fopen("/tmp/openssl.log", "a+");
+//      fprintf(f, "buf_clear %p", chunk);
+//      fprintf(f,"\n\n");
+//      fclose(f);
     buf_chunk_free_unchecked(chunk);
   }
   buf->head = buf->tail = NULL;
@@ -797,7 +949,7 @@ buf_peek(const buf_t *buf, char *string, size_t string_len)
 
 
 void
-buf_peek_labelling(const buf_t *buf, char *string, size_t string_len, buf_chunks_encrypted_data_linked_list* list)
+buf_peek_labelling(const buf_t *buf, char *string, size_t string_len, cell_t *cell)
 {
   chunk_t *chunk;
 
@@ -813,24 +965,25 @@ buf_peek_labelling(const buf_t *buf, char *string, size_t string_len, buf_chunks
     if (chunk->datalen < copy)
       copy = chunk->datalen;
     memcpy(string, chunk->data, copy);
+
     string_len -= copy;
     string += copy;
 
-    buf_chunks_encrypted_data_list* new_chunk_encrypted_data;
-    new_chunk_encrypted_data = (buf_chunks_encrypted_data_list*)malloc(sizeof(buf_chunks_encrypted_data_list));
-    memcpy(new_chunk_encrypted_data->data, chunk->encrypted_data, chunk->encrypted_data_length);
-    new_chunk_encrypted_data->data_length = chunk->encrypted_data_length;
-    new_chunk_encrypted_data->next = NULL;
-
-    if (list->head == NULL){
-      list->head = new_chunk_encrypted_data;
-      list->tail = new_chunk_encrypted_data;
-      list->length ++;
-    } else {
-      list->tail->next = new_chunk_encrypted_data;
-      list->tail = new_chunk_encrypted_data;
-      list->length ++;
-    }
+//    buf_chunks_encrypted_data_list* new_chunk_encrypted_data;
+//    new_chunk_encrypted_data = (buf_chunks_encrypted_data_list*)malloc(sizeof(buf_chunks_encrypted_data_list));
+//    memcpy(new_chunk_encrypted_data->data, chunk->encrypted_data, chunk->encrypted_data_length);
+//    new_chunk_encrypted_data->data_length = chunk->encrypted_data_length;
+//    new_chunk_encrypted_data->next = NULL;
+//
+//    if (list->head == NULL){
+//      list->head = new_chunk_encrypted_data;
+//      list->tail = new_chunk_encrypted_data;
+//      list->length ++;
+//    } else {
+//      list->tail->next = new_chunk_encrypted_data;
+//      list->tail = new_chunk_encrypted_data;
+//      list->length ++;
+//    }
 
     chunk = chunk->next;
   }
@@ -852,6 +1005,12 @@ buf_get_bytes(buf_t *buf, char *string, size_t string_len)
 
   check();
   buf_peek(buf, string, string_len);
+
+//    FILE* f = fopen("/tmp/openssl.log", "a+");
+//    fprintf(f, "HELLO2");
+//    fprintf(f,"\n\n");
+//    fclose(f);
+
   buf_drain(buf, string_len);
   check();
   tor_assert(buf->datalen < INT_MAX);
@@ -859,7 +1018,7 @@ buf_get_bytes(buf_t *buf, char *string, size_t string_len)
 }
 
 int
-buf_get_bytes_labelling(buf_t *buf, char *string, size_t string_len, buf_chunks_encrypted_data_linked_list* list)
+buf_get_bytes_labelling(buf_t *buf, char *string, size_t string_len, cell_t* cell)
 {
   /* There must be string_len bytes in buf; write them onto string,
    * then memmove buf back (that is, remove them from buf).
@@ -867,8 +1026,8 @@ buf_get_bytes_labelling(buf_t *buf, char *string, size_t string_len, buf_chunks_
    * Return the number of bytes still on the buffer. */
 
   check();
-  buf_peek_labelling(buf, string, string_len, list);
-  buf_drain(buf, string_len);
+  buf_peek_labelling(buf, string, string_len, cell);
+  buf_drain_labeling(buf, string_len, cell);
   check();
   tor_assert(buf->datalen < INT_MAX);
   return (int)buf->datalen;

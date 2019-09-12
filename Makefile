@@ -2143,22 +2143,22 @@ am__distuninstallcheck_listfiles = $(distuninstallcheck_listfiles) \
   | sed 's|^\./|$(prefix)/|' | grep -v '$(infodir)/dir$$'
 distcleancheck_listfiles = find . -type f -print
 A2X = none
-ACLOCAL = ${SHELL} /home/farid/Programming/Tor-Traffic-Labeling/missing aclocal-1.15
+ACLOCAL = ${SHELL} /home/amirhossein/github/Tor-Traffic-Labeling/missing aclocal-1.15
 AMTAR = $${TAR-tar}
 AM_DEFAULT_VERBOSITY = 0
 AR = ar
 ASCIIDOC = none
-AUTOCONF = ${SHELL} /home/farid/Programming/Tor-Traffic-Labeling/missing autoconf
-AUTOHEADER = ${SHELL} /home/farid/Programming/Tor-Traffic-Labeling/missing autoheader
-AUTOMAKE = ${SHELL} /home/farid/Programming/Tor-Traffic-Labeling/missing automake-1.15
+AUTOCONF = ${SHELL} /home/amirhossein/github/Tor-Traffic-Labeling/missing autoconf
+AUTOHEADER = ${SHELL} /home/amirhossein/github/Tor-Traffic-Labeling/missing autoheader
+AUTOMAKE = ${SHELL} /home/amirhossein/github/Tor-Traffic-Labeling/missing automake-1.15
 AWK = gawk
 BINDIR = /usr/local/bin
-BUILDDIR = /home/farid/Programming/Tor-Traffic-Labeling
+BUILDDIR = /home/amirhossein/github/Tor-Traffic-Labeling
 CARGO = 
 CARGO_ONLINE = 
 CC = gcc
 CCDEPMODE = depmode=gcc3
-CFLAGS = -g -O2 -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2 -fstack-protector-all -Wstack-protector --param ssp-buffer-size=1 -fPIE -fasynchronous-unwind-tables -Wall -fno-strict-aliasing -Waddress -Warray-bounds -Wdate-time -Wdouble-promotion -Wextra -Wfloat-conversion -Winit-self -Wlogical-op -Wmissing-field-initializers -Wmissing-format-attribute -Wmissing-noreturn -Wnormalized=nfkc -Woverlength-strings -Woverride-init -Wshadow -Wshift-count-negative -Wshift-count-overflow -Wsizeof-array-argument -Wstrict-overflow=1 -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wswitch-bool -Wsync-nand -Wtrampolines -Wunused-but-set-parameter -Wunused-but-set-variable -Wunused-local-typedefs -Wvariadic-macros -W -Wfloat-equal -Wundef -Wpointer-arith -Wstrict-prototypes -Wmissing-prototypes -Wwrite-strings -Wredundant-decls -Wchar-subscripts -Wcomment -Wformat=2 -Wwrite-strings -Wnested-externs -Wbad-function-cast -Wswitch-enum -Waggregate-return -Wpacked -Wunused -Wunused-parameter  -Wold-style-definition -Wmissing-declarations
+CFLAGS = -DCAPTURE_SKINS -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2 -fstack-protector-all -Wstack-protector --param ssp-buffer-size=1 -fPIE -fasynchronous-unwind-tables -Wall -fno-strict-aliasing -Waddress -Warray-bounds -Wdate-time -Wdouble-promotion -Wextra -Wfloat-conversion -Winit-self -Wlogical-op -Wmissing-field-initializers -Wmissing-format-attribute -Wmissing-noreturn -Wnormalized=nfkc -Woverlength-strings -Woverride-init -Wshadow -Wshift-count-negative -Wshift-count-overflow -Wsizeof-array-argument -Wstrict-overflow=1 -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wswitch-bool -Wsync-nand -Wtrampolines -Wunused-but-set-parameter -Wunused-but-set-variable -Wunused-local-typedefs -Wvariadic-macros -W -Wfloat-equal -Wundef -Wpointer-arith -Wstrict-prototypes -Wmissing-prototypes -Wwrite-strings -Wredundant-decls -Wchar-subscripts -Wcomment -Wformat=2 -Wwrite-strings -Wnested-externs -Wbad-function-cast -Wswitch-enum -Waggregate-return -Wpacked -Wunused -Wunused-parameter  -Wold-style-definition -Wmissing-declarations
 CFLAGS_BUGTRAP =   
 CFLAGS_CONSTTIME = -fwrapv
 CONFDIR = /usr/local/etc/tor
@@ -2190,7 +2190,7 @@ LOGFACILITY =
 LTLIBOBJS = 
 LZMA_CFLAGS = 
 LZMA_LIBS = 
-MAKEINFO = ${SHELL} /home/farid/Programming/Tor-Traffic-Labeling/missing makeinfo
+MAKEINFO = ${SHELL} /home/amirhossein/github/Tor-Traffic-Labeling/missing makeinfo
 MKDIR_P = /bin/mkdir -p
 OBJEXT = o
 PACKAGE = tor
@@ -2244,10 +2244,10 @@ TOR_ZSTD_LIBS =
 VERSION = 0.3.5.0-alpha-dev
 ZSTD_CFLAGS = 
 ZSTD_LIBS = 
-abs_builddir = /home/farid/Programming/Tor-Traffic-Labeling
-abs_srcdir = /home/farid/Programming/Tor-Traffic-Labeling
-abs_top_builddir = /home/farid/Programming/Tor-Traffic-Labeling
-abs_top_srcdir = /home/farid/Programming/Tor-Traffic-Labeling
+abs_builddir = /home/amirhossein/github/Tor-Traffic-Labeling
+abs_srcdir = /home/amirhossein/github/Tor-Traffic-Labeling
+abs_top_builddir = /home/amirhossein/github/Tor-Traffic-Labeling
+abs_top_srcdir = /home/amirhossein/github/Tor-Traffic-Labeling
 ac_ct_AR = ar
 ac_ct_CC = gcc
 am__include = include
@@ -2275,7 +2275,7 @@ host_vendor = pc
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} /home/farid/Programming/Tor-Traffic-Labeling/install-sh
+install_sh = ${SHELL} /home/amirhossein/github/Tor-Traffic-Labeling/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
@@ -3433,16 +3433,16 @@ TRACEHEADERS = src/trace/trace.h src/trace/events.h $(am__append_17)
 # Library source files.
 src_trace_libor_trace_a_SOURCES = $(LIBOR_TRACE_A_SOURCES)
 all_mans = doc/tor doc/tor-gencert doc/tor-resolve doc/torify
-#nodist_man1_MANS = 
-nodist_man1_MANS = $(all_mans:=.1)
-#doc_DATA = 
-doc_DATA = $(all_mans:=.html)
-#html_in = 
-html_in = $(all_mans:=.html.in)
-#man_in = 
-man_in = $(all_mans:=.1.in)
-#txt_in = 
-txt_in = $(all_mans:=.1.txt)
+nodist_man1_MANS = 
+#nodist_man1_MANS = $(all_mans:=.1)
+doc_DATA = 
+#doc_DATA = $(all_mans:=.html)
+html_in = 
+#html_in = $(all_mans:=.html.in)
+man_in = 
+#man_in = $(all_mans:=.1.in)
+txt_in = 
+#txt_in = $(all_mans:=.1.txt)
 asciidoc_product = $(nodist_man1_MANS) $(doc_DATA)
 AM_ETAGSFLAGS = --regex='{c}/MOCK_IMPL([^,]+,\W*\([a-zA-Z0-9_]+\)\W*,/\1/s'
 TEST_CFLAGS = $(am__append_18)

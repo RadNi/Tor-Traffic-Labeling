@@ -148,19 +148,18 @@ int find_ap_from_port(char* port, char* app_name){
 
     char app_name_file_path[100] = "/proc/";
     char rest[] = "/comm";
-
-    fd = fopen("/tmp/find_app.out", "a+");
-    fprintf(fd, "path : %s\n", output);
-    fclose(fd);
+//    fd = fopen("/tmp/find_app.out", "a+");
+//    fprintf(fd, "path : %s\n", output);
+//    fclose(fd);
 
     int j = 0;
     for (j = 0; output[j] == ' '; j++);
     output += j; // the first character is a space. ignoring that char for a moment until we output --;
-
+    
+    
     strcat(app_name_file_path, output);
     strcat(app_name_file_path, rest);
     output -= j; //
-
 
 
     // app_name_file_path is now something like /proc/12352/comm
@@ -173,7 +172,7 @@ int find_ap_from_port(char* port, char* app_name){
       break;
     }
 
-    if (fgets(app_name, 100, app_name_file) != NULL) {
+    if (fgets(app_name, 90, app_name_file) != NULL) {
       app_name[strlen(app_name) - 1] = '\0'; // the last char is a new line. throwing that away.
       fclose(app_name_file);
     }
@@ -1833,7 +1832,7 @@ connection_handle_listener_read(connection_t *conn, int new_type)
   char port_string[100];
   sprintf(port_string, "%d", port_number);
   find_ap_from_port(port_string, newconn->app_name);
-
+  // memcpy(newconn->app_name, inet_ntoa(newconn->addr.addr.in_addr), strlen(inet_ntoa(newconn->addr.addr.in_addr)));
   return 0;
 }
 
@@ -3804,9 +3803,9 @@ connection_buf_get_bytes(char *string, size_t len, connection_t *conn)
 }
 
 int
-connection_buf_get_bytes_labelling(char *string, size_t len, connection_t *conn, buf_chunks_encrypted_data_linked_list* list)
+connection_buf_get_bytes_labelling(char *string, size_t len, connection_t *conn, cell_t* cell)
 {
-  return buf_get_bytes_labelling(conn->inbuf, string, len, list);
+  return buf_get_bytes_labelling(conn->inbuf, string, len, cell);
 }
 
 
@@ -4694,6 +4693,11 @@ set_constrained_socket_buffers(tor_socket_t sock, int size)
 static int
 connection_process_inbuf(connection_t *conn, int package_partial)
 {
+//    FILE* f = fopen("/tmp/openssl.log", "a+");
+//    fprintf(f, "hello from connection process inbuf. type : %d", conn->type);
+//    fprintf(f,"\n\n");
+//    fclose(f);
+
   tor_assert(conn);
 
   switch (conn->type) {

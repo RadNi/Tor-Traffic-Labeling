@@ -19,7 +19,6 @@ src/ext/ed25519/ref10/src_ext_ed25519_ref10_libed25519_ref10_a-open.o: \
  /usr/include/x86_64-linux-gnu/bits/select.h \
  /usr/include/x86_64-linux-gnu/bits/sigset.h \
  /usr/include/x86_64-linux-gnu/bits/time.h \
- /usr/include/x86_64-linux-gnu/bits/select2.h \
  /usr/include/x86_64-linux-gnu/sys/sysmacros.h \
  /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
  /usr/lib/gcc/x86_64-linux-gnu/5/include-fixed/limits.h \
@@ -31,15 +30,11 @@ src/ext/ed25519/ref10/src_ext_ed25519_ref10_libed25519_ref10_a-open.o: \
  /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
  /usr/include/x86_64-linux-gnu/bits/stdio_lim.h /usr/include/inttypes.h \
  /usr/lib/gcc/x86_64-linux-gnu/5/include/stdbool.h /usr/include/string.h \
- /usr/include/xlocale.h /usr/include/x86_64-linux-gnu/bits/string.h \
- /usr/include/x86_64-linux-gnu/bits/string2.h /usr/include/stdlib.h \
- /usr/include/x86_64-linux-gnu/bits/string3.h \
- src/ext/ed25519/ref10/crypto_hash_sha512.h src/common/crypto_digest.h \
- /usr/include/stdio.h /usr/include/libio.h /usr/include/_G_config.h \
- /usr/include/wchar.h /usr/lib/gcc/x86_64-linux-gnu/5/include/stdarg.h \
- /usr/include/x86_64-linux-gnu/bits/sys_errlist.h \
- /usr/include/x86_64-linux-gnu/bits/stdio.h \
- /usr/include/x86_64-linux-gnu/bits/stdio2.h src/common/container.h \
+ /usr/include/xlocale.h src/ext/ed25519/ref10/crypto_hash_sha512.h \
+ src/common/crypto_digest.h /usr/include/stdio.h /usr/include/libio.h \
+ /usr/include/_G_config.h /usr/include/wchar.h \
+ /usr/lib/gcc/x86_64-linux-gnu/5/include/stdarg.h \
+ /usr/include/x86_64-linux-gnu/bits/sys_errlist.h src/common/container.h \
  src/common/util.h src/common/torint.h src/common/compat.h \
  src/common/testsupport.h /usr/include/x86_64-linux-gnu/sys/param.h \
  /usr/include/signal.h /usr/include/x86_64-linux-gnu/bits/signum.h \
@@ -65,8 +60,7 @@ src/ext/ed25519/ref10/src_ext_ed25519_ref10_libed25519_ref10_a-open.o: \
  /usr/include/x86_64-linux-gnu/asm/socket.h \
  /usr/include/asm-generic/socket.h \
  /usr/include/x86_64-linux-gnu/asm/sockios.h \
- /usr/include/asm-generic/sockios.h \
- /usr/include/x86_64-linux-gnu/bits/socket2.h /usr/include/netinet/in.h \
+ /usr/include/asm-generic/sockios.h /usr/include/netinet/in.h \
  /usr/include/x86_64-linux-gnu/bits/in.h src/common/compat_time.h \
  /usr/include/errno.h /usr/include/x86_64-linux-gnu/bits/errno.h \
  /usr/include/linux/errno.h /usr/include/x86_64-linux-gnu/asm/errno.h \
@@ -75,11 +69,9 @@ src/ext/ed25519/ref10/src_ext_ed25519_ref10_libed25519_ref10_a-open.o: \
  /usr/include/x86_64-linux-gnu/bits/sched.h \
  /usr/include/x86_64-linux-gnu/bits/setjmp.h \
  /usr/lib/gcc/x86_64-linux-gnu/5/include/stdatomic.h src/common/di_ops.h \
- /usr/include/x86_64-linux-gnu/bits/waitflags.h \
+ /usr/include/stdlib.h /usr/include/x86_64-linux-gnu/bits/waitflags.h \
  /usr/include/x86_64-linux-gnu/bits/waitstatus.h /usr/include/alloca.h \
- /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h \
- /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
- /usr/include/x86_64-linux-gnu/bits/stdlib.h src/common/util_bug.h \
+ /usr/include/x86_64-linux-gnu/bits/stdlib-float.h src/common/util_bug.h \
  src/ext/siphash.h src/ext/ed25519/ref10/crypto_verify_32.h \
  src/common/di_ops.h src/ext/ed25519/ref10/ge.h \
  src/ext/ed25519/ref10/fe.h src/ext/ed25519/ref10/crypto_int32.h \
@@ -137,8 +129,6 @@ orconfig.h:
 
 /usr/include/x86_64-linux-gnu/bits/time.h:
 
-/usr/include/x86_64-linux-gnu/bits/select2.h:
-
 /usr/include/x86_64-linux-gnu/sys/sysmacros.h:
 
 /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h:
@@ -169,14 +159,6 @@ orconfig.h:
 
 /usr/include/xlocale.h:
 
-/usr/include/x86_64-linux-gnu/bits/string.h:
-
-/usr/include/x86_64-linux-gnu/bits/string2.h:
-
-/usr/include/stdlib.h:
-
-/usr/include/x86_64-linux-gnu/bits/string3.h:
-
 src/ext/ed25519/ref10/crypto_hash_sha512.h:
 
 src/common/crypto_digest.h:
@@ -192,10 +174,6 @@ src/common/crypto_digest.h:
 /usr/lib/gcc/x86_64-linux-gnu/5/include/stdarg.h:
 
 /usr/include/x86_64-linux-gnu/bits/sys_errlist.h:
-
-/usr/include/x86_64-linux-gnu/bits/stdio.h:
-
-/usr/include/x86_64-linux-gnu/bits/stdio2.h:
 
 src/common/container.h:
 
@@ -261,8 +239,6 @@ src/common/testsupport.h:
 
 /usr/include/asm-generic/sockios.h:
 
-/usr/include/x86_64-linux-gnu/bits/socket2.h:
-
 /usr/include/netinet/in.h:
 
 /usr/include/x86_64-linux-gnu/bits/in.h:
@@ -295,17 +271,15 @@ src/common/compat_threads.h:
 
 src/common/di_ops.h:
 
+/usr/include/stdlib.h:
+
 /usr/include/x86_64-linux-gnu/bits/waitflags.h:
 
 /usr/include/x86_64-linux-gnu/bits/waitstatus.h:
 
 /usr/include/alloca.h:
 
-/usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h:
-
 /usr/include/x86_64-linux-gnu/bits/stdlib-float.h:
-
-/usr/include/x86_64-linux-gnu/bits/stdlib.h:
 
 src/common/util_bug.h:
 

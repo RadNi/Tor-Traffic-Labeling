@@ -227,6 +227,7 @@ int tor_tls_check_lifetime(int severity,
                            int past_tolerance,
                            int future_tolerance);
 MOCK_DECL(int, tor_tls_read, (tor_tls_t *tls, char *cp, size_t len));
+MOCK_DECL(int, tor_tls_read_labeling, (tor_tls_t *tls, char *cp, size_t len, char** enc_data_return, int* enc_len_return));
 int tor_tls_write(tor_tls_t *tls, const char *cp, size_t n);
 int tor_tls_handshake(tor_tls_t *tls);
 int tor_tls_finish_handshake(tor_tls_t *tls);

@@ -5,7 +5,7 @@
 /* #undef AC_APPLE_UNIVERSAL_BUILD */
 
 /* tor's build directory */
-#define BUILDDIR "/home/farid/Programming/Tor-Traffic-Labeling"
+#define BUILDDIR "/home/amirhossein/github/Tor-Traffic-Labeling"
 
 /* tor's configuration directory */
 #define CONFDIR "/usr/local/etc/tor"
@@ -117,7 +117,7 @@
 #define HAVE_EVENTFD 1
 
 /* Define to 1 if you have the `EVP_PBE_scrypt' function. */
-/* #undef HAVE_EVP_PBE_SCRYPT */
+#define HAVE_EVP_PBE_SCRYPT 1
 
 /* Define to 1 if you have the `evutil_secure_rng_add_bytes' function. */
 #define HAVE_EVUTIL_SECURE_RNG_ADD_BYTES 1
@@ -381,19 +381,19 @@
 #define HAVE_SSL_CIPHER_FIND 1
 
 /* Define to 1 if you have the `SSL_get_client_ciphers' function. */
-/* #undef HAVE_SSL_GET_CLIENT_CIPHERS */
+#define HAVE_SSL_GET_CLIENT_CIPHERS 1
 
 /* Define to 1 if you have the `SSL_get_client_random' function. */
-/* #undef HAVE_SSL_GET_CLIENT_RANDOM */
+#define HAVE_SSL_GET_CLIENT_RANDOM 1
 
 /* Define to 1 if you have the `SSL_get_server_random' function. */
-/* #undef HAVE_SSL_GET_SERVER_RANDOM */
+#define HAVE_SSL_GET_SERVER_RANDOM 1
 
 /* Define to 1 if you have the `SSL_SESSION_get_master_key' function. */
-/* #undef HAVE_SSL_SESSION_GET_MASTER_KEY */
+#define HAVE_SSL_SESSION_GET_MASTER_KEY 1
 
 /* Define to 1 if `state' is a member of `SSL'. */
-#define HAVE_SSL_STATE 1
+/* #undef HAVE_SSL_STATE */
 
 /* Define to 1 if you have the `statvfs' function. */
 #define HAVE_STATVFS 1
@@ -451,7 +451,7 @@
 
 /* Define to 1 if `get_cipher_by_char' is a member of `struct ssl_method_st'.
    */
-#define HAVE_STRUCT_SSL_METHOD_ST_GET_CIPHER_BY_CHAR 1
+/* #undef HAVE_STRUCT_SSL_METHOD_ST_GET_CIPHER_BY_CHAR */
 
 /* Define to 1 if `tcpi_snd_mss' is a member of `struct tcp_info'. */
 #define HAVE_STRUCT_TCP_INFO_TCPI_SND_MSS 1
@@ -556,7 +556,7 @@
 /* #undef HAVE_TIMINGSAFE_MEMCMP */
 
 /* Define to 1 if you have the `TLS_method' function. */
-/* #undef HAVE_TLS_METHOD */
+#define HAVE_TLS_METHOD 1
 
 /* Define to 1 if you have the `truncate' function. */
 #define HAVE_TRUNCATE 1
@@ -706,7 +706,7 @@
 #define SIZEOF___INT64 0
 
 /* tor's sourcedir directory */
-#define SRCDIR "/home/farid/Programming/Tor-Traffic-Labeling"
+#define SRCDIR "/home/amirhossein/github/Tor-Traffic-Labeling"
 
 /* Define to 1 if you have the ANSI C header files. */
 #define STDC_HEADERS 1

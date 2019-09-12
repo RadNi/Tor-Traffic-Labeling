@@ -19,7 +19,6 @@ src/ext/ed25519/ref10/src_ext_ed25519_ref10_libed25519_ref10_a-fe_frombytes.o: \
  /usr/include/x86_64-linux-gnu/bits/select.h \
  /usr/include/x86_64-linux-gnu/bits/sigset.h \
  /usr/include/x86_64-linux-gnu/bits/time.h \
- /usr/include/x86_64-linux-gnu/bits/select2.h \
  /usr/include/x86_64-linux-gnu/sys/sysmacros.h \
  /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
  /usr/lib/gcc/x86_64-linux-gnu/5/include-fixed/limits.h \
@@ -85,8 +84,6 @@ orconfig.h:
 /usr/include/x86_64-linux-gnu/bits/sigset.h:
 
 /usr/include/x86_64-linux-gnu/bits/time.h:
-
-/usr/include/x86_64-linux-gnu/bits/select2.h:
 
 /usr/include/x86_64-linux-gnu/sys/sysmacros.h:
 

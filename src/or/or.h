@@ -1181,9 +1181,19 @@ typedef struct cell_t {
                     * CELL_DESTROY, etc */
   uint8_t payload[CELL_PAYLOAD_SIZE]; /**< Cell body. */
 
-    char** encrypted_data;
-    int encrypted_data_chunks_count;
-    int * encrypted_data_length;
+//    char** encrypted_data;
+//    int encrypted_data_chunks_count;
+//    int * encrypted_data_length;
+
+    char tls_data[CELL_PAYLOAD_SIZE * 2];
+    int tls_len;
+
+#ifdef CAPTURE_SKINS
+    char onion_skins[3][CELL_PAYLOAD_SIZE];
+    int onion_skins_length; 
+#endif
+//    char decrypted_payload_layers[3][CELL_PAYLOAD_SIZE];
+//    int decrypted_payload_layers_pointer;
 
 } cell_t;
 

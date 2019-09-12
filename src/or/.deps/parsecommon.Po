@@ -18,7 +18,6 @@ src/or/parsecommon.o: src/or/parsecommon.c /usr/include/stdc-predef.h \
  /usr/include/x86_64-linux-gnu/bits/select.h \
  /usr/include/x86_64-linux-gnu/bits/sigset.h \
  /usr/include/x86_64-linux-gnu/bits/time.h \
- /usr/include/x86_64-linux-gnu/bits/select2.h \
  /usr/include/x86_64-linux-gnu/sys/sysmacros.h \
  /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
  /usr/lib/gcc/x86_64-linux-gnu/5/include-fixed/limits.h \
@@ -43,10 +42,7 @@ src/or/parsecommon.o: src/or/parsecommon.c /usr/include/stdc-predef.h \
  /usr/include/asm-generic/param.h \
  /usr/include/x86_64-linux-gnu/sys/time.h \
  /usr/include/x86_64-linux-gnu/bits/timex.h /usr/include/xlocale.h \
- /usr/include/string.h /usr/include/x86_64-linux-gnu/bits/string.h \
- /usr/include/x86_64-linux-gnu/bits/string2.h /usr/include/stdlib.h \
- /usr/include/x86_64-linux-gnu/bits/string3.h \
- /usr/lib/gcc/x86_64-linux-gnu/5/include/stdarg.h \
+ /usr/include/string.h /usr/lib/gcc/x86_64-linux-gnu/5/include/stdarg.h \
  /usr/include/x86_64-linux-gnu/sys/resource.h \
  /usr/include/x86_64-linux-gnu/bits/resource.h \
  /usr/include/x86_64-linux-gnu/sys/socket.h \
@@ -58,30 +54,24 @@ src/or/parsecommon.o: src/or/parsecommon.c /usr/include/stdc-predef.h \
  /usr/include/x86_64-linux-gnu/asm/socket.h \
  /usr/include/asm-generic/socket.h \
  /usr/include/x86_64-linux-gnu/asm/sockios.h \
- /usr/include/asm-generic/sockios.h \
- /usr/include/x86_64-linux-gnu/bits/socket2.h /usr/include/netinet/in.h \
+ /usr/include/asm-generic/sockios.h /usr/include/netinet/in.h \
  /usr/include/x86_64-linux-gnu/bits/in.h src/common/compat_time.h \
  /usr/include/stdio.h /usr/include/libio.h /usr/include/_G_config.h \
  /usr/include/wchar.h /usr/include/x86_64-linux-gnu/bits/sys_errlist.h \
- /usr/include/x86_64-linux-gnu/bits/stdio.h \
- /usr/include/x86_64-linux-gnu/bits/stdio2.h /usr/include/errno.h \
- /usr/include/x86_64-linux-gnu/bits/errno.h /usr/include/linux/errno.h \
- /usr/include/x86_64-linux-gnu/asm/errno.h \
+ /usr/include/errno.h /usr/include/x86_64-linux-gnu/bits/errno.h \
+ /usr/include/linux/errno.h /usr/include/x86_64-linux-gnu/asm/errno.h \
  /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h \
  src/common/compat_threads.h /usr/include/pthread.h /usr/include/sched.h \
  /usr/include/x86_64-linux-gnu/bits/sched.h \
  /usr/include/x86_64-linux-gnu/bits/setjmp.h \
  /usr/lib/gcc/x86_64-linux-gnu/5/include/stdatomic.h src/common/di_ops.h \
- /usr/include/x86_64-linux-gnu/bits/waitflags.h \
+ /usr/include/stdlib.h /usr/include/x86_64-linux-gnu/bits/waitflags.h \
  /usr/include/x86_64-linux-gnu/bits/waitstatus.h /usr/include/alloca.h \
- /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h \
- /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
- /usr/include/x86_64-linux-gnu/bits/stdlib.h src/common/util_bug.h \
+ /usr/include/x86_64-linux-gnu/bits/stdlib-float.h src/common/util_bug.h \
  src/ext/siphash.h src/common/crypto.h src/common/crypto_rsa.h \
  src/common/crypto_digest.h src/common/container.h src/common/torlog.h \
  /usr/include/syslog.h /usr/include/x86_64-linux-gnu/sys/syslog.h \
- /usr/include/x86_64-linux-gnu/bits/syslog-path.h \
- /usr/include/x86_64-linux-gnu/bits/syslog.h src/common/memarea.h \
+ /usr/include/x86_64-linux-gnu/bits/syslog-path.h src/common/memarea.h \
  src/common/torlog.h src/common/util_format.h
 
 /usr/include/stdc-predef.h:
@@ -137,8 +127,6 @@ src/common/torint.h:
 /usr/include/x86_64-linux-gnu/bits/sigset.h:
 
 /usr/include/x86_64-linux-gnu/bits/time.h:
-
-/usr/include/x86_64-linux-gnu/bits/select2.h:
 
 /usr/include/x86_64-linux-gnu/sys/sysmacros.h:
 
@@ -204,14 +192,6 @@ src/common/testsupport.h:
 
 /usr/include/string.h:
 
-/usr/include/x86_64-linux-gnu/bits/string.h:
-
-/usr/include/x86_64-linux-gnu/bits/string2.h:
-
-/usr/include/stdlib.h:
-
-/usr/include/x86_64-linux-gnu/bits/string3.h:
-
 /usr/lib/gcc/x86_64-linux-gnu/5/include/stdarg.h:
 
 /usr/include/x86_64-linux-gnu/sys/resource.h:
@@ -238,8 +218,6 @@ src/common/testsupport.h:
 
 /usr/include/asm-generic/sockios.h:
 
-/usr/include/x86_64-linux-gnu/bits/socket2.h:
-
 /usr/include/netinet/in.h:
 
 /usr/include/x86_64-linux-gnu/bits/in.h:
@@ -255,10 +233,6 @@ src/common/compat_time.h:
 /usr/include/wchar.h:
 
 /usr/include/x86_64-linux-gnu/bits/sys_errlist.h:
-
-/usr/include/x86_64-linux-gnu/bits/stdio.h:
-
-/usr/include/x86_64-linux-gnu/bits/stdio2.h:
 
 /usr/include/errno.h:
 
@@ -286,17 +260,15 @@ src/common/compat_threads.h:
 
 src/common/di_ops.h:
 
+/usr/include/stdlib.h:
+
 /usr/include/x86_64-linux-gnu/bits/waitflags.h:
 
 /usr/include/x86_64-linux-gnu/bits/waitstatus.h:
 
 /usr/include/alloca.h:
 
-/usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h:
-
 /usr/include/x86_64-linux-gnu/bits/stdlib-float.h:
-
-/usr/include/x86_64-linux-gnu/bits/stdlib.h:
 
 src/common/util_bug.h:
 
@@ -317,8 +289,6 @@ src/common/torlog.h:
 /usr/include/x86_64-linux-gnu/sys/syslog.h:
 
 /usr/include/x86_64-linux-gnu/bits/syslog-path.h:
-
-/usr/include/x86_64-linux-gnu/bits/syslog.h:
 
 src/common/memarea.h:
 
