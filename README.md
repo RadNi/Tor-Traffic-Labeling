@@ -46,7 +46,7 @@ or
 
 ## Labeling
 
-In ```labeling_process``` directory two labeling method implemented.
+In ```labeling_process``` directory two labeling methods are implemented.
 
 ## Issues
 
